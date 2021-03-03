@@ -1,0 +1,8 @@
+﻿<DAC type="PX.Objects.SO.SOShipment">
+    <Field FieldName="WorkgroupID" TextAttributes="#CDATA" OverrideGeneratedAttributes="True" OverrideClassName="PX.Objects.SO.SOShipment">
+        <CDATA name="TextAttributes"><![CDATA[[PXDBInt]
+[PX.TM.PXCompanyTreeSelector]
+[PXFormula(typeof(Selector<SOShipment.customerID, Selector<Customer.workgroupID, TM.EPCompanyTree.description>>))]
+[PXUIField(DisplayName = "Workgroup", Visibility = PXUIVisibility.Visible, Visible = false)]]]></CDATA>
+    </Field>
+</DAC>
