@@ -37,14 +37,17 @@ namespace PX.Objects.SO
         #endregion
 
         #region Event Handlers
-        protected virtual void _(PXCache sender, PXRowSelectedEventArgs e)
+        protected virtual void _(Events.RowSelected<SOShipment> e, PXRowSelected baseHandler)
         {
+            baseHandler?.Invoke(e.Cache, e.Args);
+
             SOShipment row = (SOShipment)e.Row;
+
             if (row == null) return;
 
-            sender.AllowUpdate = true;
-            PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrCarrierPluginID>(sender, null, true);
-            PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrWaybill>(sender, null, true);
+            e.Cache.AllowUpdate = true;
+            PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrCarrierPluginID>(e.Cache, null, true);
+            PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrWaybill>(e.Cache, null, true);
         }
 
         protected void _(Events.FieldSelecting<SOShipmentExt.usrNote> e)
