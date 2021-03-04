@@ -1,11 +1,22 @@
 using PX.Data;
 using PX.Data.BQL;
+using PX.Objects.AR;
 using PX.Objects.CS;
 
 namespace PX.Objects.SO
 {
     public class SOShipmentExt : PXCacheExtension<PX.Objects.SO.SOShipment>
     {
+        // Hide this field
+        #region WorkgroupID  
+        [PXDBInt]
+        [PX.TM.PXCompanyTreeSelector]
+        [PXFormula(typeof(Selector<SOShipment.customerID, Selector<Customer.workgroupID, TM.EPCompanyTree.description>>))]
+        [PXUIField(DisplayName = "Workgroup", Visibility = PXUIVisibility.Visible, Visible = false)]
+        public int? WorkgroupID { get; set; }
+        #endregion
+
+
         #region UsrCarrierPluginID
         [PXDBString(15, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Carrier", Enabled = false)]
