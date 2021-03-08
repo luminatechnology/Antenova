@@ -2,18 +2,34 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.CS;
+using PX.Objects.IN;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PX.Objects.SO
 {
     public class SOShipmentEntry_Extension : PXGraphExtension<SOShipmentEntry>
     {
+        public delegate void PersistDelegate();
 
         public override void Initialize()
         {
             base.Initialize();
             Base.report.AddMenuAction(COCReport);
+        }
+
+        [PXOverride]
+        public void Persist(PersistDelegate baseMethod)
+        {
+            var _packages = Base.Packages.Select().RowCast<SOPackageDetailEx>();
+            var _shipLines = Base.Transactions.Select().RowCast<SOShipLine>();
+            var _grpPackages = _packages.GroupBy(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr)
+                                       .Select(x => new { splitLineNbr = x.Key, _packedQty = x.Sum(y => y.Qty)});
+            foreach (var item in _grpPackages)
+                _shipLines.Where(x => x.LineNbr == item.splitLineNbr).FirstOrDefault().PackedQty = item._packedQty;
+
+            baseMethod();
         }
 
         #region Action
@@ -50,7 +66,7 @@ namespace PX.Objects.SO
             PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrWaybill>(e.Cache, null, true);
         }
 
-        protected void _(Events.FieldSelecting<SOShipmentExt.usrNote> e)
+        protected virtual void _(Events.FieldSelecting<SOShipmentExt.usrNote> e)
         {
             SOShipment row = e.Row as SOShipment;
             string str = string.Empty;
@@ -63,12 +79,41 @@ namespace PX.Objects.SO
                 {
 
                     Note note = (Note)pxResult1;
-                    if(note.NoteText.Length > 0)
+                    if (note.NoteText.Length > 0)
                         str += note.NoteText + "\n--------------------\n";
                 }
             }
             e.ReturnValue = (object)str;
         }
+
+        /// <summary>SOPackageDetailExt_usrShipmentSplitLineNbr Updated Event </summary>
+        protected virtual void _(Events.FieldUpdated<SOPackageDetailExt.usrShipmentSplitLineNbr> e)
+        {
+            if (e.NewValue == null)
+                return;
+            var _shipLine = Base.Transactions.Select().RowCast<SOShipLine>().Where(x => x.LineNbr == (int?)e.NewValue).SingleOrDefault();
+            e.Cache.SetValueExt<SOPackageDetail.qty>(e.Row, _shipLine.ShippedQty);
+            e.Cache.SetValueExt<SOPackageDetail.inventoryID>(e.Row, _shipLine.InventoryID);
+        }
+
+        /// <summary>SOPackageDetailExt_qty Updated Event </summary>
+        protected void _(Events.FieldUpdated<SOPackageDetail.qty> e)
+        {
+            var row = (SOPackageDetailEx)e.Row;
+            var _splitLineNbr = e.Cache.GetExtension<SOPackageDetailExt>(e.Row).UsrShipmentSplitLineNbr;
+            if((decimal?)e.NewValue == 0)
+            {
+                e.Cache.SetValueExt<SOPackageDetail.weight>(e.Row, 0);
+                return;
+            }
+            var _shipLine = Base.Transactions.Select().RowCast<SOShipLine>().Where(x => x.LineNbr == _splitLineNbr).SingleOrDefault();
+            InventoryItem _stockItem = SelectFrom<InventoryItem>
+                             .Where<InventoryItem.inventoryID.IsEqual<P.AsInt>>
+                             .View.Select(Base, _shipLine.InventoryID);
+            var _qtyCarton = e.Cache.GetValueExt(e.Row, PX.Objects.CS.Messages.Attribute + "QTYCARTON") as PXFieldState;
+            e.Cache.SetValueExt<SOPackageDetail.weight>(e.Row, row.Qty * _stockItem.BaseItemWeight / 1000);
+        }
+
         #endregion
     }
 }
