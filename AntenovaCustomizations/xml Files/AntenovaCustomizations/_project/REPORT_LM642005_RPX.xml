@@ -192,6 +192,38 @@
                 </Links>
                 <ParentName>SOPackageDetail</ParentName>
             </ReportRelation>
+            <ReportRelation>
+                <ChildName>SOShipLine</ChildName>
+                <Links>
+                    <RelationRow>
+                        <ChildField>ShipmentNbr</ChildField>
+                        <ParentField>ShipmentNbr</ParentField>
+                    </RelationRow>
+                    <RelationRow>
+                        <ChildField>LineNbr</ChildField>
+                        <ParentField>UsrShipmentSplitLineNbr</ParentField>
+                    </RelationRow>
+                </Links>
+                <ParentName>SOPackageDetailEx</ParentName>
+            </ReportRelation>
+            <ReportRelation>
+                <ChildName>SOLine</ChildName>
+                <Links>
+                    <RelationRow>
+                        <ChildField>OrderNbr</ChildField>
+                        <ParentField>OrigOrderNbr</ParentField>
+                    </RelationRow>
+                    <RelationRow>
+                        <ChildField>OrderType</ChildField>
+                        <ParentField>OrigOrderType</ParentField>
+                    </RelationRow>
+                    <RelationRow>
+                        <ChildField>LineNbr</ChildField>
+                        <ParentField>OrigLineNbr</ParentField>
+                    </RelationRow>
+                </Links>
+                <ParentName>SOShipLine</ParentName>
+            </ReportRelation>
         </Relations>
         <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
         <Sorting>
@@ -3004,6 +3036,112 @@
                 </Fields>
                 <FullName>PX.Objects.SO.SOShipment</FullName>
             </ReportTable>
+            <ReportTable Name="SOPackageDetail">
+                <Fields>
+                    <ReportField Name="BoxID">
+                    </ReportField>
+                    <ReportField Name="COD">
+                        <DataType>Decimal</DataType>
+                    </ReportField>
+                    <ReportField Name="Confirmed">
+                        <DataType>Boolean</DataType>
+                    </ReportField>
+                    <ReportField Name="CreatedByID">
+                    </ReportField>
+                    <ReportField Name="CreatedByID_Creator_displayName">
+                    </ReportField>
+                    <ReportField Name="CreatedByID_Creator_Username">
+                    </ReportField>
+                    <ReportField Name="CreatedByID_description">
+                    </ReportField>
+                    <ReportField Name="CreatedByScreenID">
+                    </ReportField>
+                    <ReportField Name="CreatedDateTime">
+                        <DataType>DateTime</DataType>
+                    </ReportField>
+                    <ReportField Name="CreatedDateTime_Day">
+                    </ReportField>
+                    <ReportField Name="CreatedDateTime_Hour">
+                    </ReportField>
+                    <ReportField Name="CreatedDateTime_Month">
+                    </ReportField>
+                    <ReportField Name="CreatedDateTime_Quarter">
+                    </ReportField>
+                    <ReportField Name="CustomRefNbr1">
+                    </ReportField>
+                    <ReportField Name="CustomRefNbr2">
+                    </ReportField>
+                    <ReportField Name="DeclaredValue">
+                        <DataType>Decimal</DataType>
+                    </ReportField>
+                    <ReportField Name="Description">
+                    </ReportField>
+                    <ReportField Name="InventoryID">
+                    </ReportField>
+                    <ReportField Name="InventoryID_description">
+                    </ReportField>
+                    <ReportField Name="InventoryID_InventoryItem_descr">
+                    </ReportField>
+                    <ReportField Name="InventoryID_Segment1">
+                    </ReportField>
+                    <ReportField Name="LastModifiedByID">
+                    </ReportField>
+                    <ReportField Name="LastModifiedByID_description">
+                    </ReportField>
+                    <ReportField Name="LastModifiedByID_Modifier_displayName">
+                    </ReportField>
+                    <ReportField Name="LastModifiedByID_Modifier_Username">
+                    </ReportField>
+                    <ReportField Name="LastModifiedByScreenID">
+                    </ReportField>
+                    <ReportField Name="LastModifiedDateTime">
+                        <DataType>DateTime</DataType>
+                    </ReportField>
+                    <ReportField Name="LastModifiedDateTime_Day">
+                    </ReportField>
+                    <ReportField Name="LastModifiedDateTime_Hour">
+                    </ReportField>
+                    <ReportField Name="LastModifiedDateTime_Month">
+                    </ReportField>
+                    <ReportField Name="LastModifiedDateTime_Quarter">
+                    </ReportField>
+                    <ReportField Name="LineNbr">
+                        <DataType>Int32</DataType>
+                    </ReportField>
+                    <ReportField Name="NoteActivity">
+                    </ReportField>
+                    <ReportField Name="NoteFiles">
+                    </ReportField>
+                    <ReportField Name="NoteID">
+                        <DataType>Object</DataType>
+                    </ReportField>
+                    <ReportField Name="NoteImages">
+                    </ReportField>
+                    <ReportField Name="NoteText">
+                    </ReportField>
+                    <ReportField Name="PackageType">
+                    </ReportField>
+                    <ReportField Name="Qty">
+                        <DataType>Decimal</DataType>
+                    </ReportField>
+                    <ReportField Name="QtyUOM">
+                    </ReportField>
+                    <ReportField Name="ShipmentNbr">
+                    </ReportField>
+                    <ReportField Name="TrackData">
+                    </ReportField>
+                    <ReportField Name="TrackNumber">
+                    </ReportField>
+                    <ReportField Name="tstamp">
+                    </ReportField>
+                    <ReportField Name="Weight">
+                        <DataType>Decimal</DataType>
+                    </ReportField>
+                    <ReportField Name="WeightUOM">
+                    </ReportField>
+                </Fields>
+                <FullName>PX.Objects.SO.SOPackageDetail</FullName>
+            </ReportTable>
             <ReportTable Name="SOPackageDetailEx">
                 <Fields>
                     <ReportField Name="BoxDescription">
@@ -3133,6 +3271,9 @@
                     </ReportField>
                     <ReportField Name="tstamp">
                     </ReportField>
+                    <ReportField Name="UsrShipmentSplitLineNbr">
+                        <DataType>Int32</DataType>
+                    </ReportField>
                     <ReportField Name="Weight">
                         <DataType>Decimal</DataType>
                     </ReportField>
@@ -3143,112 +3284,6 @@
                     </ReportField>
                 </Fields>
                 <FullName>PX.Objects.SO.SOPackageDetailEx</FullName>
-            </ReportTable>
-            <ReportTable Name="SOPackageDetail">
-                <Fields>
-                    <ReportField Name="BoxID">
-                    </ReportField>
-                    <ReportField Name="COD">
-                        <DataType>Decimal</DataType>
-                    </ReportField>
-                    <ReportField Name="Confirmed">
-                        <DataType>Boolean</DataType>
-                    </ReportField>
-                    <ReportField Name="CreatedByID">
-                    </ReportField>
-                    <ReportField Name="CreatedByID_Creator_displayName">
-                    </ReportField>
-                    <ReportField Name="CreatedByID_Creator_Username">
-                    </ReportField>
-                    <ReportField Name="CreatedByID_description">
-                    </ReportField>
-                    <ReportField Name="CreatedByScreenID">
-                    </ReportField>
-                    <ReportField Name="CreatedDateTime">
-                        <DataType>DateTime</DataType>
-                    </ReportField>
-                    <ReportField Name="CreatedDateTime_Day">
-                    </ReportField>
-                    <ReportField Name="CreatedDateTime_Hour">
-                    </ReportField>
-                    <ReportField Name="CreatedDateTime_Month">
-                    </ReportField>
-                    <ReportField Name="CreatedDateTime_Quarter">
-                    </ReportField>
-                    <ReportField Name="CustomRefNbr1">
-                    </ReportField>
-                    <ReportField Name="CustomRefNbr2">
-                    </ReportField>
-                    <ReportField Name="DeclaredValue">
-                        <DataType>Decimal</DataType>
-                    </ReportField>
-                    <ReportField Name="Description">
-                    </ReportField>
-                    <ReportField Name="InventoryID">
-                    </ReportField>
-                    <ReportField Name="InventoryID_description">
-                    </ReportField>
-                    <ReportField Name="InventoryID_InventoryItem_descr">
-                    </ReportField>
-                    <ReportField Name="InventoryID_Segment1">
-                    </ReportField>
-                    <ReportField Name="LastModifiedByID">
-                    </ReportField>
-                    <ReportField Name="LastModifiedByID_description">
-                    </ReportField>
-                    <ReportField Name="LastModifiedByID_Modifier_displayName">
-                    </ReportField>
-                    <ReportField Name="LastModifiedByID_Modifier_Username">
-                    </ReportField>
-                    <ReportField Name="LastModifiedByScreenID">
-                    </ReportField>
-                    <ReportField Name="LastModifiedDateTime">
-                        <DataType>DateTime</DataType>
-                    </ReportField>
-                    <ReportField Name="LastModifiedDateTime_Day">
-                    </ReportField>
-                    <ReportField Name="LastModifiedDateTime_Hour">
-                    </ReportField>
-                    <ReportField Name="LastModifiedDateTime_Month">
-                    </ReportField>
-                    <ReportField Name="LastModifiedDateTime_Quarter">
-                    </ReportField>
-                    <ReportField Name="LineNbr">
-                        <DataType>Int32</DataType>
-                    </ReportField>
-                    <ReportField Name="NoteActivity">
-                    </ReportField>
-                    <ReportField Name="NoteFiles">
-                    </ReportField>
-                    <ReportField Name="NoteID">
-                        <DataType>Object</DataType>
-                    </ReportField>
-                    <ReportField Name="NoteImages">
-                    </ReportField>
-                    <ReportField Name="NoteText">
-                    </ReportField>
-                    <ReportField Name="PackageType">
-                    </ReportField>
-                    <ReportField Name="Qty">
-                        <DataType>Decimal</DataType>
-                    </ReportField>
-                    <ReportField Name="QtyUOM">
-                    </ReportField>
-                    <ReportField Name="ShipmentNbr">
-                    </ReportField>
-                    <ReportField Name="TrackData">
-                    </ReportField>
-                    <ReportField Name="TrackNumber">
-                    </ReportField>
-                    <ReportField Name="tstamp">
-                    </ReportField>
-                    <ReportField Name="Weight">
-                        <DataType>Decimal</DataType>
-                    </ReportField>
-                    <ReportField Name="WeightUOM">
-                    </ReportField>
-                </Fields>
-                <FullName>PX.Objects.SO.SOPackageDetail</FullName>
             </ReportTable>
         </Tables>
         <ViewerFields>
