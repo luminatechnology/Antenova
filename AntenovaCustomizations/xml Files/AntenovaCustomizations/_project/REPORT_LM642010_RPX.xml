@@ -7,6 +7,9 @@
             </FilterExp>
         </Filters>
         <PageSettings>
+            <Margins>
+                <Top>0.2cm</Top>
+            </Margins>
             <PaperKind>Custom</PaperKind>
             <PaperSize>96mm, 58mm</PaperSize>
         </PageSettings>

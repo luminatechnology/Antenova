@@ -16,8 +16,11 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </FilterExp>
         </Filters>
         <PageSettings>
+            <Margins>
+                <Top>0.6cm</Top>
+            </Margins>
             <PaperKind>Custom</PaperKind>
-            <PaperSize>96mm, 58mm</PaperSize>
+            <PaperSize>150mm, 100mm</PaperSize>
         </PageSettings>
         <Parameters>
             <ReportParameter>
@@ -2385,7 +2388,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 </Variables>
                 <Items>
                     <PictureBox Name="pictureBox1">
-                        <Location>352px, 240px</Location>
+                        <Location>368px, 216px</Location>
                         <MimeType>image/png</MimeType>
                         <QRCodeSettings />
                         <Size>49.2mm, 31.2mm</Size>
@@ -2393,7 +2396,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>antenovalabelseal</Value>
                     </PictureBox>
                     <TextBox Name="textBox1">
-                        <Location>24px, 168px</Location>
+                        <Location>24px, 152px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -2406,7 +2409,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>PO#:  </Value>
                     </TextBox>
                     <TextBox Name="textBox10">
-                        <Location>24px, 72px</Location>
+                        <Location>24px, 56px</Location>
                         <Size>384px, 24px</Size>
                         <Style>
                             <Font>
@@ -2419,7 +2422,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Colonia Parque Industrial Del Norte</Value>
                     </TextBox>
                     <TextBox Name="textBox11">
-                        <Location>24px, 96px</Location>
+                        <Location>24px, 80px</Location>
                         <Size>384px, 24px</Size>
                         <Style>
                             <Font>
@@ -2432,7 +2435,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Reynosa, 88736</Value>
                     </TextBox>
                     <TextBox Name="textBox12">
-                        <Location>24px, 120px</Location>
+                        <Location>24px, 104px</Location>
                         <Size>384px, 24px</Size>
                         <Style>
                             <Font>
@@ -2445,7 +2448,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Mexico</Value>
                     </TextBox>
                     <TextBox Name="textBox13">
-                        <Location>160px, 336px</Location>
+                        <Location>184px, 304px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -2461,8 +2464,8 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=$CurrentPage</Value>
                     </TextBox>
                     <TextBox Name="textBox14">
-                        <Location>24px, 336px</Location>
-                        <Size>136px, 24px</Size>
+                        <Location>24px, 304px</Location>
+                        <Size>160px, 24px</Size>
                         <Style>
                             <Font>
                                 <Size>20px</Size>
@@ -2474,7 +2477,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Package count: </Value>
                     </TextBox>
                     <TextBox Name="textBox15">
-                        <Location>240px, 336px</Location>
+                        <Location>264px, 304px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -2490,7 +2493,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[PageCount]</Value>
                     </TextBox>
                     <TextBox Name="textBox16">
-                        <Location>216px, 336px</Location>
+                        <Location>240px, 304px</Location>
                         <Size>24px, 24px</Size>
                         <Style>
                             <Font>
@@ -2506,11 +2509,12 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>/</Value>
                     </TextBox>
                     <TextBox Name="textBox2">
-                        <Location>24px, 224px</Location>
+                        <Location>24px, 200px</Location>
                         <Size>48px, 24px</Size>
                         <Style>
                             <Font>
                                 <Size>20px</Size>
+                                <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -2518,7 +2522,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Qty: </Value>
                     </TextBox>
                     <TextBox Name="textBox3">
-                        <Location>24px, 280px</Location>
+                        <Location>24px, 248px</Location>
                         <Size>176px, 24px</Size>
                         <Style>
                             <Font>
@@ -2531,7 +2535,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Country of Origin:</Value>
                     </TextBox>
                     <TextBox Name="textBox4">
-                        <Location>80px, 168px</Location>
+                        <Location>80px, 152px</Location>
                         <Size>152px, 24px</Size>
                         <Style>
                             <Font>
@@ -2545,7 +2549,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                     </TextBox>
                     <TextBox Name="textBox5">
                         <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-                        <Location>72px, 224px</Location>
+                        <Location>72px, 200px</Location>
                         <Size>112px, 24px</Size>
                         <Style>
                             <Font>
@@ -2558,7 +2562,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
                     </TextBox>
                     <TextBox Name="textBox6">
-                        <Location>200px, 280px</Location>
+                        <Location>200px, 248px</Location>
                         <Size>112px, 24px</Size>
                         <Style>
                             <Font>
@@ -2571,7 +2575,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[InventoryItem.MADEIN_Attributes]</Value>
                     </TextBox>
                     <TextBox Name="textBox7">
-                        <Location>184px, 224px</Location>
+                        <Location>184px, 200px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -2584,7 +2588,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[SOPackageDetailEx.QtyUOM]</Value>
                     </TextBox>
                     <TextBox Name="textBox8">
-                        <Location>24px, 24px</Location>
+                        <Location>24px, 8px</Location>
                         <Size>384px, 24px</Size>
                         <Style>
                             <Font>
@@ -2597,7 +2601,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>Sanmina SCI de Mexico (Plant 2449)#010;</Value>
                     </TextBox>
                     <TextBox Name="textBox9">
-                        <Location>24px, 48px</Location>
+                        <Location>24px, 32px</Location>
                         <Size>384px, 24px</Size>
                         <Style>
                             <Font>

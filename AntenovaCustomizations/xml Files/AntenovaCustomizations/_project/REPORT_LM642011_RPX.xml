@@ -16,8 +16,11 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </FilterExp>
         </Filters>
         <PageSettings>
+            <Margins>
+                <Top>0.6cm</Top>
+            </Margins>
             <PaperKind>Custom</PaperKind>
-            <PaperSize>96mm, 58mm</PaperSize>
+            <PaperSize>150mm, 100mm</PaperSize>
         </PageSettings>
         <Parameters>
             <ReportParameter>
@@ -3186,7 +3189,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 </Variables>
                 <Items>
                     <PictureBox Name="pictureBox1">
-                        <Location>352px, 248px</Location>
+                        <Location>352px, 216px</Location>
                         <MimeType>image/png</MimeType>
                         <QRCodeSettings />
                         <Size>49.2mm, 31.2mm</Size>
@@ -3194,8 +3197,8 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>antenovalabelseal</Value>
                     </PictureBox>
                     <TextBox Name="textBox1">
-                        <Location>24px, 224px</Location>
-                        <Size>192px, 24px</Size>
+                        <Location>24px, 192px</Location>
+                        <Size>208px, 24px</Size>
                         <Style>
                             <Font>
                                 <Size>20px</Size>
@@ -3207,7 +3210,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>d. Hana PO Number: </Value>
                     </TextBox>
                     <TextBox Name="textBox10">
-                        <Location>240px, 56px</Location>
+                        <Location>240px, 48px</Location>
                         <Size>216px, 24px</Size>
                         <Style>
                             <Font>
@@ -3220,8 +3223,8 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[SOLine.AlternateID]</Value>
                     </TextBox>
                     <TextBox Name="textBox11">
-                        <Location>24px, 168px</Location>
-                        <Size>184px, 24px</Size>
+                        <Location>24px, 144px</Location>
+                        <Size>200px, 24px</Size>
                         <Style>
                             <Font>
                                 <Size>21px</Size>
@@ -3233,7 +3236,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>c. Invoice Number: </Value>
                     </TextBox>
                     <TextBox Name="textBox12">
-                        <Location>208px, 168px</Location>
+                        <Location>224px, 144px</Location>
                         <Size>176px, 24px</Size>
                         <Style>
                             <Font>
@@ -3246,7 +3249,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=IIF([SOOrderShipment.InvoiceNbr] &lt;&gt; Null, [SOOrderShipment.InvoiceNbr], [SOShipment.ShipmentNbr])</Value>
                     </TextBox>
                     <TextBox Name="textBox13">
-                        <Location>152px, 336px</Location>
+                        <Location>152px, 288px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -3262,7 +3265,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=$CurrentPage</Value>
                     </TextBox>
                     <TextBox Name="textBox14">
-                        <Location>24px, 336px</Location>
+                        <Location>24px, 288px</Location>
                         <Size>128px, 24px</Size>
                         <Style>
                             <Font>
@@ -3275,7 +3278,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>f. Carton no.</Value>
                     </TextBox>
                     <TextBox Name="textBox15">
-                        <Location>232px, 336px</Location>
+                        <Location>232px, 288px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -3291,7 +3294,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[PageCount]</Value>
                     </TextBox>
                     <TextBox Name="textBox16">
-                        <Location>208px, 336px</Location>
+                        <Location>208px, 288px</Location>
                         <Size>24px, 24px</Size>
                         <Style>
                             <Font>
@@ -3307,7 +3310,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>/</Value>
                     </TextBox>
                     <TextBox Name="textBox2">
-                        <Location>24px, 112px</Location>
+                        <Location>24px, 96px</Location>
                         <Size>120px, 24px</Size>
                         <Style>
                             <Font>
@@ -3320,8 +3323,8 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>b. Quantity: </Value>
                     </TextBox>
                     <TextBox Name="textBox3">
-                        <Location>24px, 280px</Location>
-                        <Size>96px, 24px</Size>
+                        <Location>24px, 240px</Location>
+                        <Size>104px, 24px</Size>
                         <Style>
                             <Font>
                                 <Size>20px</Size>
@@ -3333,7 +3336,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>e. Made in </Value>
                     </TextBox>
                     <TextBox Name="textBox4">
-                        <Location>216px, 224px</Location>
+                        <Location>232px, 192px</Location>
                         <Size>152px, 24px</Size>
                         <Style>
                             <Font>
@@ -3347,7 +3350,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                     </TextBox>
                     <TextBox Name="textBox5">
                         <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-                        <Location>144px, 112px</Location>
+                        <Location>144px, 96px</Location>
                         <Size>112px, 24px</Size>
                         <Style>
                             <Font>
@@ -3360,7 +3363,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
                     </TextBox>
                     <TextBox Name="textBox6">
-                        <Location>120px, 280px</Location>
+                        <Location>128px, 240px</Location>
                         <Size>112px, 24px</Size>
                         <Style>
                             <Font>
@@ -3373,7 +3376,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[InventoryItem.MADEIN_Attributes]</Value>
                     </TextBox>
                     <TextBox Name="textBox7">
-                        <Location>256px, 112px</Location>
+                        <Location>256px, 96px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
@@ -3386,7 +3389,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>=[SOPackageDetailEx.QtyUOM]</Value>
                     </TextBox>
                     <TextBox Name="textBox8">
-                        <Location>0px, 8px</Location>
+                        <Location>0px, 0px</Location>
                         <Size>568px, 24px</Size>
                         <Style>
                             <Font>
@@ -3399,7 +3402,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                         <Value>ANTENOVA LTD</Value>
                     </TextBox>
                     <TextBox Name="textBox9">
-                        <Location>24px, 56px</Location>
+                        <Location>24px, 48px</Location>
                         <Size>216px, 24px</Size>
                         <Style>
                             <Font>

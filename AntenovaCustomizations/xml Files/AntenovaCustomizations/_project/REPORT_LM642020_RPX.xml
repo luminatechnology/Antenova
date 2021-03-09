@@ -7,8 +7,11 @@
             </FilterExp>
         </Filters>
         <PageSettings>
+            <Margins>
+                <Top>0.2cm</Top>
+            </Margins>
             <PaperKind>Custom</PaperKind>
-            <PaperSize>96mm, 58mm</PaperSize>
+            <PaperSize>60mm, 40mm</PaperSize>
         </PageSettings>
         <Parameters>
             <ReportParameter>
@@ -2376,11 +2379,11 @@
                 </Variables>
                 <Items>
                     <TextBox Name="textBox1">
-                        <Location>0px, 16px</Location>
+                        <Location>0px, 8px</Location>
                         <Size>48px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -2389,11 +2392,12 @@
                         <Value>PO#:</Value>
                     </TextBox>
                     <TextBox Name="textBox2">
-                        <Location>0px, 64px</Location>
+                        <Location>0px, 56px</Location>
                         <Size>40px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
+                                <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
                             <VerticalAlign>Middle</VerticalAlign>
@@ -2401,11 +2405,11 @@
                         <Value>Qty:</Value>
                     </TextBox>
                     <TextBox Name="textBox3">
-                        <Location>0px, 112px</Location>
-                        <Size>144px, 24px</Size>
+                        <Location>0px, 104px</Location>
+                        <Size>136px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -2414,11 +2418,11 @@
                         <Value>Country of Origin:</Value>
                     </TextBox>
                     <TextBox Name="textBox4">
-                        <Location>48px, 16px</Location>
+                        <Location>48px, 8px</Location>
                         <Size>152px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -2428,11 +2432,11 @@
                     </TextBox>
                     <TextBox Name="textBox5">
                         <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-                        <Location>40px, 64px</Location>
+                        <Location>40px, 56px</Location>
                         <Size>112px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -2441,11 +2445,11 @@
                         <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
                     </TextBox>
                     <TextBox Name="textBox6">
-                        <Location>144px, 112px</Location>
-                        <Size>80px, 24px</Size>
+                        <Location>136px, 104px</Location>
+                        <Size>88px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -2454,11 +2458,11 @@
                         <Value>=[InventoryItem.MADEIN_Attributes]</Value>
                     </TextBox>
                     <TextBox Name="textBox7">
-                        <Location>152px, 64px</Location>
+                        <Location>152px, 56px</Location>
                         <Size>56px, 24px</Size>
                         <Style>
                             <Font>
-                                <Size>16px</Size>
+                                <Size>15px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
