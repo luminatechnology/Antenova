@@ -7,8 +7,11 @@
             </FilterExp>
         </Filters>
         <PageSettings>
+            <Margins>
+                <Top>0cm</Top>
+            </Margins>
             <PaperKind>Custom</PaperKind>
-            <PaperSize>96mm, 58mm</PaperSize>
+            <PaperSize>100mm, 40mm</PaperSize>
         </PageSettings>
         <Parameters>
             <ReportParameter>
@@ -3413,7 +3416,7 @@
                     </PictureBox>
                     <PictureBox Name="pictureBox5">
                         <BarcodeType>Code128</BarcodeType>
-                        <Location>188px, 0px</Location>
+                        <Location>216px, 0px</Location>
                         <MimeType>image/bmp</MimeType>
                         <QRCodeSettings />
                         <Size>136px, 24px</Size>
@@ -3422,7 +3425,7 @@
                     </PictureBox>
                     <PictureBox Name="pictureBox6">
                         <BarcodeType>Code128</BarcodeType>
-                        <Location>188px, 36px</Location>
+                        <Location>216px, 36px</Location>
                         <MimeType>image/bmp</MimeType>
                         <QRCodeSettings />
                         <Size>136px, 24px</Size>
@@ -3434,7 +3437,7 @@
                         <Size>24px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3443,11 +3446,11 @@
                         <Value>P/N: </Value>
                     </TextBox>
                     <TextBox Name="textBox10">
-                        <Location>224px, 24px</Location>
+                        <Location>256px, 24px</Location>
                         <Size>80px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3456,11 +3459,11 @@
                         <Value>=[SOPackageDetailEx.InventoryID]</Value>
                     </TextBox>
                     <TextBox Name="textBox11">
-                        <Location>192px, 60px</Location>
+                        <Location>224px, 60px</Location>
                         <Size>32px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3470,11 +3473,11 @@
                     </TextBox>
                     <TextBox Name="textBox12">
                         <Format>yyyyMMdd</Format>
-                        <Location>224px, 60px</Location>
+                        <Location>256px, 60px</Location>
                         <Size>104px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3487,7 +3490,7 @@
                         <Size>24px, 16px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3496,7 +3499,7 @@
                         <Value>LOT: </Value>
                     </TextBox>
                     <TextBox Name="textBox14">
-                        <Location>192px, 88px</Location>
+                        <Location>224px, 88px</Location>
                         <Size>56px, 32px</Size>
                         <Style>
                             <Font>
@@ -3513,7 +3516,7 @@
                         <Size>24px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3526,7 +3529,7 @@
                         <Size>40px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3539,7 +3542,7 @@
                         <Size>88px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3553,7 +3556,7 @@
                         <Size>56px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3566,7 +3569,7 @@
                         <Size>48px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3579,7 +3582,7 @@
                         <Size>40px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3592,7 +3595,7 @@
                         <Size>80px, 16px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
@@ -3601,11 +3604,11 @@
                         <Value>=[SOShipLineSplit.LotSerialNbr]</Value>
                     </TextBox>
                     <TextBox Name="textBox9">
-                        <Location>192px, 24px</Location>
+                        <Location>224px, 24px</Location>
                         <Size>32px, 12px</Size>
                         <Style>
                             <Font>
-                                <Size>6px</Size>
+                                <Size>8px</Size>
                                 <Style>Bold</Style>
                             </Font>
                             <TextAlign>Left</TextAlign>
