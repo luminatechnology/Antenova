@@ -24,6 +24,7 @@ namespace PX.Objects.SO
         [PXUIField(DisplayName = "Remaining Qty", Enabled = false)]
         [PXFormula(typeof(Sub<SOShipLine.shippedQty, SOShipLine.packedQty>))]
         public virtual decimal? RemainingQty { get; set; }
+        public abstract class remainingQty : BqlDecimal.Field<remainingQty> { }
 
         [PXString]
         [PXUIField(DisplayName = "Qty Per Carton", Enabled = false)]
@@ -37,5 +38,6 @@ namespace PX.Objects.SO
                           Where<InventoryItem.inventoryID.IsEqual<SOShipLine.inventoryID>>.
                           SearchFor<CSAnswers.value>))]
         public virtual string QtyPerCarton { get; set; }
+        public abstract class qtyPerCarton : BqlString.Field<qtyPerCarton> { }
     }
 }
