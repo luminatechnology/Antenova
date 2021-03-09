@@ -248,6 +248,7 @@ namespace PX.Objects.SO
                 throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
             return adapter.Get<SOShipment>().ToList();
         }
+        #endregion
 
         ///// <summary> Auto Packaging Button Click Event </summary>
         public PXAction<SOShipment> autoPackaging;
@@ -320,7 +321,6 @@ namespace PX.Objects.SO
             return adapter.Get();
         }
 
-        #endregion
 
         #endregion
 
