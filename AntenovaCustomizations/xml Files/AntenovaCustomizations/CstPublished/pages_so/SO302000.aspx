@@ -175,6 +175,8 @@
                                         </Parameters>
                                     </px:PXSelector>
                                     <px:PXNumberEdit ID="edUsrPackingQty" runat="server" DataField="UsrPackingQty" />
+                                    <px:PXNumberEdit ID="edRemainingQty" runat="server" DataField="RemainingQty" Enabled="false" />
+                                    <px:PXNumberEdit ID="edQtyPerCarton" runat="server" DataField="QtyPerCarton" Enabled="false" />
                                 </RowTemplate>
                                 <Layout FormViewHeight="" />
                             </px:PXGridLevel>
