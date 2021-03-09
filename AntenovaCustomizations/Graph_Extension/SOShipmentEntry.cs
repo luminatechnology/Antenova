@@ -29,6 +29,16 @@ namespace PX.Objects.SO
         {
             base.Initialize();
             Base.report.AddMenuAction(COCReport);
+            Base.report.AddMenuAction(PackingList);
+            Base.report.AddMenuAction(GeneralOuterLabel);
+            Base.report.AddMenuAction(HanaOuterLabel);
+            Base.report.AddMenuAction(AngliaOuterLabel);
+            Base.report.AddMenuAction(GlobalEMSOuterLabel);
+            Base.report.AddMenuAction(USIOuterLabel);
+            Base.report.AddMenuAction(SanminaOuterLabel);
+            Base.report.AddMenuAction(StandardOuterLabel1);
+            Base.report.AddMenuAction(StandardOuterLabel2);
+            Base.report.AddMenuAction(SanminaInnerLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -51,6 +61,7 @@ namespace PX.Objects.SO
 
         #region Action
 
+        #region COCReport
         public PXAction<SOShipment> COCReport;
         [PXButton]
         [PXUIField(DisplayName = "Print COC Report", Enabled = true, MapEnableRights = PXCacheRights.Select)]
@@ -66,6 +77,176 @@ namespace PX.Objects.SO
                 throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
             }
             return adapter.Get();
+        }
+        #endregion
+
+        #region Packing List - LM642005
+        public PXAction<SOShipment> PackingList;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable packingList(PXAdapter adapter)
+        {
+            var _reportID = "LM642005";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region General Outer Label - LM642010
+        public PXAction<SOShipment> GeneralOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print General Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable generalOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642010";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+        
+        #region Hana Outer Label - LM642011
+        public PXAction<SOShipment> HanaOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Hana Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable hanaOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642011";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Anglia Outer Label - LM642012
+        public PXAction<SOShipment> AngliaOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Anglia Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable angliaOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642012";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Global EMS Outer Label - LM642013
+        public PXAction<SOShipment> GlobalEMSOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Global EMS Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable globalEMSOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642013";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region USI Outer Label - LM642014
+        public PXAction<SOShipment> USIOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print USI Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable uSIOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642014";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Sanmina Outer Label - LM642015
+        public PXAction<SOShipment> SanminaOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Sanmina Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable sanminaOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642015";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 1 - LM642016
+        public PXAction<SOShipment> StandardOuterLabel1;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 1", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel1(PXAdapter adapter)
+        {
+            var _reportID = "LM642016";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 2 - LM642017
+        public PXAction<SOShipment> StandardOuterLabel2;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 2", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel2(PXAdapter adapter)
+        {
+            var _reportID = "LM642017";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Sanmina Inner Label - LM642020
+        public PXAction<SOShipment> SanminaInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Sanmina Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable sanminaInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642020";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
         }
 
         ///// <summary> Auto Packaging Button Click Event </summary>
@@ -141,6 +322,8 @@ namespace PX.Objects.SO
 
         #endregion
 
+        #endregion
+
         #region Event Handlers
         protected virtual void _(Events.RowSelected<SOShipment> e, PXRowSelected baseHandler)
         {
@@ -155,7 +338,7 @@ namespace PX.Objects.SO
             PXUIFieldAttribute.SetEnabled<SOShipmentExt.usrWaybill>(e.Cache, null, true);
         }
 
-        protected virtual void _(Events.FieldSelecting<SOShipmentExt.usrNote> e)
+        protected void _(Events.FieldSelecting<SOShipmentExt.usrNote> e)
         {
             SOShipment row = e.Row as SOShipment;
             string str = string.Empty;
@@ -168,7 +351,7 @@ namespace PX.Objects.SO
                 {
 
                     Note note = (Note)pxResult1;
-                    if (note.NoteText.Length > 0)
+                    if(note.NoteText.Length > 0)
                         str += note.NoteText + "\n--------------------\n";
                 }
             }
