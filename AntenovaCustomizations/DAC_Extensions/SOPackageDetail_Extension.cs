@@ -14,7 +14,7 @@ namespace PX.Objects.SO
     public class SOPackageDetailExt : PXCacheExtension<SOPackageDetail>
     {
         [PXDBString(30, IsUnicode = true)]
-        [PXUIField(DisplayName = "Cartno Nbr")]
+        [PXUIField(DisplayName = "Carton Nbr")]
         public virtual string CustomRefNbr1 { get; set; }
         public abstract class customRefNbr1 : BqlString.Field<customRefNbr1> { }
 
@@ -30,8 +30,8 @@ namespace PX.Objects.SO
         public abstract class qty : BqlDecimal.Field<qty> { }
 
         [PXDBString(15, IsUnicode = true)]
-        //[PXDefault(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
-        [PXDefault]
+        [PXDefault(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
+        //[PXDefault]
         [PXSelector(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
         [PXUIField(DisplayName = "Box ID")]
         public virtual string BoxID { get; set; }

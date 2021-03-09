@@ -29,6 +29,8 @@
             <px:PXDSCallbackCommand Name="RecalculatePackages" Visible="false" />
             <px:PXDSCallbackCommand Name="ShopRates" Visible="false" CommitChanges="true" />
             <px:PXDSCallbackCommand Name="RefreshRates" Visible="false" CommitChanges="true" />
+            <px:PXDSCallbackCommand Name="AutoPackaging" Visible="false" CommitChanges="true" DependOnGrid="grid" />
+            <px:PXDSCallbackCommand Name="ManualPackaging" Visible="false" CommitChanges="true" DependOnGrid="grid" />
         </CallbackCommands>
         <DataTrees>
             <px:PXTreeDataMember TreeView="_EPCompanyTree_Tree_" TreeKeys="WorkgroupID" />
@@ -118,6 +120,9 @@
                                     <px:PXGridColumn DataField="ExpireDate" />
                                     <px:PXGridColumn DataField="ReasonCode" DisplayFormat="&gt;AAAAAAAAAA" />
                                     <px:PXGridColumn DataField="TranDesc" />
+                                    <px:PXGridColumn DataField="UsrPackingQty" NullText="0.0" />
+                                    <px:PXGridColumn DataField="RemainingQty" />
+                                    <px:PXGridColumn DataField="QtyPerCarton" />
                                 </Columns>
                                 <RowTemplate>
                                     <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="XM" />
@@ -169,6 +174,7 @@
                                             <px:PXControlParam ControlID="form" Name="SOShipLine.orderType" PropertyName="NewDataKey[&quot;OrderType&quot;]" Type="String" />
                                         </Parameters>
                                     </px:PXSelector>
+                                    <px:PXNumberEdit ID="edUsrPackingQty" runat="server" DataField="UsrPackingQty" />
                                 </RowTemplate>
                                 <Layout FormViewHeight="" />
                             </px:PXGridLevel>
@@ -185,6 +191,12 @@
                                 </px:PXToolBarButton>
                                 <px:PXToolBarButton Text="Inventory Summary">
                                     <AutoCallBack Command="InventorySummary" Target="ds" />
+                                </px:PXToolBarButton>
+                                <px:PXToolBarButton Text="Auto Packaging">
+                                    <AutoCallBack Command="AutoPackaging" Target="ds" />
+                                </px:PXToolBarButton>
+                                <px:PXToolBarButton Text="Manual Packaging">
+                                    <AutoCallBack Command="ManualPackaging" Target="ds" />
                                 </px:PXToolBarButton>
                             </CustomItems>
                         </ActionBar>
