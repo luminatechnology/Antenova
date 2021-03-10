@@ -12,7 +12,10 @@ namespace PX.Objects.SO
 {
     public class SOShipmentEntry_Extension : PXGraphExtension<SOShipmentEntry>
     {
-        #region Constant Class
+        #region Constant Class & String Variables
+        public const string UPS = "UPS";
+        public const string DHL = "DHL";
+        public const string FDX = "FedFX";
 
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
@@ -118,7 +121,7 @@ namespace PX.Objects.SO
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
-
+        
         #region Hana Outer Label - LM642011
         public PXAction<SOShipment> HanaOuterLabel;
         [PXButton]
@@ -356,7 +359,7 @@ namespace PX.Objects.SO
                 {
 
                     Note note = (Note)pxResult1;
-                    if (note.NoteText.Length > 0)
+                    if(note.NoteText.Length > 0)
                         str += note.NoteText + "\n--------------------\n";
                 }
             }
@@ -424,7 +427,7 @@ namespace PX.Objects.SO
             var _PackageDetail = Base.Caches<SOPackageDetailEx>().Cached.RowCast<SOPackageDetailEx>();
             try
             {
-                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1, out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
+                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1,out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
             }
             catch (Exception)
             {
@@ -434,5 +437,26 @@ namespace PX.Objects.SO
 
         #endregion
 
+        #region Static Method
+        public static string GetShipWaybillURL(string carrier, string wayBill)
+        {
+            string url = null;
+
+            switch (carrier ?? string.Empty)
+            {
+                case UPS:
+                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill}&requester=WT/trackdetails";
+                    break;
+                case DHL:
+                    url = $"http://www.dhl.com.tw/en/express/tracking.html?AWB={wayBill}&brand=DHL";
+                    break;
+                case FDX:
+                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill}";
+                    break;
+            }
+
+            return url;
+        }
+        #endregion
     }
 }

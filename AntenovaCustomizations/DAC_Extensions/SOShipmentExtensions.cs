@@ -2,6 +2,8 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Objects.AR;
 using PX.Objects.CS;
+using System;
+using static PX.Objects.SO.SOShipmentEntry_Extension;
 
 namespace PX.Objects.SO
 {
@@ -15,7 +17,6 @@ namespace PX.Objects.SO
         [PXUIField(DisplayName = "Workgroup", Visibility = PXUIVisibility.Visible, Visible = false)]
         public int? WorkgroupID { get; set; }
         #endregion
-
 
         #region UsrCarrierPluginID
         [PXDBString(15, IsUnicode = true, InputMask = "")]
@@ -40,6 +41,13 @@ namespace PX.Objects.SO
         [PXUIField(IsReadOnly = true)]
         public virtual string UsrNote { get; set; }
         public abstract class usrNote : PX.Data.BQL.BqlString.Field<usrNote> { }
+        #endregion
+
+        #region UsrShipTrackURL
+        [PXString(IsUnicode = true)]
+        [PXUIField(DisplayName = "Shipment Tracking URL", Enabled = false)]
+        public virtual string UsrShipTrackURL => GetShipWaybillURL(this.UsrCarrierPluginID, this.UsrWaybill);
+        public abstract class usrShipTrackURL : PX.Data.BQL.BqlString.Field<usrShipTrackURL> { }
         #endregion
     }
 }
