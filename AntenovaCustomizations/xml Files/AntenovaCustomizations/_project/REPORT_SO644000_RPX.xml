@@ -1,5 +1,8 @@
 ﻿<Report Name="so644000.rpx">
     <Report Name="report1">
+        <CommonSettings>
+            <ViewPdf>True</ViewPdf>
+        </CommonSettings>
         <Filters>
             <FilterExp>
                 <DataField>SOShipment.ShipmentNbr</DataField>
@@ -8,11 +11,15 @@
         </Filters>
         <MailSettings>
             <ActivitySource>SOShipment.NoteID</ActivitySource>
-            <ParentSource>
-            </ParentSource>
+            <Bcc>
+            </Bcc>
+            <Body>
+            </Body>
+            <Cc>
+            </Cc>
+            <Format>
+            </Format>
             <Subject>='Invoice from: '+[BAccount.AcctName] </Subject>
-            <TemplateID>
-            </TemplateID>
             <To>=IsNull([Contact.EMail],'')</To>
         </MailSettings>
         <PageSettings>
@@ -3907,29 +3914,38 @@
         </ViewerFields>
         <Sections>
             <PageHeader Name="pageHeaderSection1">
-                <Height>1.48148cm</Height>
+                <Height>2.1164cm</Height>
                 <Items>
                     <Line Name="line1">
-                        <Location>8px, 40px</Location>
+                        <Location>8px, 72px</Location>
                         <Size>1008px, 1px</Size>
                     </Line>
                     <TextBox Name="textBox14">
-                        <Location>16px, 24px</Location>
-                        <Size>112px, 15px</Size>
+                        <Location>16px, 56px</Location>
+                        <Size>80px, 15px</Size>
                         <Style>
                             <TextAlign>Left</TextAlign>
                         </Style>
                         <StyleName>Heading 1</StyleName>
-                        <Value>Company Name:</Value>
+                        <Value>Customer:</Value>
                     </TextBox>
                     <TextBox Name="textBox15">
-                        <Location>128px, 24px</Location>
+                        <Location>96px, 56px</Location>
                         <Size>232px, 15px</Size>
                         <Style>
                             <TextAlign>Left</TextAlign>
                         </Style>
                         <StyleName>Heading 1</StyleName>
                         <Value>=[SOShipment.CustomerID_Customer_acctName]</Value>
+                    </TextBox>
+                    <TextBox Name="textBox18">
+                        <Location>0px, 16px</Location>
+                        <Size>1024px, 0.16667in</Size>
+                        <Style>
+                            <TextAlign>Center</TextAlign>
+                        </Style>
+                        <StyleName>Report Name</StyleName>
+                        <Value>Pick List</Value>
                     </TextBox>
                 </Items>
             </PageHeader>
