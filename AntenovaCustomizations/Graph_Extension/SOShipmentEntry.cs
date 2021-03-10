@@ -12,7 +12,10 @@ namespace PX.Objects.SO
 {
     public class SOShipmentEntry_Extension : PXGraphExtension<SOShipmentEntry>
     {
-        #region Constant Class
+        #region Constant Class & String Variables
+        public const string UPS = "UPS";
+        public const string DHL = "DHL";
+        public const string FDX = "FedFX";
 
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
@@ -45,22 +48,15 @@ namespace PX.Objects.SO
         [PXOverride]
         public void Persist(PersistDelegate baseMethod)
         {
-            var needUpdatePackedQty = Base.Packages.Cache.Inserted.RowCast<SOPackageDetailEx>().Count() > 0 ||
-                                      Base.Packages.Cache.Updated.RowCast<SOPackageDetailEx>().Count() > 0 ||
-                                      Base.Packages.Cache.Deleted.RowCast<SOPackageDetailEx>().Count() > 0;
-            if (needUpdatePackedQty)
+            IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
+            // Except Delete row
+            _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
+            var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
+            // Recalculate PackedQty
+            foreach (var item in _shipLines)
             {
-                // Except Delete row
-                IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
-                _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
-                var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
-                _shipLines = _shipLines.Except((IEnumerable<SOShipLine>)Base.Transactions.Cache.Deleted);
-                // Recalculate PackedQty
-                foreach (var item in _shipLines)
-                {
-                    item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
-                    Base.Caches[typeof(SOShipLine)].Update(item);
-                }
+                item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
+                Base.Caches[typeof(SOShipLine)].Update(item);
             }
 
             baseMethod();
@@ -120,7 +116,7 @@ namespace PX.Objects.SO
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
-
+        
         #region Hana Outer Label - LM642011
         public PXAction<SOShipment> HanaOuterLabel;
         [PXButton]
@@ -358,7 +354,7 @@ namespace PX.Objects.SO
                 {
 
                     Note note = (Note)pxResult1;
-                    if (note.NoteText.Length > 0)
+                    if(note.NoteText.Length > 0)
                         str += note.NoteText + "\n--------------------\n";
                 }
             }
@@ -426,7 +422,7 @@ namespace PX.Objects.SO
             var _PackageDetail = Base.Caches<SOPackageDetailEx>().Cached.RowCast<SOPackageDetailEx>();
             try
             {
-                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1, out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
+                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1,out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
             }
             catch (Exception)
             {
@@ -436,5 +432,26 @@ namespace PX.Objects.SO
 
         #endregion
 
+        #region Static Method
+        public static string GetShipWaybillURL(string carrier, string wayBill)
+        {
+            string url = null;
+
+            switch (carrier ?? string.Empty)
+            {
+                case UPS:
+                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill}&requester=WT/trackdetails";
+                    break;
+                case DHL:
+                    url = $"http://www.dhl.com.tw/en/express/tracking.html?AWB={wayBill}&brand=DHL";
+                    break;
+                case FDX:
+                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill}";
+                    break;
+            }
+
+            return url;
+        }
+        #endregion
     }
 }
