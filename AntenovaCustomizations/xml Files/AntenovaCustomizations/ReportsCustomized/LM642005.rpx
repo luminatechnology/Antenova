@@ -2569,6 +2569,7 @@
       <Visible>False</Visible>
     </PageHeader>
     <Detail Name="detailSection1">
+      <GridSize>4px, 4px</GridSize>
       <Height>0.16667in</Height>
       <Variables>
         <ReportVariable>

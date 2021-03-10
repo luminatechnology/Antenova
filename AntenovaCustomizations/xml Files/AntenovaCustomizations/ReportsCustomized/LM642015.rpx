@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
+  <CommonSettings>
+    <ViewPdf>True</ViewPdf>
+  </CommonSettings>
   <EmbeddedImages>
     <EmbeddedImage>
       <ImageData>iVBORw0KGgoAAAANSUhEUgAAAKQAAABoCAIAAADw/czZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAe1SURBVHhe7ZxrYqsgEEa7ri6o68lqspks5l6QgzI8FBAVDedXnRfDfNKmqenPv8HXMMT+IobYX8QQ+4sYYn8RjxX7ZweUeBz33hjinAgL35M7dc+8O4Pm7kDvvTLRm0DTvdJpfwzvzrCTnuioJ4bUCIpWQYlGULQDrm+FkVRBiRNh4SoocR1XdsAMSiCzG2irEJJP5waHg7Tuod1sSDuRU5dklxmQcFvYRgYknMJJi7GzLYh+EGxsC6IP5vBl2M0qhD4atroKoYdx4ALsIA1xXwabT0PcARxSmq7TEPfFMIg0xDWlfVGaTUDQYIKhJCCoHS0r0mMCggYBDCgBQS1oVovWYhAxWIVhxSBiNw0K0VEMIgbZMLgYROxgbwkaiUHEoBDGF4OIWnbl00IA7sEOGGUA7irqk1k8APdgNww0AHc5lZksK8E3aArDleArpCaNBSX4BgfAiCX4SijOYSkJvsFhMGgJvmzKElhEgm9wMIxbgi+PgmjKS/ANToGhS/BlkBtKYQm+M/m8/iSv1/vzwVmAqaNyuV6IeT6f9+vvdyGaeA6MXoJvi6w4Skrwncz7j+Ulv6/C4Zs6sbTA8/771RZJ8YINoQUJvlW2gygmwXc+Vgp1nA1WisLpZ4ttLn9+/5yzrM75dUd7YurJB1+aGrFxXEJEpM9rkrtM7VyxKf73nq56QrclwZFmI4IyDjiuIlds80NW27Ur/CFbKHYs8Hp0ZxIcCcrExnohEZFCEwppq8Z+vZ5k8Ty21pUvylaYelvAmmDNTQEHHBeCFGryE/b4RqReN5k6yhSAfQldbh1l7k1y+nLAESPpI9UBx7VYkRb8+cfPrG8N60i8/Pl1oEat2JPgdOWAI+CeYpuTrY711JgQhnMY
@@ -17,7 +20,9 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
   </Filters>
   <PageSettings>
     <Margins>
-      <Top>0.6cm</Top>
+      <Left>0.6cm</Left>
+      <Right>0.6cm</Right>
+      <Top>0.4cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
     <PaperSize>150mm, 100mm</PaperSize>
@@ -1768,232 +1773,252 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
         </ReportVariable>
       </Variables>
       <Items>
-        <PictureBox Name="pictureBox1">
-          <Location>368px, 216px</Location>
-          <MimeType>image/png</MimeType>
-          <QRCodeSettings />
-          <Size>49.2mm, 31.2mm</Size>
-          <Source>Embedded</Source>
-          <Value>antenovalabelseal</Value>
-        </PictureBox>
-        <TextBox Name="textBox1">
-          <Location>24px, 152px</Location>
-          <Size>56px, 24px</Size>
+        <Panel Name="panel1">
+          <Location>0px, 0px</Location>
+          <Size>568px, 344px</Size>
           <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
+            <BorderStyle>
+              <Bottom>Solid</Bottom>
+              <Left>Solid</Left>
+              <Right>Solid</Right>
+              <Top>Solid</Top>
+            </BorderStyle>
+            <BorderWidth>
+              <Bottom>1px</Bottom>
+              <Left>1px</Left>
+              <Right>1px</Right>
+              <Top>1px</Top>
+            </BorderWidth>
           </Style>
-          <Value>PO#:  </Value>
-        </TextBox>
-        <TextBox Name="textBox10">
-          <Location>24px, 56px</Location>
-          <Size>384px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Colonia Parque Industrial Del Norte</Value>
-        </TextBox>
-        <TextBox Name="textBox11">
-          <Location>24px, 80px</Location>
-          <Size>384px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Reynosa, 88736</Value>
-        </TextBox>
-        <TextBox Name="textBox12">
-          <Location>24px, 104px</Location>
-          <Size>384px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Mexico</Value>
-        </TextBox>
-        <TextBox Name="textBox13">
-          <Location>184px, 304px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Right</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=$CurrentPage</Value>
-        </TextBox>
-        <TextBox Name="textBox14">
-          <Location>24px, 304px</Location>
-          <Size>160px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Package count: </Value>
-        </TextBox>
-        <TextBox Name="textBox15">
-          <Location>264px, 304px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[PageCount]</Value>
-        </TextBox>
-        <TextBox Name="textBox16">
-          <Location>240px, 304px</Location>
-          <Size>24px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>/</Value>
-        </TextBox>
-        <TextBox Name="textBox2">
-          <Location>24px, 200px</Location>
-          <Size>48px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Qty: </Value>
-        </TextBox>
-        <TextBox Name="textBox3">
-          <Location>24px, 248px</Location>
-          <Size>176px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Country of Origin:</Value>
-        </TextBox>
-        <TextBox Name="textBox4">
-          <Location>80px, 152px</Location>
-          <Size>152px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOOrder.CustomerOrderNbr]</Value>
-        </TextBox>
-        <TextBox Name="textBox5">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-          <Location>72px, 200px</Location>
-          <Size>112px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
-        </TextBox>
-        <TextBox Name="textBox6">
-          <Location>200px, 248px</Location>
-          <Size>112px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[InventoryItem.MADEIN_Attributes]</Value>
-        </TextBox>
-        <TextBox Name="textBox7">
-          <Location>184px, 200px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.QtyUOM]</Value>
-        </TextBox>
-        <TextBox Name="textBox8">
-          <Location>24px, 8px</Location>
-          <Size>384px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Sanmina SCI de Mexico (Plant 2449)#010;</Value>
-        </TextBox>
-        <TextBox Name="textBox9">
-          <Location>24px, 32px</Location>
-          <Size>384px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Avenida Industrial Rio San Juan S/N</Value>
-        </TextBox>
+          <Items>
+            <PictureBox Name="pictureBox1">
+              <Location>363px, 217px</Location>
+              <MimeType>image/png</MimeType>
+              <QRCodeSettings />
+              <Size>49.2mm, 31.2mm</Size>
+              <Source>Embedded</Source>
+              <Value>antenovalabelseal</Value>
+            </PictureBox>
+            <TextBox Name="textBox1">
+              <Location>19px, 153px</Location>
+              <Size>56px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>PO#:  </Value>
+            </TextBox>
+            <TextBox Name="textBox10">
+              <Location>19px, 57px</Location>
+              <Size>384px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Colonia Parque Industrial Del Norte</Value>
+            </TextBox>
+            <TextBox Name="textBox11">
+              <Location>19px, 81px</Location>
+              <Size>384px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Reynosa, 88736</Value>
+            </TextBox>
+            <TextBox Name="textBox12">
+              <Location>19px, 105px</Location>
+              <Size>384px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Mexico</Value>
+            </TextBox>
+            <TextBox Name="textBox13">
+              <Location>179px, 305px</Location>
+              <Size>37px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Right</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=$CurrentPage</Value>
+            </TextBox>
+            <TextBox Name="textBox14">
+              <Location>19px, 305px</Location>
+              <Size>160px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Package count: </Value>
+            </TextBox>
+            <TextBox Name="textBox15">
+              <Location>240px, 305px</Location>
+              <Size>56px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[PageCount]</Value>
+            </TextBox>
+            <TextBox Name="textBox16">
+              <Location>216px, 305px</Location>
+              <Size>24px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Center</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>/</Value>
+            </TextBox>
+            <TextBox Name="textBox2">
+              <Location>19px, 201px</Location>
+              <Size>48px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Qty: </Value>
+            </TextBox>
+            <TextBox Name="textBox3">
+              <Location>19px, 249px</Location>
+              <Size>176px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Country of Origin:</Value>
+            </TextBox>
+            <TextBox Name="textBox4">
+              <Location>75px, 153px</Location>
+              <Size>152px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOOrder.CustomerOrderNbr]</Value>
+            </TextBox>
+            <TextBox Name="textBox5">
+              <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+              <Location>67px, 201px</Location>
+              <Size>104px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Center</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOPackageDetailEx.Qty]</Value>
+            </TextBox>
+            <TextBox Name="textBox6">
+              <Location>195px, 249px</Location>
+              <Size>112px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[InventoryItem.MADEIN_Attributes]</Value>
+            </TextBox>
+            <TextBox Name="textBox7">
+              <Location>171px, 201px</Location>
+              <Size>56px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+            </TextBox>
+            <TextBox Name="textBox8">
+              <Location>19px, 9px</Location>
+              <Size>384px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Sanmina SCI de Mexico (Plant 2449)#010;</Value>
+            </TextBox>
+            <TextBox Name="textBox9">
+              <Location>19px, 33px</Location>
+              <Size>384px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Avenida Industrial Rio San Juan S/N</Value>
+            </TextBox>
+          </Items>
+        </Panel>
       </Items>
     </Detail>
     <PageFooter Name="pageFooterSection1">
