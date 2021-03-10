@@ -2763,27 +2763,12 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
           <Source>Embedded</Source>
           <Value>antenova_log</Value>
         </PictureBox>
-        <TextBox Name="textBox1">
-          <Format>='yyyy'</Format>
-          <Location>288px, 56px</Location>
-          <Size>3.1746cm, 32px</Size>
-          <Style>
-            <Font>
-              <Name>Arial</Name>
-              <Size>14px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[Ship.ShipDate]</Value>
-        </TextBox>
         <TextBox Name="textBox2">
-          <Location>120px, 88px</Location>
+          <Location>120px, 72px</Location>
           <Size>464px, 32px</Size>
           <Style>
             <Font>
-              <Size>14px</Size>
+              <Size>24px</Size>
               <Style>Bold</Style>
             </Font>
             <TextAlign>Center</TextAlign>
@@ -2880,7 +2865,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
         </TextBox>
         <TextBox Name="textBox23">
           <Format>='MMM., yyyy'</Format>
-          <Location>128px, 376px</Location>
+          <Location>136px, 376px</Location>
           <Size>128px, 16px</Size>
           <Style>
             <Font>
@@ -2888,11 +2873,11 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Size>14px</Size>
             </Font>
           </Style>
-          <Value>=[@Today]</Value>
+          <Value>=[Ship.ShipDate]</Value>
         </TextBox>
         <TextBox Name="textBox24">
-          <Location>96px, 376px</Location>
-          <Size>16px, 16px</Size>
+          <Location>96px, 374px</Location>
+          <Size>24px, 16px</Size>
           <Style>
             <Font>
               <Name>Microsoft YaHei UI</Name>
@@ -2900,10 +2885,10 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
             </Font>
             <TextAlign>Right</TextAlign>
           </Style>
-          <Value>=DAY([@Today])</Value>
+          <Value>=PadLeft( DAY([Ship.ShipDate]), 2, '0' )</Value>
         </TextBox>
         <TextBox Name="textBox25">
-          <Location>112px, 368px</Location>
+          <Location>120px, 366px</Location>
           <Size>16px, 16px</Size>
           <Style>
             <Font>
@@ -2913,7 +2898,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Bottom</VerticalAlign>
           </Style>
-          <Value>=IIF(DAY([@Today]) = 1, 'st',#010;IIF(DAY([@Today]) = 2, 'nd',#010;IIF(DAY([@Today]) = 3, 'rd',#010;IIF(DAY([@Today]) = 4, 'th',#010;IIF(DAY([@Today]) = 21, 'th',#010;IIF(DAY([@Today]) = 22, 'nd',#010;IIF(DAY([@Today]) = 23, 'rd',#010;IIF(DAY([@Today]) = 24, 'th',#010;IIF(DAY([@Today]) = 31, 'st','th')))))))))</Value>
+          <Value>=IIF(DAY([Ship.ShipDate]) = 1, 'st',#010;IIF(DAY([Ship.ShipDate]) = 2, 'nd',#010;IIF(DAY([Ship.ShipDate]) = 3, 'rd',#010;IIF(DAY([Ship.ShipDate]) = 4, 'th',#010;IIF(DAY([Ship.ShipDate]) = 21, 'th',#010;IIF(DAY([Ship.ShipDate]) = 22, 'nd',#010;IIF(DAY([Ship.ShipDate]) = 23, 'rd',#010;IIF(DAY([Ship.ShipDate]) = 24, 'th',#010;IIF(DAY([Ship.ShipDate]) = 31, 'st','th')))))))))</Value>
         </TextBox>
         <TextBox Name="textBox26">
           <Location>504px, 384px</Location>
@@ -3062,7 +3047,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
             </TextBox>
             <TextBox Name="textBox14">
               <Format>='N'</Format>
-              <Location>184px, 168px</Location>
+              <Location>184px, 248px</Location>
               <Size>488px, 40px</Size>
               <Style>
                 <BorderColor>
@@ -3085,7 +3070,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Value>=Floor([ShipLine.ShippedQty])+[ShipLine.UOM]</Value>
             </TextBox>
             <TextBox Name="textBox15">
-              <Location>184px, 208px</Location>
+              <Location>184px, 168px</Location>
               <Size>488px, 40px</Size>
               <Style>
                 <BorderColor>
@@ -3108,7 +3093,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Value>=[IT.InventoryCD]</Value>
             </TextBox>
             <TextBox Name="textBox16">
-              <Location>184px, 248px</Location>
+              <Location>184px, 208px</Location>
               <Size>488px, 40px</Size>
               <Style>
                 <BorderColor>
@@ -3250,7 +3235,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Value>Customer PO#</Value>
             </TextBox>
             <TextBox Name="textBox7">
-              <Location>48px, 168px</Location>
+              <Location>48px, 248px</Location>
               <Size>136px, 40px</Size>
               <Style>
                 <BorderColor>
@@ -3274,7 +3259,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Value>Quantity</Value>
             </TextBox>
             <TextBox Name="textBox8">
-              <Location>48px, 208px</Location>
+              <Location>48px, 168px</Location>
               <Size>136px, 40px</Size>
               <Style>
                 <BorderColor>
@@ -3298,7 +3283,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
               <Value>Antenova Part #</Value>
             </TextBox>
             <TextBox Name="textBox9">
-              <Location>48px, 248px</Location>
+              <Location>48px, 208px</Location>
               <Size>136px, 40px</Size>
               <Style>
                 <BorderColor>

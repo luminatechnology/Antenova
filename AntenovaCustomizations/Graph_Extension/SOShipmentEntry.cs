@@ -45,9 +45,7 @@ namespace PX.Objects.SO
         [PXOverride]
         public void Persist(PersistDelegate baseMethod)
         {
-            var needUpdatePackedQty = Base.Packages.Cache.Inserted.RowCast<SOPackageDetailEx>().Count() > 0 ||
-                                      Base.Packages.Cache.Updated.RowCast<SOPackageDetailEx>().Count() > 0 ||
-                                      Base.Packages.Cache.Deleted.RowCast<SOPackageDetailEx>().Count() > 0;
+            var needUpdatePackedQty = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().Count() > 0;
             if (needUpdatePackedQty)
             {
                 // Except Delete row
