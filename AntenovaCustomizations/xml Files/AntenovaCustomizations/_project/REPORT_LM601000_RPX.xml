@@ -1,5 +1,8 @@
 ﻿<Report Name="lm601000.rpx">
     <Report Name="report1">
+        <CommonSettings>
+            <ViewPdf>True</ViewPdf>
+        </CommonSettings>
         <EmbeddedImages>
             <EmbeddedImage>
                 <ImageData>/9j/4AAQSkZJRgABAQEA3ADcAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCADNAmUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9TaKKKyLCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAC
@@ -168,21 +171,6 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                 <ParentName>SOShipLine</ParentName>
             </ReportRelation>
             <ReportRelation>
-                <ChildAlias>Split</ChildAlias>
-                <ChildName>SOShipLineSplit</ChildName>
-                <Links>
-                    <RelationRow>
-                        <ChildField>Split.LineNbr</ChildField>
-                        <ParentField>ShipLine.LineNbr</ParentField>
-                    </RelationRow>
-                    <RelationRow>
-                        <ChildField>Split.ShipmentNbr</ChildField>
-                        <ParentField>ShipLine.ShipmentNbr</ParentField>
-                    </RelationRow>
-                </Links>
-                <ParentName>SOShipLine</ParentName>
-            </ReportRelation>
-            <ReportRelation>
                 <ChildAlias>account</ChildAlias>
                 <ChildName>BAccount</ChildName>
                 <Links>
@@ -213,6 +201,21 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                     </RelationRow>
                 </Links>
                 <ParentName>BAccount</ParentName>
+            </ReportRelation>
+            <ReportRelation>
+                <ChildAlias>Split</ChildAlias>
+                <ChildName>SOShipLineSplit</ChildName>
+                <Links>
+                    <RelationRow>
+                        <ChildField>Split.LineNbr</ChildField>
+                        <ParentField>ShipLine.LineNbr</ParentField>
+                    </RelationRow>
+                    <RelationRow>
+                        <ChildField>Split.ShipmentNbr</ChildField>
+                        <ParentField>ShipLine.ShipmentNbr</ParentField>
+                    </RelationRow>
+                </Links>
+                <ParentName>SOShipLine</ParentName>
             </ReportRelation>
         </Relations>
         <SchemaUrl>http://localhost/Antenova/</SchemaUrl>
@@ -3700,7 +3703,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
         </Tables>
         <Sections>
             <PageHeader Name="pageHeaderSection1">
-                <Height>3.1746cm</Height>
+                <Height>3.80952cm</Height>
                 <Items>
                     <PictureBox Name="pictureBox1">
                         <Location>504px, 0px</Location>
@@ -3708,16 +3711,11 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <QRCodeSettings />
                         <Size>176px, 48px</Size>
                         <Source>Embedded</Source>
-                        <Style>
-                            <BackImage>
-                                <MimeType />
-                            </BackImage>
-                        </Style>
                         <Value>antenova_log</Value>
                     </PictureBox>
                     <TextBox Name="textBox1">
                         <Format>='yyyy'</Format>
-                        <Location>288px, 32px</Location>
+                        <Location>288px, 56px</Location>
                         <Size>3.1746cm, 32px</Size>
                         <Style>
                             <Font>
@@ -3731,7 +3729,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <Value>=[Ship.ShipDate]</Value>
                     </TextBox>
                     <TextBox Name="textBox2">
-                        <Location>120px, 64px</Location>
+                        <Location>120px, 88px</Location>
                         <Size>464px, 32px</Size>
                         <Style>
                             <Font>
@@ -3744,7 +3742,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <Value>CERTIFICATE OF COMPLIANCE</Value>
                     </TextBox>
                     <TextBox Name="textBox3">
-                        <Location>48px, 96px</Location>
+                        <Location>48px, 120px</Location>
                         <Size>624px, 24px</Size>
                         <Style>
                             <Font>
@@ -3757,388 +3755,15 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                 </Items>
             </PageHeader>
             <Detail Name="detailSection1">
-                <Height>8.67725cm</Height>
-                <Items>
-                    <TextBox Name="textBox10">
-                        <Location>48px, 288px</Location>
-                        <Size>136px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Bottom>Solid</Bottom>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Date Code</Value>
-                    </TextBox>
-                    <TextBox Name="textBox11">
-                        <Location>184px, 0px</Location>
-                        <Size>488px, 24px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[Ship.CustomerID_Customer_acctName]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox12">
-                        <Location>184px, 24px</Location>
-                        <Size>488px, 72px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Top</VerticalAlign>
-                        </Style>
-                        <Value>=IIF([Address.AddressLine1] = null, ' ',[Address.AddressLine1]) + '{br}' +#010;IIF([Address.AddressLine2] = null, ' ' ,[Address.AddressLine2]) + '{br}' +#010;IIF([Address.City] = null, ' ', [Address.City] + ',') + IIF([Address.State] = null, ' ', [Address.State]) + '{br}' +#010;IIF([Address.CountryID_Country_description] = null , ' ', [Address.CountryID_Country_description])</Value>
-                    </TextBox>
-                    <TextBox Name="textBox13">
-                        <Location>184px, 96px</Location>
-                        <Size>488px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[SO.CustomerOrderNbr]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox14">
-                        <Format>='N'</Format>
-                        <Location>184px, 168px</Location>
-                        <Size>488px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=Floor([ShipLine.ShippedQty])+[ShipLine.UOM]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox15">
-                        <Location>184px, 208px</Location>
-                        <Size>488px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[IT.InventoryCD]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox16">
-                        <Location>184px, 248px</Location>
-                        <Size>488px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[ShipLine.TranDesc]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox17">
-                        <Location>184px, 288px</Location>
-                        <Size>488px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Bottom>Solid</Bottom>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[ShipLine.LotSerialNbr]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox18">
-                        <Location>48px, 136px</Location>
-                        <Size>136px, 32px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Customer Part #</Value>
-                    </TextBox>
-                    <TextBox Name="textBox19">
-                        <Location>184px, 136px</Location>
-                        <Size>488px, 32px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>=[SOLine.AlternateID]</Value>
-                    </TextBox>
-                    <TextBox Name="textBox4">
-                        <Location>48px, 0px</Location>
-                        <Size>136px, 24px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Customer Name</Value>
-                    </TextBox>
-                    <TextBox Name="textBox5">
-                        <Location>48px, 24px</Location>
-                        <Size>136px, 72px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Customer Address</Value>
-                    </TextBox>
-                    <TextBox Name="textBox6">
-                        <Location>48px, 96px</Location>
-                        <Size>136px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Customer PO#</Value>
-                    </TextBox>
-                    <TextBox Name="textBox7">
-                        <Location>48px, 168px</Location>
-                        <Size>136px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Quantity</Value>
-                    </TextBox>
-                    <TextBox Name="textBox8">
-                        <Location>48px, 208px</Location>
-                        <Size>136px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Antenova Part #</Value>
-                    </TextBox>
-                    <TextBox Name="textBox9">
-                        <Location>48px, 248px</Location>
-                        <Size>136px, 40px</Size>
-                        <Style>
-                            <BorderColor>
-                                <Default>Black</Default>
-                            </BorderColor>
-                            <BorderStyle>
-                                <Left>Solid</Left>
-                                <Right>Solid</Right>
-                                <Top>Solid</Top>
-                            </BorderStyle>
-                            <BorderWidth>
-                                <Default>1px</Default>
-                            </BorderWidth>
-                            <Font>
-                                <Name>Arial</Name>
-                                <Size>14px</Size>
-                            </Font>
-                            <TextAlign>Left</TextAlign>
-                            <VerticalAlign>Middle</VerticalAlign>
-                        </Style>
-                        <Value>Product Description</Value>
-                    </TextBox>
-                </Items>
+                <Height>0cm</Height>
+                <Variables>
+                    <ReportVariable>
+                        <Name>LotNbr</Name>
+                        <ResetGroup>ShipLine</ResetGroup>
+                        <ValueExpr>=[Split.LotSerialNbr]+'/'+$LotNbr</ValueExpr>
+                    </ReportVariable>
+                </Variables>
+                <Visible>False</Visible>
             </Detail>
             <PageFooter Name="pageFooterSection1">
                 <Height>14.81481cm</Height>
@@ -4163,10 +3788,10 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <Value>antenova_sign</Value>
                     </PictureBox>
                     <PictureBox Name="pictureBox3">
-                        <Location>8px, 408px</Location>
+                        <Location>24px, 408px</Location>
                         <MimeType>image/jpeg</MimeType>
                         <QRCodeSettings />
-                        <Size>232px, 120px</Size>
+                        <Size>160px, 88px</Size>
                         <Source>Embedded</Source>
                         <Value>antenova_icon</Value>
                     </PictureBox>
@@ -4245,7 +3870,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <Size>168px, 96px</Size>
                         <Style>
                             <Font>
-                                <Size>14px</Size>
+                                <Size>11px</Size>
                             </Font>
                             <TextAlign>Right</TextAlign>
                         </Style>
@@ -4257,7 +3882,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                         <Style>
                             <Color>Blue</Color>
                             <Font>
-                                <Size>14px</Size>
+                                <Size>11px</Size>
                                 <Style>Underline</Style>
                             </Font>
                             <TextAlign>Right</TextAlign>
@@ -4297,5 +3922,417 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
                 <Visible>False</Visible>
             </ReportFooter>
         </Sections>
+        <Items />
+        <Groups>
+            <Group Name="ShipLine">
+                <Grouping>
+                    <GroupExp>
+                        <DataField>=[ShipLine.LineNbr]</DataField>
+                    </GroupExp>
+                    <GroupExp>
+                        <DataField>=[Ship.ShipmentNbr]</DataField>
+                    </GroupExp>
+                    <GroupExp>
+                        <DataField>=[Ship.ShipmentType]</DataField>
+                    </GroupExp>
+                </Grouping>
+                <Headers>
+                    <Header Name="groupHeaderSection1">
+                        <Height>7.61905cm</Height>
+                        <PrintEmpty>False</PrintEmpty>
+                        <Items>
+                            <TextBox Name="textBox11">
+                                <Location>184px, 0px</Location>
+                                <Size>488px, 24px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=[Ship.CustomerID_Customer_acctName]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox12">
+                                <Location>184px, 24px</Location>
+                                <Size>488px, 72px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Top</VerticalAlign>
+                                </Style>
+                                <Value>=IIF([Address.AddressLine1] = null, ' ',[Address.AddressLine1]) + '{br}' +#010;IIF([Address.AddressLine2] = null, ' ' ,[Address.AddressLine2]) + '{br}' +#010;IIF([Address.City] = null, ' ', [Address.City] + ',') + IIF([Address.State] = null, ' ', [Address.State]) + '{br}' +#010;IIF([Address.CountryID_Country_description] = null , ' ', [Address.CountryID_Country_description])</Value>
+                            </TextBox>
+                            <TextBox Name="textBox13">
+                                <Location>184px, 96px</Location>
+                                <Size>488px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=[SO.CustomerOrderNbr]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox14">
+                                <Format>='N'</Format>
+                                <Location>184px, 168px</Location>
+                                <Size>488px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=Floor([ShipLine.ShippedQty])+[ShipLine.UOM]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox15">
+                                <Location>184px, 208px</Location>
+                                <Size>488px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=[IT.InventoryCD]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox16">
+                                <Location>184px, 248px</Location>
+                                <Size>488px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=[ShipLine.TranDesc]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox18">
+                                <Location>48px, 136px</Location>
+                                <Size>136px, 32px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Customer Part #</Value>
+                            </TextBox>
+                            <TextBox Name="textBox19">
+                                <Location>184px, 136px</Location>
+                                <Size>488px, 32px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=[SOLine.AlternateID]</Value>
+                            </TextBox>
+                            <TextBox Name="textBox4">
+                                <Location>48px, 0px</Location>
+                                <Size>136px, 24px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Customer Name</Value>
+                            </TextBox>
+                            <TextBox Name="textBox5">
+                                <Location>48px, 24px</Location>
+                                <Size>136px, 72px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Customer Address</Value>
+                            </TextBox>
+                            <TextBox Name="textBox6">
+                                <Location>48px, 96px</Location>
+                                <Size>136px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Customer PO#</Value>
+                            </TextBox>
+                            <TextBox Name="textBox7">
+                                <Location>48px, 168px</Location>
+                                <Size>136px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Quantity</Value>
+                            </TextBox>
+                            <TextBox Name="textBox8">
+                                <Location>48px, 208px</Location>
+                                <Size>136px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Antenova Part #</Value>
+                            </TextBox>
+                            <TextBox Name="textBox9">
+                                <Location>48px, 248px</Location>
+                                <Size>136px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Product Description</Value>
+                            </TextBox>
+                        </Items>
+                    </Header>
+                </Headers>
+                <Footers>
+                    <Footer Name="groupFooterSection1">
+                        <Height>1.0582cm</Height>
+                        <PrintEmpty>False</PrintEmpty>
+                        <PrintOnEveryPage>True</PrintOnEveryPage>
+                        <Items>
+                            <TextBox Name="textBox10">
+                                <Location>48px, 0px</Location>
+                                <Size>136px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Bottom>Solid</Bottom>
+                                        <Left>Solid</Left>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>Date Code</Value>
+                            </TextBox>
+                            <TextBox Name="textBox17">
+                                <Location>184px, 0px</Location>
+                                <Size>488px, 40px</Size>
+                                <Style>
+                                    <BorderColor>
+                                        <Default>Black</Default>
+                                    </BorderColor>
+                                    <BorderStyle>
+                                        <Bottom>Solid</Bottom>
+                                        <Right>Solid</Right>
+                                        <Top>Solid</Top>
+                                    </BorderStyle>
+                                    <BorderWidth>
+                                        <Default>1px</Default>
+                                    </BorderWidth>
+                                    <Font>
+                                        <Name>Arial</Name>
+                                        <Size>14px</Size>
+                                    </Font>
+                                    <TextAlign>Left</TextAlign>
+                                    <VerticalAlign>Middle</VerticalAlign>
+                                </Style>
+                                <Value>=Substring($LotNbr,0,Len($LotNbr)-2)</Value>
+                            </TextBox>
+                        </Items>
+                    </Footer>
+                </Footers>
+            </Group>
+        </Groups>
     </Report>
 </Report>
