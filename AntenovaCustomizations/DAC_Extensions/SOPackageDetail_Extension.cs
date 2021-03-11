@@ -20,6 +20,7 @@ namespace PX.Objects.SO
 
         [PXDBString(30, IsUnicode = true)]
         [PXUIField(DisplayName = "Gross Weight")]
+        [PXFormula(typeof(Add<SOPackageDetail.weight, decimal1>))]
         public virtual string CustomRefNbr2 { get; set; }
         public abstract class customRefNbr2 : BqlString.Field<customRefNbr2> { }
 
