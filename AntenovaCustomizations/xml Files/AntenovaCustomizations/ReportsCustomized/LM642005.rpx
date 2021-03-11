@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
+  <CommonSettings>
+    <ViewPdf>True</ViewPdf>
+  </CommonSettings>
   <ExportFileName>=Format( 'Shipment {0}', [SOShipment.ShipmentNbr])</ExportFileName>
   <Filters>
     <FilterExp>
@@ -2745,13 +2748,13 @@
         </ReportVariable>
         <ReportVariable>
           <Name>SumOfGrossWeight</Name>
-          <ValueExpr>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, $SumOfGrossWeight + [SOPackageDetailEx.CustomRefNbr2], $SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1)</ValueExpr>
+          <ValueExpr>=$SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
         <TextBox Name="textBox10">
-          <Location>376px, 0px</Location>
-          <Size>128px, 16px</Size>
+          <Location>356px, 0px</Location>
+          <Size>148px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2763,7 +2766,7 @@
         </TextBox>
         <TextBox Name="textBox13">
           <Location>168px, 0px</Location>
-          <Size>208px, 16px</Size>
+          <Size>188px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2778,6 +2781,9 @@
           <Location>576px, 0px</Location>
           <Size>56px, 16px</Size>
           <Style>
+            <Padding>
+              <Right>5px</Right>
+            </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
@@ -2802,6 +2808,7 @@
           <Style>
             <Padding>
               <Left>5px</Left>
+              <Right>5px</Right>
             </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
@@ -2825,10 +2832,13 @@
           <Location>632px, 0px</Location>
           <Size>64px, 16px</Size>
           <Style>
+            <Padding>
+              <Right>5px</Right>
+            </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
-          <StyleName>RecepientCompany</StyleName>
-          <Value>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, [SOPackageDetailEx.CustomRefNbr2], [SOPackageDetailEx.Weight] + 1)#010;</Value>
+          <StyleName>Normal</StyleName>
+          <Value>=[SOPackageDetailEx.Weight] + 1#010;</Value>
         </TextBox>
       </Items>
     </Detail>
@@ -2858,10 +2868,11 @@
                   <Location>0px, 0px</Location>
                   <Size>360px, 16px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Left</TextAlign>
+                    <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>
-                  <Value>SHIP TO:</Value>
+                  <Value>Ship To:</Value>
                 </TextBox>
                 <TextBox Name="textBox27">
                   <Location>0px, 17px</Location>
@@ -2880,8 +2891,8 @@
               <Value>=[Branch.BranchOrOrganizationLogoNameReport]</Value>
             </PictureBox>
             <TextBox Name="textBox1">
-              <Location>608px, 88px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 88px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2908,8 +2919,8 @@
             </TextBox>
             <TextBox Name="textBox23">
               <CanGrow>True</CanGrow>
-              <Location>608px, 56px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 56px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2917,15 +2928,18 @@
               <Value>=[SOOrderShipment.InvoiceNbr]</Value>
             </TextBox>
             <TextBox Name="textBox29">
-              <Location>512px, 88px</Location>
+              <Location>520px, 88px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>TRACKING NO.:</Value>
             </TextBox>
             <TextBox Name="textBox3">
               <Format>='dd-MMM-yyyy'</Format>
-              <Location>608px, 40px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 40px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2933,27 +2947,36 @@
               <Value>=[SOShipment.ShipDate]</Value>
             </TextBox>
             <TextBox Name="textBox30">
-              <Location>512px, 40px</Location>
+              <Location>520px, 40px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>DATE:</Value>
             </TextBox>
             <TextBox Name="textBox31">
-              <Location>512px, 56px</Location>
+              <Location>520px, 56px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>INVOICE NO.:</Value>
             </TextBox>
             <TextBox Name="textBox43">
-              <Location>512px, 72px</Location>
+              <Location>520px, 72px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>SHIPPED BY:</Value>
             </TextBox>
             <TextBox Name="textBox45">
               <CanGrow>True</CanGrow>
-              <Location>608px, 72px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 72px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2976,10 +2999,16 @@
               <StyleName>Top Line</StyleName>
               <Items>
                 <TextBox Name="textBox21">
-                  <Location>80px, 0px</Location>
+                  <Location>72px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
                   <Size>80px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
                       <Top>8px</Top>
                     </Padding>
@@ -2989,7 +3018,7 @@
                   <Value>=$LineNbr</Value>
                 </TextBox>
                 <TextBox Name="textBox22">
-                  <Location>368px, 0px</Location>
+                  <Location>440px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
                   <Size>64px, 24px</Size>
                   <Style>
@@ -3003,11 +3032,18 @@
                 </TextBox>
                 <TextBox Name="textBox33">
                   <Format>='N2'</Format>
-                  <Location>600px, 0px</Location>
+                  <Location>632px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>96px, 24px</Size>
+                  <Size>64px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -3017,11 +3053,18 @@
                 </TextBox>
                 <TextBox Name="textBox34">
                   <Format>='N2'</Format>
-                  <Location>512px, 0px</Location>
+                  <Location>576px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>88px, 24px</Size>
+                  <Size>56px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -3031,11 +3074,18 @@
                 </TextBox>
                 <TextBox Name="textBox36">
                   <Format>='N0'</Format>
-                  <Location>432px, 0px</Location>
+                  <Location>504px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>80px, 24px</Size>
+                  <Size>72px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -3046,7 +3096,7 @@
                 <TextBox Name="textBox37">
                   <Location>0px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>80px, 24px</Size>
+                  <Size>72px, 24px</Size>
                   <Style>
                     <Padding>
                       <Top>8px</Top>
@@ -3062,7 +3112,8 @@
               <Location>0px, 64px</Location>
               <Size>360px, 16px</Size>
               <Style>
-                <TextAlign>Center</TextAlign>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
               </Style>
               <StyleName>Heading1BCColored</StyleName>
               <Value>Special Notes</Value>
@@ -3149,19 +3200,25 @@
                 </TextBox>
                 <TextBox Name="textBox4">
                   <Location>168px, 0px</Location>
-                  <Size>208px, 48px</Size>
+                  <Size>184px, 48px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <Padding>
+                      <Left>5px</Left>
+                    </Padding>
+                    <TextAlign>Left</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>
                   <Value>ANTENOVA PART NO.</Value>
                 </TextBox>
                 <TextBox Name="textBox9">
-                  <Location>376px, 0px</Location>
-                  <Size>128px, 48px</Size>
+                  <Location>352px, 0px</Location>
+                  <Size>152px, 48px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <Padding>
+                      <Left>5px</Left>
+                    </Padding>
+                    <TextAlign>Left</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>
