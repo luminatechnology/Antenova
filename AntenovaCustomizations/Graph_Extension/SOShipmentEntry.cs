@@ -458,13 +458,13 @@ namespace PX.Objects.SO
             switch (carrier ?? string.Empty)
             {
                 case UPS:
-                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill}&requester=WT/trackdetails";
+                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill.Trim()}&requester=WT/trackdetails";
                     break;
                 case DHL:
-                    url = $"http://www.dhl.com.tw/en/express/tracking.html?AWB={wayBill}&brand=DHL";
+                    url = $"https://mydhl.express.dhl/tw/en/tracking.html#/results?id={wayBill.Trim()}";
                     break;
                 case FDX:
-                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill}";
+                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill.Trim()}";
                     break;
             }
 
