@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
+  <CommonSettings>
+    <ViewPdf>True</ViewPdf>
+  </CommonSettings>
   <Filters>
     <FilterExp>
       <DataField>SOShipment.ShipmentNbr</DataField>
@@ -8,6 +11,8 @@
   </Filters>
   <PageSettings>
     <Margins>
+      <Left>0.6cm</Left>
+      <Right>0.6cm</Right>
       <Top>0.2cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -1814,16 +1819,16 @@
         <TextBox Name="textBox5">
           <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>40px, 56px</Location>
-          <Size>112px, 24px</Size>
+          <Size>104px, 24px</Size>
           <Style>
             <Font>
               <Size>15px</Size>
               <Style>Bold</Style>
             </Font>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
+          <Value>=[SOPackageDetailEx.Qty]</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>136px, 104px</Location>
@@ -1839,7 +1844,7 @@
           <Value>=[InventoryItem.MADEIN_Attributes]</Value>
         </TextBox>
         <TextBox Name="textBox7">
-          <Location>152px, 56px</Location>
+          <Location>144px, 56px</Location>
           <Size>56px, 24px</Size>
           <Style>
             <Font>

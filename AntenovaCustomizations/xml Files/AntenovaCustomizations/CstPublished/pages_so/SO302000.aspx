@@ -123,6 +123,7 @@
                                     <px:PXGridColumn DataField="UsrPackingQty" NullText="0.0" />
                                     <px:PXGridColumn DataField="RemainingQty" />
                                     <px:PXGridColumn DataField="QtyPerCarton" />
+                                    <px:PXGridColumn DataField="FirstLotSerialNumber" />
                                 </Columns>
                                 <RowTemplate>
                                     <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="XM" />
@@ -177,6 +178,7 @@
                                     <px:PXNumberEdit ID="edUsrPackingQty" runat="server" DataField="UsrPackingQty" />
                                     <px:PXNumberEdit ID="edRemainingQty" runat="server" DataField="RemainingQty" Enabled="false" />
                                     <px:PXNumberEdit ID="edQtyPerCarton" runat="server" DataField="QtyPerCarton" Enabled="false" />
+                                    <px:PXNumberEdit ID="edFirstLotSerialNumber" runat="server" DataField="FirstLotSerialNumber" Enabled="false" Visible="False" />
                                 </RowTemplate>
                                 <Layout FormViewHeight="" />
                             </px:PXGridLevel>

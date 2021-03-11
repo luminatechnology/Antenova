@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
+  <CommonSettings>
+    <ViewPdf>True</ViewPdf>
+  </CommonSettings>
   <EmbeddedImages>
     <EmbeddedImage>
       <ImageData>iVBORw0KGgoAAAANSUhEUgAAAKQAAABoCAIAAADw/czZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAe1SURBVHhe7ZxrYqsgEEa7ri6o68lqspks5l6QgzI8FBAVDedXnRfDfNKmqenPv8HXMMT+IobYX8QQ+4sYYn8RjxX7ZweUeBz33hjinAgL35M7dc+8O4Pm7kDvvTLRm0DTvdJpfwzvzrCTnuioJ4bUCIpWQYlGULQDrm+FkVRBiRNh4SoocR1XdsAMSiCzG2irEJJP5waHg7Tuod1sSDuRU5dklxmQcFvYRgYknMJJi7GzLYh+EGxsC6IP5vBl2M0qhD4atroKoYdx4ALsIA1xXwabT0PcARxSmq7TEPfFMIg0xDWlfVGaTUDQYIKhJCCoHS0r0mMCggYBDCgBQS1oVovWYhAxWIVhxSBiNw0K0VEMIgbZMLgYROxgbwkaiUHEoBDGF4OIWnbl00IA7sEOGGUA7irqk1k8APdgNww0AHc5lZksK8E3aArDleArpCaNBSX4BgfAiCX4SijOYSkJvsFhMGgJvmzKElhEgm9wMIxbgi+PgmjKS/ANToGhS/BlkBtKYQm+M/m8/iSv1/vzwVmAqaNyuV6IeT6f9+vvdyGaeA6MXoJvi6w4Skrwncz7j+Ulv6/C4Zs6sbTA8/771RZJ8YINoQUJvlW2gygmwXc+Vgp1nA1WisLpZ4ttLn9+/5yzrM75dUd7YurJB1+aGrFxXEJEpM9rkrtM7VyxKf73nq56QrclwZFmI4IyDjiuIlds80NW27Ur/CFbKHYs8Hp0ZxIcCcrExnohEZFCEwppq8Z+vZ5k8Ty21pUvylaYelvAmmDNTQEHHBeCFGryE/b4RqReN5k6yhSAfQldbh1l7k1y+nLAESPpI9UBx7VYkRb8+cfPrG8N60i8/Pl1oEat2JPgdOWAI+CeYpuTrY711JgQhnMY
@@ -17,6 +20,8 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
   </Filters>
   <PageSettings>
     <Margins>
+      <Left>0.6cm</Left>
+      <Right>0.6cm</Right>
       <Top>0.4cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -116,28 +121,14 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       <Links>
         <RelationRow>
           <ChildField>OrderNbr</ChildField>
-          <ParentField>OrderNbr</ParentField>
+          <ParentField>OrigOrderNbr</ParentField>
         </RelationRow>
         <RelationRow>
           <ChildField>OrderType</ChildField>
-          <ParentField>OrderType</ParentField>
+          <ParentField>OrigOrderType</ParentField>
         </RelationRow>
       </Links>
       <ParentName>SOOrder</ParentName>
-    </ReportRelation>
-    <ReportRelation>
-      <ChildName>SOShipLineSplit</ChildName>
-      <Links>
-        <RelationRow>
-          <ChildField>ShipmentNbr</ChildField>
-          <ParentField>ShipmentNbr</ParentField>
-        </RelationRow>
-        <RelationRow>
-          <ChildField>LineNbr</ChildField>
-          <ParentField>LineNbr</ParentField>
-        </RelationRow>
-      </Links>
-      <ParentName>SOShipLine</ParentName>
     </ReportRelation>
   </Relations>
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
@@ -1068,233 +1059,6 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
         <ReportField Name="WorkgroupID_EPCompanyTree_description"></ReportField>
       </Fields>
       <FullName>PX.Objects.SO.SOOrder</FullName>
-    </ReportTable>
-    <ReportTable Name="SOShipLine">
-      <Fields>
-        <ReportField Name="AlternateID"></ReportField>
-        <ReportField Name="BaseOriginalShippedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="BaseOrigOrderQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="BasePackedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="BasePickedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="BaseQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="BaseShippedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="CompleteQtyMin">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="Confirmed">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="CostCodeID"></ReportField>
-        <ReportField Name="CostCodeID_description"></ReportField>
-        <ReportField Name="CostCodeID_PMCostCode_description"></ReportField>
-        <ReportField Name="CostCodeID_Segment1"></ReportField>
-        <ReportField Name="CreatedByID"></ReportField>
-        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
-        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
-        <ReportField Name="CreatedByID_description"></ReportField>
-        <ReportField Name="CreatedByScreenID"></ReportField>
-        <ReportField Name="CreatedDateTime">
-          <DataType>DateTime</DataType>
-        </ReportField>
-        <ReportField Name="CreatedDateTime_Day"></ReportField>
-        <ReportField Name="CreatedDateTime_Hour"></ReportField>
-        <ReportField Name="CreatedDateTime_Month"></ReportField>
-        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
-        <ReportField Name="CustomerID">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="DiscountID"></ReportField>
-        <ReportField Name="DiscountSequenceID"></ReportField>
-        <ReportField Name="DiscPct">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="ExpireDate">
-          <DataType>DateTime</DataType>
-        </ReportField>
-        <ReportField Name="ExpireDate_Day"></ReportField>
-        <ReportField Name="ExpireDate_Hour"></ReportField>
-        <ReportField Name="ExpireDate_Month"></ReportField>
-        <ReportField Name="ExpireDate_Quarter"></ReportField>
-        <ReportField Name="ExtCost">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="ExtVolume">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="ExtWeight">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="HasKitComponents">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="HasMixedProjectTasks">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="HasSerialComponents">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="InventoryID"></ReportField>
-        <ReportField Name="InventoryID_description"></ReportField>
-        <ReportField Name="InventoryID_InventoryItem_descr"></ReportField>
-        <ReportField Name="InventoryID_Segment1"></ReportField>
-        <ReportField Name="InvtMult">
-          <DataType>Int16</DataType>
-        </ReportField>
-        <ReportField Name="IsClone">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="IsFree">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="IsUnassigned">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="KeepManualFreight">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="LastModifiedByID"></ReportField>
-        <ReportField Name="LastModifiedByID_description"></ReportField>
-        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
-        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
-        <ReportField Name="LastModifiedByScreenID"></ReportField>
-        <ReportField Name="LastModifiedDateTime">
-          <DataType>DateTime</DataType>
-        </ReportField>
-        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
-        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
-        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
-        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
-        <ReportField Name="LineAmt">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="LineNbr">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="LineType"></ReportField>
-        <ReportField Name="LocationID"></ReportField>
-        <ReportField Name="LocationID_description"></ReportField>
-        <ReportField Name="LocationID_INLocation_descr"></ReportField>
-        <ReportField Name="LocationID_Segment1"></ReportField>
-        <ReportField Name="LotSerialNbr"></ReportField>
-        <ReportField Name="ManualDisc">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="ManualPrice">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="NoteActivity"></ReportField>
-        <ReportField Name="NoteFiles"></ReportField>
-        <ReportField Name="NoteID">
-          <DataType>Object</DataType>
-        </ReportField>
-        <ReportField Name="NoteImages"></ReportField>
-        <ReportField Name="NoteText"></ReportField>
-        <ReportField Name="OpenOrderQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="Operation"></ReportField>
-        <ReportField Name="OrderUOM"></ReportField>
-        <ReportField Name="OriginalShippedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="OrigLineNbr">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="OrigOrderNbr"></ReportField>
-        <ReportField Name="OrigOrderQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="OrigOrderType"></ReportField>
-        <ReportField Name="OrigPlanType"></ReportField>
-        <ReportField Name="OrigSplitLineNbr">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="PackedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="PickedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="PlanType"></ReportField>
-        <ReportField Name="ProjectID">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="Qty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="ReasonCode"></ReportField>
-        <ReportField Name="ReasonCode_description"></ReportField>
-        <ReportField Name="ReasonCode_ReasonCode_descr"></ReportField>
-        <ReportField Name="Released">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="RequireINUpdate">
-          <DataType>Boolean</DataType>
-        </ReportField>
-        <ReportField Name="ShipComplete"></ReportField>
-        <ReportField Name="ShipDate">
-          <DataType>DateTime</DataType>
-        </ReportField>
-        <ReportField Name="ShipDate_Day"></ReportField>
-        <ReportField Name="ShipDate_Hour"></ReportField>
-        <ReportField Name="ShipDate_Month"></ReportField>
-        <ReportField Name="ShipDate_Quarter"></ReportField>
-        <ReportField Name="ShipmentNbr"></ReportField>
-        <ReportField Name="ShipmentType"></ReportField>
-        <ReportField Name="ShippedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="SiteID"></ReportField>
-        <ReportField Name="SiteID_description"></ReportField>
-        <ReportField Name="SiteID_INSite_descr"></ReportField>
-        <ReportField Name="SiteID_Segment1"></ReportField>
-        <ReportField Name="SortOrder">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="SubItemID"></ReportField>
-        <ReportField Name="SubItemID_Segment1"></ReportField>
-        <ReportField Name="TaskID">
-          <DataType>Int32</DataType>
-        </ReportField>
-        <ReportField Name="TranDate">
-          <DataType>DateTime</DataType>
-        </ReportField>
-        <ReportField Name="TranDesc"></ReportField>
-        <ReportField Name="TranType"></ReportField>
-        <ReportField Name="tstamp"></ReportField>
-        <ReportField Name="UnassignedQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="UnitCost">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="UnitPrice">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="UnitVolume">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="UnitWeigth">
-          <DataType>Decimal</DataType>
-        </ReportField>
-        <ReportField Name="UOM"></ReportField>
-        <ReportField Name="UsrPackingQty">
-          <DataType>Decimal</DataType>
-        </ReportField>
-      </Fields>
-      <FullName>PX.Objects.SO.SOShipLine</FullName>
     </ReportTable>
     <ReportTable Name="SOPackageDetailEx">
       <Fields>
@@ -2504,6 +2268,238 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       </Fields>
       <FullName>PX.Objects.SO.SOShipLineSplit</FullName>
     </ReportTable>
+    <ReportTable Name="SOShipLine">
+      <Fields>
+        <ReportField Name="AlternateID"></ReportField>
+        <ReportField Name="BaseOriginalShippedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="BaseOrigOrderQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="BasePackedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="BasePickedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="BaseQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="BaseShippedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="CompleteQtyMin">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Confirmed">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CostCodeID"></ReportField>
+        <ReportField Name="CostCodeID_description"></ReportField>
+        <ReportField Name="CostCodeID_PMCostCode_description"></ReportField>
+        <ReportField Name="CostCodeID_Segment1"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="CustomerID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="DiscountID"></ReportField>
+        <ReportField Name="DiscountSequenceID"></ReportField>
+        <ReportField Name="DiscPct">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ExpireDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ExpireDate_Day"></ReportField>
+        <ReportField Name="ExpireDate_Hour"></ReportField>
+        <ReportField Name="ExpireDate_Month"></ReportField>
+        <ReportField Name="ExpireDate_Quarter"></ReportField>
+        <ReportField Name="ExtCost">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ExtVolume">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ExtWeight">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="FirstLotSerialNumber"></ReportField>
+        <ReportField Name="HasKitComponents">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="HasMixedProjectTasks">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="HasSerialComponents">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InventoryID"></ReportField>
+        <ReportField Name="InventoryID_description"></ReportField>
+        <ReportField Name="InventoryID_InventoryItem_descr"></ReportField>
+        <ReportField Name="InventoryID_Segment1"></ReportField>
+        <ReportField Name="InvtMult">
+          <DataType>Int16</DataType>
+        </ReportField>
+        <ReportField Name="IsClone">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="IsFree">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="IsUnassigned">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="KeepManualFreight">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="LineAmt">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="LineNbr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="LineType"></ReportField>
+        <ReportField Name="LocationID"></ReportField>
+        <ReportField Name="LocationID_description"></ReportField>
+        <ReportField Name="LocationID_INLocation_descr"></ReportField>
+        <ReportField Name="LocationID_Segment1"></ReportField>
+        <ReportField Name="LotSerialNbr"></ReportField>
+        <ReportField Name="ManualDisc">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ManualPrice">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="OpenOrderQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Operation"></ReportField>
+        <ReportField Name="OrderUOM"></ReportField>
+        <ReportField Name="OriginalShippedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="OrigLineNbr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="OrigOrderNbr"></ReportField>
+        <ReportField Name="OrigOrderQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="OrigOrderType"></ReportField>
+        <ReportField Name="OrigPlanType"></ReportField>
+        <ReportField Name="OrigSplitLineNbr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="PackedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="PickedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="PlanType"></ReportField>
+        <ReportField Name="ProjectID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="Qty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="QtyPerCarton"></ReportField>
+        <ReportField Name="ReasonCode"></ReportField>
+        <ReportField Name="ReasonCode_description"></ReportField>
+        <ReportField Name="ReasonCode_ReasonCode_descr"></ReportField>
+        <ReportField Name="Released">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="RemainingQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="RequireINUpdate">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ShipComplete"></ReportField>
+        <ReportField Name="ShipDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate_Day"></ReportField>
+        <ReportField Name="ShipDate_Hour"></ReportField>
+        <ReportField Name="ShipDate_Month"></ReportField>
+        <ReportField Name="ShipDate_Quarter"></ReportField>
+        <ReportField Name="ShipmentNbr"></ReportField>
+        <ReportField Name="ShipmentType"></ReportField>
+        <ReportField Name="ShippedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="SiteID"></ReportField>
+        <ReportField Name="SiteID_description"></ReportField>
+        <ReportField Name="SiteID_INSite_descr"></ReportField>
+        <ReportField Name="SiteID_Segment1"></ReportField>
+        <ReportField Name="SortOrder">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="SubItemID"></ReportField>
+        <ReportField Name="SubItemID_Segment1"></ReportField>
+        <ReportField Name="TaskID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="TranDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="TranDesc"></ReportField>
+        <ReportField Name="TranType"></ReportField>
+        <ReportField Name="tstamp"></ReportField>
+        <ReportField Name="UnassignedQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="UnitCost">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="UnitPrice">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="UnitVolume">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="UnitWeigth">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="UOM"></ReportField>
+        <ReportField Name="UsrPackingQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+      </Fields>
+      <FullName>PX.Objects.SO.SOShipLine</FullName>
+    </ReportTable>
   </Tables>
   <Width>15cm</Width>
   <Sections>
@@ -2525,232 +2521,252 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
         </ReportVariable>
       </Variables>
       <Items>
-        <PictureBox Name="pictureBox1">
-          <Location>352px, 208px</Location>
-          <MimeType>image/png</MimeType>
-          <QRCodeSettings />
-          <Size>49.2mm, 31.2mm</Size>
-          <Source>Embedded</Source>
-          <Value>antenovalabelseal</Value>
-        </PictureBox>
-        <TextBox Name="textBox1">
-          <Location>24px, 56px</Location>
-          <Size>120px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>PO Number: </Value>
-        </TextBox>
-        <TextBox Name="textBox10">
-          <Location>160px, 104px</Location>
-          <Size>216px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.InventoryID]</Value>
-        </TextBox>
-        <TextBox Name="textBox11">
-          <Location>24px, 152px</Location>
-          <Size>112px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Date Code: </Value>
-        </TextBox>
-        <TextBox Name="textBox12">
-          <Location>136px, 152px</Location>
-          <Size>176px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOShipLineSplit.LotSerialNbr]</Value>
-        </TextBox>
-        <TextBox Name="textBox13">
-          <Location>120px, 296px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Right</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=$CurrentPage</Value>
-        </TextBox>
-        <TextBox Name="textBox14">
-          <Location>24px, 296px</Location>
-          <Size>96px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Carton #</Value>
-        </TextBox>
-        <TextBox Name="textBox15">
-          <Location>200px, 296px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[PageCount]</Value>
-        </TextBox>
-        <TextBox Name="textBox16">
-          <Location>176px, 296px</Location>
-          <Size>24px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <Padding>
-              <Left>6px</Left>
-            </Padding>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>/</Value>
-        </TextBox>
-        <TextBox Name="textBox2">
-          <Location>24px, 200px</Location>
-          <Size>48px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Qty: </Value>
-        </TextBox>
-        <TextBox Name="textBox3">
-          <Location>24px, 248px</Location>
-          <Size>80px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Made in </Value>
-        </TextBox>
-        <TextBox Name="textBox4">
-          <Location>144px, 56px</Location>
-          <Size>152px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOOrder.CustomerOrderNbr]</Value>
-        </TextBox>
-        <TextBox Name="textBox5">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-          <Location>72px, 200px</Location>
-          <Size>112px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.Qty] + [SOPackageDetailEx.QtyUOM]</Value>
-        </TextBox>
-        <TextBox Name="textBox6">
-          <Location>104px, 248px</Location>
-          <Size>112px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[InventoryItem.MADEIN_Attributes]</Value>
-        </TextBox>
-        <TextBox Name="textBox7">
-          <Location>184px, 200px</Location>
-          <Size>56px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>20px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.QtyUOM]</Value>
-        </TextBox>
-        <TextBox Name="textBox8">
+        <Panel Name="panel1">
           <Location>0px, 0px</Location>
-          <Size>568px, 24px</Size>
+          <Size>568px, 344px</Size>
           <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold, Underline</Style>
-            </Font>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
+            <BorderStyle>
+              <Bottom>Solid</Bottom>
+              <Left>Solid</Left>
+              <Right>Solid</Right>
+              <Top>Solid</Top>
+            </BorderStyle>
+            <BorderWidth>
+              <Bottom>1px</Bottom>
+              <Left>1px</Left>
+              <Right>1px</Right>
+              <Top>1px</Top>
+            </BorderWidth>
           </Style>
-          <Value>ANTENOVA LTD</Value>
-        </TextBox>
-        <TextBox Name="textBox9">
-          <Location>24px, 104px</Location>
-          <Size>136px, 24px</Size>
-          <Style>
-            <Font>
-              <Size>21px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>Part Number: </Value>
-        </TextBox>
+          <Items>
+            <PictureBox Name="pictureBox1">
+              <Location>360px, 208px</Location>
+              <MimeType>image/png</MimeType>
+              <QRCodeSettings />
+              <Size>49.2mm, 31.2mm</Size>
+              <Source>Embedded</Source>
+              <Value>antenovalabelseal</Value>
+            </PictureBox>
+            <TextBox Name="textBox1">
+              <Location>16px, 56px</Location>
+              <Size>128px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>PO Number: </Value>
+            </TextBox>
+            <TextBox Name="textBox10">
+              <Location>160px, 104px</Location>
+              <Size>216px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOPackageDetailEx.InventoryID]</Value>
+            </TextBox>
+            <TextBox Name="textBox11">
+              <Location>16px, 152px</Location>
+              <Size>120px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Date Code: </Value>
+            </TextBox>
+            <TextBox Name="textBox12">
+              <Location>136px, 152px</Location>
+              <Size>176px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOShipLine.FirstLotSerialNumber]</Value>
+            </TextBox>
+            <TextBox Name="textBox13">
+              <Location>112px, 296px</Location>
+              <Size>40px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Right</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=$CurrentPage</Value>
+            </TextBox>
+            <TextBox Name="textBox14">
+              <Location>16px, 296px</Location>
+              <Size>96px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Carton #</Value>
+            </TextBox>
+            <TextBox Name="textBox15">
+              <Location>176px, 296px</Location>
+              <Size>56px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[PageCount]</Value>
+            </TextBox>
+            <TextBox Name="textBox16">
+              <Location>152px, 296px</Location>
+              <Size>24px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <Padding>
+                  <Left>6px</Left>
+                </Padding>
+                <TextAlign>Center</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>/</Value>
+            </TextBox>
+            <TextBox Name="textBox2">
+              <Location>16px, 200px</Location>
+              <Size>48px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Qty: </Value>
+            </TextBox>
+            <TextBox Name="textBox3">
+              <Location>16px, 248px</Location>
+              <Size>80px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Made in </Value>
+            </TextBox>
+            <TextBox Name="textBox4">
+              <Location>144px, 56px</Location>
+              <Size>152px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOOrder.CustomerOrderNbr]</Value>
+            </TextBox>
+            <TextBox Name="textBox5">
+              <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+              <Location>64px, 200px</Location>
+              <Size>112px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Center</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOPackageDetailEx.Qty]</Value>
+            </TextBox>
+            <TextBox Name="textBox6">
+              <Location>96px, 248px</Location>
+              <Size>112px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[InventoryItem.MADEIN_Attributes]</Value>
+            </TextBox>
+            <TextBox Name="textBox7">
+              <Location>176px, 200px</Location>
+              <Size>56px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>20px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+            </TextBox>
+            <TextBox Name="textBox8">
+              <Location>0px, 8px</Location>
+              <Size>568px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold, Underline</Style>
+                </Font>
+                <TextAlign>Center</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>ANTENOVA LTD</Value>
+            </TextBox>
+            <TextBox Name="textBox9">
+              <Location>16px, 104px</Location>
+              <Size>144px, 24px</Size>
+              <Style>
+                <Font>
+                  <Size>21px</Size>
+                  <Style>Bold</Style>
+                </Font>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+              <Value>Part Number: </Value>
+            </TextBox>
+          </Items>
+        </Panel>
       </Items>
     </Detail>
     <PageFooter Name="pageFooterSection1">

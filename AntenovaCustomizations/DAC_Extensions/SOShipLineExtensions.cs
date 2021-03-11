@@ -39,5 +39,16 @@ namespace PX.Objects.SO
                           SearchFor<CSAnswers.value>))]
         public virtual string QtyPerCarton { get; set; }
         public abstract class qtyPerCarton : BqlString.Field<qtyPerCarton> { }
+
+        [PXString]
+        [PXUIField(DisplayName = "First Lot Serial Number", Enabled = false, Visible = false)]
+        [PXDefault(typeof(SelectFrom<SOShipLineSplit>.
+                          Where<SOShipLineSplit.shipmentNbr.IsEqual<SOShipLine.shipmentNbr.FromCurrent>.And<SOShipLineSplit.lineNbr.IsEqual<SOShipLine.lineNbr.FromCurrent>>>.
+                          SearchFor<SOShipLineSplit.lotSerialNbr>))]
+        [PXDBScalar(typeof(SelectFrom<SOShipLineSplit>.
+                          Where<SOShipLineSplit.shipmentNbr.IsEqual<SOShipLine.shipmentNbr>.And<SOShipLineSplit.lineNbr.IsEqual<SOShipLine.lineNbr>>>.
+                          SearchFor<SOShipLineSplit.lotSerialNbr>))]
+        public virtual string FirstLotSerialNumber { get; set; }
+        public abstract class firstLotSerialNumber : BqlString.Field<firstLotSerialNumber> { }
     }
 }
