@@ -15,7 +15,7 @@ namespace PX.Objects.SO
         #region Constant Class & String Variables
         public const string UPS = "UPS";
         public const string DHL = "DHL";
-        public const string FDX = "FedFX";
+        public const string FDX = "FEDEX";
 
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
@@ -455,7 +455,7 @@ namespace PX.Objects.SO
         {
             string url = null;
 
-            switch (carrier ?? string.Empty)
+            switch (carrier.ToUpper() ?? string.Empty)
             {
                 case UPS:
                     url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill.Trim()}&requester=WT/trackdetails";
