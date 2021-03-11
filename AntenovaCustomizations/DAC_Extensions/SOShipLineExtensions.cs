@@ -44,7 +44,8 @@ namespace PX.Objects.SO
         [PXUIField(DisplayName = "First Lot Serial Number", Enabled = false, Visible = false)]
         [PXDefault(typeof(SelectFrom<SOShipLineSplit>.
                           Where<SOShipLineSplit.shipmentNbr.IsEqual<SOShipLine.shipmentNbr.FromCurrent>.And<SOShipLineSplit.lineNbr.IsEqual<SOShipLine.lineNbr.FromCurrent>>>.
-                          SearchFor<SOShipLineSplit.lotSerialNbr>))]
+                          SearchFor<SOShipLineSplit.lotSerialNbr>),
+                    PersistingCheck = PXPersistingCheck.Nothing)]
         [PXDBScalar(typeof(SelectFrom<SOShipLineSplit>.
                           Where<SOShipLineSplit.shipmentNbr.IsEqual<SOShipLine.shipmentNbr>.And<SOShipLineSplit.lineNbr.IsEqual<SOShipLine.lineNbr>>>.
                           SearchFor<SOShipLineSplit.lotSerialNbr>))]

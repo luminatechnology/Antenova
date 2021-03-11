@@ -223,6 +223,34 @@
       </Links>
       <ParentName>SOShipLine</ParentName>
     </ReportRelation>
+    <ReportRelation>
+      <ChildName>SOOrder</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>OrderNbr</ChildField>
+          <ParentField>OrigOrderNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>OrderType</ChildField>
+          <ParentField>OrigOrderType</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOShipLine</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>SOOrderShipment</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>OrderNbr</ChildField>
+          <ParentField>OrigOrderNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>OrderType</ChildField>
+          <ParentField>OrigOrderType</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOOrder</ParentName>
+    </ReportRelation>
   </Relations>
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
   <Sorting>
@@ -2516,6 +2544,137 @@
       </Fields>
       <FullName>PX.Objects.SO.SOPackageDetailEx</FullName>
     </ReportTable>
+    <ReportTable Name="SOOrderShipment">
+      <Fields>
+        <ReportField Name="BillShipmentSeparately">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="Confirmed">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CreateARDoc">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="CreateINDoc">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CustomerID"></ReportField>
+        <ReportField Name="CustomerID_BAccountR_acctName"></ReportField>
+        <ReportField Name="CustomerID_Customer_acctName"></ReportField>
+        <ReportField Name="CustomerID_description"></ReportField>
+        <ReportField Name="CustomerID_Segment1"></ReportField>
+        <ReportField Name="CustomerLocationID"></ReportField>
+        <ReportField Name="CustomerLocationID_description"></ReportField>
+        <ReportField Name="CustomerLocationID_Location_descr"></ReportField>
+        <ReportField Name="CustomerLocationID_Segment1"></ReportField>
+        <ReportField Name="DisplayShippingRefNoteID"></ReportField>
+        <ReportField Name="HasDetailDeleted">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="HasUnhandledErrors">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="Hold">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InvoiceNbr"></ReportField>
+        <ReportField Name="InvoiceReleased">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InvoiceType"></ReportField>
+        <ReportField Name="InvtDocType"></ReportField>
+        <ReportField Name="InvtNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="InvtRefNbr"></ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="LineCntr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="LineTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="Operation"></ReportField>
+        <ReportField Name="OrderFreightAllocated">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="OrderNbr"></ReportField>
+        <ReportField Name="OrderNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="OrderType"></ReportField>
+        <ReportField Name="ProjectID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="Selected">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ShipAddressID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ShipComplete"></ReportField>
+        <ReportField Name="ShipContactID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate_Day"></ReportField>
+        <ReportField Name="ShipDate_Hour"></ReportField>
+        <ReportField Name="ShipDate_Month"></ReportField>
+        <ReportField Name="ShipDate_Quarter"></ReportField>
+        <ReportField Name="ShipmentNbr"></ReportField>
+        <ReportField Name="ShipmentNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentType"></ReportField>
+        <ReportField Name="ShipmentVolume">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentWeight">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShippingRefNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="SiteID"></ReportField>
+        <ReportField Name="SiteID_description"></ReportField>
+        <ReportField Name="SiteID_INSite_descr"></ReportField>
+        <ReportField Name="SiteID_Segment1"></ReportField>
+        <ReportField Name="tstamp"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.SO.SOOrderShipment</FullName>
+    </ReportTable>
   </Tables>
   <ViewerFields>
     <ViewerField Name="SOShipment.ShipmentNbr"></ViewerField>
@@ -2755,7 +2914,7 @@
                 <TextAlign>Right</TextAlign>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=[SOShipment.ShipmentNbr]</Value>
+              <Value>=[SOOrderShipment.InvoiceNbr]</Value>
             </TextBox>
             <TextBox Name="textBox29">
               <Location>512px, 88px</Location>

@@ -2542,7 +2542,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
               <Value>PO Number: </Value>
             </TextBox>
             <TextBox Name="textBox10">
-              <Location>160px, 113px</Location>
+              <Location>88px, 168px</Location>
               <Size>216px, 24px</Size>
               <Style>
                 <Font>
@@ -2568,7 +2568,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
               <Value>MPN: </Value>
             </TextBox>
             <TextBox Name="textBox12">
-              <Location>88px, 169px</Location>
+              <Location>160px, 112px</Location>
               <Size>176px, 24px</Size>
               <Style>
                 <Font>

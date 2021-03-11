@@ -39,29 +39,25 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(GlobalEMSOuterLabel);
             Base.report.AddMenuAction(USIOuterLabel);
             Base.report.AddMenuAction(SanminaOuterLabel);
+            Base.report.AddMenuAction(SanminaInnerLabel);
             Base.report.AddMenuAction(StandardOuterLabel1);
             Base.report.AddMenuAction(StandardOuterLabel2);
-            Base.report.AddMenuAction(SanminaInnerLabel);
+            Base.report.AddMenuAction(BoschLabel);
         }
 
         /// <summary> Override Persist Event </summary>
         [PXOverride]
         public void Persist(PersistDelegate baseMethod)
         {
-            var needUpdatePackedQty = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().Count() > 0;
-            if (needUpdatePackedQty)
+            IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
+            // Except Delete row
+            _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
+            var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
+            // Recalculate PackedQty
+            foreach (var item in _shipLines)
             {
-                // Except Delete row
-                IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
-                _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
-                var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
-                _shipLines = _shipLines.Except((IEnumerable<SOShipLine>)Base.Transactions.Cache.Deleted);
-                // Recalculate PackedQty
-                foreach (var item in _shipLines)
-                {
-                    item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
-                    Base.Caches[typeof(SOShipLine)].Update(item);
-                }
+                item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
+                Base.Caches[typeof(SOShipLine)].Update(item);
             }
 
             baseMethod();
@@ -231,6 +227,23 @@ namespace PX.Objects.SO
         protected virtual IEnumerable standardOuterLabel2(PXAdapter adapter)
         {
             var _reportID = "LM642017";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 2 - LM642018
+        public PXAction<SOShipment> BoschLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Bosch Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable boschLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642018";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
