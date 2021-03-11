@@ -455,7 +455,9 @@ namespace PX.Objects.SO
         {
             string url = null;
 
-            switch (carrier.ToUpper() ?? string.Empty)
+            carrier = string.IsNullOrEmpty(carrier) ? string.Empty : carrier.ToUpper();
+
+            switch (carrier)
             {
                 case UPS:
                     url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill.Trim()}&requester=WT/trackdetails";
