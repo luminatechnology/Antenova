@@ -2377,6 +2377,10 @@
           <Name>CurrentPage</Name>
           <ValueExpr>= 1 + $CurrentPage</ValueExpr>
         </ReportVariable>
+        <ReportVariable>
+          <Name>ProductionDayOfWeek</Name>
+          <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOShipLine.FirstLotSerialNumber], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOShipLine.FirstLotSerialNumber], 2, 2))) * 7))</ValueExpr>
+        </ReportVariable>
       </Variables>
       <Items>
         <PictureBox Name="pictureBox1">
@@ -2484,7 +2488,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOShipment.ShipDate]</Value>
+          <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOShipLine.FirstLotSerialNumber], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOShipLine.FirstLotSerialNumber], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
         </TextBox>
         <TextBox Name="textBox13">
           <Location>8px, 96px</Location>
