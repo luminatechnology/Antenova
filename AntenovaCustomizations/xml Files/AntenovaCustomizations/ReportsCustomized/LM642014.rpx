@@ -2435,7 +2435,7 @@
           <QRCodeSettings />
           <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=[SOShipment.ShipDate]</Value>
+          <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOShipLine.FirstLotSerialNumber], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOShipLine.FirstLotSerialNumber], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
         </PictureBox>
         <TextBox Name="textBox1">
           <Location>8px, 24px</Location>
