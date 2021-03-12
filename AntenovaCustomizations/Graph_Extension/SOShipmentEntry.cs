@@ -49,15 +49,20 @@ namespace PX.Objects.SO
         [PXOverride]
         public void Persist(PersistDelegate baseMethod)
         {
-            IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
-            // Except Delete row
-            _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
-            var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
-            // Recalculate PackedQty
-            foreach (var item in _shipLines)
+            var needUpdatePackedQty = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().Count() > 0;
+            if (needUpdatePackedQty)
             {
-                item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
-                Base.Caches[typeof(SOShipLine)].Update(item);
+                // Except Delete row
+                IEnumerable<SOPackageDetailEx> _packages = Base.Packages.Cache.Cached.RowCast<SOPackageDetailEx>();
+                _packages = _packages.Except((IEnumerable<SOPackageDetailEx>)Base.Packages.Cache.Deleted);
+                var _shipLines = Base.Transactions.Cache.Cached.RowCast<SOShipLine>();
+                _shipLines = _shipLines.Except((IEnumerable<SOShipLine>)Base.Transactions.Cache.Deleted);
+                // Recalculate PackedQty
+                foreach (var item in _shipLines)
+                {
+                    item.PackedQty = _packages.Where(x => x.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr == item.LineNbr).Sum(x => x.Qty);
+                    Base.Caches[typeof(SOShipLine)].Update(item);
+                }
             }
 
             baseMethod();
