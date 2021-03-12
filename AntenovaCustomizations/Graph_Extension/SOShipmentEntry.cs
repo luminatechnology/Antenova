@@ -16,6 +16,7 @@ namespace PX.Objects.SO
         public const string UPS = "UPS";
         public const string DHL = "DHL";
         public const string FDX = "FEDEX";
+        public const string TNT = "TNT";
 
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
@@ -472,6 +473,9 @@ namespace PX.Objects.SO
                     break;
                 case FDX:
                     url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill.Trim()}";
+                    break;
+                case TNT:
+                    url = $" https://www.tnt.com/express/en_gc/site/shipping-tools/track.html?searchType=con&cons={wayBill.Trim()}";
                     break;
             }
 
