@@ -2748,7 +2748,7 @@
         </ReportVariable>
         <ReportVariable>
           <Name>SumOfGrossWeight</Name>
-          <ValueExpr>=$SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1</ValueExpr>
+          <ValueExpr>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, $SumOfGrossWeight + CDec([SOPackageDetailEx.CustomRefNbr2]), $SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1)</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -2838,7 +2838,7 @@
             <TextAlign>Right</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.Weight] + 1#010;</Value>
+          <Value>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, CDec([SOPackageDetailEx.CustomRefNbr2]), [SOPackageDetailEx.Weight] + 1)</Value>
         </TextBox>
       </Items>
     </Detail>
