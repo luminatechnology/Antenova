@@ -2588,7 +2588,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 <TextAlign>Left</TextAlign>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
-              <Value>=IIF([SOOrderShipment.InvoiceNbr] &lt;&gt; Null, [SOOrderShipment.InvoiceNbr], [SOShipment.ShipmentNbr])</Value>
+              <Value>=[SOOrderShipment.InvoiceNbr]</Value>
             </TextBox>
             <TextBox Name="textBox30">
               <Location>24px, 165px</Location>

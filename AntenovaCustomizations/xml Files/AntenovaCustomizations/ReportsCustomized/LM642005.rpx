@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report Name="report1">
+  <CommonSettings>
+    <ViewPdf>True</ViewPdf>
+  </CommonSettings>
   <ExportFileName>=Format( 'Shipment {0}', [SOShipment.ShipmentNbr])</ExportFileName>
   <Filters>
     <FilterExp>
@@ -222,6 +225,34 @@
         </RelationRow>
       </Links>
       <ParentName>SOShipLine</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>SOOrder</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>OrderNbr</ChildField>
+          <ParentField>OrigOrderNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>OrderType</ChildField>
+          <ParentField>OrigOrderType</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOShipLine</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>SOOrderShipment</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>OrderNbr</ChildField>
+          <ParentField>OrigOrderNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>OrderType</ChildField>
+          <ParentField>OrigOrderType</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOOrder</ParentName>
     </ReportRelation>
   </Relations>
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
@@ -2516,6 +2547,137 @@
       </Fields>
       <FullName>PX.Objects.SO.SOPackageDetailEx</FullName>
     </ReportTable>
+    <ReportTable Name="SOOrderShipment">
+      <Fields>
+        <ReportField Name="BillShipmentSeparately">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="Confirmed">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CreateARDoc">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="CreateINDoc">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="CustomerID"></ReportField>
+        <ReportField Name="CustomerID_BAccountR_acctName"></ReportField>
+        <ReportField Name="CustomerID_Customer_acctName"></ReportField>
+        <ReportField Name="CustomerID_description"></ReportField>
+        <ReportField Name="CustomerID_Segment1"></ReportField>
+        <ReportField Name="CustomerLocationID"></ReportField>
+        <ReportField Name="CustomerLocationID_description"></ReportField>
+        <ReportField Name="CustomerLocationID_Location_descr"></ReportField>
+        <ReportField Name="CustomerLocationID_Segment1"></ReportField>
+        <ReportField Name="DisplayShippingRefNoteID"></ReportField>
+        <ReportField Name="HasDetailDeleted">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="HasUnhandledErrors">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="Hold">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InvoiceNbr"></ReportField>
+        <ReportField Name="InvoiceReleased">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="InvoiceType"></ReportField>
+        <ReportField Name="InvtDocType"></ReportField>
+        <ReportField Name="InvtNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="InvtRefNbr"></ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="LineCntr">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="LineTotal">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="Operation"></ReportField>
+        <ReportField Name="OrderFreightAllocated">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="OrderNbr"></ReportField>
+        <ReportField Name="OrderNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="OrderType"></ReportField>
+        <ReportField Name="ProjectID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="Selected">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ShipAddressID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ShipComplete"></ReportField>
+        <ReportField Name="ShipContactID">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate_Day"></ReportField>
+        <ReportField Name="ShipDate_Hour"></ReportField>
+        <ReportField Name="ShipDate_Month"></ReportField>
+        <ReportField Name="ShipDate_Quarter"></ReportField>
+        <ReportField Name="ShipmentNbr"></ReportField>
+        <ReportField Name="ShipmentNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentQty">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentType"></ReportField>
+        <ReportField Name="ShipmentVolume">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShipmentWeight">
+          <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="ShippingRefNoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="SiteID"></ReportField>
+        <ReportField Name="SiteID_description"></ReportField>
+        <ReportField Name="SiteID_INSite_descr"></ReportField>
+        <ReportField Name="SiteID_Segment1"></ReportField>
+        <ReportField Name="tstamp"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.SO.SOOrderShipment</FullName>
+    </ReportTable>
   </Tables>
   <ViewerFields>
     <ViewerField Name="SOShipment.ShipmentNbr"></ViewerField>
@@ -2586,13 +2748,13 @@
         </ReportVariable>
         <ReportVariable>
           <Name>SumOfGrossWeight</Name>
-          <ValueExpr>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, $SumOfGrossWeight + [SOPackageDetailEx.CustomRefNbr2], $SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1)</ValueExpr>
+          <ValueExpr>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, $SumOfGrossWeight + CDec([SOPackageDetailEx.CustomRefNbr2]), $SumOfGrossWeight + [SOPackageDetailEx.Weight] + 1)</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
         <TextBox Name="textBox10">
-          <Location>376px, 0px</Location>
-          <Size>128px, 16px</Size>
+          <Location>356px, 0px</Location>
+          <Size>148px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2604,7 +2766,7 @@
         </TextBox>
         <TextBox Name="textBox13">
           <Location>168px, 0px</Location>
-          <Size>208px, 16px</Size>
+          <Size>188px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2619,6 +2781,9 @@
           <Location>576px, 0px</Location>
           <Size>56px, 16px</Size>
           <Style>
+            <Padding>
+              <Right>5px</Right>
+            </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
@@ -2643,6 +2808,7 @@
           <Style>
             <Padding>
               <Left>5px</Left>
+              <Right>5px</Right>
             </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
@@ -2666,10 +2832,13 @@
           <Location>632px, 0px</Location>
           <Size>64px, 16px</Size>
           <Style>
+            <Padding>
+              <Right>5px</Right>
+            </Padding>
             <TextAlign>Right</TextAlign>
           </Style>
-          <StyleName>RecepientCompany</StyleName>
-          <Value>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, [SOPackageDetailEx.CustomRefNbr2], [SOPackageDetailEx.Weight] + 1)#010;</Value>
+          <StyleName>Normal</StyleName>
+          <Value>=IIF([SOPackageDetailEx.CustomRefNbr2] &lt;&gt; Null, CDec([SOPackageDetailEx.CustomRefNbr2]), [SOPackageDetailEx.Weight] + 1)</Value>
         </TextBox>
       </Items>
     </Detail>
@@ -2699,10 +2868,11 @@
                   <Location>0px, 0px</Location>
                   <Size>360px, 16px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Left</TextAlign>
+                    <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>
-                  <Value>SHIP TO:</Value>
+                  <Value>Ship To:</Value>
                 </TextBox>
                 <TextBox Name="textBox27">
                   <Location>0px, 17px</Location>
@@ -2721,8 +2891,8 @@
               <Value>=[Branch.BranchOrOrganizationLogoNameReport]</Value>
             </PictureBox>
             <TextBox Name="textBox1">
-              <Location>608px, 88px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 88px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2749,24 +2919,27 @@
             </TextBox>
             <TextBox Name="textBox23">
               <CanGrow>True</CanGrow>
-              <Location>608px, 56px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 56px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=[SOShipment.ShipmentNbr]</Value>
+              <Value>=[SOOrderShipment.InvoiceNbr]</Value>
             </TextBox>
             <TextBox Name="textBox29">
-              <Location>512px, 88px</Location>
+              <Location>520px, 88px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>TRACKING NO.:</Value>
             </TextBox>
             <TextBox Name="textBox3">
               <Format>='dd-MMM-yyyy'</Format>
-              <Location>608px, 40px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 40px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2774,27 +2947,36 @@
               <Value>=[SOShipment.ShipDate]</Value>
             </TextBox>
             <TextBox Name="textBox30">
-              <Location>512px, 40px</Location>
+              <Location>520px, 40px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>DATE:</Value>
             </TextBox>
             <TextBox Name="textBox31">
-              <Location>512px, 56px</Location>
+              <Location>520px, 56px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>INVOICE NO.:</Value>
             </TextBox>
             <TextBox Name="textBox43">
-              <Location>512px, 72px</Location>
+              <Location>520px, 72px</Location>
               <Size>94px, 16px</Size>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
               <StyleName>Heading 1</StyleName>
               <Value>SHIPPED BY:</Value>
             </TextBox>
             <TextBox Name="textBox45">
               <CanGrow>True</CanGrow>
-              <Location>608px, 72px</Location>
-              <Size>88px, 16px</Size>
+              <Location>616px, 72px</Location>
+              <Size>80px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2817,10 +2999,16 @@
               <StyleName>Top Line</StyleName>
               <Items>
                 <TextBox Name="textBox21">
-                  <Location>80px, 0px</Location>
+                  <Location>72px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
                   <Size>80px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
                       <Top>8px</Top>
                     </Padding>
@@ -2830,7 +3018,7 @@
                   <Value>=$LineNbr</Value>
                 </TextBox>
                 <TextBox Name="textBox22">
-                  <Location>368px, 0px</Location>
+                  <Location>440px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
                   <Size>64px, 24px</Size>
                   <Style>
@@ -2844,11 +3032,18 @@
                 </TextBox>
                 <TextBox Name="textBox33">
                   <Format>='N2'</Format>
-                  <Location>600px, 0px</Location>
+                  <Location>632px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>96px, 24px</Size>
+                  <Size>64px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -2858,11 +3053,18 @@
                 </TextBox>
                 <TextBox Name="textBox34">
                   <Format>='N2'</Format>
-                  <Location>512px, 0px</Location>
+                  <Location>576px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>88px, 24px</Size>
+                  <Size>56px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -2872,11 +3074,18 @@
                 </TextBox>
                 <TextBox Name="textBox36">
                   <Format>='N0'</Format>
-                  <Location>432px, 0px</Location>
+                  <Location>504px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>80px, 24px</Size>
+                  <Size>72px, 24px</Size>
                   <Style>
+                    <BorderStyle>
+                      <Bottom>Double</Bottom>
+                    </BorderStyle>
+                    <BorderWidth>
+                      <Bottom>3px</Bottom>
+                    </BorderWidth>
                     <Padding>
+                      <Right>5px</Right>
                       <Top>8px</Top>
                     </Padding>
                     <TextAlign>Right</TextAlign>
@@ -2887,7 +3096,7 @@
                 <TextBox Name="textBox37">
                   <Location>0px, 0px</Location>
                   <ProcessOrder>WhilePrint</ProcessOrder>
-                  <Size>80px, 24px</Size>
+                  <Size>72px, 24px</Size>
                   <Style>
                     <Padding>
                       <Top>8px</Top>
@@ -2903,7 +3112,8 @@
               <Location>0px, 64px</Location>
               <Size>360px, 16px</Size>
               <Style>
-                <TextAlign>Center</TextAlign>
+                <TextAlign>Left</TextAlign>
+                <VerticalAlign>Middle</VerticalAlign>
               </Style>
               <StyleName>Heading1BCColored</StyleName>
               <Value>Special Notes</Value>
@@ -2990,19 +3200,25 @@
                 </TextBox>
                 <TextBox Name="textBox4">
                   <Location>168px, 0px</Location>
-                  <Size>208px, 48px</Size>
+                  <Size>184px, 48px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <Padding>
+                      <Left>5px</Left>
+                    </Padding>
+                    <TextAlign>Left</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>
                   <Value>ANTENOVA PART NO.</Value>
                 </TextBox>
                 <TextBox Name="textBox9">
-                  <Location>376px, 0px</Location>
-                  <Size>128px, 48px</Size>
+                  <Location>352px, 0px</Location>
+                  <Size>152px, 48px</Size>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <Padding>
+                      <Left>5px</Left>
+                    </Padding>
+                    <TextAlign>Left</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
                   </Style>
                   <StyleName>Heading1BCColored</StyleName>

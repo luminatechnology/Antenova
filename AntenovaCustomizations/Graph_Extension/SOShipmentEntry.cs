@@ -15,7 +15,8 @@ namespace PX.Objects.SO
         #region Constant Class & String Variables
         public const string UPS = "UPS";
         public const string DHL = "DHL";
-        public const string FDX = "FedFX";
+        public const string FDX = "FEDEX";
+        public const string TNT = "TNT";
 
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
@@ -39,9 +40,10 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(GlobalEMSOuterLabel);
             Base.report.AddMenuAction(USIOuterLabel);
             Base.report.AddMenuAction(SanminaOuterLabel);
+            Base.report.AddMenuAction(SanminaInnerLabel);
             Base.report.AddMenuAction(StandardOuterLabel1);
             Base.report.AddMenuAction(StandardOuterLabel2);
-            Base.report.AddMenuAction(SanminaInnerLabel);
+            Base.report.AddMenuAction(BoschLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -231,6 +233,23 @@ namespace PX.Objects.SO
         protected virtual IEnumerable standardOuterLabel2(PXAdapter adapter)
         {
             var _reportID = "LM642017";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 2 - LM642018
+        public PXAction<SOShipment> BoschLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Bosch Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable boschLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642018";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
@@ -442,16 +461,21 @@ namespace PX.Objects.SO
         {
             string url = null;
 
-            switch (carrier ?? string.Empty)
+            carrier = string.IsNullOrEmpty(carrier) ? string.Empty : carrier.ToUpper();
+
+            switch (carrier)
             {
                 case UPS:
-                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill}&requester=WT/trackdetails";
+                    url = $"https://www.ups.com/track?loc=en_tw&tracknum={wayBill.Trim()}&requester=WT/trackdetails";
                     break;
                 case DHL:
-                    url = $"http://www.dhl.com.tw/en/express/tracking.html?AWB={wayBill}&brand=DHL";
+                    url = $"https://mydhl.express.dhl/tw/en/tracking.html#/results?id={wayBill.Trim()}";
                     break;
                 case FDX:
-                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill}";
+                    url = $"https://www.fedex.com/fedextrack/?trknbr={wayBill.Trim()}";
+                    break;
+                case TNT:
+                    url = $" https://www.tnt.com/express/en_gc/site/shipping-tools/track.html?searchType=con&cons={wayBill.Trim()}";
                     break;
             }
 

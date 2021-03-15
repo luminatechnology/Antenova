@@ -11,9 +11,11 @@
   </Filters>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <ParentSource></ParentSource>
+    <Bcc></Bcc>
+    <Body></Body>
+    <Cc></Cc>
+    <Format></Format>
     <Subject>='Invoice from: '+[BAccount.AcctName] </Subject>
-    <TemplateID></TemplateID>
     <To>=IsNull([Contact.EMail],'')</To>
   </MailSettings>
   <PageSettings>
@@ -2812,7 +2814,7 @@
         </TextBox>
         <TextBox Name="textBox15">
           <Location>96px, 56px</Location>
-          <Size>232px, 15px</Size>
+          <Size>928px, 15px</Size>
           <Style>
             <TextAlign>Left</TextAlign>
           </Style>
@@ -2846,7 +2848,7 @@
           <Location>112px, 0px</Location>
           <Size>152px, 16px</Size>
           <Style>
-            <TextAlign>Right</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOShipLineSplit.InventoryID_description]</Value>
@@ -2856,7 +2858,7 @@
           <Location>812px, 0px</Location>
           <Size>112px, 16px</Size>
           <Style>
-            <TextAlign>Right</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOShipLine.AlternateID]</Value>
@@ -2885,7 +2887,7 @@
           <Location>724px, 0px</Location>
           <Size>88px, 16px</Size>
           <Style>
-            <TextAlign>Right</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[Customer.AcctCD]</Value>
@@ -2895,7 +2897,7 @@
           <Location>16px, 0px</Location>
           <Size>92px, 14px</Size>
           <Style>
-            <TextAlign>Right</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOShipLineSplit.InventoryID]</Value>
@@ -3032,7 +3034,7 @@
                   <Location>96px, 0px</Location>
                   <Size>152px, 14px</Size>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                   <StyleName>Heading 1</StyleName>
                   <Value>Product Description</Value>
@@ -3041,7 +3043,7 @@
                   <Location>792px, 0px</Location>
                   <Size>112px, 15px</Size>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                   <StyleName>Heading 1</StyleName>
                   <Value>Cust ITEMID</Value>
@@ -3059,7 +3061,7 @@
                   <Location>0px, 0px</Location>
                   <Size>96px, 14px</Size>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                   <StyleName>Heading 1</StyleName>
                   <Value>Item</Value>
@@ -3068,7 +3070,7 @@
                   <Location>704px, 0px</Location>
                   <Size>88px, 15px</Size>
                   <Style>
-                    <TextAlign>Right</TextAlign>
+                    <TextAlign>Center</TextAlign>
                   </Style>
                   <StyleName>Heading 1</StyleName>
                   <Value>Customer ID</Value>
