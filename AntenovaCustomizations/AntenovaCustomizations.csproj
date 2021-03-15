@@ -60,7 +60,6 @@
     <Compile Include="DAC_Extensions\SOPackageDetail_Extension.cs" />
     <Compile Include="DAC_Extensions\SOShipLineExtensions.cs" />
     <Compile Include="DAC_Extensions\SOShipmentExtensions.cs" />
-    <Compile Include="Graph_Extension\SOOrderEntry.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
