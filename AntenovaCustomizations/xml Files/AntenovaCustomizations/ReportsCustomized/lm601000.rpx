@@ -2795,7 +2795,7 @@ C4rjPGnwVGsfE/wz8QtG1AaPfrcW0euWqJ+61W2Q5h3/APTWJyNr/wB0svQ0UUAc7p/wR1hfDz+Bru8s
         <ReportVariable>
           <Name>LotNbr</Name>
           <ResetGroup>ShipLine</ResetGroup>
-          <ValueExpr>=[Split.LotSerialNbr]+'/'+$LotNbr</ValueExpr>
+          <ValueExpr>=[Split.LotSerialNbr]+'.'+$LotNbr</ValueExpr>
         </ReportVariable>
       </Variables>
       <Visible>False</Visible>
