@@ -2390,7 +2390,7 @@
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>
-          <ValueExpr>='[)&gt;@06@12S0002@' +#010;IIF([SOLine.AlternateID] &lt;&gt; Null, [SOLine.AlternateID], '') +#010;'@1P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@31P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@12V' +#010;'ANTENOVA' +#010;'@10V' + #010;IIF([InventoryItem.MADEIN_Attributes] &lt;&gt; Null, [InventoryItem.MADEIN_Attributes], '') +#010;'@2P@20P@6D' +#010;IIF([SOShipLine.FirstLotSerialNumber] &lt;&gt; Null, Left([SOShipLine.FirstLotSerialNumber], 4), '') +#010;'@14D' +#010;$ExpiryDate_Year + $ExpiryDate_Weeks +#010;'@30PY@Z1@K' +#010;IIF([SOOrder.CustomerOrderNbr] &lt;&gt; Null, [SOOrder.CustomerOrderNbr], '') +#010;'@16K' +#010;IIF([SOShipment.ShipmentNbr] &lt;&gt; Null, [SOShipment.ShipmentNbr],'') +#010;'@V' +#010;'97179542' +#010;'@3S' +#010;IIF([SOShipment.ShipmentNbr] &lt;&gt; Null And [SOPackageDetailEx.CustomRefNbr1] &lt;&gt; Null, [SOShipment.ShipmentNbr] + [SOPackageDetailEx.CustomRefNbr1], '') +#010;'@Q' +#010;IIF([SOPackageDetailEx.Qty] &lt;&gt; Null, Floor([SOPackageDetailEx.Qty]), '') +#010;'@20T1@1T' +#010;IIF([SOShipLine.FirstLotSerialNumber] &lt;&gt; Null, Left([SOShipLine.FirstLotSerialNumber], 4), '') +#010;'@2T@1Z@@'</ValueExpr>
+          <ValueExpr>='[)&gt;@06@12S0002@' +#010;IIF([SOLine.AlternateID] &lt;&gt; Null, [SOLine.AlternateID], '') +#010;'@1P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@31P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@12V' +#010;'ANTENOVA' +#010;'@10V' + #010;IIF([InventoryItem.MADEIN_Attributes] &lt;&gt; Null, [InventoryItem.MADEIN_Attributes], '') +#010;'@2P@20P@6D' +#010;IIF([SOShipLine.FirstLotSerialNumber] &lt;&gt; Null, Left([SOShipLine.FirstLotSerialNumber], 4), '') +#010;'@14D' +#010;$ExpiryDate_Year + $ExpiryDate_Weeks +#010;'@30PY@Z1@K' +#010;IIF([SOOrder.CustomerOrderNbr] &lt;&gt; Null, [SOOrder.CustomerOrderNbr], '') +#010;'@16K' +#010;IIF([SOOrder.OrderNbr] &lt;&gt; Null, [SOOrder.OrderNbr],'') +#010;'@V' +#010;'97179542' +#010;'@3S' +#010;IIF([SOShipment.ShipmentNbr] &lt;&gt; Null And [SOPackageDetailEx.CustomRefNbr1] &lt;&gt; Null, [SOShipment.ShipmentNbr] + [SOPackageDetailEx.CustomRefNbr1], '') +#010;'@Q' +#010;IIF([SOPackageDetailEx.Qty] &lt;&gt; Null, Floor([SOPackageDetailEx.Qty]), '') +#010;'@20T1@1T' +#010;IIF([SOShipLine.FirstLotSerialNumber] &lt;&gt; Null, Left([SOShipLine.FirstLotSerialNumber], 4), '') +#010;'@2T@1Z@@'</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -2413,7 +2413,7 @@
         <TextBox Name="textBox10">
           <Location>80px, 112px</Location>
           <Size>160px, 0.16667in</Size>
-          <Value>=[SOShipment.ShipmentNbr]</Value>
+          <Value>=[SOOrder.OrderNbr]</Value>
         </TextBox>
         <TextBox Name="textBox11">
           <Location>0px, 128px</Location>

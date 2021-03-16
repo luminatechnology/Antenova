@@ -261,7 +261,7 @@
       <DataField>SOShipment.ShipmentNbr</DataField>
     </SortExp>
   </Sorting>
-  <StylesTemplate>TemplateFormExternal.rpx</StylesTemplate>
+  <StylesTemplate>TemplateForm.rpx</StylesTemplate>
   <Tables>
     <ReportTable Name="BAccount">
       <Fields>
@@ -2774,7 +2774,7 @@
             <TextAlign>Left</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.InventoryID_description]</Value>
+          <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
         <TextBox Name="textBox14">
           <Format>='N2'</Format>
