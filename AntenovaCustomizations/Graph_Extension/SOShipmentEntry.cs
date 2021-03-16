@@ -18,6 +18,9 @@ namespace PX.Objects.SO
         public const string FDX = "FEDEX";
         public const string TNT = "TNT";
 
+        private const string _QTYINBOX = "QTYINBOX";
+        private const string _MADEIN = "MADEIN";
+
         public class QtyCartonAttr : PX.Data.BQL.BqlString.Constant<QtyCartonAttr>
         {
             public QtyCartonAttr() : base("QTYCARTON") { }
@@ -123,7 +126,7 @@ namespace PX.Objects.SO
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
-        
+
         #region Hana Outer Label - LM642011
         public PXAction<SOShipment> HanaOuterLabel;
         [PXButton]
@@ -297,18 +300,24 @@ namespace PX.Objects.SO
 
             PXLongOperation.StartOperation(Base, () =>
             {
-                InventoryItem _stockItem = SelectFrom<InventoryItem>.
-                                           Where<InventoryItem.inventoryID.IsEqual<P.AsInt>>.
-                                           View.Select(Base, _line.InventoryID);
+                var _stockItemInfo = GetStockInfo(_line.InventoryID.Value, _QTYINBOX);
+                var _itemCountry = GetStockInfo(_line.InventoryID.Value, _MADEIN);
+                var _shipLineSplit = new PXGraph().Select<SOShipLineSplit>().Where(x => x.ShipmentNbr == _line.ShipmentNbr && x.LineNbr == _line.LineNbr);
+
+                // Setting Box Weight
+                var boxsInfo = GetBoxsInfo(_line.InventoryID);
+                var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == (string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox))?.FirstOrDefault()?.BoxWeight ?? 0;
                 for (int i = 0; i < NuberOfPackages; i++)
                 {
                     this._IsAutoPacking = true;
                     SOPackageDetailEx _package = (SOPackageDetailEx)Base.Packages.Cache.CreateInstance();
-                    _package.InventoryID = _line.InventoryID;
+                    _package.ShipmentNbr = _line.ShipmentNbr;
                     _package.CustomRefNbr1 = (++_maxCartno).ToString().PadLeft(3, '0');
-                    _package.Weight = _QtyPerCarton * _stockItem?.BaseItemWeight / 1000;
+                    _package.Weight = _QtyPerCarton * _stockItemInfo.GetItem<InventoryItem>()?.BaseItemWeight / decimal.Parse(_stockItemInfo.GetItem<CSAnswers>()?.Value ?? "1");
+                    _package.GetExtension<SOPackageDetailExt>().UsrGrossWeight = _package.Weight + _boxWeight;
                     _package.Qty = _QtyPerCarton;
                     _package.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr = _line.LineNbr;
+                    //_package.GetExtension<SOPackageDetailExt>().UsrCountry = _itemCountry.GetItem<CSAnswers>()?.Value;
                     Base.Packages.Insert(_package);
                 }
                 Base.Save.Press();
@@ -330,17 +339,26 @@ namespace PX.Objects.SO
                 var _maxCartonNbr = GetMaxCartonNbr() + 1;
                 foreach (var _line in _shipLines.Where(x => x.GetExtension<SOShipLineExt>().UsrPackingQty > 0))
                 {
-                    InventoryItem _stockItem = SelectFrom<InventoryItem>.
-                                               Where<InventoryItem.inventoryID.IsEqual<P.AsInt>>.
-                                               View.Select(Base, _line.InventoryID);
-                    var _packingQty = _line.GetExtension<SOShipLineExt>().UsrPackingQty;
                     this._IsAutoPacking = true;
+
+                    var _stockItemInfo = GetStockInfo(_line.InventoryID.Value, _QTYINBOX);
+                    var _itemCountry = GetStockInfo(_line.InventoryID.Value, _MADEIN);
+                    var _shipLineSplit = new PXGraph().Select<SOShipLineSplit>().Where(x => x.ShipmentNbr == _line.ShipmentNbr && x.LineNbr == _line.LineNbr);
+
+                    //Setting Box Weight
+                    // Setting Box Weight
+                    var boxsInfo = GetBoxsInfo(_line.InventoryID);
+                    var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == (string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox))?.FirstOrDefault()?.BoxWeight ?? 0;
+
+                    var _packingQty = _line.GetExtension<SOShipLineExt>().UsrPackingQty;
                     SOPackageDetailEx _package = (SOPackageDetailEx)Base.Packages.Cache.CreateInstance();
-                    _package.InventoryID = _line.InventoryID;
+                    _package.ShipmentNbr = _line.ShipmentNbr;
                     _package.CustomRefNbr1 = _maxCartonNbr.ToString().PadLeft(3, '0');
-                    _package.Weight = _packingQty * _stockItem?.BaseItemWeight / 1000;
+                    _package.Weight = _packingQty * _stockItemInfo.GetItem<InventoryItem>()?.BaseItemWeight / decimal.Parse(_stockItemInfo.GetItem<CSAnswers>()?.Value ?? "1");
+                    _package.GetExtension<SOPackageDetailExt>().UsrGrossWeight = _package.Weight + _boxWeight;
                     _package.Qty = _packingQty;
                     _package.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr = _line.LineNbr;
+                    //_package.GetExtension<SOPackageDetailExt>().UsrCountry = _itemCountry.GetItem<CSAnswers>()?.Value;
                     Base.Packages.Insert(_package);
                 }
                 Base.Save.Press();
@@ -378,21 +396,45 @@ namespace PX.Objects.SO
                 {
 
                     Note note = (Note)pxResult1;
-                    if(note.NoteText.Length > 0)
+                    if (note.NoteText.Length > 0)
                         str += note.NoteText + "\n--------------------\n";
                 }
             }
             e.ReturnValue = (object)str;
         }
 
+        /// <summary> Get Country DDL </summary>
+        protected void _(Events.FieldSelecting<SOPackageDetailExt.usrCountry> e)
+        {
+            if (e.Row != null)
+            {
+                var ddl = new PXGraph().Select<CSAttributeDetail>()
+                                                .Where(x => x.AttributeID == "MADEIN");
+                PXStringListAttribute.SetList<SOPackageDetailExt.usrCountry>(
+                    e.Cache,
+                    e.Row,
+                    ddl.Select(x => x.ValueID).ToArray(),
+                    ddl.Select(x => x.Description).ToArray());
+            }
+        }
+
         /// <summary> SOPackageDetailExt_usrShipmentSplitLineNbr Updated Event </summary>
         protected virtual void _(Events.FieldUpdated<SOPackageDetailExt.usrShipmentSplitLineNbr> e)
         {
-            if (e.NewValue == null || this._IsAutoPacking)
+            if (e.NewValue == null)
                 return;
             var _shipLine = Base.Transactions.Cache.Cached.RowCast<SOShipLine>().Where(x => x.LineNbr == (int?)e.NewValue).SingleOrDefault();
-            e.Cache.SetValueExt<SOPackageDetail.qty>(e.Row, _shipLine.ShippedQty);
+            var _stockItemInfo = GetStockInfo(_shipLine.InventoryID.Value, _MADEIN);
+            var _shipLineSplit = new PXGraph().Select<SOShipLineSplit>().Where(x => x.ShipmentNbr == _shipLine.ShipmentNbr && x.LineNbr == _shipLine.LineNbr);
+            var boxsInfo = GetBoxsInfo(_shipLine.InventoryID);
+            e.Cache.SetValueExt<SOPackageDetailEx.boxID>(e.Row, string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox);
             e.Cache.SetValueExt<SOPackageDetail.inventoryID>(e.Row, _shipLine.InventoryID);
+            e.Cache.SetValueExt<SOPackageDetailExt.usrCountry>(e.Row, _stockItemInfo.GetItem<CSAnswers>()?.Value);
+            if (!this._IsAutoPacking)
+                e.Cache.SetValueExt<SOPackageDetail.qty>(e.Row, _shipLine.ShippedQty);
+            // if ShipLineSplit count == 1 then set value
+            if (_shipLineSplit.Count() == 1)
+                e.Cache.SetValueExt<SOPackageDetailExt.usrDateCode>(e.Row, _shipLineSplit.FirstOrDefault()?.LotSerialNbr);
         }
 
         /// <summary> SOPackageDetailEx_qty Updated Event </summary>
@@ -411,11 +453,29 @@ namespace PX.Objects.SO
             var row = (SOPackageDetailEx)e.Row;
 
             var _shipLine = Base.Transactions.Cache.Cached.RowCast<SOShipLine>().Where(x => x.LineNbr == _splitLineNbr).SingleOrDefault();
-            InventoryItem _stockItem = SelectFrom<InventoryItem>
-                             .Where<InventoryItem.inventoryID.IsEqual<P.AsInt>>
-                             .View.Select(Base, _shipLine.InventoryID);
-            var _qtyCarton = e.Cache.GetValueExt(e.Row, PX.Objects.CS.Messages.Attribute + "QTYCARTON") as PXFieldState;
-            e.Cache.SetValueExt<SOPackageDetail.weight>(e.Row, row.Qty * _stockItem.BaseItemWeight / 1000);
+            PXResult<InventoryItem, CSAnswers> _sotockItemData = GetStockInfo(_shipLine.InventoryID.Value, _QTYINBOX);
+            decimal _qtyInBox = 1;
+            try
+            {
+                _qtyInBox = decimal.Parse(_sotockItemData.GetItem<CSAnswers>()?.Value);
+            }
+            catch (Exception)
+            {
+                _qtyInBox = 1;
+            }
+
+            e.Cache.SetValueExt<SOPackageDetail.weight>(e.Row, row.Qty * _sotockItemData.GetItem<InventoryItem>().BaseItemWeight / _qtyInBox);
+        }
+
+        /// <summary> SOPackageDetailEx_weight Updated Event</summary>
+        protected void _(Events.FieldUpdated<SOPackageDetail.weight> e)
+        {
+            if (e.NewValue != null)
+            {
+                var row = (SOPackageDetailEx)e.Row;
+                var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == row.BoxID)?.FirstOrDefault()?.BoxWeight ?? 0;
+                e.Cache.SetValueExt<SOPackageDetailExt.usrGrossWeight>(e.Row, (decimal)e.NewValue + _boxWeight);
+            }
         }
 
         /// <summary> Verify Carton Nbr Is Numerical </summary>
@@ -435,6 +495,14 @@ namespace PX.Objects.SO
                 throw new PXSetPropertyException("Packing Qty cannot exceed Remaining Qty");
         }
 
+        /// <summary> SOPackageDetailEx_BoxID Defaulting </summary>
+        protected void _(Events.FieldDefaulting<SOPackageDetailEx.boxID> e)
+        {
+            var row = (SOPackageDetailEx)e.Row;
+            var boxsInfo = GetBoxsInfo(row.InventoryID);
+            e.NewValue = string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox;
+        }
+
         #endregion
 
         #region Method
@@ -446,7 +514,7 @@ namespace PX.Objects.SO
             var _PackageDetail = Base.Caches<SOPackageDetailEx>().Cached.RowCast<SOPackageDetailEx>();
             try
             {
-                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1,out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
+                return _PackageDetail.Any() ? _PackageDetail.Where(x => !string.IsNullOrEmpty(x.CustomRefNbr1) && int.TryParse(x.CustomRefNbr1, out result)).Max(x => int.Parse(x.CustomRefNbr1)) : 0;
             }
             catch (Exception)
             {
@@ -454,6 +522,23 @@ namespace PX.Objects.SO
             }
         }
 
+        /// <summary> Get StockItem Info </summary>
+        public PXResult<InventoryItem, CSAnswers> GetStockInfo(int InventoryID, string AttributeID)
+        {
+            return (PXResult<InventoryItem, CSAnswers>)SelectFrom<InventoryItem>
+                                                      .LeftJoin<CSAnswers>.On<InventoryItem.noteID.IsEqual<CSAnswers.refNoteID>
+                                                           .And<CSAnswers.attributeID.IsEqual<P.AsString>>>
+                                                      .Where<InventoryItem.inventoryID.IsEqual<P.AsInt>>
+                                                      .View.Select(Base, AttributeID, InventoryID);
+        }
+
+        /// <summary> Get sBoxID and stockItemBox </summary>
+        public (string sBoxID, string stockItemBox) GetBoxsInfo(int? InventoryID)
+        {
+            var _sboxID = new PXGraph().Select<CSBox>().FirstOrDefault()?.BoxID;
+            var _stockItemBoxID = new PXGraph().Select<INItemBoxEx>().Where(x => x.InventoryID == InventoryID).FirstOrDefault()?.BoxID;
+            return (_sboxID, _stockItemBoxID);
+        }
         #endregion
 
         #region Static Method

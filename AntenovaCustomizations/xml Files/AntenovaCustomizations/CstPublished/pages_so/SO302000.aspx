@@ -342,12 +342,14 @@
                                     <px:PXNumberEdit ID="PXNumberEdit6" runat="server" DataField="DeclaredValue" />
                                     <px:PXTextEdit ID="edTrackNumber" runat="server" DataField="TrackNumber" />
                                     <px:PXTextEdit ID="PXTextEdit1" runat="server" DataField="CustomRefNbr1" />
-                                    <px:PXTextEdit ID="PXTextEdit2" runat="server" DataField="CustomRefNbr2" />
+                                    <px:PXNumberEdit ID="PXnumberUsrEditGrossWeight" runat="server" DataField="UsrGrossWeight" />
+                                    <px:PXComboBox ID="comboUsrCountry" runat="server" DataField="UsrCountry"></px:PXComboBox>
                                     <px:PXTextEdit ID="PXTextEdit3" runat="server" DataField="Description" />
                                     <px:PXDropDown runat="server" ID="edType" DataField="PackageType"></px:PXDropDown>
                                     <px:PXDropDown runat="server" ID="edStampsAddOns" DataField="StampsAddOns" AllowMultiSelect="True" />
                                     <px:PXSelector runat="server" ID="sUsrShipmentSplitLineNbr" DataField="UsrShipmentSplitLineNbr" AllowEdit="true"></px:PXSelector>
                                     <px:PXSelector runat="server" ID="sInventoryID" DataField="InventoryID" AllowEdit="True"></px:PXSelector>
+                                    <px:PXSelector runat="server" ID="sUsrDateCode" DataField="UsrDateCode" AllowEdit="True" AutoRefresh="True" />
                                 </RowTemplate>
                                 <Columns>
                                     <px:PXGridColumn AllowNull="False" DataField="Confirmed" Label="Confired" TextAlign="Center" Type="CheckBox" />
@@ -361,7 +363,8 @@
                                     <px:PXGridColumn DataField="StampsAddOns" />
                                     <px:PXGridColumn DataField="TrackNumber" />
                                     <px:PXGridColumn DataField="CustomRefNbr1" MaxLength="60" />
-                                    <px:PXGridColumn DataField="CustomRefNbr2" MaxLength="60" />
+                                    <px:PXGridColumn DataField="UsrGrossWeight" MaxLength="60" NullText="0.0" />
+                                    <px:PXGridColumn DataField="UsrCountry" MaxLength="60" />
                                     <px:PXGridColumn DataField="ContentType" CommitChanges="True" />
                                     <px:PXGridColumn DataField="ContentTypeDesc" Multiline="True" />
                                     <px:PXGridColumn DataField="CertificateNumber" />
@@ -370,6 +373,7 @@
                                     <px:PXGridColumn DataField="Qty" CommitChanges="True" />
                                     <px:PXGridColumn DataField="UsrShipmentSplitLineNbr" CommitChanges="True" />
                                     <px:PXGridColumn DataField="InventoryID"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="UsrDateCode" />
                                 </Columns>
                             </px:PXGridLevel>
                         </Levels>

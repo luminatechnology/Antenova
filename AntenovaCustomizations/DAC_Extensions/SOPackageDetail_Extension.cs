@@ -18,12 +18,6 @@ namespace PX.Objects.SO
         public virtual string CustomRefNbr1 { get; set; }
         public abstract class customRefNbr1 : BqlString.Field<customRefNbr1> { }
 
-        [PXDBString(30, IsUnicode = true)]
-        [PXUIField(DisplayName = "Gross Weight")]
-        [PXFormula(typeof(Add<SOPackageDetail.weight, decimal1>))]
-        public virtual string CustomRefNbr2 { get; set; }
-        public abstract class customRefNbr2 : BqlString.Field<customRefNbr2> { }
-
         [PXDBQuantity]
         [PXDefault(TypeCode.Decimal, "0.0", PersistingCheck = PXPersistingCheck.Nothing)]
         [PXUIField(DisplayName = "Qty", Enabled = true)]
@@ -31,11 +25,34 @@ namespace PX.Objects.SO
         public abstract class qty : BqlDecimal.Field<qty> { }
 
         [PXDBString(15, IsUnicode = true)]
-        [PXDefault(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
-        //[PXDefault]
+        //[PXDefault(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
+        [PXDefault]
         [PXSelector(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
         [PXUIField(DisplayName = "Box ID")]
         public virtual string BoxID { get; set; }
+
+        [PXDBDecimal]
+        [PXUIField(DisplayName = "Gross Weight")]
+        public virtual decimal? UsrGrossWeight { get; set; }
+        public abstract class usrGrossWeight : BqlDecimal.Field<usrGrossWeight> { }
+
+        [PXDBString(50)]
+        [PXUIField(DisplayName = "Country")]
+        [PXStringList()]
+        public virtual string UsrCountry { get; set; }
+        public abstract class usrCountry : BqlString.Field<usrCountry> { }
+
+        [PXDBString(50)]
+        [PXUIField(DisplayName = "Date Code")]
+        [PXSelector(typeof(Search<SOShipLineSplit.lotSerialNbr,
+                           Where<SOShipLineSplit.shipmentNbr, Equal<Optional<SOPackageDetail.shipmentNbr>>,
+                             And<SOShipLineSplit.lineNbr, Equal<Optional<SOPackageDetailExt.usrShipmentSplitLineNbr>>>>>),
+                    typeof(SOShipLineSplit.inventoryID),
+                    typeof(SOShipLineSplit.lotSerialNbr),
+                    typeof(SOShipLineSplit.qty),
+                    typeof(SOShipLineSplit.expireDate), DirtyRead = false)]
+        public virtual string UsrDateCode { get; set; }
+        public abstract class usrDateCode : BqlString.Field<usrDateCode> { }
 
         [PXDBInt]
         [PXUIField(DisplayName = "Shipment Split Line Nbr")]
