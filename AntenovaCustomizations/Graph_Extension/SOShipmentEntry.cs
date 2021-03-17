@@ -50,6 +50,7 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(StandardOuterLabel1);
             Base.report.AddMenuAction(StandardOuterLabel2);
             Base.report.AddMenuAction(BoschLabel);
+            Base.report.AddMenuAction(WNCLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -300,13 +301,30 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Standard Outer Label 2 - LM642018
+        #region Bosch Label - LM642018
         public PXAction<SOShipment> BoschLabel;
         [PXButton]
         [PXUIField(DisplayName = "Print Bosch Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable boschLabel(PXAdapter adapter)
         {
             var _reportID = "LM642018";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region WNC Label - LM642019
+        public PXAction<SOShipment> WNCLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print WNC Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable wNCLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642019";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
