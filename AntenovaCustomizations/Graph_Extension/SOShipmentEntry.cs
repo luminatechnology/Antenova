@@ -37,6 +37,9 @@ namespace PX.Objects.SO
             base.Initialize();
             Base.report.AddMenuAction(COCReport);
             Base.report.AddMenuAction(PackingList);
+            Base.report.AddMenuAction(TaiwanPackingList);
+            Base.report.AddMenuAction(UKPackingList);
+            Base.report.AddMenuAction(SignaturePackingList);
             Base.report.AddMenuAction(GeneralOuterLabel);
             Base.report.AddMenuAction(HanaOuterLabel);
             Base.report.AddMenuAction(AngliaOuterLabel);
@@ -100,6 +103,57 @@ namespace PX.Objects.SO
         protected virtual IEnumerable packingList(PXAdapter adapter)
         {
             var _reportID = "LM642005";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Taiwan Packing List - LM642006
+        public PXAction<SOShipment> TaiwanPackingList;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Taiwan Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable taiwanpackingList(PXAdapter adapter)
+        {
+            var _reportID = "LM642006";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region UK Packing List - LM642007
+        public PXAction<SOShipment> UKPackingList;
+        [PXButton]
+        [PXUIField(DisplayName = "Print UK Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable uKpackingList(PXAdapter adapter)
+        {
+            var _reportID = "LM642007";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Signature Packing List - LM642008
+        public PXAction<SOShipment> SignaturePackingList;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Signature Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable signaturepackingList(PXAdapter adapter)
+        {
+            var _reportID = "LM642008";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
