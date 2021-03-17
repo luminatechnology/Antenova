@@ -2787,7 +2787,7 @@
         </ReportVariable>
         <ReportVariable>
           <Name>ProductionDayOfWeek</Name>
-          <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOShipLine.FirstLotSerialNumber], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOShipLine.FirstLotSerialNumber], 2, 2))) * 7))</ValueExpr>
+          <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7))</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>

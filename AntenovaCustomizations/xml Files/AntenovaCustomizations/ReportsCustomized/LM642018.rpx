@@ -2507,7 +2507,7 @@
               <Size>10px</Size>
             </Font>
           </Style>
-          <Value>='Add info: ' + '{br}' + #010;'Date Code: ' + Left([SOShipLine.FirstLotSerialNumber], 4) + '             Expiry Date: ' + $ExpiryDate_Year + $ExpiryDate_Weeks + '{br}' + #010;'Man. Loc: ' + [SOPackageDetailEx.UsrCountry]</Value>
+          <Value>='Add info: ' + '{br}' + #010;'Date Code: ' + Left([SOPackageDetailEx.UsrDateCode], 4) + '             Expiry Date: ' + $ExpiryDate_Year + $ExpiryDate_Weeks + '{br}' + #010;'Man. Loc: ' + [SOPackageDetailEx.UsrCountry]</Value>
         </TextBox>
         <TextBox Name="textBox7">
           <Location>0px, 96px</Location>
