@@ -286,39 +286,27 @@ namespace PX.Objects.SO
         [PXUIField(DisplayName = "Auto Packaging", MapEnableRights = PXCacheRights.Select, MapViewRights = PXCacheRights.Select)]
         public virtual IEnumerable AutoPackaging(PXAdapter adapter)
         {
-            int parseResult = 0;
+            decimal parseResult = 0;
             var _maxCartno = GetMaxCartonNbr();
-
             SOShipLine _line = (SOShipLine)Base.Transactions.Cache.Current;
-            var _QtyPerCarton = int.TryParse(_line.GetExtension<SOShipLineExt>().QtyPerCarton, out parseResult) ? parseResult : 0;
+            var _QtyPerCarton = decimal.TryParse(_line.GetExtension<SOShipLineExt>().QtyPerCarton, out parseResult) ? parseResult : 0;
             // valid QtyPerCarton
             if (_QtyPerCarton == 0)
                 throw new PXException("Qty per carton Can not be null or 0");
 
-            var NuberOfPackages = Math.Floor((_line.GetExtension<SOShipLineExt>().RemainingQty.Value / _QtyPerCarton));
-
+            var NumberOfPackages = Math.Floor((_line.GetExtension<SOShipLineExt>().RemainingQty.Value / _QtyPerCarton));
 
             PXLongOperation.StartOperation(Base, () =>
             {
-                var _stockItemInfo = GetStockInfo(_line.InventoryID.Value, _QTYINBOX);
-                var _itemCountry = GetStockInfo(_line.InventoryID.Value, _MADEIN);
-                var _shipLineSplit = new PXGraph().Select<SOShipLineSplit>().Where(x => x.ShipmentNbr == _line.ShipmentNbr && x.LineNbr == _line.LineNbr);
-
-                // Setting Box Weight
-                var boxsInfo = GetBoxsInfo(_line.InventoryID);
-                var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == (string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox))?.FirstOrDefault()?.BoxWeight ?? 0;
-                for (int i = 0; i < NuberOfPackages; i++)
+                for (int i = 0; i < NumberOfPackages; i++)
                 {
                     this._IsAutoPacking = true;
-                    SOPackageDetailEx _package = (SOPackageDetailEx)Base.Packages.Cache.CreateInstance();
-                    _package.ShipmentNbr = _line.ShipmentNbr;
-                    _package.CustomRefNbr1 = (++_maxCartno).ToString().PadLeft(3, '0');
-                    _package.Weight = _QtyPerCarton * _stockItemInfo.GetItem<InventoryItem>()?.BaseItemWeight / decimal.Parse(_stockItemInfo.GetItem<CSAnswers>()?.Value ?? "1");
-                    _package.GetExtension<SOPackageDetailExt>().UsrGrossWeight = _package.Weight + _boxWeight;
-                    _package.Qty = _QtyPerCarton;
-                    _package.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr = _line.LineNbr;
-                    //_package.GetExtension<SOPackageDetailExt>().UsrCountry = _itemCountry.GetItem<CSAnswers>()?.Value;
-                    Base.Packages.Insert(_package);
+                    Base.Packages.Insert((SOPackageDetailEx)Base.Packages.Cache.CreateInstance());
+                    SOPackageDetailEx _package = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().ElementAt(i);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetail.shipmentNbr>(_package, _line.ShipmentNbr);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetailEx.customRefNbr1>(_package, (++_maxCartno).ToString().PadLeft(3, '0'));
+                    Base.Packages.Cache.SetValueExt<SOPackageDetailExt.usrShipmentSplitLineNbr>(_package, _line.LineNbr);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetail.qty>(_package, _QtyPerCarton);
                 }
                 Base.Save.Press();
             });
@@ -336,30 +324,17 @@ namespace PX.Objects.SO
                 throw new PXException("Packing Qty cannot exceed Remaining Qty");
             PXLongOperation.StartOperation(Base, () =>
             {
+                int  pointer = 0;
                 var _maxCartonNbr = GetMaxCartonNbr() + 1;
                 foreach (var _line in _shipLines.Where(x => x.GetExtension<SOShipLineExt>().UsrPackingQty > 0))
                 {
                     this._IsAutoPacking = true;
-
-                    var _stockItemInfo = GetStockInfo(_line.InventoryID.Value, _QTYINBOX);
-                    var _itemCountry = GetStockInfo(_line.InventoryID.Value, _MADEIN);
-                    var _shipLineSplit = new PXGraph().Select<SOShipLineSplit>().Where(x => x.ShipmentNbr == _line.ShipmentNbr && x.LineNbr == _line.LineNbr);
-
-                    //Setting Box Weight
-                    // Setting Box Weight
-                    var boxsInfo = GetBoxsInfo(_line.InventoryID);
-                    var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == (string.IsNullOrEmpty(boxsInfo.stockItemBox) ? boxsInfo.sBoxID : boxsInfo.stockItemBox))?.FirstOrDefault()?.BoxWeight ?? 0;
-
-                    var _packingQty = _line.GetExtension<SOShipLineExt>().UsrPackingQty;
-                    SOPackageDetailEx _package = (SOPackageDetailEx)Base.Packages.Cache.CreateInstance();
-                    _package.ShipmentNbr = _line.ShipmentNbr;
-                    _package.CustomRefNbr1 = _maxCartonNbr.ToString().PadLeft(3, '0');
-                    _package.Weight = _packingQty * _stockItemInfo.GetItem<InventoryItem>()?.BaseItemWeight / decimal.Parse(_stockItemInfo.GetItem<CSAnswers>()?.Value ?? "1");
-                    _package.GetExtension<SOPackageDetailExt>().UsrGrossWeight = _package.Weight + _boxWeight;
-                    _package.Qty = _packingQty;
-                    _package.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr = _line.LineNbr;
-                    //_package.GetExtension<SOPackageDetailExt>().UsrCountry = _itemCountry.GetItem<CSAnswers>()?.Value;
-                    Base.Packages.Insert(_package);
+                    Base.Packages.Insert((SOPackageDetailEx)Base.Packages.Cache.CreateInstance());
+                    SOPackageDetailEx _package = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().ElementAt(pointer++);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetail.shipmentNbr>(_package, _line.ShipmentNbr);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetailEx.customRefNbr1>(_package, _maxCartonNbr.ToString().PadLeft(3, '0'));
+                    Base.Packages.Cache.SetValueExt<SOPackageDetailExt.usrShipmentSplitLineNbr>(_package, _line.LineNbr);
+                    Base.Packages.Cache.SetValueExt<SOPackageDetail.qty>(_package, _line.GetExtension<SOShipLineExt>().UsrPackingQty);
                 }
                 Base.Save.Press();
             });
