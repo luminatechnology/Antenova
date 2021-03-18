@@ -10,7 +10,7 @@
 	</px:PXDataSource>
 </asp:Content>
 <asp:Content ID="cont2" ContentPlaceHolderID="phL" runat="Server">
-	<px:PXGrid PreservePageIndex="True" ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Primary" AllowAutoHide="false">
+	<px:PXGrid AllowSearch="True" FastFilterFields="InventoryID,LotSerialNbr,InventoryID_description" PreservePageIndex="True" ID="grid" runat="server" DataSourceID="ds" Width="100%" Height="150px" SkinID="Primary" AllowAutoHide="false">
 		<Levels>
 			<px:PXGridLevel DataMember="ItemLotSerial">
 			    <Columns>
@@ -24,7 +24,7 @@
 		</Levels>
 		<AutoSize Container="Window" Enabled="True" MinHeight="150" ></AutoSize>
 		<ActionBar PagerVisible="Bottom" >
-			<PagerSettings Mode="NumericCompact" />
+			<PagerSettings Mode="NumericCompact" ></PagerSettings>
 		</ActionBar>
 	
 		<Mode AllowAddNew="False" ></Mode>
