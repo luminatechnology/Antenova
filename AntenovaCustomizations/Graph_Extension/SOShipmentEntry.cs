@@ -45,6 +45,7 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(AngliaOuterLabel);
             Base.report.AddMenuAction(GlobalEMSOuterLabel);
             Base.report.AddMenuAction(USIOuterLabel);
+            Base.report.AddMenuAction(USIInnerLabel);
             Base.report.AddMenuAction(SanminaOuterLabel);
             Base.report.AddMenuAction(SanminaInnerLabel);
             Base.report.AddMenuAction(StandardOuterLabel1);
@@ -244,8 +245,20 @@ namespace PX.Objects.SO
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
             };
+            // Checking each DateCode
             if (parameters["ShipmentNbr"] != null)
-                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
@@ -312,8 +325,20 @@ namespace PX.Objects.SO
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
             };
+            // Checking each DateCode
             if (parameters["ShipmentNbr"] != null)
-                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
@@ -342,6 +367,23 @@ namespace PX.Objects.SO
         protected virtual IEnumerable sanminaInnerLabel(PXAdapter adapter)
         {
             var _reportID = "LM642020";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region USI Inner Label - LM642021
+        public PXAction<SOShipment> USIInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print USI Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable uSIInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642021";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr

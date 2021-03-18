@@ -11,9 +11,6 @@
   </Filters>
   <PageSettings>
     <Margins>
-      <Bottom>0cm</Bottom>
-      <Left>1cm</Left>
-      <Right>0.8cm</Right>
       <Top>0cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -2776,7 +2773,7 @@
       <Height>0in</Height>
       <Visible>False</Visible>
     </PageHeader>
-    <Detail Name="WNCOuterLabel">
+    <Detail Name="USIInnerLabel">
       <Height>4cm</Height>
       <Style>
         <Font>
@@ -2789,8 +2786,8 @@
           <ValueExpr>= 1 + $CurrentPage</ValueExpr>
         </ReportVariable>
         <ReportVariable>
-          <Name>QRCodeValue</Name>
-          <ValueExpr>='RLC1082835' + Substring(Year([SOShipment.ShipDate]), 2, 2) + PadLeft(CStr(Month([SOShipment.ShipDate])), 2, '0') + PadLeft(CStr(Day([SOShipment.ShipDate])), 2, '0') + '00' + [SOPackageDetailEx.CustomRefNbr1] + ',' + [SOLine.AlternateID] + '-1082835,' + Left([SOPackageDetailEx.UsrDateCode], 4) + '-ANTENOVA,'+ Left([SOPackageDetailEx.UsrDateCode], 4) + ',' + CInt([SOPackageDetailEx.Qty])</ValueExpr>
+          <Name>ProductionDayOfWeek</Name>
+          <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7))</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -2799,63 +2796,58 @@
           <Location>4px, 0px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>276px, 16px</Size>
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>='RLC1082835' + Substring(Year([SOShipment.ShipDate]), 2, 2) + PadLeft(CStr(Month([SOShipment.ShipDate])), 2, '0') + PadLeft(CStr(Day([SOShipment.ShipDate])), 2, '0') + '00' + [SOPackageDetailEx.CustomRefNbr1]</Value>
+          <Value>=[SOLine.AlternateID]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox2">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 38px</Location>
+          <Location>4px, 36px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>244px, 16px</Size>
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=[SOLine.AlternateID] + '-1082835'</Value>
+          <Value>Antenova</Value>
         </PictureBox>
         <PictureBox Name="pictureBox3">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 76px</Location>
+          <Location>4px, 72px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>172px, 16px</Size>
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=[SOPackageDetailEx.UsrDateCode] + '-ANTENOVA'</Value>
+          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox4">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 130px</Location>
+          <Location>4px, 112px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>148px, 16px</Size>
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Style>
-            <VerticalAlign>Top</VerticalAlign>
-          </Style>
           <Value>=[SOPackageDetailEx.Qty]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
-          <BarcodeType>QRCode</BarcodeType>
-          <Location>288px, 16px</Location>
+          <BarcodeType>Code128</BarcodeType>
+          <Location>216px, 0px</Location>
           <MimeType>image/bmp</MimeType>
-          <QRCodeSettings>
-            <CodeSize>86</CodeSize>
-          </QRCodeSettings>
-          <Size>88px, 88px</Size>
+          <QRCodeSettings />
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=$QRCodeValue</Value>
+          <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox6">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 104px</Location>
+          <Location>216px, 36px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>148px, 16px</Size>
+          <Size>136px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
+          <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
         </PictureBox>
         <TextBox Name="textBox1">
-          <Location>8px, 16px</Location>
-          <Size>208px, 10px</Size>
+          <Location>8px, 24px</Location>
+          <Size>24px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
@@ -2864,128 +2856,10 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>='RLC1082835' + Substring(Year([SOShipment.ShipDate]), 2, 2) + PadLeft(CStr(Month([SOShipment.ShipDate])), 2, '0') + PadLeft(CStr(Day([SOShipment.ShipDate])), 2, '0') + '00' + [SOPackageDetailEx.CustomRefNbr1]</Value>
+          <Value>P/N: </Value>
         </TextBox>
         <TextBox Name="textBox10">
-          <Location>64px, 26px</Location>
-          <Size>136px, 12px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOLine.AlternateID] + '-1082835'</Value>
-        </TextBox>
-        <TextBox Name="textBox11">
-          <Location>8px, 26px</Location>
-          <Size>56px, 12px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>WNC PN+VC:</Value>
-        </TextBox>
-        <TextBox Name="textBox13">
-          <Location>8px, 64px</Location>
-          <Size>48px, 12px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>D/C+Brand: </Value>
-        </TextBox>
-        <TextBox Name="textBox14">
-          <Location>288px, 104px</Location>
-          <Size>88px, 40px</Size>
-          <Style>
-            <Font>
-              <Size>26px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>RoHS</Value>
-        </TextBox>
-        <TextBox Name="textBox2">
-          <Location>8px, 120px</Location>
-          <Size>24px, 10px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Bottom</VerticalAlign>
-          </Style>
-          <Value>QTY: </Value>
-        </TextBox>
-        <TextBox Name="textBox3">
-          <Location>8px, 54px</Location>
-          <Size>192px, 10px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.InventoryID_description]</Value>
-        </TextBox>
-        <TextBox Name="textBox5">
-          <Format>='N0'</Format>
-          <Location>32px, 120px</Location>
-          <Size>80px, 10px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Bottom</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.Qty]</Value>
-        </TextBox>
-        <TextBox Name="textBox7">
-          <Location>8px, 92px</Location>
-          <Size>32px, 12px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>LOT No: </Value>
-        </TextBox>
-        <TextBox Name="textBox8">
-          <Location>56px, 64px</Location>
-          <Size>104px, 12px</Size>
-          <Style>
-            <Font>
-              <Size>8px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Left</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>=[SOPackageDetailEx.UsrDateCode] + '-ANTENOVA'</Value>
-        </TextBox>
-        <TextBox Name="textBox9">
-          <Location>40px, 92px</Location>
+          <Location>256px, 24px</Location>
           <Size>80px, 12px</Size>
           <Style>
             <Font>
@@ -2995,7 +2869,165 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
+          <Value>=[SOPackageDetailEx.InventoryID]</Value>
+        </TextBox>
+        <TextBox Name="textBox11">
+          <Location>224px, 60px</Location>
+          <Size>32px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>Date: </Value>
+        </TextBox>
+        <TextBox Name="textBox12">
+          <Format>yyyyMMdd</Format>
+          <Location>256px, 60px</Location>
+          <Size>104px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
+        </TextBox>
+        <TextBox Name="textBox13">
+          <Location>8px, 96px</Location>
+          <Size>24px, 16px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>LOT: </Value>
+        </TextBox>
+        <TextBox Name="textBox14">
+          <Location>224px, 88px</Location>
+          <Size>56px, 32px</Size>
+          <Style>
+            <Font>
+              <Size>20px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>BOX</Value>
+        </TextBox>
+        <TextBox Name="textBox2">
+          <Location>8px, 136px</Location>
+          <Size>24px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>QTY: </Value>
+        </TextBox>
+        <TextBox Name="textBox3">
+          <Location>8px, 60px</Location>
+          <Size>40px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>Vendor: </Value>
+        </TextBox>
+        <TextBox Name="textBox4">
+          <Location>32px, 24px</Location>
+          <Size>88px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>=[SOLine.AlternateID]</Value>
+        </TextBox>
+        <TextBox Name="textBox5">
+          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Location>32px, 136px</Location>
+          <Size>48px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Center</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>=[SOPackageDetailEx.Qty]</Value>
+        </TextBox>
+        <TextBox Name="textBox6">
+          <Location>48px, 60px</Location>
+          <Size>48px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>Antenova</Value>
+        </TextBox>
+        <TextBox Name="textBox7">
+          <Location>80px, 136px</Location>
+          <Size>40px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+        </TextBox>
+        <TextBox Name="textBox8">
+          <Location>32px, 96px</Location>
+          <Size>80px, 16px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
+        </TextBox>
+        <TextBox Name="textBox9">
+          <Location>224px, 24px</Location>
+          <Size>32px, 12px</Size>
+          <Style>
+            <Font>
+              <Size>8px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>MPN: </Value>
         </TextBox>
       </Items>
     </Detail>
