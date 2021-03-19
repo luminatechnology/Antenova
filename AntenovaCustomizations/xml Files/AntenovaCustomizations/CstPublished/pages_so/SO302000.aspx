@@ -353,7 +353,7 @@
                                 </RowTemplate>
                                 <Columns>
                                     <px:PXGridColumn AllowNull="False" DataField="Confirmed" Label="Confired" TextAlign="Center" Type="CheckBox" />
-                                    <px:PXGridColumn DataField="BoxID" DisplayFormat="&gt;aaaaaaaaaaaaaaa" Label="Box ID" />
+                                    <px:PXGridColumn DataField="BoxID" DisplayFormat="&gt;aaaaaaaaaaaaaaa" Label="Box ID" CommitChanges="True" />
                                     <px:PXGridColumn DataField="PackageType" Type="DropDownList" />
                                     <px:PXGridColumn AutoGenerateOption="NotSet" DataField="Description" MaxLength="30" />
                                     <px:PXGridColumn AllowNull="False" DataField="Weight" TextAlign="Right" CommitChanges="True" />
