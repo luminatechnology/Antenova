@@ -1,4 +1,4 @@
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -56,12 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC_Extensions\INItemLotSerialExtensions.cs" />
     <Compile Include="DAC_Extensions\INSiteStatusExtensions.cs" />
     <Compile Include="DAC_Extensions\SOPackageDetail_Extension.cs" />
     <Compile Include="DAC_Extensions\SOShipLineExtensions.cs" />
     <Compile Include="DAC_Extensions\SOShipmentExtensions.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
     <Compile Include="Graph_Extension\SOInvoiceEntry.cs" />
+    <Compile Include="LUMItemLotSerFileMaint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

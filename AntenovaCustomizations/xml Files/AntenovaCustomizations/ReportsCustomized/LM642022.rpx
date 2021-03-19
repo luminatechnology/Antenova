@@ -14,7 +14,7 @@
       <Bottom>1cm</Bottom>
       <Left>0.6cm</Left>
       <Right>0.6cm</Right>
-      <Top>0cm</Top>
+      <Top>0.2cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
     <PaperSize>96mm, 58mm</PaperSize>
@@ -25,6 +25,11 @@
       <Prompt>Shipment Nbr.</Prompt>
       <Required>True</Required>
       <ViewName>=Report.GetFieldSchema('SOShipment.ShipmentNbr')</ViewName>
+    </ReportParameter>
+    <ReportParameter>
+      <DefaultValue>MADEIN</DefaultValue>
+      <Name>Parameter_MadeIn</Name>
+      <Visible>False</Visible>
     </ReportParameter>
   </Parameters>
   <Relations>
@@ -121,6 +126,20 @@
         </RelationRow>
       </Links>
       <ParentName>SOOrder</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>CSAttributeDetail</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>ValueID</ChildField>
+          <ParentField>UsrCountry</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>@Parameter_MadeIn</ChildField>
+          <ParentField>CSAttributeDetail.AttributeID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOPackageDetailEx</ParentName>
     </ReportRelation>
   </Relations>
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
@@ -2366,15 +2385,61 @@
       </Fields>
       <FullName>PX.Objects.SO.SOPackageDetailEx</FullName>
     </ReportTable>
+    <ReportTable Name="CSAttributeDetail">
+      <Fields>
+        <ReportField Name="AttributeID"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="Disabled">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="SortOrder">
+          <DataType>Int16</DataType>
+        </ReportField>
+        <ReportField Name="tstamp"></ReportField>
+        <ReportField Name="ValueID"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.CS.CSAttributeDetail</FullName>
+    </ReportTable>
   </Tables>
-  <Width>9.6cm</Width>
+  <Width>96mm</Width>
   <Sections>
     <PageHeader Name="pageHeaderSection1">
       <Height>0in</Height>
       <Visible>False</Visible>
     </PageHeader>
-    <Detail Name="BoschOuterLabel">
-      <Height>5.8cm</Height>
+    <Detail Name="TelcomOuterLabel">
+      <Height>58mm</Height>
       <Style>
         <Font>
           <Size>26px</Size>
@@ -2386,143 +2451,138 @@
           <ValueExpr>= 1 + $CurrentPage</ValueExpr>
         </ReportVariable>
         <ReportVariable>
-          <Name>ExpiryDate_Year</Name>
-          <ValueExpr>=CInt(Left([SOPackageDetailEx.UsrDateCode], 2)) + Floor((CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2)) + 72) / 52)</ValueExpr>
-        </ReportVariable>
-        <ReportVariable>
-          <Name>ExpiryDate_Weeks</Name>
-          <ValueExpr>=PadLeft(CStr(((CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2)) + 72) % 52)), 2, '0')</ValueExpr>
+          <Name>BarCodeValue</Name>
+          <ValueExpr>=[SOLine.AlternateID] + [SOPackageDetailEx.Qty] + 'BATV-ATV' + Substring(Year(Today()), 2, 2) + Month(Today()) + Day(Today()) + '00' + [SOPackageDetailEx.CustomRefNbr1] + [CSAttributeDetail.Description]</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>
-          <ValueExpr>='[)&gt;@06@12S0002@' +#010;IIF([SOLine.AlternateID] &lt;&gt; Null, [SOLine.AlternateID], '') +#010;'@1P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@31P' +#010;IIF([SOPackageDetailEx.InventoryID] &lt;&gt; Null, [SOPackageDetailEx.InventoryID], '') +#010;'@12V' +#010;'ANTENOVA' +#010;'@10V' + #010;IIF([SOPackageDetailEx.UsrCountry] &lt;&gt; Null, [SOPackageDetailEx.UsrCountry], '') +#010;'@2P@20P@6D' +#010;IIF([SOPackageDetailEx.UsrDateCode] &lt;&gt; Null, Left([SOPackageDetailEx.UsrDateCode], 4), '') +#010;'@14D' +#010;$ExpiryDate_Year + $ExpiryDate_Weeks +#010;'@30PY@Z1@K' +#010;IIF([SOOrder.CustomerOrderNbr] &lt;&gt; Null, [SOOrder.CustomerOrderNbr], '') +#010;'@16K' +#010;IIF([SOOrder.OrderNbr] &lt;&gt; Null, [SOOrder.OrderNbr],'') +#010;'@V' +#010;'97179542' +#010;'@3S' +#010;IIF([SOShipment.ShipmentNbr] &lt;&gt; Null And [SOPackageDetailEx.CustomRefNbr1] &lt;&gt; Null, [SOShipment.ShipmentNbr] + [SOPackageDetailEx.CustomRefNbr1], '') +#010;'@Q' +#010;IIF([SOPackageDetailEx.Qty] &lt;&gt; Null, Floor([SOPackageDetailEx.Qty]), '') +#010;'@20T1@1T' +#010;IIF([SOPackageDetailEx.UsrDateCode] &lt;&gt; Null, Left([SOPackageDetailEx.UsrDateCode], 4), '') +#010;'@2T@1Z@@'</ValueExpr>
+          <ValueExpr>=[SOLine.AlternateID] + ';' + Left([SOPackageDetailEx.UsrDateCode], 4) + ';' + 'ATV-ATV' + ';' + Left([SOPackageDetailEx.UsrDateCode], 4) + ';' + [SOPackageDetailEx.Qty] + ';' + [SOPackageDetailEx.InventoryID_description] + ';' + 'BATV-ATV' + Substring(Year(Today()), 2, 2) + Month(Today()) + Day(Today()) + '00' + [SOPackageDetailEx.CustomRefNbr1] + [CSAttributeDetail.Description] + ';' + 'Made in' + [SOPackageDetailEx.UsrCountry] + ';' + [SOPackageDetailEx.InventoryID]</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
         <PictureBox Name="pictureBox1">
           <BarcodeType>QRCode</BarcodeType>
-          <Location>0px, 8px</Location>
+          <Location>256px, 16px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings>
             <CodeSize>86</CodeSize>
           </QRCodeSettings>
-          <Size>88px, 88px</Size>
+          <Size>168px, 160px</Size>
           <Source>Barcode</Source>
           <Value>=$QRCodeValue</Value>
         </PictureBox>
+        <PictureBox Name="pictureBox6">
+          <BarcodeType>Code128</BarcodeType>
+          <Location>0px, 176px</Location>
+          <MimeType>image/bmp</MimeType>
+          <QRCodeSettings />
+          <Size>360px, 24px</Size>
+          <Source>Barcode</Source>
+          <Value>=$BarCodeValue</Value>
+        </PictureBox>
         <TextBox Name="textBox1">
-          <Location>88px, 8px</Location>
-          <Size>80px, 0.16667in</Size>
-          <Value>Part Number: </Value>
+          <Location>0px, 0px</Location>
+          <Size>208px, 0.16667in</Size>
+          <Value>Company: ANTENOVA LIMITED</Value>
         </TextBox>
         <TextBox Name="textBox10">
-          <Location>80px, 112px</Location>
+          <Location>64px, 96px</Location>
           <Size>160px, 0.16667in</Size>
-          <Value>=[SOOrder.OrderNbr]</Value>
+          <Value>='BATV-ATV' + Substring(Year(Today()), 2, 2) + Month(Today()) + Day(Today()) + '00' + [SOPackageDetailEx.CustomRefNbr1] + [CSAttributeDetail.Description]</Value>
         </TextBox>
         <TextBox Name="textBox11">
-          <Location>0px, 128px</Location>
-          <Size>56px, 0.16667in</Size>
-          <Value>Purchase: </Value>
+          <Location>0px, 112px</Location>
+          <Size>64px, 0.16667in</Size>
+          <Value>Lot Code : </Value>
         </TextBox>
         <TextBox Name="textBox12">
-          <Location>56px, 128px</Location>
-          <Size>184px, 0.16667in</Size>
-          <Value>=[SOOrder.CustomerOrderNbr]</Value>
+          <Location>64px, 112px</Location>
+          <Size>160px, 0.16667in</Size>
+          <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
         </TextBox>
         <TextBox Name="textBox13">
-          <Location>0px, 144px</Location>
-          <Size>256px, 0.16667in</Size>
-          <Value>Supplier: Antenova Ltd</Value>
-        </TextBox>
-        <TextBox Name="textBox14">
-          <Location>272px, 176px</Location>
-          <Size>88px, 40px</Size>
-          <Style>
-            <Font>
-              <Size>26px</Size>
-              <Style>Bold</Style>
-            </Font>
-            <TextAlign>Center</TextAlign>
-            <VerticalAlign>Middle</VerticalAlign>
-          </Style>
-          <Value>RoHS</Value>
+          <Location>0px, 128px</Location>
+          <Size>40px, 0.16667in</Size>
+          <Value>Spec :</Value>
         </TextBox>
         <TextBox Name="textBox15">
-          <Location>0px, 160px</Location>
-          <Size>256px, 0.16667in</Size>
-          <Value>Supplier ID: 97179542</Value>
+          <Location>0px, 144px</Location>
+          <Size>56px, 0.16667in</Size>
+          <Value>Mfg Site :</Value>
         </TextBox>
         <TextBox Name="textBox16">
-          <Location>0px, 176px</Location>
-          <Size>72px, 0.16667in</Size>
-          <Value>Package ID: </Value>
+          <Location>0px, 160px</Location>
+          <Size>64px, 0.16667in</Size>
+          <Value>Remarks :</Value>
         </TextBox>
         <TextBox Name="textBox17">
-          <Location>72px, 176px</Location>
+          <Location>64px, 160px</Location>
           <Size>168px, 0.16667in</Size>
-          <Value>=[SOShipment.ShipmentNbr] + [SOPackageDetailEx.CustomRefNbr1]</Value>
-        </TextBox>
-        <TextBox Name="textBox18">
-          <Location>0px, 192px</Location>
-          <Size>80px, 0.16667in</Size>
-          <Value>Man. Part-No: </Value>
-        </TextBox>
-        <TextBox Name="textBox19">
-          <Location>80px, 192px</Location>
-          <Size>160px, 0.16667in</Size>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
-        <TextBox Name="textBox2">
-          <Location>168px, 8px</Location>
+        <TextBox Name="textBox22">
+          <Location>0px, 48px</Location>
+          <Size>168px, 0.16667in</Size>
+          <Value>Vendor Code : ATV-ATV</Value>
+        </TextBox>
+        <TextBox Name="textBox23">
+          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Location>64px, 64px</Location>
+          <Size>88px, 0.16667in</Size>
+          <Value>=[SOPackageDetailEx.Qty]</Value>
+        </TextBox>
+        <TextBox Name="textBox24">
+          <Location>0px, 64px</Location>
+          <Size>64px, 0.16667in</Size>
+          <Value>Quantity  : </Value>
+        </TextBox>
+        <TextBox Name="textBox25">
+          <Location>40px, 128px</Location>
+          <Size>216px, 0.16667in</Size>
+          <Value>=[SOPackageDetailEx.InventoryID_description]</Value>
+        </TextBox>
+        <TextBox Name="textBox26">
+          <Location>56px, 144px</Location>
           <Size>144px, 0.16667in</Size>
-          <Value>=[SOLine.AlternateID]</Value>
+          <Value>='Made in ' + [SOPackageDetailEx.UsrCountry]</Value>
         </TextBox>
         <TextBox Name="textBox3">
-          <Location>88px, 24px</Location>
-          <Size>56px, 0.16667in</Size>
-          <Value>Quantity: </Value>
+          <Location>0px, 16px</Location>
+          <Size>72px, 0.16667in</Size>
+          <Value>Quanta P/N : </Value>
         </TextBox>
         <TextBox Name="textBox4">
           <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-          <Location>144px, 24px</Location>
-          <Size>64px, 0.16667in</Size>
-          <Value>=[SOPackageDetailEx.Qty]</Value>
+          <Location>72px, 16px</Location>
+          <Size>144px, 0.16667in</Size>
+          <Value>=[SOLine.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
-          <Location>88px, 40px</Location>
-          <Size>80px, 0.16667in</Size>
-          <Style>
-            <Font>
-              <Size>10px</Size>
-            </Font>
-          </Style>
-          <Value>MS-Level: 1</Value>
+          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Location>64px, 32px</Location>
+          <Size>152px, 0.16667in</Size>
+          <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
         </TextBox>
         <TextBox Name="textBox6">
-          <Location>88px, 56px</Location>
-          <Size>264px, 40px</Size>
-          <Style>
-            <Font>
-              <Size>10px</Size>
-            </Font>
-          </Style>
-          <Value>='Add info: ' + '{br}' + #010;'Date Code: ' + Left([SOPackageDetailEx.UsrDateCode], 4) + '             Expiry Date: ' + $ExpiryDate_Year + $ExpiryDate_Weeks + '{br}' + #010;'Man. Loc: ' + [SOPackageDetailEx.UsrCountry]</Value>
+          <Location>0px, 32px</Location>
+          <Size>64px, 0.16667in</Size>
+          <Value>Date Code : </Value>
         </TextBox>
         <TextBox Name="textBox7">
-          <Location>0px, 96px</Location>
-          <Size>64px, 0.16667in</Size>
-          <Value>Part Name: </Value>
+          <Location>0px, 80px</Location>
+          <Size>88px, 0.16667in</Size>
+          <Value>Delivery Date : </Value>
         </TextBox>
         <TextBox Name="textBox8">
-          <Location>64px, 96px</Location>
-          <Size>264px, 0.16667in</Size>
-          <Value>=[SOPackageDetailEx.InventoryID_description]</Value>
+          <Format>='yyyyMMdd'</Format>
+          <Location>88px, 80px</Location>
+          <Size>136px, 0.16667in</Size>
+          <Value>=[SOShipment.ShipDate]</Value>
         </TextBox>
         <TextBox Name="textBox9">
-          <Location>0px, 112px</Location>
-          <Size>80px, 0.16667in</Size>
-          <Value>Shipping Note: </Value>
+          <Location>0px, 96px</Location>
+          <Size>64px, 0.16667in</Size>
+          <Value>Unique ID :</Value>
         </TextBox>
       </Items>
     </Detail>

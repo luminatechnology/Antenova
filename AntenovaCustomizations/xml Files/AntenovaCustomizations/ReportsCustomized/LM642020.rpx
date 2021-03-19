@@ -1331,6 +1331,11 @@
         <ReportField Name="TrackData"></ReportField>
         <ReportField Name="TrackNumber"></ReportField>
         <ReportField Name="tstamp"></ReportField>
+        <ReportField Name="UsrCountry"></ReportField>
+        <ReportField Name="UsrDateCode"></ReportField>
+        <ReportField Name="UsrGrossWeight">
+          <DataType>Decimal</DataType>
+        </ReportField>
         <ReportField Name="UsrShipmentSplitLineNbr">
           <DataType>Int32</DataType>
         </ReportField>
@@ -1654,6 +1659,8 @@
         <ReportField Name="ProductManagerID_EPEmployee_acctName"></ReportField>
         <ReportField Name="ProductWorkgroupID"></ReportField>
         <ReportField Name="PurchaseUnit"></ReportField>
+        <ReportField Name="QTYCARTON_Attributes"></ReportField>
+        <ReportField Name="QTYINBOX_Attributes"></ReportField>
         <ReportField Name="ReasonCodeSubID"></ReportField>
         <ReportField Name="ReasonCodeSubID_description"></ReportField>
         <ReportField Name="ReasonCodeSubID_Segment1"></ReportField>
@@ -1828,7 +1835,7 @@
             <TextAlign>Center</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOPackageDetailEx.Qty]</Value>
+          <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>136px, 104px</Location>
@@ -1841,7 +1848,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[InventoryItem.MADEIN_Attributes]</Value>
+          <Value>=[SOPackageDetailEx.UsrCountry]</Value>
         </TextBox>
         <TextBox Name="textBox7">
           <Location>144px, 56px</Location>
