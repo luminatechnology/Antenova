@@ -627,6 +627,15 @@ namespace PX.Objects.SO
             }
         }
 
+        /// <summary> SOPackageDetailEx_boxID Updated Event</summary>
+        protected void _(Events.FieldUpdated<SOPackageDetail.boxID> e)
+        {
+            if (e.NewValue == null)
+                return;
+            var _boxWeight = new PXGraph().Select<CSBox>().Where(x => x.BoxID == (string)e.NewValue)?.FirstOrDefault()?.BoxWeight ?? 0;
+            e.Cache.SetValueExt<SOPackageDetailExt.usrGrossWeight>(e.Row, ((SOPackageDetailEx)e.Row).Weight + _boxWeight);
+        }
+
         /// <summary> Verify Carton Nbr Is Numerical </summary>
         protected void _(Events.FieldVerifying<SOPackageDetail.customRefNbr1> e)
         {
