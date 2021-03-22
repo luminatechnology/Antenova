@@ -2561,13 +2561,18 @@
         </TextBox>
         <TextBox Name="textBox5">
           <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
-          <Location>64px, 32px</Location>
-          <Size>152px, 0.16667in</Size>
+          <Location>72px, 32px</Location>
+          <Size>144px, 0.16667in</Size>
+          <Style>
+            <Padding>
+              <Left>1px</Left>
+            </Padding>
+          </Style>
           <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>0px, 32px</Location>
-          <Size>64px, 0.16667in</Size>
+          <Size>72px, 0.16667in</Size>
           <Value>Date Code : </Value>
         </TextBox>
         <TextBox Name="textBox7">
