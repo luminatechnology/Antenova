@@ -52,8 +52,8 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(StandardOuterLabel2);
             Base.report.AddMenuAction(BoschLabel);
             Base.report.AddMenuAction(WNCLabel);
-            Base.report.AddMenuAction(TelcomOuterLabel);
-            Base.report.AddMenuAction(TelcomInnerLabel);
+            Base.report.AddMenuAction(TechcomOuterLabel);
+            Base.report.AddMenuAction(TechcomInnerLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -396,11 +396,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Telcom Outer Label - LM642022
-        public PXAction<SOShipment> TelcomOuterLabel;
+        #region Techcom Outer Label - LM642022
+        public PXAction<SOShipment> TechcomOuterLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print Telcom Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable telcomOuterLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print Techcom Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable techcomOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642022";
             var parameters = new Dictionary<string, string>()
@@ -425,11 +425,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Telcom Inner Label - LM642023
-        public PXAction<SOShipment> TelcomInnerLabel;
+        #region Techcom Inner Label - LM642023
+        public PXAction<SOShipment> TechcomInnerLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print Telcom Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable telcomInnerLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print Techcom Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable techcomInnerLabel(PXAdapter adapter)
         {
             var _reportID = "LM642023";
             var parameters = new Dictionary<string, string>()
