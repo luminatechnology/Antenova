@@ -4760,7 +4760,6 @@
       <Height>0.08333in</Height>
     </PageFooter>
     <Detail Name="detailSection2">
-      <Expanded>False</Expanded>
       <Height>0.16667in</Height>
       <Visible>False</Visible>
       <VisibleExpr>=false/*([LineNote.NoteText]&lt;&gt;Null And [LineNote.NoteText]&lt;&gt;'')*/</VisibleExpr>
@@ -5506,7 +5505,7 @@
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=IIf([ARTran.InventoryID]&lt;&gt;Null, Format( '{0}: {1}', [ARTran.InventoryID],[ARTran.TranDesc]),[ARTran.TranDesc])#010;+ '{br}' #010;+IIf([SOShipLine.AlternateID]&lt;&gt;null,'Customer P/N: '+[SOShipLine.AlternateID], '')</Value>
+              <Value>=IIf([ARTran.InventoryID] &lt;&gt; Null, Format('{0}: {1}\r',[ARTran.InventoryID],[ARTran.TranDesc]), [ARTran.TranDesc] + '{br}')#010;+IIf([SOShipLine.AlternateID] &lt;&gt; null, 'Customer P/N: ' + [SOShipLine.AlternateID], '')</Value>
             </TextBox>
             <TextBox Name="textBox51">
               <Location>516px, 0px</Location>
