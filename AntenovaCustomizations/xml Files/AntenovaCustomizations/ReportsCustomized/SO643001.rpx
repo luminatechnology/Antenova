@@ -164,11 +164,9 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
+    <Body></Body>
     <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
-    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
     <To>=IsNull([BillingContact.EMail],'')</To>
   </MailSettings>
@@ -5658,6 +5656,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
             </TextBox>
             <TextBox Name="textBox50">
               <CanGrow>True</CanGrow>
+              <CanSplit>True</CanSplit>
               <Location>40px, 0px</Location>
               <Size>268px, 16px</Size>
               <Style>
