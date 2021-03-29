@@ -11,11 +11,9 @@
   </Filters>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
-    <Body></Body>
-    <Cc></Cc>
-    <Format></Format>
+    <ParentSource></ParentSource>
     <Subject>='Invoice from: '+[BAccount.AcctName] </Subject>
+    <TemplateID></TemplateID>
     <To>=IsNull([Contact.EMail],'')</To>
   </MailSettings>
   <PageSettings>
@@ -3138,13 +3136,10 @@
     <Group Name="groupKit">
       <Grouping>
         <GroupExp>
-          <DataField>SOShipLine.ShipmentNbr</DataField>
+          <DataField>InventoryItem.BIN_Attributes</DataField>
         </GroupExp>
         <GroupExp>
-          <DataField>INLocation.LocationCD</DataField>
-        </GroupExp>
-        <GroupExp>
-          <DataField>SOShipLine.LineNbr</DataField>
+          <DataField>InventoryItem.InventoryCD</DataField>
         </GroupExp>
       </Grouping>
       <Headers>

@@ -2462,12 +2462,12 @@
       <Items>
         <PictureBox Name="pictureBox1">
           <BarcodeType>QRCode</BarcodeType>
-          <Location>256px, 16px</Location>
+          <Location>224px, 0px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings>
-            <CodeSize>86</CodeSize>
+            <CodeSize>140</CodeSize>
           </QRCodeSettings>
-          <Size>168px, 160px</Size>
+          <Size>136px, 128px</Size>
           <Source>Barcode</Source>
           <Value>=$QRCodeValue</Value>
         </PictureBox>
