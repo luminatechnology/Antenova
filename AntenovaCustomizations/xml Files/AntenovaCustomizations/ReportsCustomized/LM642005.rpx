@@ -2741,7 +2741,7 @@
       <Variables>
         <ReportVariable>
           <Name>LineNbr</Name>
-          <ValueExpr>=$LineNbr+1</ValueExpr>
+          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $LineNbr, $LineNbr + 1, $LineNbr)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>SumOfQty</Name>
@@ -2758,8 +2758,8 @@
       </Variables>
       <Items>
         <TextBox Name="textBox10">
-          <Location>356px, 0px</Location>
-          <Size>148px, 16px</Size>
+          <Location>376px, 0px</Location>
+          <Size>128px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2771,7 +2771,7 @@
         </TextBox>
         <TextBox Name="textBox13">
           <Location>168px, 0px</Location>
-          <Size>188px, 16px</Size>
+          <Size>128px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2843,7 +2843,19 @@
             <TextAlign>Right</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.UsrGrossWeight]</Value>
+          <Value>=IIF([SOPackageDetailEx.UsrGrossWeight] = 0, '', [SOPackageDetailEx.UsrGrossWeight])</Value>
+        </TextBox>
+        <TextBox Name="textBox7">
+          <Location>296px, 0px</Location>
+          <Size>80px, 16px</Size>
+          <Style>
+            <Padding>
+              <Left>5px</Left>
+            </Padding>
+            <TextAlign>Left</TextAlign>
+          </Style>
+          <StyleName>Normal</StyleName>
+          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </TextBox>
       </Items>
     </Detail>
@@ -3205,7 +3217,7 @@
                 </TextBox>
                 <TextBox Name="textBox4">
                   <Location>168px, 0px</Location>
-                  <Size>184px, 48px</Size>
+                  <Size>128px, 48px</Size>
                   <Style>
                     <Padding>
                       <Left>5px</Left>
@@ -3216,9 +3228,19 @@
                   <StyleName>Heading1BCColored</StyleName>
                   <Value>ANTENOVA PART NO.</Value>
                 </TextBox>
+                <TextBox Name="textBox6">
+                  <Location>296px, 0px</Location>
+                  <Size>80px, 48px</Size>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                    <VerticalAlign>Middle</VerticalAlign>
+                  </Style>
+                  <StyleName>Heading1BCColored</StyleName>
+                  <Value>DATE CODE</Value>
+                </TextBox>
                 <TextBox Name="textBox9">
-                  <Location>352px, 0px</Location>
-                  <Size>152px, 48px</Size>
+                  <Location>376px, 0px</Location>
+                  <Size>128px, 48px</Size>
                   <Style>
                     <Padding>
                       <Left>5px</Left>
