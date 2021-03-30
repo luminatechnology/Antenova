@@ -50,6 +50,8 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(SanminaInnerLabel);
             Base.report.AddMenuAction(StandardOuterLabel1);
             Base.report.AddMenuAction(StandardOuterLabel2);
+            Base.report.AddMenuAction(StandardOuterLabel3);
+            Base.report.AddMenuAction(StandardOuterLabel4);
             Base.report.AddMenuAction(BoschLabel);
             Base.report.AddMenuAction(WNCLabel);
             Base.report.AddMenuAction(TechcomOuterLabel);
@@ -432,6 +434,64 @@ namespace PX.Objects.SO
         protected virtual IEnumerable techcomInnerLabel(PXAdapter adapter)
         {
             var _reportID = "LM642023";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 3 - LM642024
+        public PXAction<SOShipment> StandardOuterLabel3;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 3", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel3(PXAdapter adapter)
+        {
+            var _reportID = "LM642024";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 4 - LM642025
+        public PXAction<SOShipment> StandardOuterLabel4;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 4", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel4(PXAdapter adapter)
+        {
+            var _reportID = "LM642025";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr

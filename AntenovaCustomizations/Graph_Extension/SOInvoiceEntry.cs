@@ -28,7 +28,7 @@ namespace PX.Objects.SO
         #region Invoice_Taiwan
         public PXAction<SOShipment> InvoiceTaiwanReport;
         [PXButton]
-        [PXUIField(DisplayName = "Print Taiwan Invoice Report", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Invoice-Taiwan", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable invoiceTaiwanReport(PXAdapter adapter)
         {
             var _reportID = "so643001";
@@ -46,7 +46,7 @@ namespace PX.Objects.SO
         #region Invoice_UK
         public PXAction<SOShipment> InvoiceUKReport;
         [PXButton]
-        [PXUIField(DisplayName = "Print UK Invoice Report", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Invoice-UK", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable invoiceUKReport(PXAdapter adapter)
         {
             var _reportID = "so643002";
@@ -64,7 +64,7 @@ namespace PX.Objects.SO
         #region Invoice_Signature
         public PXAction<SOShipment> InvoiceSignatureReport;
         [PXButton]
-        [PXUIField(DisplayName = "Print Signature Invoice Report", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Invoice-Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable invoiceSignatureReport(PXAdapter adapter)
         {
             var _reportID = "so643003";
@@ -102,7 +102,7 @@ namespace PX.Objects.SO
         #region TaiwanShipmentNotice
         public PXAction<ARInvoice> printTaiwanShipNotice;
         [PXButton]
-        [PXUIField(DisplayName = "Print Taiwan Shipment Notice", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Shipment Notice-Taiwan", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable PrintTaiwanShipNotice(PXAdapter adapter)
         {
             var _reportID = "LM643002";
@@ -122,7 +122,7 @@ namespace PX.Objects.SO
         #region UKShipmentNotice
         public PXAction<ARInvoice> printUKShipNotice;
         [PXButton]
-        [PXUIField(DisplayName = "Print UK Shipment Notice", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Shipment Notice-UK", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable PrintUKShipNotice(PXAdapter adapter)
         {
             var _reportID = "LM643003";
@@ -142,7 +142,7 @@ namespace PX.Objects.SO
         #region SignatureShipmentNotice
         public PXAction<ARInvoice> printSignatureShipNotice;
         [PXButton]
-        [PXUIField(DisplayName = "Print Signature Shipment Notice", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Shipment Notice-Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable PrintSignatureShipNotice(PXAdapter adapter)
         {
             var _reportID = "LM643004";
