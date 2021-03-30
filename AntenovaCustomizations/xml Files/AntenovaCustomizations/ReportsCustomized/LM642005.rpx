@@ -2768,7 +2768,7 @@
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOLine.AlternateID]</Value>
@@ -2780,7 +2780,7 @@
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
@@ -2856,7 +2856,7 @@
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>

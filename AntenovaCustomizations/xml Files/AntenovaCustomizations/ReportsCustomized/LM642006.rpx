@@ -2918,7 +2918,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOLine.AlternateID]</Value>
@@ -2930,7 +2930,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
@@ -3006,7 +3006,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
             <Padding>
               <Left>5px</Left>
             </Padding>
-            <TextAlign>Left</TextAlign>
+            <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
