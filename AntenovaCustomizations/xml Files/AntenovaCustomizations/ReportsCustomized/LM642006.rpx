@@ -3425,5 +3425,24 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
         </Footer>
       </Footers>
     </Group>
+    <Group Name="groupDetails">
+      <Grouping>
+        <GroupExp>
+          <DataField>SOPackageDetailEx.LineNbr</DataField>
+        </GroupExp>
+      </Grouping>
+      <Headers>
+        <Header Name="groupHeaderSection3">
+          <Height>0in</Height>
+          <Visible>False</Visible>
+        </Header>
+      </Headers>
+      <Footers>
+        <Footer Name="groupFooterSection3">
+          <Height>0in</Height>
+          <Visible>False</Visible>
+        </Footer>
+      </Footers>
+    </Group>
   </Groups>
 </Report>

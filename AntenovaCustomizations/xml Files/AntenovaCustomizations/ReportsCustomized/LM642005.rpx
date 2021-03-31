@@ -3267,5 +3267,24 @@
         </Footer>
       </Footers>
     </Group>
+    <Group Name="groupDetails">
+      <Grouping>
+        <GroupExp>
+          <DataField>SOPackageDetailEx.LineNbr</DataField>
+        </GroupExp>
+      </Grouping>
+      <Headers>
+        <Header Name="groupHeaderSection3">
+          <Height>0in</Height>
+          <Visible>False</Visible>
+        </Header>
+      </Headers>
+      <Footers>
+        <Footer Name="groupFooterSection3">
+          <Height>0in</Height>
+          <Visible>False</Visible>
+        </Footer>
+      </Footers>
+    </Group>
   </Groups>
 </Report>
