@@ -126,11 +126,11 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       <Links>
         <RelationRow>
           <ChildField>OrderNbr</ChildField>
-          <ParentField>OrigOrderNbr</ParentField>
+          <ParentField>OrderNbr</ParentField>
         </RelationRow>
         <RelationRow>
           <ChildField>OrderType</ChildField>
-          <ParentField>OrigOrderType</ParentField>
+          <ParentField>OrderType</ParentField>
         </RelationRow>
       </Links>
       <ParentName>SOOrder</ParentName>
