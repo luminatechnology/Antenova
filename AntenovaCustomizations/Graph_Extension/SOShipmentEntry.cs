@@ -61,6 +61,8 @@ namespace PX.Objects.SO
         public void Persist(PersistDelegate baseMethod)
         {
             var needUpdatePackedQty = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().Count() > 0;
+
+
             if (needUpdatePackedQty)
             {
                 // Except Delete row
@@ -498,7 +500,7 @@ namespace PX.Objects.SO
                 throw new PXException("Packing Qty cannot exceed Remaining Qty");
             PXLongOperation.StartOperation(Base, () =>
             {
-                int  pointer = 0;
+                int pointer = 0;
                 var _maxCartonNbr = GetMaxCartonNbr() + 1;
                 foreach (var _line in _shipLines.Where(x => x.GetExtension<SOShipLineExt>().UsrPackingQty > 0))
                 {
@@ -550,6 +552,24 @@ namespace PX.Objects.SO
                 }
             }
             e.ReturnValue = (object)str;
+        }
+
+        /// <summary> Set Date Code DDL </summary>
+        protected void _(Events.RowSelected<SOPackageDetailEx>e, PXRowSelected baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            if (e.Row != null)
+            {
+                var splitData = SelectFrom<SOShipLineSplit>
+                                .Where<SOShipLineSplit.shipmentNbr.IsEqual<P.AsString>
+                                    .And<SOShipLineSplit.lineNbr.IsEqual<P.AsInt>>>
+                                .View.Select(Base, e.Row.ShipmentNbr, e.Row.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr).RowCast<SOShipLineSplit>(); ;
+                PXStringListAttribute.SetList<SOPackageDetailExt.usrDateCode>(
+                    e.Cache,
+                    e.Row,
+                    splitData.Select(x => x?.LotSerialNbr).ToArray(),
+                    splitData.Select(x => x?.LotSerialNbr).ToArray());
+            }
         }
 
         /// <summary> Get Country DDL </summary>
