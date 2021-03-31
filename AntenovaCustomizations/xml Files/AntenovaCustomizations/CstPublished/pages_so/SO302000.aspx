@@ -347,7 +347,7 @@
                                     <px:PXDropDown runat="server" ID="edStampsAddOns" DataField="StampsAddOns" AllowMultiSelect="True" />
                                     <px:PXSelector runat="server" ID="sUsrShipmentSplitLineNbr" DataField="UsrShipmentSplitLineNbr" AllowEdit="true"></px:PXSelector>
                                     <px:PXSelector runat="server" ID="sInventoryID" DataField="InventoryID" AllowEdit="True"></px:PXSelector>
-                                    <px:PXSelector runat="server" ID="sUsrDateCode" DataField="UsrDateCode" AllowEdit="True" AutoRefresh="True" />
+                                    <px:PXDropDown runat="server" ID="sUsrDateCode" DataField="UsrDateCode" CommitChanges="True" ></px:PXDropDown>
                                 </RowTemplate>
                                 <Columns>
                                     <px:PXGridColumn AllowNull="False" DataField="Confirmed" Label="Confired" TextAlign="Center" Type="CheckBox" />

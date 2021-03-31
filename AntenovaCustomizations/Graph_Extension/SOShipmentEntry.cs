@@ -63,6 +63,8 @@ namespace PX.Objects.SO
         public void Persist(PersistDelegate baseMethod)
         {
             var needUpdatePackedQty = Base.Packages.Cache.Dirty.RowCast<SOPackageDetailEx>().Count() > 0;
+
+
             if (needUpdatePackedQty)
             {
                 // Except Delete row
@@ -122,7 +124,7 @@ namespace PX.Objects.SO
         #region Taiwan Packing List - LM642006
         public PXAction<SOShipment> TaiwanPackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print Taiwan Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - Taiwan", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable taiwanpackingList(PXAdapter adapter)
         {
             var _reportID = "LM642006";
@@ -139,7 +141,7 @@ namespace PX.Objects.SO
         #region UK Packing List - LM642007
         public PXAction<SOShipment> UKPackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print UK Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - UK", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable uKpackingList(PXAdapter adapter)
         {
             var _reportID = "LM642007";
@@ -156,7 +158,7 @@ namespace PX.Objects.SO
         #region Signature Packing List - LM642008
         public PXAction<SOShipment> SignaturePackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print Signature Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable signaturepackingList(PXAdapter adapter)
         {
             var _reportID = "LM642008";
@@ -255,7 +257,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -335,7 +337,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -415,7 +417,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -444,7 +446,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -473,7 +475,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -502,7 +504,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -558,7 +560,7 @@ namespace PX.Objects.SO
                 throw new PXException("Packing Qty cannot exceed Remaining Qty");
             PXLongOperation.StartOperation(Base, () =>
             {
-                int  pointer = 0;
+                int pointer = 0;
                 var _maxCartonNbr = GetMaxCartonNbr() + 1;
                 foreach (var _line in _shipLines.Where(x => x.GetExtension<SOShipLineExt>().UsrPackingQty > 0))
                 {
@@ -610,6 +612,24 @@ namespace PX.Objects.SO
                 }
             }
             e.ReturnValue = (object)str;
+        }
+
+        /// <summary> Set Date Code DDL </summary>
+        protected void _(Events.RowSelected<SOPackageDetailEx>e, PXRowSelected baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            if (e.Row != null)
+            {
+                var splitData = SelectFrom<SOShipLineSplit>
+                                .Where<SOShipLineSplit.shipmentNbr.IsEqual<P.AsString>
+                                    .And<SOShipLineSplit.lineNbr.IsEqual<P.AsInt>>>
+                                .View.Select(Base, e.Row.ShipmentNbr, e.Row.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr).RowCast<SOShipLineSplit>(); ;
+                PXStringListAttribute.SetList<SOPackageDetailExt.usrDateCode>(
+                    e.Cache,
+                    e.Row,
+                    splitData.Select(x => x?.LotSerialNbr).ToArray(),
+                    splitData.Select(x => x?.LotSerialNbr).ToArray());
+            }
         }
 
         /// <summary> Get Country DDL </summary>

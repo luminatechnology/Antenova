@@ -25,7 +25,6 @@ namespace PX.Objects.SO
         public abstract class qty : BqlDecimal.Field<qty> { }
 
         [PXDBString(15, IsUnicode = true)]
-        //[PXDefault(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
         [PXDefault]
         [PXSelector(typeof(Search2<CSBox.boxID, LeftJoin<CarrierPackage, On<CSBox.boxID, Equal<CarrierPackage.boxID>, And<Current<SOShipment.shipVia>, IsNotNull>>>, Where<Current<SOShipment.shipVia>, IsNull, Or<Where<CarrierPackage.carrierID, Equal<Current<SOShipment.shipVia>>, And<Current<SOShipment.shipVia>, IsNotNull>>>>>))]
         [PXUIField(DisplayName = "Box ID")]
@@ -44,13 +43,14 @@ namespace PX.Objects.SO
 
         [PXDBString(50)]
         [PXUIField(DisplayName = "Date Code")]
-        [PXSelector(typeof(Search<SOShipLineSplit.lotSerialNbr,
-                           Where<SOShipLineSplit.shipmentNbr, Equal<Optional<SOPackageDetail.shipmentNbr>>,
-                             And<SOShipLineSplit.lineNbr, Equal<Optional<SOPackageDetailExt.usrShipmentSplitLineNbr>>>>>),
-                    typeof(SOShipLineSplit.inventoryID),
-                    typeof(SOShipLineSplit.lotSerialNbr),
-                    typeof(SOShipLineSplit.qty),
-                    typeof(SOShipLineSplit.expireDate), DirtyRead = false)]
+        [PXStringList(MultiSelect = true)]
+        //[PXSelector(typeof(Search<SOShipLineSplit.lotSerialNbr,
+        //                   Where<SOShipLineSplit.shipmentNbr, Equal<Optional<SOPackageDetail.shipmentNbr>>,
+        //                     And<SOShipLineSplit.lineNbr, Equal<Optional<SOPackageDetailExt.usrShipmentSplitLineNbr>>>>>),
+        //            typeof(SOShipLineSplit.inventoryID),
+        //            typeof(SOShipLineSplit.lotSerialNbr),
+        //            typeof(SOShipLineSplit.qty),
+        //            typeof(SOShipLineSplit.expireDate), ValidateValue = false)]
         public virtual string UsrDateCode { get; set; }
         public abstract class usrDateCode : BqlString.Field<usrDateCode> { }
 
@@ -66,5 +66,10 @@ namespace PX.Objects.SO
                     typeof(SOShipLine.uOM))]
         public virtual int? UsrShipmentSplitLineNbr { get; set; }
         public abstract class usrShipmentSplitLineNbr : BqlInt.Field<usrShipmentSplitLineNbr> { }
+
+        //[PXStringList(new string[] { "A","B"},new string[] { "AA","BB"}, MultiSelect = true)]
+        //[PXUIField(DisplayName = "GG123")]
+        //public virtual  string UsrMyCode { get; set; }
+        //public abstract class usrMyCode : BqlString.Field<usrMyCode> { }
     }
 }

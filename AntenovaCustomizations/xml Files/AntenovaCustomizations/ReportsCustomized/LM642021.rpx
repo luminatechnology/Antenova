@@ -2912,7 +2912,7 @@
           <Value>LOT: </Value>
         </TextBox>
         <TextBox Name="textBox14">
-          <Location>232px, 144px</Location>
+          <Location>256px, 144px</Location>
           <Size>56px, 32px</Size>
           <Style>
             <Font>
@@ -2964,7 +2964,7 @@
           <Value>=[SOLine.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>32px, 192px</Location>
           <Size>48px, 12px</Size>
           <Style>
@@ -3001,7 +3001,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+          <Value>=[SOLine.UOM]</Value>
         </TextBox>
         <TextBox Name="textBox8">
           <Location>32px, 136px</Location>

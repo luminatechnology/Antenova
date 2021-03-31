@@ -144,6 +144,13 @@
     <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO643003.rpx" />
     <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO644000.rpx" />
   </ItemGroup>
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <Folder Include="DAC\" />
+    <Folder Include="Graph\" />
+  </ItemGroup>
+>>>>>>> e12da8114ae01201f826298e19ea75b1e8dc3f59
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

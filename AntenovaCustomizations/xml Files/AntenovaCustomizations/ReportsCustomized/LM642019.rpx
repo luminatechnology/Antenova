@@ -2810,7 +2810,7 @@
           <QRCodeSettings />
           <Size>228px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=[SOLine.AlternateID] + '-1082835'</Value>
+          <Value>=IIF([SOLine.AlternateID] &lt;&gt; Null, [SOLine.AlternateID] + '-1082835', '-1082835')</Value>
         </PictureBox>
         <PictureBox Name="pictureBox3">
           <BarcodeType>Code128</BarcodeType>
@@ -2967,7 +2967,7 @@
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
-          <Format>='N0'</Format>
+          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>32px, 172px</Location>
           <Size>80px, 10px</Size>
           <Style>
