@@ -2968,7 +2968,7 @@
           <Value>=[SOLine.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>32px, 184px</Location>
           <Size>48px, 12px</Size>
           <Style>
@@ -3005,7 +3005,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+          <Value>=[SOLine.UOM]</Value>
         </TextBox>
         <TextBox Name="textBox8">
           <Location>32px, 128px</Location>

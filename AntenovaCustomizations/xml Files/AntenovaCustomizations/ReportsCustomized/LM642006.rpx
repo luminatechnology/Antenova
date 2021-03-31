@@ -3009,7 +3009,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
             <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
+          <Value>=Replace([SOPackageDetailEx.UsrDateCode], ',', '.')</Value>
         </TextBox>
       </Items>
     </Detail>

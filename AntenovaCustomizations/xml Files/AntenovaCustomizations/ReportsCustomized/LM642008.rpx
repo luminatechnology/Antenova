@@ -2888,7 +2888,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
             <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
+          <Value>=Replace([SOPackageDetailEx.UsrDateCode], ',', '.')</Value>
         </TextBox>
       </Items>
     </Detail>

@@ -2551,7 +2551,7 @@
         <TextBox Name="textBox10">
           <Location>64px, 96px</Location>
           <Size>160px, 0.16667in</Size>
-          <Value>='BATV-ATV' + Substring(Year(Today()), 2, 2) + Month(Today()) + Day(Today()) + '00' + [SOPackageDetailEx.CustomRefNbr1] + [CSAttributeDetail.Description]</Value>
+          <Value>='BATV-ATV' + Substring(Year(Today()), 2, 2) + Month(Today()) + Day(Today()) + '00' + [SOPackageDetailEx.CustomRefNbr1] + [SOPackageDetailEx.UsrCountry]</Value>
         </TextBox>
         <TextBox Name="textBox11">
           <Location>0px, 112px</Location>
@@ -2589,7 +2589,7 @@
           <Value>Vendor Code : ATV-ATV</Value>
         </TextBox>
         <TextBox Name="textBox23">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>64px, 64px</Location>
           <Size>88px, 0.16667in</Size>
           <Value>=[SOPackageDetailEx.Qty]</Value>
@@ -2621,10 +2621,9 @@
           <Value>=[SOLine.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>72px, 32px</Location>
           <Size>152px, 0.16667in</Size>
-          <Value>=Left([SOPackageDetailEx.UsrDateCode], 4)</Value>
+          <Value>=Replace([SOPackageDetailEx.UsrDateCode], ',', '.')</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>0px, 32px</Location>

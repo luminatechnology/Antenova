@@ -3052,7 +3052,7 @@ DxQO7433jEuhJAb1aS4QmwkQB5pNyiEgpfBJMTcECBLGvs/AD1Cf6Oq1duH0pHb/GnzGNsgbpBlO4DFJ
             <TextAlign>Center</TextAlign>
           </Style>
           <StyleName>Normal</StyleName>
-          <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
+          <Value>=Replace([SOPackageDetailEx.UsrDateCode], ',', '.')</Value>
         </TextBox>
       </Items>
     </Detail>

@@ -2612,7 +2612,7 @@
           <Value>Quantity: </Value>
         </TextBox>
         <TextBox Name="textBox4">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>144px, 24px</Location>
           <Size>64px, 0.16667in</Size>
           <Value>=[SOPackageDetailEx.Qty]</Value>

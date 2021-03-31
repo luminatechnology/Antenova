@@ -2631,7 +2631,11 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       <Variables>
         <ReportVariable>
           <Name>CurrentPage</Name>
-          <ValueExpr>= 1 + $CurrentPage</ValueExpr>
+          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $CurrentPage - $CurrentPage + 1, 1 + $CurrentPage)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>PageCount</Name>
+          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $PageCount + 1, $PageCount)</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -2756,7 +2760,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 <TextAlign>Left</TextAlign>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
-              <Value>=[PageCount]</Value>
+              <Value>=$PageCount</Value>
             </TextBox>
             <TextBox Name="textBox16">
               <Location>168px, 304px</Location>
@@ -2829,7 +2833,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox4">
               <Location>136px, 48px</Location>
-              <Size>152px, 24px</Size>
+              <Size>272px, 24px</Size>
               <Style>
                 <Font>
                   <Size>20px</Size>
@@ -2841,7 +2845,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
               <Value>=[SOOrder.CustomerOrderNbr]</Value>
             </TextBox>
             <TextBox Name="textBox5">
-              <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
+              <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
               <Location>112px, 168px</Location>
               <Size>112px, 24px</Size>
               <Style>
@@ -2878,7 +2882,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 <TextAlign>Left</TextAlign>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
-              <Value>=[SOPackageDetailEx.QtyUOM]</Value>
+              <Value>=[SOLine.UOM]</Value>
             </TextBox>
             <TextBox Name="textBox8">
               <Location>0px, 8px</Location>
