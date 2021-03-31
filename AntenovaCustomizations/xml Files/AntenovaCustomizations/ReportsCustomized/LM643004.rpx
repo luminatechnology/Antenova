@@ -43,10 +43,10 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <Bcc></Bcc>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>
@@ -5496,10 +5496,10 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
     <Group Name="groupSOPackage">
       <Grouping>
         <GroupExp>
-          <DataField>=[SOPackageDetail.ShipmentNbr]</DataField>
+          <DataField>=[ARTran.LineNbr]</DataField>
         </GroupExp>
         <GroupExp>
-          <DataField>=[ARTran.LineNbr]</DataField>
+          <DataField>=[SOPackageDetail.ShipmentNbr]</DataField>
         </GroupExp>
       </Grouping>
       <Headers>
@@ -5594,7 +5594,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=$LineNbr</Value>
+              <Value>=[ARTran.SortOrder]</Value>
             </TextBox>
             <TextBox Name="textBox61">
               <Format>='#,##0.0000'</Format>
@@ -5625,7 +5625,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=IsNull('Made in ' + [SOPackageDetail.UsrCountry], '')#010;+IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null, '{br}' + '{br}' + [LineNote.NoteText], [LineNote.NoteText])</Value>
+              <Value>='Made in ' #010;+IsNull([SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
             </TextBox>
             <TextBox Name="textBox63">
               <Location>40px, 0px</Location>
