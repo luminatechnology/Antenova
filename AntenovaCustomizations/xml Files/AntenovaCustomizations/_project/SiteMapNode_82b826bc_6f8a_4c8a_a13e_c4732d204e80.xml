@@ -25,7 +25,7 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Print Telcom Inner Label" Url="~/Frames/ReportLauncher.aspx?ID=LM642023.rpx" ScreenID="LM642023" NodeID="82b826bc-6f8a-4c8a-a13e-c4732d204e80" ParentID="00000000-0000-0000-0000-000000000000">
+                <row Title="Print Techcom Inner Label" Url="~/Frames/ReportLauncher.aspx?ID=LM642023.rpx" ScreenID="LM642023" NodeID="82b826bc-6f8a-4c8a-a13e-c4732d204e80" ParentID="00000000-0000-0000-0000-000000000000">
                     <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="290" SubcategoryID="b731b346-4d68-4796-b797-3e035ef3497c" />
                 </row>
             </SiteMap>

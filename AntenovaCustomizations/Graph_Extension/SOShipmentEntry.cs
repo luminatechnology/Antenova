@@ -50,10 +50,12 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(SanminaInnerLabel);
             Base.report.AddMenuAction(StandardOuterLabel1);
             Base.report.AddMenuAction(StandardOuterLabel2);
+            Base.report.AddMenuAction(StandardOuterLabel3);
+            Base.report.AddMenuAction(StandardOuterLabel4);
             Base.report.AddMenuAction(BoschLabel);
             Base.report.AddMenuAction(WNCLabel);
-            Base.report.AddMenuAction(TelcomOuterLabel);
-            Base.report.AddMenuAction(TelcomInnerLabel);
+            Base.report.AddMenuAction(TechcomOuterLabel);
+            Base.report.AddMenuAction(TechcomInnerLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -122,7 +124,7 @@ namespace PX.Objects.SO
         #region Taiwan Packing List - LM642006
         public PXAction<SOShipment> TaiwanPackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print Taiwan Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - Taiwan", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable taiwanpackingList(PXAdapter adapter)
         {
             var _reportID = "LM642006";
@@ -139,7 +141,7 @@ namespace PX.Objects.SO
         #region UK Packing List - LM642007
         public PXAction<SOShipment> UKPackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print UK Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - UK", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable uKpackingList(PXAdapter adapter)
         {
             var _reportID = "LM642007";
@@ -156,7 +158,7 @@ namespace PX.Objects.SO
         #region Signature Packing List - LM642008
         public PXAction<SOShipment> SignaturePackingList;
         [PXButton]
-        [PXUIField(DisplayName = "Print Signature Packing List", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Print Packing List - Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable signaturepackingList(PXAdapter adapter)
         {
             var _reportID = "LM642008";
@@ -255,7 +257,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -335,7 +337,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -398,11 +400,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Telcom Outer Label - LM642022
-        public PXAction<SOShipment> TelcomOuterLabel;
+        #region Techcom Outer Label - LM642022
+        public PXAction<SOShipment> TechcomOuterLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print Telcom Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable telcomOuterLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print Techcom Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable techcomOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642022";
             var parameters = new Dictionary<string, string>()
@@ -415,7 +417,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -427,11 +429,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Telcom Inner Label - LM642023
-        public PXAction<SOShipment> TelcomInnerLabel;
+        #region Techcom Inner Label - LM642023
+        public PXAction<SOShipment> TechcomInnerLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print Telcom Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable telcomInnerLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print Techcom Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable techcomInnerLabel(PXAdapter adapter)
         {
             var _reportID = "LM642023";
             var parameters = new Dictionary<string, string>()
@@ -444,7 +446,65 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 3 - LM642024
+        public PXAction<SOShipment> StandardOuterLabel3;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 3", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel3(PXAdapter adapter)
+        {
+            var _reportID = "LM642024";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Standard Outer Label 4 - LM642025
+        public PXAction<SOShipment> StandardOuterLabel4;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Standard Outer Label 4", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable standardOuterLabel4(PXAdapter adapter)
+        {
+            var _reportID = "LM642025";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>().UsrDateCode.Length == 0)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)

@@ -34,6 +34,11 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       <Required>True</Required>
       <ViewName>=Report.GetFieldSchema('SOShipment.ShipmentNbr')</ViewName>
     </ReportParameter>
+    <ReportParameter>
+      <DefaultValue>MADEIN</DefaultValue>
+      <Name>AttributeID</Name>
+      <Visible>False</Visible>
+    </ReportParameter>
   </Parameters>
   <Relations>
     <ReportRelation>
@@ -115,6 +120,30 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
         </RelationRow>
       </Links>
       <ParentName>SOShipLine</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>CSAttribute</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>@AttributeID</ChildField>
+          <ParentField>CSAttribute.AttributeID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOPackageDetailEx</ParentName>
+    </ReportRelation>
+    <ReportRelation>
+      <ChildName>CSAttributeDetail</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>AttributeID</ChildField>
+          <ParentField>AttributeID</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>SOPackageDetailEx.UsrCountry</ChildField>
+          <ParentField>CSAttributeDetail.ValueID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>CSAttribute</ParentName>
     </ReportRelation>
   </Relations>
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
@@ -2486,6 +2515,105 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       </Fields>
       <FullName>PX.Objects.SO.SOPackageDetailEx</FullName>
     </ReportTable>
+    <ReportTable Name="CSAttribute">
+      <Fields>
+        <ReportField Name="AttributeID"></ReportField>
+        <ReportField Name="ContainsPersonalData">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="ControlType">
+          <DataType>Int32</DataType>
+        </ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="EntryMask"></ReportField>
+        <ReportField Name="FieldName"></ReportField>
+        <ReportField Name="IsInternal">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="List"></ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="ObjectName"></ReportField>
+        <ReportField Name="RegExp"></ReportField>
+        <ReportField Name="tstamp"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.CS.CSAttribute</FullName>
+    </ReportTable>
+    <ReportTable Name="CSAttributeDetail">
+      <Fields>
+        <ReportField Name="AttributeID"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="Disabled">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="SortOrder">
+          <DataType>Int16</DataType>
+        </ReportField>
+        <ReportField Name="tstamp"></ReportField>
+        <ReportField Name="ValueID"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.CS.CSAttributeDetail</FullName>
+    </ReportTable>
   </Tables>
   <Width>15cm</Width>
   <Sections>
@@ -2737,7 +2865,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 <TextAlign>Left</TextAlign>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
-              <Value>=[SOPackageDetailEx.UsrCountry]</Value>
+              <Value>=[CSAttributeDetail.Description]</Value>
             </TextBox>
             <TextBox Name="textBox7">
               <Location>224px, 168px</Location>

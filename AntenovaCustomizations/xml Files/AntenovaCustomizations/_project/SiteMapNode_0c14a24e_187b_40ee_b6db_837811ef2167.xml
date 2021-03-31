@@ -25,8 +25,8 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Print Techcom Outer Label" Url="~/Frames/ReportLauncher.aspx?ID=LM642022.rpx" ScreenID="LM642022" NodeID="3a7efefb-45a6-4950-8033-055801c8c172" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="280" SubcategoryID="b731b346-4d68-4796-b797-3e035ef3497c" />
+                <row Title="Print Standard Outer Label 3" Url="~/Frames/ReportLauncher.aspx?ID=LM642024.rpx" ScreenID="LM642024" NodeID="0c14a24e-187b-40ee-b6db-837811ef2167" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="300" SubcategoryID="b731b346-4d68-4796-b797-3e035ef3497c" />
                 </row>
             </SiteMap>
             <MUIWorkspace>

@@ -25,21 +25,8 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Print Techcom Outer Label" Url="~/Frames/ReportLauncher.aspx?ID=LM642022.rpx" ScreenID="LM642022" NodeID="3a7efefb-45a6-4950-8033-055801c8c172" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="280" SubcategoryID="b731b346-4d68-4796-b797-3e035ef3497c" />
-                </row>
+                <row Title="Shipment Notice" Url="~/Frames/ReportLauncher.aspx?ID=LM643001.rpx" ScreenID="LM643001" NodeID="206bee6d-c677-4ca2-b98f-0649eac3bd0e" ParentID="00000000-0000-0000-0000-000000000000" />
             </SiteMap>
-            <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="e2c3849a-6280-41df-81f3-552b91adfae5" Order="216" Title="Sales Orders" Icon="pen_frame" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSOM0000" IsSystem="0">
-                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
-                </row>
-            </MUIWorkspace>
-            <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="b731b346-4d68-4796-b797-3e035ef3497c" Order="960" Name="Printed Forms" Icon="" IsSystem="0" />
-            </MUISubcategory>
-            <MUIArea>
-                <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
-            </MUIArea>
         </data>
     </data-set>
 </SiteMapNode>

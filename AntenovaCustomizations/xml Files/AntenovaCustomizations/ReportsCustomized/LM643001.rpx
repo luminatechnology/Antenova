@@ -14,11 +14,13 @@
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
-    <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
+    <Bcc></Bcc>
+    <Body>='Kindly find the invoice #' + [ARInvoice.RefNbr] + ' and shipping document as attached.#010;#010;----- Shipment from Antenova on ' + Day([SOShipment.ShipDate]) + '-' + Format('{0:MMM}', [SOShipment.ShipDate]) + '-' + Year([SOShipment.ShipDate])  + ' -----#010;#010;Ship Method: ' + [SOShipment.UsrCarrierPluginID] + '&amp;nbsp' + '&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' + '&amp;nbsp' +'&amp;nbsp' +'&amp;nbsp' + 'Tracking #: ' + [SOShipment.UsrWaybill] + '#010;#010; #010;#010;Please note: Your tracking information may not be available from the carrier until the following business day.#010;#010;------------------------------------------------------------------------#010;#010;#010;#010;This email has been automatically generated. Please do not reply to the sender of this email. If you have any questions, please contact RENEE.LIN@ANTENOVA.COM#010;#010;#010;#010;Thank you,#010;#010;Antenova Customer Service Team'</Body>
+    <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
-    <To>=IsNull([BillingContact.EMail],'')</To>
+    <Subject>Shipment from Antenova Limited</Subject>
+    <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>
   <PageSettings>
     <Margins></Margins>
@@ -1240,6 +1242,7 @@
         <ReportField Name="NoteImages"></ReportField>
         <ReportField Name="NotePopupText"></ReportField>
         <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="NOTICECC_Attributes"></ReportField>
         <ReportField Name="OwnerID"></ReportField>
         <ReportField Name="OwnerID_description"></ReportField>
         <ReportField Name="OwnerID_EPEmployee_acctName"></ReportField>
