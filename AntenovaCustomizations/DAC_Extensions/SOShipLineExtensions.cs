@@ -16,7 +16,7 @@ namespace PX.Objects.SO
     {
         [PXDecimal]
         [PXDefault(TypeCode.Decimal, "0.0",PersistingCheck = PXPersistingCheck.Nothing)]
-        [PXUIField(DisplayName = "Packing Qty @")]
+        [PXUIField(DisplayName = "Packing Qty")]
         public virtual decimal? UsrPackingQty { get; set; }
         public abstract class usrPackingQty : BqlDecimal.Field<usrPackingQty> { }
 
