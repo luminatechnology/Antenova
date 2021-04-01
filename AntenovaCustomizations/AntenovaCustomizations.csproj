@@ -65,92 +65,11 @@
     <Compile Include="Graph_Extension\SOInvoiceEntry.cs" />
     <Compile Include="LUMItemLotSerFileMaint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="xml Files\AntenovaCustomizations\CstPublished\pages_so\SO302000.aspx.cs">
-      <DependentUpon>SO302000.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="xml Files\AntenovaCustomizations\Pages\LM\LM201000.aspx.cs">
-      <DependentUpon>LM201000.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="xml Files\AntenovaCustomizations\Bin\AntenovaCustomizations.dll" />
-    <Content Include="xml Files\AntenovaCustomizations\Bin\AntenovaCustomizations.pdb" />
-    <Content Include="xml Files\AntenovaCustomizations\CstPublished\pages_so\SO302000.aspx" />
-    <Content Include="xml Files\AntenovaCustomizations\Pages\LM\LM201000.aspx" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\INItemLotSerial.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\pages_lm_lm201000_aspx.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\ProjectMetadata.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_0c14a24e_187b_40ee_b6db_837811ef2167.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_19d31dc4_d5ba_4959_9fe9_e009c4f4c2cf.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_206bee6d_c677_4ca2_b98f_0649eac3bd0e.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_299d4032_0dcb_4aae_9b22_1018bebe0ee7.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_37844f22_cbe5_4cbf_a358_aeff04f92953.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_3a7efefb_45a6_4950_8033_055801c8c172.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_3e241967_597e_4a16_b19b_ee2f9b78211b.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_48537dba_9814_4409_96fa_0ce7b00db2ab.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_598fa7ba_f5e5_4481_8397_e6513deeb453.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_5be9a210_1a5b_4a1b_aa3e_f68d6354d93a.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_618b02c2_c4d2_469e_8636_4e18adde0637.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_69a98f4a_7a3e_4d1c_be13_343309aef59c.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_6d8c88cd_0a99_41e5_b581_685e8410be2e.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_77dc898f_7148_4f59_92ba_66a96f201410.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_785f4ea1_a037_471e_8568_d1278a806ccc.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_7d076f91_a5c1_46f1_a9c2_7921ce4ff715.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_82b826bc_6f8a_4c8a_a13e_c4732d204e80.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_8674080f_f84a_48c2_9b6f_0314c0614d82.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_87653f92_cd61_44ff_adf4_4988aa9d4047.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_91ccb43d_f6c6_4b42_a14c_d3fbfd09427b.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_a3ade088_e5c4_4a67_89df_a13211d393d0.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_a5561ada_6c13_4310_a229_041b1a8f090b.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_acc5a027_6c8b_47e8_b291_0717e9c5d585.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_b19fcf94_fddf_4a31_8367_6242e150d3ef.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_c1b0157c_ec0a_4e57_8fe5_ebee252632d4.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_c6b13f1d_106d_4203_9ca3_7e41400f3b00.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_e68f934b_ecb9_4e70_b601_787163a3d7fc.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_f22ec6fe_b540_4d59_85f3_a077bc8c7ef8.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SiteMapNode_f425909c_73ad_44d7_b80b_3b07e2b1c43d.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SOPackageDetail.xml" />
-    <Content Include="xml Files\AntenovaCustomizations\_project\SOShipment.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\lm601000.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642005.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642006.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642007.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642008.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642010.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642011.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642012.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642013.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642014.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642015.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642016.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642017.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642018.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642019.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642020.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642021.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642022.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642023.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642024.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM642025.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM643001.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM643002.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM643003.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\LM643004.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO643000.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO643001.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO643002.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO643003.rpx" />
-    <None Include="xml Files\AntenovaCustomizations\ReportsCustomized\SO644000.rpx" />
-  </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <Folder Include="DAC\" />
     <Folder Include="Graph\" />
   </ItemGroup>
->>>>>>> e12da8114ae01201f826298e19ea75b1e8dc3f59
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
