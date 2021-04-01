@@ -507,11 +507,15 @@
       <Variables>
         <ReportVariable>
           <Name>CurrentPage</Name>
-          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $CurrentPage - $CurrentPage + 1, 1 + $CurrentPage)</ValueExpr>
+          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $PageCount + 1, $PageCount)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>PageCount</Name>
           <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $PageCount + 1, $PageCount)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>TotalCarton</Name>
+          <ValueExpr>=Last(CDec([SOPackageDetailEx.CustomRefNbr1]))</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -553,7 +557,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=$PageCount</Value>
+          <Value>=Last(CDec([SOPackageDetailEx.CustomRefNbr1]))</Value>
         </TextBox>
       </Items>
     </Detail>

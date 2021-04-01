@@ -2650,7 +2650,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
       <Variables>
         <ReportVariable>
           <Name>CurrentPage</Name>
-          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $CurrentPage - $CurrentPage + 1, 1 + $CurrentPage)</ValueExpr>
+          <ValueExpr>=IIF(CDec([SOPackageDetailEx.CustomRefNbr1]) &gt; $PageCount, $PageCount + 1, $PageCount)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>PageCount</Name>
@@ -2779,7 +2779,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
                 <TextAlign>Left</TextAlign>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
-              <Value>=$PageCount</Value>
+              <Value>=Last(CDec([SOPackageDetailEx.CustomRefNbr1]))</Value>
             </TextBox>
             <TextBox Name="textBox16">
               <Location>152px, 296px</Location>

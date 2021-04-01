@@ -2796,7 +2796,7 @@
           <Location>4px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOLine.AlternateID]</Value>
         </PictureBox>
@@ -2805,7 +2805,7 @@
           <Location>4px, 56px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>Antenova</Value>
         </PictureBox>
@@ -2814,7 +2814,7 @@
           <Location>4px, 112px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </PictureBox>
@@ -2823,25 +2823,25 @@
           <Location>4px, 168px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.Qty]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
           <BarcodeType>Code128</BarcodeType>
-          <Location>216px, 8px</Location>
+          <Location>184px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>176px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox6">
           <BarcodeType>Code128</BarcodeType>
-          <Location>216px, 56px</Location>
+          <Location>184px, 56px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>136px, 24px</Size>
+          <Size>176px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
         </PictureBox>
@@ -2859,7 +2859,7 @@
           <Value>P/N: </Value>
         </TextBox>
         <TextBox Name="textBox10">
-          <Location>256px, 32px</Location>
+          <Location>224px, 32px</Location>
           <Size>80px, 12px</Size>
           <Style>
             <Font>
@@ -2872,7 +2872,7 @@
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
         <TextBox Name="textBox11">
-          <Location>224px, 80px</Location>
+          <Location>192px, 80px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>
@@ -2886,7 +2886,7 @@
         </TextBox>
         <TextBox Name="textBox12">
           <Format>yyyyMMdd</Format>
-          <Location>256px, 80px</Location>
+          <Location>224px, 80px</Location>
           <Size>104px, 12px</Size>
           <Style>
             <Font>
@@ -3017,7 +3017,7 @@
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </TextBox>
         <TextBox Name="textBox9">
-          <Location>224px, 32px</Location>
+          <Location>192px, 32px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>
