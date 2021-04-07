@@ -52,10 +52,17 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(StandardOuterLabel2);
             Base.report.AddMenuAction(StandardOuterLabel3);
             Base.report.AddMenuAction(StandardOuterLabel4);
-            Base.report.AddMenuAction(BoschLabel);
-            Base.report.AddMenuAction(WNCLabel);
-            Base.report.AddMenuAction(TechcomOuterLabel);
-            Base.report.AddMenuAction(TechcomInnerLabel);
+
+            Labels.MenuAutoOpen = true;
+            Labels.AddMenuAction(BoschOuterLabel);
+            Labels.AddMenuAction(BoschInnerLabel);
+            Labels.AddMenuAction(WNCLabel);
+            Labels.AddMenuAction(TechcomOuterLabel);
+            Labels.AddMenuAction(TechcomInnerLabel);
+            Labels.AddMenuAction(SystechOuterLabel);
+            Labels.AddMenuAction(SystechInnerLabel);
+            Labels.AddMenuAction(USITWOuterLabel);
+            Labels.AddMenuAction(USITWInnerLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -83,7 +90,14 @@ namespace PX.Objects.SO
             baseMethod();
         }
 
-        #region Action
+        #region Actions
+
+        #region Labels
+        public PXAction<SOShipment> Labels;
+        [PXUIField(DisplayName = "LABELS", MapEnableRights = PXCacheRights.Select)]
+        [PXButton]
+        protected void labels() { }
+        #endregion
 
         #region COCReport
         public PXAction<SOShipment> COCReport;
@@ -320,11 +334,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Bosch Label - LM642018
-        public PXAction<SOShipment> BoschLabel;
+        #region Bosch Outer Label - LM642018
+        public PXAction<SOShipment> BoschOuterLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print Bosch Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable boschLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print Bosch Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable boschOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642018";
             var parameters = new Dictionary<string, string>()
@@ -494,6 +508,127 @@ namespace PX.Objects.SO
         protected virtual IEnumerable standardOuterLabel4(PXAdapter adapter)
         {
             var _reportID = "LM642025";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Bosch Inner Label - LM642026
+        public PXAction<SOShipment> BoschInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Bosch Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable boschInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642026";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Systech Outer Label - LM642027
+        public PXAction<SOShipment> SystechOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Systech Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable systechOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642027";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Systech Inner Label - LM642028
+        public PXAction<SOShipment> SystechInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Systech Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable systechInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642028";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region USITW Outer Label - LM642029
+        public PXAction<SOShipment> USITWOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print USITW Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable uSITWOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642029";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            // Checking each DateCode
+            if (parameters["ShipmentNbr"] != null)
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region USITW Inner Label - LM642030
+        public PXAction<SOShipment> USITWInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print USITW Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable uSITWInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642030";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr

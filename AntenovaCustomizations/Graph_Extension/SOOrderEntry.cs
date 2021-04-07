@@ -25,8 +25,10 @@ namespace PX.Objects.SO
                                 LeftJoin<BAccountR>.On<BAccountR.noteID.IsEqual<Note.noteID>>.
                                 Where<BAccountR.bAccountID.IsEqual<P.AsInt>>.View.ReadOnly.Select((PXGraph)this.Base, row.CustomerID);
 
-            if (CustomerNote != null && CustomerNote.NotePopupText.Length > 0)
+            if (CustomerNote != null && CustomerNote?.NotePopupText?.Length > 0)
                 PXNoteAttribute.SetNote(Base.Document.Cache, Base.Document.Current, CustomerNote.NotePopupText);
+            else
+                PXNoteAttribute.SetNote(Base.Document.Cache, Base.Document.Current, "");
         }
         #endregion
     }
