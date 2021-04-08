@@ -164,10 +164,10 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
+    <Body></Body>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
-    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
+    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>
@@ -467,6 +467,10 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
         <RelationRow>
           <ChildField>ShipmentNbr</ChildField>
           <ParentField>ShipmentNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>InventoryID</ChildField>
+          <ParentField>ARTran.InventoryID</ParentField>
         </RelationRow>
       </Links>
       <ParentName>SOShipment</ParentName>
@@ -5746,7 +5750,7 @@ BErFLDT75YX34qviJw0LV44V64kFD46ZNO8IGDnvMZNePrT8/Ji/Dpp5PjM6f+/8qRI5aK+Z8g+x/x+H
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>='Made in ' #010;+IsNull([SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
+              <Value>=IsNull('Made in ' + [SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
             </TextBox>
             <TextBox Name="textBox63">
               <Location>40px, 0px</Location>

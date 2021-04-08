@@ -14,11 +14,9 @@
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
+    <Body></Body>
     <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
-    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
     <To>=IsNull([BillingContact.EMail],'')</To>
   </MailSettings>
@@ -318,6 +316,10 @@
         <RelationRow>
           <ChildField>ShipmentNbr</ChildField>
           <ParentField>ShipmentNbr</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>InventoryID</ChildField>
+          <ParentField>ARTran.InventoryID</ParentField>
         </RelationRow>
       </Links>
       <ParentName>SOShipment</ParentName>
@@ -5438,10 +5440,10 @@
       <Footers>
         <Footer Name="groupFooterSection2">
           <Height>0.25in</Height>
+          <PrintEmpty>False</PrintEmpty>
           <Items>
             <TextBox Name="textBox64">
               <CanGrow>True</CanGrow>
-              <CanShrink>True</CanShrink>
               <Location>40px, 8px</Location>
               <Size>672px, 16px</Size>
               <Style>
@@ -5474,6 +5476,7 @@
       <Footers>
         <Footer Name="groupFooterSection4">
           <Height>0.17in</Height>
+          <PrintEmpty>False</PrintEmpty>
           <Variables>
             <ReportVariable>
               <Name>LineNbr</Name>
@@ -5509,7 +5512,7 @@
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=IIf([ARTran.InventoryID]&lt;&gt;Null, Format( '{0}: {1}', [ARTran.InventoryID],[ARTran.TranDesc]),[ARTran.TranDesc])#010;+ '{br}' #010;+IIf([SOShipLine.AlternateID]&lt;&gt;null,'Customer P/N: '+[SOShipLine.AlternateID], '')</Value>
+              <Value>=IIf([ARTran.InventoryID]&lt;&gt;Null, Format('{0}: {1}', [ARTran.InventoryID],[ARTran.TranDesc]),[ARTran.TranDesc])#010;+ '{br}' #010;+IIf([SOShipLine.AlternateID]&lt;&gt;null,'Customer P/N: '+[SOShipLine.AlternateID], '')</Value>
             </TextBox>
             <TextBox Name="textBox51">
               <Location>516px, 0px</Location>
@@ -5576,10 +5579,10 @@
         </Footer>
         <Footer Name="groupFooterSection5">
           <Height>0.17in</Height>
+          <PrintEmpty>False</PrintEmpty>
           <Items>
             <TextBox Name="textBox62">
               <CanGrow>True</CanGrow>
-              <CanShrink>True</CanShrink>
               <Location>88px, 0px</Location>
               <Size>624px, 16px</Size>
               <Style>
@@ -5588,7 +5591,7 @@
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>='Made in ' #010;+IsNull([SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
+              <Value>=IsNull('Made in ' + [SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
             </TextBox>
             <TextBox Name="textBox63">
               <Location>40px, 0px</Location>
