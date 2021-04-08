@@ -2680,7 +2680,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox10">
               <Location>88px, 105px</Location>
-              <Size>216px, 24px</Size>
+              <Size>456px, 24px</Size>
               <Style>
                 <Font>
                   <Size>21px</Size>
@@ -2706,7 +2706,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox12">
               <Location>184px, 153px</Location>
-              <Size>176px, 24px</Size>
+              <Size>360px, 24px</Size>
               <Style>
                 <Font>
                   <Size>21px</Size>
@@ -2806,7 +2806,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox4">
               <Location>144px, 57px</Location>
-              <Size>280px, 24px</Size>
+              <Size>400px, 24px</Size>
               <Style>
                 <Font>
                   <Size>20px</Size>
@@ -2833,7 +2833,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox6">
               <Location>104px, 249px</Location>
-              <Size>112px, 24px</Size>
+              <Size>160px, 24px</Size>
               <Style>
                 <Font>
                   <Size>20px</Size>
