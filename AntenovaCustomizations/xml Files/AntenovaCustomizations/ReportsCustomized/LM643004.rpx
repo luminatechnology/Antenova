@@ -43,10 +43,10 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
+    <Body></Body>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
-    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
+    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>
@@ -5689,7 +5689,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=IsNull('Made in ' + [CSAttributeDetail.Description], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
+              <Value>=IsNull('Made in ' + [CSAttributeDetail.Description], '')#010;+IsNull(IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], '')</Value>
             </TextBox>
             <TextBox Name="textBox63">
               <Location>40px, 0px</Location>
