@@ -2791,8 +2791,8 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
       </Variables>
       <Items>
         <TextBox Name="textBox10">
-          <Location>400px, 0px</Location>
-          <Size>104px, 16px</Size>
+          <Location>360px, 0px</Location>
+          <Size>144px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2803,7 +2803,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
           <Value>=[SOLine.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox13">
-          <Location>168px, 0px</Location>
+          <Location>128px, 0px</Location>
           <Size>104px, 16px</Size>
           <Style>
             <Padding>
@@ -2828,8 +2828,8 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
           <Value>=[SOPackageDetailEx.Weight]</Value>
         </TextBox>
         <TextBox Name="textBox15">
-          <Location>88px, 0px</Location>
-          <Size>80px, 16px</Size>
+          <Location>56px, 0px</Location>
+          <Size>72px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2855,7 +2855,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
         </TextBox>
         <TextBox Name="textBox19">
           <Location>0px, 0px</Location>
-          <Size>88px, 16px</Size>
+          <Size>56px, 16px</Size>
           <Style>
             <Padding>
               <Left>5px</Left>
@@ -2879,7 +2879,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
           <Value>=IIF([SOPackageDetailEx.UsrGrossWeight] = 0, '', [SOPackageDetailEx.UsrGrossWeight])</Value>
         </TextBox>
         <TextBox Name="textBox7">
-          <Location>272px, 0px</Location>
+          <Location>232px, 0px</Location>
           <Size>128px, 16px</Size>
           <Style>
             <Padding>
@@ -3218,7 +3218,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                 </TextBox>
                 <TextBox Name="textBox24">
                   <Location>0px, 0px</Location>
-                  <Size>88px, 48px</Size>
+                  <Size>56px, 48px</Size>
                   <Style>
                     <TextAlign>Center</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
@@ -3227,8 +3227,8 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                   <Value>CARTON NO.</Value>
                 </TextBox>
                 <TextBox Name="textBox25">
-                  <Location>88px, 0px</Location>
-                  <Size>80px, 48px</Size>
+                  <Location>56px, 0px</Location>
+                  <Size>72px, 48px</Size>
                   <Style>
                     <TextAlign>Center</TextAlign>
                     <VerticalAlign>Middle</VerticalAlign>
@@ -3257,7 +3257,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                   <Value>GROSS WEIGHT#010;(KGS)</Value>
                 </TextBox>
                 <TextBox Name="textBox4">
-                  <Location>168px, 0px</Location>
+                  <Location>128px, 0px</Location>
                   <Size>104px, 48px</Size>
                   <Style>
                     <Padding>
@@ -3270,7 +3270,7 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                   <Value>='ANTENOVA' + '{br}' +#010;'PART NO.'</Value>
                 </TextBox>
                 <TextBox Name="textBox6">
-                  <Location>272px, 0px</Location>
+                  <Location>232px, 0px</Location>
                   <Size>128px, 48px</Size>
                   <Style>
                     <TextAlign>Center</TextAlign>
@@ -3280,8 +3280,8 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
                   <Value>DATE CODE</Value>
                 </TextBox>
                 <TextBox Name="textBox9">
-                  <Location>400px, 0px</Location>
-                  <Size>104px, 48px</Size>
+                  <Location>360px, 0px</Location>
+                  <Size>144px, 48px</Size>
                   <Style>
                     <Padding>
                       <Left>5px</Left>
