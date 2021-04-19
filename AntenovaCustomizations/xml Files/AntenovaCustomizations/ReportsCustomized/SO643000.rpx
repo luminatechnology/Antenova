@@ -14,9 +14,12 @@
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <Bcc></Bcc>
+    <Body>='Please find the invoice#' + [ARInvoice.RefNbr] + ' from Antenova Limited, for your review and payment. If you have any questions regarding this/these invoice(s), please contact Renee Lin (RENEE.LIN@ANTENOVA.COM).#010;#010;Thank-you.#010;#010;#010;Note: Please be vigilant about any e-mails you receive purporting to be an Antenova employee and requesting you to pay into a different bank account.#010;#010;#010;If you receive any bank account change requests, please phone your Antenova contact to check before making a payment.#010;#010;Best regards,#010;#010;Renee Lin#010;#010;Customer Service Supervisor#010;#010;Antenova Ltd, Taiwan Branch#010;4F., No.324, Sec. 1,Nei-Hu Road,#010;Nei-Hu Dist., Taipei 11493#010;Taiwan#010;Tel: +886 (0)2 8797-8630 ex: 216#010;http://www.antenova.com'</Body>
     <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
+    <Subject>='Invoice #' + [ARInvoice.RefNbr] + ' from Antenova Limited'</Subject>
     <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
     <To>=IsNull([BillingContact.EMail],'')</To>
   </MailSettings>
@@ -324,8 +327,22 @@
       </Links>
       <ParentName>SOShipment</ParentName>
     </ReportRelation>
+    <ReportRelation>
+      <ChildName>CSAttributeDetail</ChildName>
+      <Links>
+        <RelationRow>
+          <ChildField>ValueID</ChildField>
+          <ParentField>UsrCountry</ParentField>
+        </RelationRow>
+        <RelationRow>
+          <ChildField>='MADEIN'</ChildField>
+          <ParentField>CSAttributeDetail.AttributeID</ParentField>
+        </RelationRow>
+      </Links>
+      <ParentName>SOPackageDetail</ParentName>
+    </ReportRelation>
   </Relations>
-  <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
+  <SchemaUrl>http://localhost/Antenova/</SchemaUrl>
   <Style>
     <Font>
       <Size>10pt</Size>
@@ -4578,6 +4595,52 @@
       </Fields>
       <FullName>PX.Objects.SO.SOPackageDetail</FullName>
     </ReportTable>
+    <ReportTable Name="CSAttributeDetail">
+      <Fields>
+        <ReportField Name="AttributeID"></ReportField>
+        <ReportField Name="CreatedByID"></ReportField>
+        <ReportField Name="CreatedByID_Creator_displayName"></ReportField>
+        <ReportField Name="CreatedByID_Creator_Username"></ReportField>
+        <ReportField Name="CreatedByID_description"></ReportField>
+        <ReportField Name="CreatedByScreenID"></ReportField>
+        <ReportField Name="CreatedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="CreatedDateTime_Day"></ReportField>
+        <ReportField Name="CreatedDateTime_Hour"></ReportField>
+        <ReportField Name="CreatedDateTime_Month"></ReportField>
+        <ReportField Name="CreatedDateTime_Quarter"></ReportField>
+        <ReportField Name="Description"></ReportField>
+        <ReportField Name="Disabled">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedByID"></ReportField>
+        <ReportField Name="LastModifiedByID_description"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_displayName"></ReportField>
+        <ReportField Name="LastModifiedByID_Modifier_Username"></ReportField>
+        <ReportField Name="LastModifiedByScreenID"></ReportField>
+        <ReportField Name="LastModifiedDateTime">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="LastModifiedDateTime_Day"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Hour"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Month"></ReportField>
+        <ReportField Name="LastModifiedDateTime_Quarter"></ReportField>
+        <ReportField Name="NoteActivity"></ReportField>
+        <ReportField Name="NoteFiles"></ReportField>
+        <ReportField Name="NoteID">
+          <DataType>Object</DataType>
+        </ReportField>
+        <ReportField Name="NoteImages"></ReportField>
+        <ReportField Name="NoteText"></ReportField>
+        <ReportField Name="SortOrder">
+          <DataType>Int16</DataType>
+        </ReportField>
+        <ReportField Name="tstamp"></ReportField>
+        <ReportField Name="ValueID"></ReportField>
+      </Fields>
+      <FullName>PX.Objects.CS.CSAttributeDetail</FullName>
+    </ReportTable>
   </Tables>
   <ViewerFields>
     <ViewerField Name="ARInvoice.DocType"></ViewerField>
@@ -5591,7 +5654,7 @@
                 </Font>
               </Style>
               <StyleName>Normal</StyleName>
-              <Value>=IsNull('Made in ' + [SOPackageDetail.UsrCountry], '')#010;+IIf([LineNote.NoteText] &lt;&gt; Null Or [LineNote.NoteText] &lt;&gt; '', IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], #010;								'')</Value>
+              <Value>=IsNull('Made in ' + [CSAttributeDetail.Description], '')#010;+IsNull(IIf([SOPackageDetail.UsrCountry] &lt;&gt; Null,  '{br}' + '{br}', '') + [LineNote.NoteText], '')</Value>
             </TextBox>
             <TextBox Name="textBox63">
               <Location>40px, 0px</Location>
