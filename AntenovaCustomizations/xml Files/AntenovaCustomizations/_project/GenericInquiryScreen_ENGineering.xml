@@ -162,7 +162,7 @@
                         <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="gerberNbr" SchemaField="l.GerberNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="c90902d4-ffc8-44f8-9c87-3c9f05344b6b" />
                     </GITable>
                     <SiteMap linkname="toDesignById">
-                        <row Title="ENGineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI000111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
+                        <row Title="ENGineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
                             <ListEntryPoint EntryScreenID="LM204000" IsActive="1" />
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="18024" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
