@@ -68,6 +68,7 @@
     <Compile Include="Descriptor\GetDropDownAttribute.cs" />
     <Compile Include="Graph\ENGineeringMaint.cs" />
     <Compile Include="Graph\ENGSetupMaint.cs" />
+    <Compile Include="Graph_Extension\ARInvoiceEntry.cs" />
     <Compile Include="Graph_Extension\OpportunityMaint.cs" />
     <Compile Include="Graph_Extension\SOOrderEntry.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
