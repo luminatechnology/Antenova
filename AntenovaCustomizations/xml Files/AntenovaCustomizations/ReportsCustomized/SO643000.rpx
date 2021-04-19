@@ -14,9 +14,12 @@
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
     <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <Bcc></Bcc>
+    <Body>='Please find the invoice#' + [ARInvoice.RefNbr] + ' from Antenova Limited, for your review and payment. If you have any questions regarding this/these invoice(s), please contact Renee Lin (RENEE.LIN@ANTENOVA.COM).#010;#010;Thank-you.#010;#010;#010;Note: Please be vigilant about any e-mails you receive purporting to be an Antenova employee and requesting you to pay into a different bank account.#010;#010;#010;If you receive any bank account change requests, please phone your Antenova contact to check before making a payment.#010;#010;Best regards,#010;#010;Renee Lin#010;#010;Customer Service Supervisor#010;#010;Antenova Ltd, Taiwan Branch#010;4F., No.324, Sec. 1,Nei-Hu Road,#010;Nei-Hu Dist., Taipei 11493#010;Taiwan#010;Tel: +886 (0)2 8797-8630 ex: 216#010;http://www.antenova.com'</Body>
     <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
+    <Subject>='Invoice #' + [ARInvoice.RefNbr] + ' from Antenova Limited'</Subject>
     <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
     <To>=IsNull([BillingContact.EMail],'')</To>
   </MailSettings>
