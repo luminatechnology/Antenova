@@ -206,11 +206,11 @@ DxQO7433jEuhJAb1aS4QmwkQB5pNyiEgpfBJMTcECBLGvs/AD1Cf6Oq1duH0pHb/GnzGNsgbpBlO4DFJ
   </Filters>
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
-    <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <ActivitySource>ARInvoice.NoteID</ActivitySource>
+    <Bcc></Bcc>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>

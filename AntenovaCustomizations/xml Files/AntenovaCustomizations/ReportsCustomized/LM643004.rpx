@@ -42,11 +42,11 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
   </Filters>
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
-    <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <ActivitySource>ARInvoice.NoteID</ActivitySource>
+    <Bcc></Bcc>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>

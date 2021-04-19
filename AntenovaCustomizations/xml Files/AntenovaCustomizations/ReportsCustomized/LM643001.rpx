@@ -13,13 +13,10 @@
   </Filters>
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
-    <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Bcc></Bcc>
+    <ActivitySource>ARInvoice.NoteID</ActivitySource>
     <Body></Body>
     <Cc>=IsNull([Customer.NOTICECC_Attributes],'')</Cc>
-    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
-    <Subject></Subject>
     <TemplateID>Email Shipment Notice</TemplateID>
     <To>=IsNull([ShipContact.Email],'')</To>
   </MailSettings>
@@ -4509,6 +4506,13 @@
         </ReportField>
         <ReportField Name="UsrCarrierPluginID"></ReportField>
         <ReportField Name="UsrNote"></ReportField>
+        <ReportField Name="UsrPacking">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="UsrSentCarrier">
+          <DataType>Boolean</DataType>
+        </ReportField>
+        <ReportField Name="UsrShipTrackURL"></ReportField>
         <ReportField Name="UsrWaybill"></ReportField>
         <ReportField Name="WillCall">
           <DataType>Boolean</DataType>
