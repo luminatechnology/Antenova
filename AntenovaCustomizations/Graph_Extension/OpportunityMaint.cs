@@ -9,6 +9,7 @@ using AntenovaCustomizations.DAC;
 using PX.Data.BQL;
 using PX.Objects.CS;
 using PX.Objects.AR;
+using AntenovaCustomizations.Graph;
 
 namespace PX.Objects.CR
 {
@@ -43,6 +44,30 @@ namespace PX.Objects.CR
             var _oppID = Base.Opportunity.Current.OpportunityID;
             if (row.Opprid.ToLower().Contains("new"))
                 e.Row.Opprid = _oppID;
+        }
+
+        public void _(Events.RowPersisted<ENGineering> e)
+        {
+            var row = e.Row as ENGineering;
+            var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrNbr == row.EngrNbr);
+            if(_RevenueData.Count() == 0)
+            {
+                var _graph = PXGraph.CreateInstance<ENGineeringMaint>();
+                var _oppProduct = Base.Products.Select().RowCast<CROpportunityProducts>();
+                foreach (var _prod in _oppProduct)
+                {
+                    var _data = _graph.RevenueLine.Insert(_graph.RevenueLine.Cache.CreateInstance() as ENGRevenueLine);
+                    _data.EngrNbr = row.EngrNbr;
+                    _data.InventoryID = _prod.InventoryID;
+                    _data.Descr = _prod.Descr;
+                    _data.Quantity = _prod.Quantity;
+                    _data.Uom = _prod.UOM;
+                    _data.UnitPrice = _prod.UnitPrice;
+                    _data.ExtPrice = _prod.ExtPrice;
+                }
+                _graph.Actions.PressSave();
+            }
+            
         }
 
         /// <summary> Set EngrNbr Disabled </summary>

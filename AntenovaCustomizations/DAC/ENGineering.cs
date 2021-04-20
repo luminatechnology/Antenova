@@ -51,7 +51,6 @@ namespace AntenovaCustomizations.DAC
         [PXDBString(10)]
         [PXDefault("1")]
         [PXUIField(DisplayName = "Status",Enabled = false)]
-        [PXStringList]
         [GetDropDownAttribute("ENGSTATUS",true)]
         public virtual string Status { get; set; }
         public abstract class status : PX.Data.BQL.BqlString.Field<status> { }

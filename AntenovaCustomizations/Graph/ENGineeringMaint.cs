@@ -186,7 +186,7 @@ namespace AntenovaCustomizations.Graph
 
         #region Row Selected
 
-        /// <summary> Initial PrjType DDL </summary>
+        /// <summary> RowSelected Engineering  </summary>
         public void _(Events.RowSelected<ENGineering> e)
         {
             var _prjType = SelectFrom<ENGProjectType>.View.Select(this).RowCast<ENGProjectType>();
@@ -221,7 +221,7 @@ namespace AntenovaCustomizations.Graph
                 row.SalesRegion = _oppor.GetExtension<CROpportunityExt>().UsrSalesRegion;
 
                 // Auto Get Revenule Line Data
-                if (this.RevenueLine.Current == null)
+                if (this.RevenueLine.Select().Count == 0)
                 {
                     var _oppProduct = SelectFrom<CROpportunityProducts>
                                       .InnerJoin<CROpportunity>.On<CROpportunityProducts.quoteID.IsEqual<CROpportunity.defQuoteID>>
