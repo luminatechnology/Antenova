@@ -80,7 +80,7 @@ namespace AntenovaCustomizations.Graph
         public PXAction<ENGineering> changeToClosed;
         public PXAction<ENGineering> changeToCompletion;
 
-        [PXButton]
+        [PXButton(CommitChanges = true)]
         [PXUIField(DisplayName = "Actions", MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable ActionsFolder(PXAdapter adapter)
         {
@@ -111,7 +111,7 @@ namespace AntenovaCustomizations.Graph
             return adapter.Get();
         }
 
-        [PXButton(CommitChanges = true)]
+        [PXButton(CommitChanges = true, SpecialType = PXSpecialButtonType.Save)]
         [PXUIField(DisplayName = "Change To On Hold", MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable ChangeToOnHold(PXAdapter adapter)
         {
@@ -138,11 +138,6 @@ namespace AntenovaCustomizations.Graph
         #endregion
 
         #region Override DAC
-        /// <summary> productCategory </summary>
-        [PXDefault]
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        public void _(Events.CacheAttached<ENGineering.productCategory> e) { }
-
         /// <summary> engref </summary>
         [PXDefault]
         [PXMergeAttributes(Method = MergeMethod.Append)]
@@ -396,6 +391,10 @@ namespace AntenovaCustomizations.Graph
             var IsValid = true;
             var doc = this.Document.Cache.Current as ENGineering;
             var line = this.Line.Cache.Current as ENGLine ?? this.Line.Cache.CreateInstance() as ENGLine;
+
+            if (doc == null)
+                return;
+
             switch (_status)
             {
                 case ENGStatus.Process:

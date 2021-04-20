@@ -10,6 +10,7 @@ using PX.Data.BQL;
 using PX.Objects.CS;
 using PX.Objects.AR;
 using AntenovaCustomizations.Graph;
+using System.Collections;
 
 namespace PX.Objects.CR
 {
@@ -28,6 +29,24 @@ namespace PX.Objects.CR
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
         [PXMergeAttributes(Method = MergeMethod.Replace)]
         public void _(Events.CacheAttached<ENGineering.engrNbr> e) { }
+        #endregion
+
+        #region Action
+        public PXAction<ENGineering> viewENGDoc;
+
+        [PXButton]
+        [PXUIField(Visible = false)]
+        public virtual IEnumerable ViewENGDoc(PXAdapter adapter)
+        {
+            var row = this.ENGList.Current;
+            var graph = PXGraph.CreateInstance<ENGineeringMaint>();
+            graph.Document.Current = SelectFrom<ENGineering>
+                                     .Where<ENGineering.engrNbr.IsEqual<P.AsString>>
+                                     .View.Select(Base, row.EngrNbr);
+            PXRedirectHelper.TryRedirect(graph, PXRedirectHelper.WindowMode.NewWindow);
+            return adapter.Get();
+        }
+
         #endregion
 
         public void _(Events.RowSelected<CROpportunity> e, PXRowSelected baseHandler)
@@ -50,7 +69,7 @@ namespace PX.Objects.CR
         {
             var row = e.Row as ENGineering;
             var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrNbr == row.EngrNbr);
-            if(_RevenueData.Count() == 0)
+            if (_RevenueData.Count() == 0)
             {
                 var _graph = PXGraph.CreateInstance<ENGineeringMaint>();
                 var _oppProduct = Base.Products.Select().RowCast<CROpportunityProducts>();
@@ -67,7 +86,7 @@ namespace PX.Objects.CR
                 }
                 _graph.Actions.PressSave();
             }
-            
+
         }
 
         /// <summary> Set EngrNbr Disabled </summary>
@@ -130,7 +149,7 @@ namespace PX.Objects.CR
         /// <summary> Events.FieldUpdated CROpportunityExt.usrSalesPerson </summary>
         public void _(Events.FieldUpdated<CROpportunityExt.usrSalesPerson> e)
         {
-            if(e.NewValue != null)
+            if (e.NewValue != null)
             {
                 var _salesPerson = new PXGraph().Select<SalesPerson>()
                                                 .Where(x => x.SalesPersonID == (int)e.NewValue)

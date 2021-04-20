@@ -662,7 +662,7 @@
                             <px:PXGridLevel DataMember="ENGList">
                                 <Mode InitNewRow="True" />
                                 <Columns>
-                                    <px:PXGridColumn DataField="EngrNbr"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="EngrNbr" LinkCommand="viewENGDoc"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="EndCust"></px:PXGridColumn>
