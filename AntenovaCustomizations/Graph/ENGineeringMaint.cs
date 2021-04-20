@@ -453,9 +453,9 @@ namespace AntenovaCustomizations.Graph
                 doc.Status = ((int)_status).ToString();
                 if (_status == ENGStatus.Process)
                     line.ProcessDate = DateTime.Now;
-                this.Document.Cache.Update(doc);
-                this.Line.Cache.Update(line);
             }
+            this.Document.Cache.Update(doc);
+            this.Line.Cache.Update(line);
             this.Save.Press();
         }
 
