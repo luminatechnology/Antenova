@@ -67,6 +67,7 @@ namespace PX.Objects.CR
 
         public void _(Events.RowPersisted<ENGineering> e)
         {
+            int count = 0;
             var row = e.Row as ENGineering;
             var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrNbr == row.EngrNbr);
             if (_RevenueData.Count() == 0)
@@ -83,8 +84,14 @@ namespace PX.Objects.CR
                     _data.Uom = _prod.UOM;
                     _data.UnitPrice = _prod.UnitPrice;
                     _data.ExtPrice = _prod.ExtPrice;
+                    _data.LineNbr = ++count;
                 }
                 _graph.Actions.PressSave();
+                // update reveCntr
+                PXUpdate<Set<ENGineering.reveCntr, Required<ENGineering.reveCntr>>,
+                         ENGineering,
+                         Where<ENGineering.engrNbr, Equal<Required<ENGineering.engrNbr>>
+                         >>.Update(Base, count, row.EngrNbr);
             }
 
         }
