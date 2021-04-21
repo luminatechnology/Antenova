@@ -75,7 +75,7 @@
                             <px:PXTextEdit runat="server" ID="edCloseReason" DataField="CloseReason" TextMode="MultiLine"></px:PXTextEdit>
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
                             <px:PXDateTimeEdit runat="server" ID="edRequstRcvDate" DataField="RequstRcvDate"></px:PXDateTimeEdit>
-                            <px:PXTextEdit runat="server" ID="edGerberNbr" DataField="GerberNbr"></px:PXTextEdit>
+                            <px:PXSelector runat="server" ID="edGerberNbr" DataField="GerberNbr"></px:PXSelector>
                             <px:PXDateTimeEdit runat="server" ID="edActStart" DataField="ActStart"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edActComplete" DataField="ActComplete"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" />
@@ -114,7 +114,7 @@
                     </px:PXFormView>
                 </Template>
             </px:PXTabItem>
-            <px:PXTabItem Text="REVENUE LINE">
+            <px:PXTabItem Text="PRODUCTS">
                 <Template>
                     <px:PXGrid ID="edREVenueLine" SkinID="Details" runat="server" Width="100%" Height="500px" DataSourceID="ds" ActionsPosition="Top" BorderWidth="0px" SyncPosition="true">
                         <AutoSize Enabled="True" MinHeight="100" MinWidth="100" />

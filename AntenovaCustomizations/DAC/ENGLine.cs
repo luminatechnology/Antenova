@@ -1,5 +1,6 @@
 using System;
 using PX.Data;
+using PX.Data.BQL.Fluent;
 using PX.Objects.CS;
 using PX.Objects.SO;
 
@@ -27,7 +28,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region DeviceRcvDate
-        [PXDBDate(InputMask = "g",PreserveTime = true)]
+        [PXDBDate(InputMask = "g", PreserveTime = true)]
         [PXUIField(DisplayName = "Device Rcv Date")]
         public virtual DateTime? DeviceRcvDate { get; set; }
         public abstract class deviceRcvDate : PX.Data.BQL.BqlDateTime.Field<deviceRcvDate> { }
@@ -51,6 +52,10 @@ namespace AntenovaCustomizations.DAC
         #region GerberNbr
         [PXDBString(30, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Gerber Review No.")]
+        [PXSelector(typeof(SelectFrom<ENGLine>
+                           .Where<ENGLine.gerberNbr.IsNotNull>
+                           .AggregateTo<GroupBy<ENGLine.gerberNbr>>
+                           .SearchFor<ENGLine.gerberNbr>), ValidateValue = false)]
         public virtual string GerberNbr { get; set; }
         public abstract class gerberNbr : PX.Data.BQL.BqlString.Field<gerberNbr> { }
         #endregion
