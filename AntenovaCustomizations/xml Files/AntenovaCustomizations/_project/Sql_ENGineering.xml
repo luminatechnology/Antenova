@@ -2,7 +2,7 @@
     <CDATA name="TableSchemaXml"><![CDATA[<table name="ENGineering">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="EngrNbr" type="NVarChar(15)" />
-  <col name="ENGRef" type="NVarChar(15)" nullable="true" />
+  <col name="ENGRef" type="NVarChar(25)" nullable="true" />
   <col name="PRJType" type="NVarChar(15)" />
   <col name="Status" type="NVarChar(10)" />
   <col name="OpprID" type="NVarChar(20)" nullable="true" />

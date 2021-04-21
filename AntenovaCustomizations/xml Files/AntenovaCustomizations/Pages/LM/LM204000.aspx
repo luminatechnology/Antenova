@@ -26,7 +26,7 @@
             <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype"></px:PXDropDown>
             <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
-            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true"></px:PXSelector>
             <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID"></px:PXSelector>
             <px:PXLayoutRule runat="server" ColumnSpan="3" ControlSize="XM" />
             <px:PXTextEdit runat="server" ID="edDescription" DataField="Description" TextMode="MultiLine"></px:PXTextEdit>

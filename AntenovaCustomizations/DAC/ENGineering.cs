@@ -112,6 +112,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region SalesRegion
+        [PXDefault]
         [GetDropDownAttribute("REGION")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Sales Region",Required = true)]

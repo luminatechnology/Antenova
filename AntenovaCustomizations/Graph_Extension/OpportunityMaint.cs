@@ -40,35 +40,36 @@ namespace PX.Objects.CR
         {
             var row = this.ENGList.Current;
             var graph = PXGraph.CreateInstance<ENGineeringMaint>();
-            graph.Document.Current = SelectFrom<ENGineering>
-                                     .Where<ENGineering.engrNbr.IsEqual<P.AsString>>
-                                     .View.Select(Base, row.EngrNbr);
-            PXRedirectHelper.TryRedirect(graph, PXRedirectHelper.WindowMode.NewWindow);
+            if (row != null)
+            {
+                graph.Document.Current = SelectFrom<ENGineering>
+                                         .Where<ENGineering.engrNbr.IsEqual<P.AsString>>
+                                         .View.Select(Base, row.EngrNbr);
+                PXRedirectHelper.TryRedirect(graph, PXRedirectHelper.WindowMode.NewWindow);
+            }
             return adapter.Get();
         }
 
         #endregion
 
-        public void _(Events.RowSelected<CROpportunity> e, PXRowSelected baseHandler)
-        {
-            baseHandler?.Invoke(e.Cache, e.Args);
-            var a = e.Row.GetExtension<CROpportunityExt>();
-            var b = SelectFrom<CROpportunity>.Where<CROpportunity.opportunityID.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View.Select(Base);
-            var c = b.RowCast<CROpportunity>().FirstOrDefault().GetExtension<CROpportunityExt>();
-        }
-
+        /// <summary> RowPersisting ENGineering </summary>
         public void _(Events.RowPersisting<ENGineering> e)
         {
             var row = (ENGineering)e.Row;
             var _oppID = Base.Opportunity.Current.OpportunityID;
-            if (row.Opprid.ToLower().Contains("new"))
+            if ((row.Opprid ?? string.Empty).ToLower().Contains("new"))
                 e.Row.Opprid = _oppID;
         }
 
+        /// <summary> RowPersisted ENGineering </summary>
         public void _(Events.RowPersisted<ENGineering> e)
         {
             int count = 0;
             var row = e.Row as ENGineering;
+
+            if (string.IsNullOrEmpty(row.Description) || string.IsNullOrEmpty(row.Prjtype) || string.IsNullOrEmpty(row.Priority) || string.IsNullOrEmpty(row.SalesRegion))
+                return;
+
             var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrNbr == row.EngrNbr);
             if (_RevenueData.Count() == 0)
             {

@@ -143,11 +143,6 @@ namespace AntenovaCustomizations.Graph
         [PXMergeAttributes(Method = MergeMethod.Append)]
         public void _(Events.CacheAttached<ENGineering.engref> e) { }
 
-        /// <summary> salesRegion </summary>
-        [PXDefault]
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        public void _(Events.CacheAttached<ENGineering.salesRegion> e) { }
-
         /// <summary> opprid </summary>
         [PXSelector(typeof(SearchFor<CROpportunity.opportunityID>),
                     typeof(CROpportunity.opportunityID),
