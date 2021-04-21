@@ -450,7 +450,7 @@ namespace AntenovaCustomizations.Graph
             if (IsValid)
             {
                 doc.Status = ((int)_status).ToString();
-                if (_status == ENGStatus.Process)
+                if (_status == ENGStatus.Process && !line.ProcessDate.HasValue)
                     line.ProcessDate = DateTime.Now;
             }
             this.Document.Cache.Update(doc);

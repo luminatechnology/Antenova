@@ -92,7 +92,7 @@ namespace AntenovaCustomizations.DAC
 
         #region CompleteSummary
         [PXDBString(1000, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Report Summary")]
+        [PXUIField(DisplayName = "Complete Report")]
         public virtual string CompleteSummary { get; set; }
         public abstract class completeSummary : PX.Data.BQL.BqlString.Field<completeSummary> { }
         #endregion

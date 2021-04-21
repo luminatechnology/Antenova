@@ -19,7 +19,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region EngrNbr
-        [PXDBString(15, IsUnicode = true, InputMask = "",IsKey = true)]
+        [PXDBString(15, IsUnicode = true, InputMask = "", IsKey = true)]
         [PXUIField(DisplayName = "Engr Nbr")]
         [PXParent(typeof(FK.Nbr))]
         [PXDBDefault(typeof(ENGineering.engrNbr))]
@@ -68,7 +68,7 @@ namespace AntenovaCustomizations.DAC
         #region UnitPrice
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
-        [PXUIField(DisplayName = "Unit Price")]
+        [PXUIField(DisplayName = "Unit Price", Visible = false)]
         public virtual Decimal? UnitPrice { get; set; }
         public abstract class unitPrice : PX.Data.BQL.BqlDecimal.Field<unitPrice> { }
         #endregion
@@ -76,8 +76,8 @@ namespace AntenovaCustomizations.DAC
         #region ExtPrice
         [PXDBDecimal()]
         [PXDefault(TypeCode.Decimal, "0.0")]
-        [PXUIField(DisplayName = "Ext Price")]
-        [PXFormula(typeof(Mult<ENGRevenueLine.quantity,ENGRevenueLine.unitPrice>))]
+        [PXUIField(DisplayName = "Ext Price", Visible = false)]
+        [PXFormula(typeof(Mult<ENGRevenueLine.quantity, ENGRevenueLine.unitPrice>))]
         public virtual Decimal? ExtPrice { get; set; }
         public abstract class extPrice : PX.Data.BQL.BqlDecimal.Field<extPrice> { }
         #endregion

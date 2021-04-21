@@ -41,7 +41,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region ENGRef
-        [PXDBString(15,IsUnicode = true, InputMask = "")]
+        [PXDBString(25,IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Egnineering Ref.",Required = true)]
         public virtual string Engref { get; set; }
         public abstract class engref : PX.Data.BQL.BqlString.Field<engref> { }
@@ -120,9 +120,8 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region SalesPerson
-        [PXDefault]
         [PXDBInt]
-        [PXUIField(DisplayName = "Sales Person", Required = true)]
+        [PXUIField(DisplayName = "Sales Person")]
         [PXSelector(typeof(Search<PX.Objects.AR.SalesPerson.salesPersonID>),
                     typeof(PX.Objects.AR.SalesPerson.salesPersonCD),
                     typeof(PX.Objects.AR.SalesPerson.isActive),
