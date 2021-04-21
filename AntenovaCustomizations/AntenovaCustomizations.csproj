@@ -78,6 +78,7 @@
     <Compile Include="DAC\ENGineering.cs" />
     <Compile Include="DAC\ENGLine.cs" />
     <Compile Include="DAC\ENGRevenueLine.cs" />
+    <Compile Include="DAC\v_TECHCOM_INNER_LABEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
