@@ -39,7 +39,7 @@ namespace PX.Objects.SO
             Base.report.AddMenuAction(PackingList);
             Base.report.AddMenuAction(TaiwanPackingList);
             Base.report.AddMenuAction(UKPackingList);
-            Base.report.AddMenuAction(SignaturePackingList);
+            //Base.report.AddMenuAction(SignaturePackingList);
             Base.report.AddMenuAction(GeneralOuterLabel);
             Base.report.AddMenuAction(HanaOuterLabel);
             Base.report.AddMenuAction(AngliaOuterLabel);
@@ -169,7 +169,7 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Signature Packing List - LM642008
+        /*#region Signature Packing List - LM642008
         public PXAction<SOShipment> SignaturePackingList;
         [PXButton]
         [PXUIField(DisplayName = "Print Packing List - Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
@@ -184,7 +184,7 @@ namespace PX.Objects.SO
                 throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
             return adapter.Get<SOShipment>().ToList();
         }
-        #endregion
+        #endregion*/
 
         #region General Outer Label - LM642010
         public PXAction<SOShipment> GeneralOuterLabel;
@@ -271,7 +271,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -351,7 +351,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -431,7 +431,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -460,7 +460,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -489,7 +489,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -518,7 +518,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -547,7 +547,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -610,7 +610,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
@@ -639,7 +639,7 @@ namespace PX.Objects.SO
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode?.Length == 0)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
