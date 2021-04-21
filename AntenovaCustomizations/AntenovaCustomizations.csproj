@@ -56,28 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAC_Extensions\CROpportunityStandaloneExt.cs" />
-    <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />
     <Compile Include="DAC_Extensions\INItemLotSerialExtensions.cs" />
     <Compile Include="DAC_Extensions\INSiteStatusExtensions.cs" />
-    <Compile Include="DAC_Extensions\SalesPersonExtension.cs" />
     <Compile Include="DAC_Extensions\SOPackageDetail_Extension.cs" />
     <Compile Include="DAC_Extensions\SOShipLineExtensions.cs" />
     <Compile Include="DAC_Extensions\SOShipmentExtensions.cs" />
-    <Compile Include="DAC\ENGProjectType.cs" />
-    <Compile Include="Descriptor\GetDropDownAttribute.cs" />
-    <Compile Include="Graph\ENGineeringMaint.cs" />
-    <Compile Include="Graph\ENGSetupMaint.cs" />
     <Compile Include="Graph_Extension\ARInvoiceEntry.cs" />
-    <Compile Include="Graph_Extension\OpportunityMaint.cs" />
     <Compile Include="Graph_Extension\SOOrderEntry.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
     <Compile Include="Graph_Extension\SOInvoiceEntry.cs" />
     <Compile Include="LUMItemLotSerFileMaint.cs" />
-    <Compile Include="DAC\ENGSetup.cs" />
-    <Compile Include="DAC\ENGineering.cs" />
-    <Compile Include="DAC\ENGLine.cs" />
-    <Compile Include="DAC\ENGRevenueLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
