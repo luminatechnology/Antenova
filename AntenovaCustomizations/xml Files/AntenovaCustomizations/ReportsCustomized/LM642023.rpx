@@ -5,7 +5,7 @@
   </CommonSettings>
   <Filters>
     <FilterExp>
-      <DataField>v_TECHCOM_INNER_LABEL.DeliveryDate</DataField>
+      <DataField>v_TECHCOM_INNER_LABEL.ShipmentNbr</DataField>
       <Value>@ShipmentNbr</Value>
     </FilterExp>
   </Filters>
@@ -153,7 +153,7 @@
           <Value>Vendor Code : ATV-ATV</Value>
         </TextBox>
         <TextBox Name="textBox23">
-          <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
+          <Format>='N0'</Format>
           <Location>64px, 64px</Location>
           <Size>88px, 0.16667in</Size>
           <Value>=[v_TECHCOM_INNER_LABEL.Qtyinbox_attributes]</Value>
@@ -171,7 +171,7 @@
         <TextBox Name="textBox26">
           <Location>56px, 144px</Location>
           <Size>144px, 0.16667in</Size>
-          <Value>=[v_TECHCOM_INNER_LABEL.MadeIn]</Value>
+          <Value>='Made in ' + [v_TECHCOM_INNER_LABEL.MadeIn]</Value>
         </TextBox>
         <TextBox Name="textBox3">
           <Location>0px, 16px</Location>
@@ -179,7 +179,6 @@
           <Value>Quanta P/N : </Value>
         </TextBox>
         <TextBox Name="textBox4">
-          <Format>=IIF([SOPackageDetailEx.QtyUOM] = 'PCS', 'N0', 'N2')</Format>
           <Location>72px, 16px</Location>
           <Size>144px, 0.16667in</Size>
           <Value>=[v_TECHCOM_INNER_LABEL.PartNumber]</Value>
