@@ -3,3 +3,12 @@
 ################################################################################
 
 /AntenovaCustomizations/Graph/ImportCRLeadData.cs.exclude
+/packages/WebActivatorEx.2.0
+/packages/Swashbuckle.Core.5.6.0
+/packages/Swashbuckle.5.6.0
+/packages/Newtonsoft.Json.7.0.1
+/packages/Microsoft.Web.Infrastructure.1.0.0.0
+/packages/Microsoft.Net.Http.2.0.20710.0
+/packages/Microsoft.AspNet.WebApi.WebHost.4.0.20710.0
+/packages/Microsoft.AspNet.WebApi.Core.4.0.20710.0
+/packages/Microsoft.AspNet.WebApi.Client.4.0.20710.0
