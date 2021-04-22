@@ -56,6 +56,7 @@ namespace PX.Objects.CR
         public void _(Events.RowPersisting<ENGineering> e)
         {
             var row = (ENGineering)e.Row;
+            row.OppBAccountID = Base.Opportunity.Current.BAccountID;
             var _oppID = Base.Opportunity.Current.OpportunityID;
             if ((row.Opprid ?? string.Empty).ToLower().Contains("new"))
                 e.Row.Opprid = _oppID;
