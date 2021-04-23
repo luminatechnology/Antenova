@@ -103,7 +103,7 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>
-          <ValueExpr>=$LotNo + ';' + #010; 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + '0540' + ';' + #010; $B  + ';' + #010; 'R52020' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 5, '0')</ValueExpr>
+          <ValueExpr>=$LotNo + ';\n' + #010; 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + '0540' + ';\n' + #010; $B  + ';\n' + #010; 'R52020' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 5, '0')</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -123,7 +123,7 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
           <QRCodeSettings />
           <Size>200px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>= 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + '0540'</Value>
+          <Value>= 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + ' 0540'</Value>
         </PictureBox>
         <PictureBox Name="pictureBox3">
           <BarcodeType>Code128</BarcodeType>
@@ -202,7 +202,6 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
           <Value>(Q) Quantity: </Value>
         </TextBox>
         <TextBox Name="textBox12">
-          <Format>yyyyMMdd</Format>
           <Location>204px, 4px</Location>
           <Size>64px, 12px</Size>
           <Style>
@@ -213,7 +212,7 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[v_QISDA_INNER_LABEL.Attributes_INBOX_Value]</Value>
+          <Value>=$remainQty</Value>
         </TextBox>
         <TextBox Name="textBox13">
           <Location>0px, 160px</Location>
@@ -291,7 +290,7 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>= 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + '0540'</Value>
+          <Value>= 'E' + Year($Date) + PadLeft(CStr(Month($Date)), 2, '0') + PadLeft(CStr(Day($Date)), 2, '0') + ' 0540'</Value>
         </TextBox>
         <TextBox Name="textBox8">
           <Location>24px, 148px</Location>
