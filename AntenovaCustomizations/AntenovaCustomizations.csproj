@@ -67,6 +67,8 @@
     <Compile Include="Graph_Extension\SOInvoiceEntry.cs" />
     <Compile Include="LUMItemLotSerFileMaint.cs" />
     <Compile Include="DAC\v_TECHCOM_INNER_LABEL.cs" />
+    <Compile Include="DAC\v_QISDA_OUTER_LABEL.cs" />
+    <Compile Include="DAC\v_QISDA_INNER_LABEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
