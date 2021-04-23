@@ -32,7 +32,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region Prjtype
-        [PXDefault]
+        [PXDefault("Active")]
         [PXStringList]
         [PXDBString(15, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Project Type", Required = true)]

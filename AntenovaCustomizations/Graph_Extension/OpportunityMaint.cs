@@ -112,7 +112,7 @@ namespace PX.Objects.CR
             {
                 PXStringListAttribute.SetList<ENGineering.prjtype>(
                     e.Cache,
-                    e.Row,
+                    null,
                     _prjType.Select(x => x.Prjtype).ToArray(),
                     _prjType.Select(x => x.Prjtype).ToArray());
             }

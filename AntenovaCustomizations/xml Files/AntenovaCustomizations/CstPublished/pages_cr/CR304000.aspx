@@ -666,7 +666,7 @@
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="EndCust"></px:PXGridColumn>
-                                    <px:PXGridColumn DataField="Prjtype"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Prjtype" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Priority"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Status"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="SalesPerson" CommitChanges="true"></px:PXGridColumn>
@@ -677,7 +677,7 @@
                                     <px:PXTextEdit runat="server" ID="eOpprID" DataField="opprID"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eDescription" DataField="Description"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eEndCust" DataField="EndCust"></px:PXTextEdit>
-                                    <px:PXTextEdit runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXTextEdit>
+                                    <px:PXDropDown runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXDropDown>
                                     <px:PXTextEdit runat="server" ID="ePriority" DataField="Priority"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eStatus" DataField="Status"></px:PXTextEdit>
                                     <px:PXSelector runat="server" ID="sSalesPerson" DataField="SalesPerson"></px:PXSelector>
