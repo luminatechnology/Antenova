@@ -27,7 +27,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region DeviceRcvDate
-        [PXDBDate(DisplayMask = "d")]
+        [PXDBDate(InputMask = "g",PreserveTime = true)]
         [PXUIField(DisplayName = "Device Rcv Date")]
         public virtual DateTime? DeviceRcvDate { get; set; }
         public abstract class deviceRcvDate : PX.Data.BQL.BqlDateTime.Field<deviceRcvDate> { }
@@ -92,7 +92,7 @@ namespace AntenovaCustomizations.DAC
 
         #region CompleteSummary
         [PXDBString(1000, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Complete Summary")]
+        [PXUIField(DisplayName = "Report Summary")]
         public virtual string CompleteSummary { get; set; }
         public abstract class completeSummary : PX.Data.BQL.BqlString.Field<completeSummary> { }
         #endregion

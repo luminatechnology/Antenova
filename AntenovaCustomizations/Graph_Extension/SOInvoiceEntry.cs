@@ -15,11 +15,11 @@ namespace PX.Objects.SO
             base.Initialize();
             Base.report.AddMenuAction(InvoiceTaiwanReport);
             Base.report.AddMenuAction(InvoiceUKReport);
-            Base.report.AddMenuAction(InvoiceSignatureReport);
+            //Base.report.AddMenuAction(InvoiceSignatureReport);
             Base.report.AddMenuAction(printShipNotice);
             Base.report.AddMenuAction(printTaiwanShipNotice);
             Base.report.AddMenuAction(printUKShipNotice);
-            Base.report.AddMenuAction(printSignatureShipNotice);
+            //Base.report.AddMenuAction(printSignatureShipNotice);
 
         }
 
@@ -61,7 +61,7 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region Invoice_Signature
+        /*#region Invoice_Signature
         public PXAction<SOShipment> InvoiceSignatureReport;
         [PXButton]
         [PXUIField(DisplayName = "Print Invoice-Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
@@ -77,7 +77,7 @@ namespace PX.Objects.SO
             }
             return adapter.Get();
         }
-        #endregion
+        #endregion*/
 
         #region ShipmentNotice
         public PXAction<ARInvoice> printShipNotice;
@@ -139,7 +139,7 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region SignatureShipmentNotice
+        /*#region SignatureShipmentNotice
         public PXAction<ARInvoice> printSignatureShipNotice;
         [PXButton]
         [PXUIField(DisplayName = "Print Shipment Notice-Signature", Enabled = true, MapEnableRights = PXCacheRights.Select)]
@@ -157,7 +157,7 @@ namespace PX.Objects.SO
             }
             return adapter.Get();
         }
-        #endregion
+        #endregion*/
 
         #endregion
     }

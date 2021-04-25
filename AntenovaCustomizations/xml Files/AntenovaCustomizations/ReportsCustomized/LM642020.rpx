@@ -2407,7 +2407,7 @@
         </TextBox>
         <TextBox Name="textBox4">
           <Location>48px, 8px</Location>
-          <Size>152px, 24px</Size>
+          <Size>176px, 24px</Size>
           <Style>
             <Font>
               <Size>15px</Size>
