@@ -72,7 +72,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region Priority
-        [PXDefault]
+        [PXDefault("A3")]
         [GetDropDownAttribute("PRIOLVL")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Priority Level", Required = true)]
@@ -140,6 +140,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region Repeat
+        [PXDefault]
         [GetDropDownAttribute("ENGREPEAT")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Engineer Repeat",Required = true)]
@@ -149,6 +150,7 @@ namespace AntenovaCustomizations.DAC
 
         #region Engineer
         [PXDBInt]
+        [PXDefault]
         [PXUIField(DisplayName = "Assign Engineer", Required = true)]
         [PXSelector(typeof(
             SelectFrom<EPEmployee>
@@ -178,6 +180,20 @@ namespace AntenovaCustomizations.DAC
         public virtual int? ProductCategory { get; set; }
         public abstract class productCategory : PX.Data.BQL.BqlInt.Field<productCategory> { }
 
+        #endregion
+
+        #region DeviceRcvDate
+        [PXDBDate(InputMask = "g", PreserveTime = true)]
+        [PXUIField(DisplayName = "Device Rcv Date")]
+        public virtual DateTime? DeviceRcvDate { get; set; }
+        public abstract class deviceRcvDate : PX.Data.BQL.BqlDateTime.Field<deviceRcvDate> { }
+        #endregion
+
+        #region RequstRcvDate
+        [PXDBDate(DisplayMask = "d")]
+        [PXUIField(DisplayName = "Eng. Request Form Rcv Date")]
+        public virtual DateTime? RequstRcvDate { get; set; }
+        public abstract class requstRcvDate : PX.Data.BQL.BqlDateTime.Field<requstRcvDate> { }
         #endregion
 
         #region ReveCntr

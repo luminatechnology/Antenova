@@ -2,8 +2,6 @@
     <CDATA name="TableSchemaXml"><![CDATA[<table name="ENGLine">
   <col name="CompanyID" type="Int" default="Zero" />
   <col name="EngrNbr" type="NVarChar(15)" />
-  <col name="DeviceRcvDate" type="DateTime" nullable="true" />
-  <col name="RequstRcvDate" type="DateTime" nullable="true" />
   <col name="IsGerber" type="Bit" nullable="true" default="Zero" />
   <col name="GerberNbr" type="NVarChar(30)" nullable="true" />
   <col name="EstStar" type="DateTime" nullable="true" />

@@ -24,10 +24,10 @@
             <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="M" ControlSize="S" />
             <px:PXSelector runat="server" ID="edEngrNbr" DataField="EngrNbr" CommitChanges="true"></px:PXSelector>
             <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype"></px:PXDropDown>
-            <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref"></px:PXTextEdit>
+            <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref" Size="XL"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
             <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true"></px:PXSelector>
-            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="M" ></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="M"></px:PXSelector>
             <px:PXLayoutRule runat="server" ColumnSpan="3" ControlSize="XM" />
             <px:PXTextEdit runat="server" ID="edDescription" DataField="Description" TextMode="MultiLine"></px:PXTextEdit>
             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="S" />
@@ -55,7 +55,7 @@
                     <px:PXFormView ID="edENGLine" runat="server" DataMember="Line" DataSourceID="ds" RenderStyle="Simple">
                         <Template>
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
-                            <px:PXDateTimeEdit runat="server" ID="edDeviceRcvDate" DataField="DeviceRcvDate" Size="SM"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edDeviceRcvDate" DataField="Document.DeviceRcvDate" Size="SM"></px:PXDateTimeEdit>
                             <px:PXCheckBox runat="server" ID="edIsGerber" DataField="IsGerber"></px:PXCheckBox>
                             <px:PXDateTimeEdit runat="server" ID="edEstStar" DataField="EstStar"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edEstComplete" DataField="EstComplete"></px:PXDateTimeEdit>
@@ -74,7 +74,7 @@
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edCloseReason" DataField="CloseReason" TextMode="MultiLine"></px:PXTextEdit>
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
-                            <px:PXDateTimeEdit runat="server" ID="edRequstRcvDate" DataField="RequstRcvDate"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edRequstRcvDate" DataField="Document.RequstRcvDate"></px:PXDateTimeEdit>
                             <px:PXSelector runat="server" ID="edGerberNbr" DataField="GerberNbr"></px:PXSelector>
                             <px:PXDateTimeEdit runat="server" ID="edActStart" DataField="ActStart"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edActComplete" DataField="ActComplete"></px:PXDateTimeEdit>

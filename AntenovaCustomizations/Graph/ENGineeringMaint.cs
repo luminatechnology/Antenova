@@ -20,8 +20,8 @@ namespace AntenovaCustomizations.Graph
         {
             actionsFolder.MenuAutoOpen = true;
             actionsFolder.AddMenuAction(changeToNew);
-            actionsFolder.AddMenuAction(changeToProcess);
             actionsFolder.AddMenuAction(changeToAwaiting);
+            actionsFolder.AddMenuAction(changeToProcess);
             actionsFolder.AddMenuAction(changeToOnHold);
             actionsFolder.AddMenuAction(changeToClosed);
             actionsFolder.AddMenuAction(changeToCompletion);
@@ -186,7 +186,7 @@ namespace AntenovaCustomizations.Graph
                     e.Cache,
                     e.Row,
                     _prjType.Select(x => x.Prjtype).ToArray(),
-                    _prjType.Select(x => x.Prjtype).ToArray());
+                    _prjType.Select(x => x.Description).ToArray());
             }
         }
 

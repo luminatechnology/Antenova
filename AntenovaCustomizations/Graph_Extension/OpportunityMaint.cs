@@ -21,6 +21,10 @@ namespace PX.Objects.CR
         public SelectFrom<ENGineering>
                 .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGList;
 
+        public SelectFrom<ENGLine>
+               .InnerJoin<ENGineering>.On<ENGLine.engrNbr.IsEqual<ENGineering.engrNbr>>
+               .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGListLine;
+
         #region Override DAC
 
         [PXDefault]
@@ -114,7 +118,7 @@ namespace PX.Objects.CR
                     e.Cache,
                     null,
                     _prjType.Select(x => x.Prjtype).ToArray(),
-                    _prjType.Select(x => x.Prjtype).ToArray());
+                    _prjType.Select(x => x.Description).ToArray());
             }
         }
 

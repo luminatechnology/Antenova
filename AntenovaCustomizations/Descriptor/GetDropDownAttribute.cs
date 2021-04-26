@@ -26,7 +26,8 @@ namespace AntenovaCustomizations.Descriptor
         {
             base.CacheAttached(sender);
             var data = SelectFrom<CSAttributeDetail>
-                       .Where<CSAttributeDetail.attributeID.IsEqual<P.AsString>>
+                       .Where<CSAttributeDetail.attributeID.IsEqual<P.AsString>
+                            .And<CSAttributeDetail.disabled.IsEqual<False>>>
                        .View.Select(new PXGraph(), this._attributeID).RowCast<CSAttributeDetail>();
             if (data != null)
             {

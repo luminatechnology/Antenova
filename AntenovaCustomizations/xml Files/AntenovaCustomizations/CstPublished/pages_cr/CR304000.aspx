@@ -47,6 +47,7 @@
             <px:PXDSCallbackCommand Name="ViewInvoice" Visible="True" />
             <px:PXDSCallbackCommand Name="PasteLine" Visible="False" CommitChanges="true" DependOnGrid="ProductsGrid" />
             <px:PXDSCallbackCommand Name="ResetOrder" Visible="False" CommitChanges="true" DependOnGrid="ProductsGrid" />
+            <px:PXDSCallbackCommand Name="ViewENGDoc" Visible="false" DependOnGrid="grdENGineering"></px:PXDSCallbackCommand>
         </CallbackCommands>
         <DataTrees>
             <px:PXTreeDataMember TreeView="_EPCompanyTree_Tree_" TreeKeys="WorkgroupID" />
@@ -655,14 +656,14 @@
             <%--ENGineering--%>
             <px:PXTabItem Text="ENGineering">
                 <Template>
-                    <px:PXGrid ID="grdENGineering" runat="server" Height="400px" Width="100%" AllowPaging="True" SyncPosition="True" MatrixMode="True"
+                    <px:PXGrid ID="grdENGineering" runat="server" Height="400px" Width="100%"
                         ActionsPosition="Top" AllowSearch="true" DataSourceID="ds" SkinID="Details">
                         <AutoSize Enabled="True" MinHeight="150" />
                         <Levels>
                             <px:PXGridLevel DataMember="ENGList">
                                 <Mode InitNewRow="True" />
                                 <Columns>
-                                    <px:PXGridColumn DataField="EngrNbr" LinkCommand="viewENGDoc"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="EngrNbr" LinkCommand="viewENGDoc" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="EndCust"></px:PXGridColumn>
@@ -671,6 +672,11 @@
                                     <px:PXGridColumn DataField="Status"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="SalesPerson" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="SalesRegion"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Msh"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Repeat"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Engineer"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="DeviceRcvDate"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="RequstRcvDate"></px:PXGridColumn>
                                 </Columns>
                                 <RowTemplate>
                                     <px:PXTextEdit runat="server" ID="eEngrNbr" DataField="EngrNbr"></px:PXTextEdit>
@@ -678,17 +684,21 @@
                                     <px:PXTextEdit runat="server" ID="eDescription" DataField="Description"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eEndCust" DataField="EndCust"></px:PXTextEdit>
                                     <px:PXDropDown runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXDropDown>
-                                    <px:PXTextEdit runat="server" ID="ePriority" DataField="Priority"></px:PXTextEdit>
+                                    <px:PXDropDown runat="server" ID="ePriority" DataField="Priority"></px:PXDropDown>
                                     <px:PXTextEdit runat="server" ID="eStatus" DataField="Status"></px:PXTextEdit>
                                     <px:PXSelector runat="server" ID="sSalesPerson" DataField="SalesPerson"></px:PXSelector>
                                     <px:PXDropDown runat="server" ID="sSalesRegion" DataField="SalesRegion"></px:PXDropDown>
+                                    <px:PXTextEdit runat="server" ID="edMsh" DataField="Msh"></px:PXTextEdit>
+                                    <px:PXDropDown runat="server" ID="edRepeat" DataField="Repeat"></px:PXDropDown>
+                                    <px:PXSelector runat="server" ID="edEngineer" DataField="Engineer"></px:PXSelector>
+                                    <px:PXDateTimeEdit runat="server" ID="edDeviceRcvDate" DataField="DeviceRcvDate"></px:PXDateTimeEdit>
+                                    <px:PXDateTimeEdit runat="server" ID="edRequstRcvDate" DataField="RequstRcvDate"></px:PXDateTimeEdit>
                                 </RowTemplate>
                             </px:PXGridLevel>
                         </Levels>
                     </px:PXGrid>
                 </Template>
             </px:PXTabItem>
-
         </Items>
         <AutoSize Container="Window" Enabled="True" MinHeight="250" MinWidth="300" />
     </px:PXTab>

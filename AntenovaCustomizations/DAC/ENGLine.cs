@@ -27,20 +27,6 @@ namespace AntenovaCustomizations.DAC
         public abstract class engrNbr : PX.Data.BQL.BqlString.Field<engrNbr> { }
         #endregion
 
-        #region DeviceRcvDate
-        [PXDBDate(InputMask = "g", PreserveTime = true)]
-        [PXUIField(DisplayName = "Device Rcv Date")]
-        public virtual DateTime? DeviceRcvDate { get; set; }
-        public abstract class deviceRcvDate : PX.Data.BQL.BqlDateTime.Field<deviceRcvDate> { }
-        #endregion
-
-        #region RequstRcvDate
-        [PXDBDate(DisplayMask = "d")]
-        [PXUIField(DisplayName = "Eng. Request from Receive Date")]
-        public virtual DateTime? RequstRcvDate { get; set; }
-        public abstract class requstRcvDate : PX.Data.BQL.BqlDateTime.Field<requstRcvDate> { }
-        #endregion
-
         #region IsGerber
         [PXDBBool]
         [PXDefault(false)]
