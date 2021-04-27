@@ -34,7 +34,7 @@
             <px:PXDropDown runat="server" ID="edPriority" DataField="Priority"></px:PXDropDown>
             <px:PXDropDown runat="server" ID="edGateStatus" DataField="GateStatus"></px:PXDropDown>
             <px:PXTextEdit runat="server" ID="edMsh" DataField="Msh"></px:PXTextEdit>
-            <px:PXTextEdit runat="server" ID="edEndCust" DataField="EndCust"></px:PXTextEdit>
+            <px:PXSelector runat="server" ID="edEndCust" DataField="EndCust"></px:PXSelector>
             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="S" />
             <px:PXSelector runat="server" ID="edSalesPerson" DataField="SalesPerson"></px:PXSelector>
             <px:PXDropDown runat="server" ID="edSalesRegion" DataField="SalesRegion"></px:PXDropDown>

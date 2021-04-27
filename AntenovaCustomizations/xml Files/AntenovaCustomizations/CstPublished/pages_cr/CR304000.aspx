@@ -263,7 +263,7 @@
                         <px:PXDropDown ID="edTaxCalcMode" runat="server" DataField="TaxCalcMode" CommitChanges="true" />
                         <px:PXLayoutRule runat="server" EndGroup="True" />
                         <px:PXLayoutRule ID="PXLayoutRule10" runat="server" LabelsWidth="SM" ControlSize="M" GroupCaption="ANTENOVA" StartColumn="true" />
-                        <px:PXTextEdit runat="server" ID="edUsrEndCust" DataField="UsrEndCust"></px:PXTextEdit>
+                        <px:PXSelector runat="server" ID="edUsrEndCust" DataField="UsrEndCust"></px:PXSelector>
                         <px:PXSelector runat="server" ID="edUsrSalesPerson" DataField="UsrSalesPerson" CommitChanges="true"></px:PXSelector>
                         <px:PXDropDown runat="server" ID="edUsrSalesRegion" DataField="UsrSalesRegion"></px:PXDropDown>
                     </px:PXPanel>
@@ -684,7 +684,7 @@
                                     <px:PXTextEdit runat="server" ID="eOpprID" DataField="opprID"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eDescription" DataField="Description"></px:PXTextEdit>
-                                    <px:PXTextEdit runat="server" ID="eEndCust" DataField="EndCust"></px:PXTextEdit>
+                                    <px:PXSelector runat="server" ID="eEndCust" DataField="EndCust"></px:PXSelector>
                                     <px:PXDropDown runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXDropDown>
                                     <px:PXDropDown runat="server" ID="ePriority" DataField="Priority"></px:PXDropDown>
                                     <px:PXTextEdit runat="server" ID="eStatus" DataField="Status"></px:PXTextEdit>

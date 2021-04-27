@@ -1,6 +1,7 @@
 ﻿using AntenovaCustomizations.Descriptor;
 using PX.Data;
 using PX.Objects.CR;
+using PX.Objects.CS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace PX.Objects.CR
     {
         [PXDBString(20, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
+        [PXSelector(typeof(ShippingZone.zoneID), CacheGlobal = true, DescriptionField = typeof(ShippingZone.description))]
         public virtual string UsrEndCust { get; set; }
         public abstract class usrendCust : PX.Data.BQL.BqlString.Field<usrendCust> { }
 

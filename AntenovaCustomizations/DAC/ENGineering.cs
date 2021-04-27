@@ -108,6 +108,7 @@ namespace AntenovaCustomizations.DAC
         #region EndCust
         [PXDBString(20, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
+        [PXSelector(typeof(ShippingZone.zoneID), CacheGlobal = true, DescriptionField = typeof(ShippingZone.description))]
         public virtual string EndCust { get; set; }
         public abstract class endCust : PX.Data.BQL.BqlString.Field<endCust> { }
         #endregion
