@@ -186,5 +186,9 @@ namespace PX.Objects.CR
                 e.Cache.SetValueExt<ENGineering.salesRegion>(e.Row, _salesPerson);
             }
         }
+
+        /// <summary> FieldUpdated ENGineering.engref </summary>
+        public void _(Events.FieldUpdated<ENGineering.engref> e)
+            => (e.Row as ENGineering).Engref = e.NewValue.ToString().ToUpper();
     }
 }

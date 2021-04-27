@@ -665,6 +665,7 @@
                                 <Columns>
                                     <px:PXGridColumn DataField="EngrNbr" LinkCommand="viewENGDoc" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Engref"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="EndCust"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Prjtype" CommitChanges="true"></px:PXGridColumn>
@@ -681,6 +682,7 @@
                                 <RowTemplate>
                                     <px:PXTextEdit runat="server" ID="eEngrNbr" DataField="EngrNbr"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eOpprID" DataField="opprID"></px:PXTextEdit>
+                                    <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eDescription" DataField="Description"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eEndCust" DataField="EndCust"></px:PXTextEdit>
                                     <px:PXDropDown runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXDropDown>

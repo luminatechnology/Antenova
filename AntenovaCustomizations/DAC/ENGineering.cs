@@ -41,6 +41,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region ENGRef
+        [PXDefault]
         [PXDBString(25,IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Egnineering Ref.",Required = true)]
         public virtual string Engref { get; set; }
