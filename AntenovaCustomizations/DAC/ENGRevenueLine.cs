@@ -14,7 +14,7 @@ namespace AntenovaCustomizations.DAC
         #region FK
         public class FK
         {
-            public class Nbr : ENGineering.PK.ForeignKeyOf<ENGRevenueLine>.By<engrNbr> { }
+            public class Nbr : ENGineering.PK.ForeignKeyOf<ENGRevenueLine>.By<engrRef> { }
         }
         #endregion
 
@@ -22,9 +22,9 @@ namespace AntenovaCustomizations.DAC
         [PXDBString(15, IsUnicode = true, InputMask = "", IsKey = true)]
         [PXUIField(DisplayName = "Engr Nbr")]
         [PXParent(typeof(FK.Nbr))]
-        [PXDBDefault(typeof(ENGineering.engrNbr))]
-        public virtual string EngrNbr { get; set; }
-        public abstract class engrNbr : PX.Data.BQL.BqlString.Field<engrNbr> { }
+        [PXDBDefault(typeof(ENGineering.engrRef))]
+        public virtual string EngrRef { get; set; }
+        public abstract class engrRef : PX.Data.BQL.BqlString.Field<engrRef> { }
         #endregion
 
         #region LineNbr

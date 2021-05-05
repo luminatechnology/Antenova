@@ -49,6 +49,10 @@
       <HintPath>..\..\..\..\Bin\PX.Objects.DLL</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SalesForecastANTENOVA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Bin\SalesForecastANTENOVA.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAC_Extensions\CRLeadExtension.cs" />
+    <Compile Include="DAC_Extensions\CRLeadStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\CROpportunityStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />
     <Compile Include="DAC_Extensions\INItemLotSerialExtensions.cs" />
@@ -66,9 +72,11 @@
     <Compile Include="DAC_Extensions\SOShipmentExtensions.cs" />
     <Compile Include="DAC\ENGProjectType.cs" />
     <Compile Include="Descriptor\GetDropDownAttribute.cs" />
+    <Compile Include="Graph\CRMendCustMaint.cs" />
     <Compile Include="Graph\ENGineeringMaint.cs" />
     <Compile Include="Graph\ENGSetupMaint.cs" />
     <Compile Include="Graph_Extension\ARInvoiceEntry.cs" />
+    <Compile Include="Graph_Extension\LeadMaint.cs" />
     <Compile Include="Graph_Extension\OpportunityMaint.cs" />
     <Compile Include="Graph_Extension\SOOrderEntry.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
@@ -79,6 +87,8 @@
     <Compile Include="DAC\ENGLine.cs" />
     <Compile Include="DAC\ENGRevenueLine.cs" />
     <Compile Include="DAC\v_TECHCOM_INNER_LABEL.cs" />
+    <Compile Include="DAC\CRMendcust.cs" />
+    <Compile Include="DAC\CRMSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

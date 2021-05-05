@@ -1,4 +1,5 @@
-﻿using AntenovaCustomizations.Descriptor;
+﻿using AntenovaCustomizations;
+using AntenovaCustomizations.Descriptor;
 using PX.Data;
 using PX.Objects.CR;
 using PX.Objects.CS;
@@ -14,7 +15,9 @@ namespace PX.Objects.CR
     {
         [PXDBString(20, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
-        [PXSelector(typeof(ShippingZone.zoneID), CacheGlobal = true, DescriptionField = typeof(ShippingZone.description))]
+        [PXSelector(typeof(CRMendcust.custId),
+            typeof(CRMendcust.name),
+            DescriptionField = typeof(CRMendcust.name))]
         public virtual string UsrEndCust { get; set; }
         public abstract class usrendCust : PX.Data.BQL.BqlString.Field<usrendCust> { }
 

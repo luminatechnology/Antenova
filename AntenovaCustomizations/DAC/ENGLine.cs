@@ -14,17 +14,17 @@ namespace AntenovaCustomizations.DAC
         #region FK
         public class FK
         {
-            public class Nbr : ENGineering.PK.ForeignKeyOf<ENGLine>.By<engrNbr> { }
+            public class Nbr : ENGineering.PK.ForeignKeyOf<ENGLine>.By<engrRef> { }
         }
         #endregion
 
         #region EngrNbr
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Engr Nbr")]
+        [PXUIField(DisplayName = "Engr Ref")]
         [PXParent(typeof(FK.Nbr))]
-        [PXDBDefault(typeof(ENGineering.engrNbr))]
-        public virtual string EngrNbr { get; set; }
-        public abstract class engrNbr : PX.Data.BQL.BqlString.Field<engrNbr> { }
+        [PXDBDefault(typeof(ENGineering.engrRef))]
+        public virtual string EngrRef { get; set; }
+        public abstract class engrRef : PX.Data.BQL.BqlString.Field<engrRef> { }
         #endregion
 
         #region IsGerber
@@ -48,9 +48,9 @@ namespace AntenovaCustomizations.DAC
 
         #region EstStar
         [PXDBDate(DisplayMask = "d")]
-        [PXUIField(DisplayName = "Est. Star Date")]
-        public virtual DateTime? EstStar { get; set; }
-        public abstract class estStar : PX.Data.BQL.BqlDateTime.Field<estStar> { }
+        [PXUIField(DisplayName = "Est. Start Date")]
+        public virtual DateTime? EstStart { get; set; }
+        public abstract class estStart : PX.Data.BQL.BqlDateTime.Field<estStart> { }
         #endregion
 
         #region EstComplete
@@ -61,7 +61,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region ActStart
-        [PXDBDate(DisplayMask = "d")]
+        [PXDBDate(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Actual Start Date")]
         public virtual DateTime? ActStart { get; set; }
         public abstract class actStart : PX.Data.BQL.BqlDateTime.Field<actStart> { }
@@ -89,7 +89,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region Awaitdate From
-        [PXDBDate(DisplayMask = "d")]
+        [PXDBDate(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Await date From ")]
         public virtual DateTime? AwaitdateFrom { get; set; }
         public abstract class awaitdateFrom : PX.Data.BQL.BqlDateTime.Field<awaitdateFrom> { }
@@ -110,7 +110,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region OnholdDate
-        [PXDBDate(DisplayMask = "d")]
+        [PXDBDate(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "ON Hold Date")]
         public virtual DateTime? OnholdDate { get; set; }
         public abstract class onholdDate : PX.Data.BQL.BqlDateTime.Field<onholdDate> { }
@@ -124,7 +124,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region CloseDate
-        [PXDBDate(DisplayMask = "d")]
+        [PXDBDate(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Close Date")]
         public virtual DateTime? CloseDate { get; set; }
         public abstract class closeDate : PX.Data.BQL.BqlDateTime.Field<closeDate> { }
@@ -195,7 +195,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region CreatedDateTime
-        [PXDBCreatedDateTime(DisplayMask = "d")]
+        [PXDBCreatedDateTime(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Created Time")]
         public virtual DateTime? CreatedDateTime { get; set; }
         public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
@@ -215,7 +215,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region LastModifiedDateTime
-        [PXDBLastModifiedDateTime(DisplayMask = "d")]
+        [PXDBLastModifiedDateTime(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Last Modified Time")]
         public virtual DateTime? LastModifiedDateTime { get; set; }
         public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }

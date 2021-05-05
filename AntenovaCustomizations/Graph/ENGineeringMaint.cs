@@ -16,17 +16,6 @@ namespace AntenovaCustomizations.Graph
     public class ENGineeringMaint : PXGraph<ENGineeringMaint>
     {
 
-        public ENGineeringMaint()
-        {
-            actionsFolder.MenuAutoOpen = true;
-            actionsFolder.AddMenuAction(changeToNew);
-            actionsFolder.AddMenuAction(changeToAwaiting);
-            actionsFolder.AddMenuAction(changeToProcess);
-            actionsFolder.AddMenuAction(changeToOnHold);
-            actionsFolder.AddMenuAction(changeToClosed);
-            actionsFolder.AddMenuAction(changeToCompletion);
-        }
-
         #region ENUM
         public enum ENGStatus : int
         {
@@ -50,14 +39,14 @@ namespace AntenovaCustomizations.Graph
 
         [PXViewName("Line")]
         public SelectFrom<ENGLine>
-               .Where<ENGLine.engrNbr.IsEqual<ENGineering.engrNbr.FromCurrent>>.View Line;
+               .Where<ENGLine.engrRef.IsEqual<ENGineering.engrRef.FromCurrent>>.View Line;
 
         [PXViewName("CurrentLine")]
         public SelectFrom<ENGLine>
-               .Where<ENGLine.engrNbr.IsEqual<ENGineering.engrNbr.FromCurrent>>.View CurrentLine;
+               .Where<ENGLine.engrRef.IsEqual<ENGineering.engrRef.FromCurrent>>.View CurrentLine;
         [PXViewName("RevenueLine")]
         public SelectFrom<ENGRevenueLine>
-               .Where<ENGRevenueLine.engrNbr.IsEqual<ENGineering.engrNbr.FromCurrent>>.View RevenueLine;
+               .Where<ENGRevenueLine.engrRef.IsEqual<ENGineering.engrRef.FromCurrent>>.View RevenueLine;
 
         #endregion
 
@@ -72,76 +61,13 @@ namespace AntenovaCustomizations.Graph
         public PXNext<ENGineering> Next;
         public PXLast<ENGineering> Last;
 
-        public PXAction<ENGineering> actionsFolder;
-        public PXAction<ENGineering> changeToNew;
-        public PXAction<ENGineering> changeToProcess;
-        public PXAction<ENGineering> changeToAwaiting;
-        public PXAction<ENGineering> changeToOnHold;
-        public PXAction<ENGineering> changeToClosed;
-        public PXAction<ENGineering> changeToCompletion;
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Actions", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ActionsFolder(PXAdapter adapter)
-        {
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Change To New", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToNew(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.New);
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Change To Process", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToProcess(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.Process);
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Change To Awaiting", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToAwaiting(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.Awaiting);
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true, SpecialType = PXSpecialButtonType.Save)]
-        [PXUIField(DisplayName = "Change To On Hold", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToOnHold(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.Hold);
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Change To Closed", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToClosed(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.Closed);
-            return adapter.Get();
-        }
-
-        [PXButton(CommitChanges = true)]
-        [PXUIField(DisplayName = "Change To Completion", MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable ChangeToCompletion(PXAdapter adapter)
-        {
-            ChangeStatus(ENGStatus.Completion);
-            return adapter.Get();
-        }
-
         #endregion
 
         #region Override DAC
-        /// <summary> engref </summary>
+        /// <summary> engNbr </summary>
         [PXDefault]
         [PXMergeAttributes(Method = MergeMethod.Append)]
-        public void _(Events.CacheAttached<ENGineering.engref> e) { }
+        public void _(Events.CacheAttached<ENGineering.engNbr> e) { }
 
         /// <summary> opprid </summary>
         [PXSelector(typeof(SearchFor<CROpportunity.opportunityID>),
@@ -166,7 +92,12 @@ namespace AntenovaCustomizations.Graph
 
         /// <summary> ENGineering RowPersisting </summary>
         public void _(Events.RowPersisting<ENGineering> e)
-            => ValidField(e);
+        {
+            var row = e.Row as ENGineering;
+            ValidField(e);
+            row.Status = ((int)AutoChangeStatus((ENGStatus)int.Parse(row.Status))).ToString();
+
+        }
 
         /// <summary> ENGLine RowPersisting </summary>
         public void _(Events.RowPersisting<ENGLine> e)
@@ -231,9 +162,9 @@ namespace AntenovaCustomizations.Graph
             }
         }
 
-        /// <summary> FieldUpdated ENGineering.engref </summary>
-        public void _(Events.FieldUpdated<ENGineering.engref> e)
-            => (e.Row as ENGineering).Engref = e.NewValue.ToString().ToUpper();
+        /// <summary> FieldUpdated ENGineering.engNbr </summary>
+        public void _(Events.FieldUpdated<ENGineering.engNbr> e)
+            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper();
 
         /// <summary> FieldUpdated ENGRevenueLine.inventoryID </summary>
         public void _(Events.FieldUpdated<ENGRevenueLine.inventoryID> e)
@@ -296,20 +227,20 @@ namespace AntenovaCustomizations.Graph
 
             #endregion
 
-            #region Valid EngRef
-            if (string.IsNullOrEmpty(row.Engref))
-                e.Cache.RaiseExceptionHandling<ENGineering.engref>(e.Row, row.Engref,
-                    new PXSetPropertyException<ENGineering.engref>("Engineering Ref can not be empty"));
+            #region Valid EngNbr
+            if (string.IsNullOrEmpty(row.EngNbr))
+                e.Cache.RaiseExceptionHandling<ENGineering.engNbr>(e.Row, row.EngNbr,
+                    new PXSetPropertyException<ENGineering.engNbr>("Engineering Nbr can not be empty"));
             #endregion
 
             #region Valid [EngrRef] + [Engineer Repeat]
             var isExixts = new PXGraph().Select<ENGineering>()
-                                        .Where(x => x.Engref == row.Engref &&
+                                        .Where(x => x.EngNbr == row.EngNbr &&
                                                     x.Repeat == row.Repeat &&
-                                                    x.EngrNbr != row.EngrNbr).Count() > 0;
-            if (isExixts && !string.IsNullOrEmpty(row.Engref))
-                e.Cache.RaiseExceptionHandling<ENGineering.engref>(e.Row, row.Engref,
-                  new PXSetPropertyException<ENGineering.engref>("[EngrRef] + [Engineer Repeat] is not allowed duplicated"));
+                                                    x.EngrRef != row.EngrRef).Count() > 0;
+            if (isExixts && !string.IsNullOrEmpty(row.EngNbr))
+                e.Cache.RaiseExceptionHandling<ENGineering.engNbr>(e.Row, row.EngNbr,
+                  new PXSetPropertyException<ENGineering.engNbr>("[EngrNbr] + [Engineer Repeat] is not allowed duplicated"));
             #endregion
         }
 
@@ -346,6 +277,12 @@ namespace AntenovaCustomizations.Graph
                 if (!row.AwaitdateTo.HasValue)
                     e.Cache.RaiseExceptionHandling<ENGLine.awaitdateTo>(e.Row, row.AwaitdateTo,
                        new PXSetPropertyException<ENGLine.awaitdateTo>("Awaite Date To can not be empty"));
+                if(!row.EstStart.HasValue)
+                    e.Cache.RaiseExceptionHandling<ENGLine.estStart>(e.Row, row.EstStart,
+                       new PXSetPropertyException<ENGLine.estStart>("Est. Start Date can not be empty"));
+                if(!row.EstComplete.HasValue)
+                    e.Cache.RaiseExceptionHandling<ENGLine.estComplete>(e.Row, row.EstComplete,
+                       new PXSetPropertyException<ENGLine.estComplete>("Est. Complete Date can not be empty"));
             }
             if (row.AwaitdateFrom.HasValue && row.AwaitdateTo.HasValue && row.AwaitdateTo.Value < row.AwaitdateFrom)
                 e.Cache.RaiseExceptionHandling<ENGLine.awaitdateTo>(e.Row, row.AwaitdateTo,
@@ -378,79 +315,62 @@ namespace AntenovaCustomizations.Graph
             }
             #endregion
 
+            #region Valid Complete
+
+            if(row.ActComplete.HasValue && string.IsNullOrEmpty(row.CompleteSummary))
+                e.Cache.RaiseExceptionHandling<ENGLine.completeSummary>(e.Row, row.CompleteSummary,
+                       new PXSetPropertyException<ENGLine.completeSummary>("Report Summary can not be empty"));
+
+            if(!row.ActComplete.HasValue && !string.IsNullOrEmpty(row.CompleteSummary))
+                e.Cache.RaiseExceptionHandling<ENGLine.actComplete>(e.Row, row.ActComplete,
+                      new PXSetPropertyException<ENGLine.actComplete>("Actual Complete Date can not be empty"));
+
+            #endregion
+
         }
 
-        /// <summary> Change Status </summary>
-        public void ChangeStatus(ENGStatus _status)
+        /// <summary> AutoChange Status </summary>
+        public ENGStatus AutoChangeStatus(ENGStatus _orgStatus)
         {
-            var IsValid = true;
             var doc = this.Document.Cache.Current as ENGineering;
             var line = this.Line.Cache.Current as ENGLine ?? this.Line.Cache.CreateInstance() as ENGLine;
-
             if (doc == null)
-                return;
+                return _orgStatus;
 
-            switch (_status)
+            if (line.ActComplete.HasValue && !string.IsNullOrEmpty(line.CompleteSummary))
+                return ENGStatus.Completion;
+
+            Dictionary<ENGStatus, DateTime?> dic = new Dictionary<ENGStatus, DateTime?>()
             {
-                case ENGStatus.Process:
-                    if (!line.ActStart.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.actStart>(line, line.ActStart,
-                                    new PXSetPropertyException<ENGLine.actStart>("Actual Start Date can not be empty"));
-                    if (!line.EstComplete.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.estComplete>(line, line.EstComplete,
-                            new PXSetPropertyException<ENGLine.estComplete>("Est. Complete Date can not be empty"));
-                    break;
-                case ENGStatus.Awaiting:
-                    if (!line.EstStar.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.estStar>(line, line.EstStar,
-                            new PXSetPropertyException<ENGLine.estStar>("Est. Start Date can not be empty"));
-                    if (!line.EstComplete.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.estComplete>(line, line.EstComplete,
-                            new PXSetPropertyException<ENGLine.estComplete>("Est. Complete Date can not be empty"));
-                    if (!line.AwaitdateFrom.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.awaitdateFrom>(line, line.AwaitdateFrom,
-                            new PXSetPropertyException<ENGLine.awaitdateFrom>("Awaiting From Date can not be empty"));
-                    if (!line.AwaitdateTo.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.awaitdateTo>(line, line.AwaitdateTo,
-                            new PXSetPropertyException<ENGLine.awaitdateTo>("Awaiting To Date can not be empty"));
-                    if (string.IsNullOrEmpty(line.AwaitReason))
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.awaitReason>(line, line.AwaitReason,
-                            new PXSetPropertyException<ENGLine.awaitReason>("Awaiting Reason can not be empty"));
-                    break;
-                case ENGStatus.Hold:
-                    if (!line.OnholdDate.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.onholdDate>(line, line.OnholdDate,
-                            new PXSetPropertyException<ENGLine.onholdDate>("On Hold Date can not be empty"));
-                    if (string.IsNullOrEmpty(line.OnholdReason))
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.onholdReason>(line, line.OnholdReason,
-                           new PXSetPropertyException<ENGLine.onholdReason>("On Hold Reason can not be emtpy"));
-                    break;
-                case ENGStatus.Closed:
-                    if (!line.CloseDate.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.closeDate>(line, line.CloseDate,
-                          new PXSetPropertyException<ENGLine.closeDate>("Close Date can not be empty"));
-                    if (String.IsNullOrEmpty(line.CloseReason))
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.closeReason>(line, line.CloseReason,
-                          new PXSetPropertyException<ENGLine.closeReason>("Close Reason can not be empty"));
-                    break;
-                case ENGStatus.Completion:
-                    if (!line.ActComplete.HasValue)
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.actComplete>(line, line.ActComplete,
-                         new PXSetPropertyException<ENGLine.actComplete>("Actual Complete Date can not be empty"));
-                    if (string.IsNullOrEmpty(line.CompleteSummary))
-                        IsValid = this.Line.Cache.RaiseExceptionHandling<ENGLine.completeSummary>(line, line.CompleteSummary,
-                         new PXSetPropertyException<ENGLine.completeSummary>("Complete summary can not be empty"));
-                    break;
-            }
-            if (IsValid)
+                { ENGStatus.Process, line.ActStart ?? new DateTime()},
+                { ENGStatus.Awaiting, line.AwaitdateFrom ?? new DateTime()},
+                { ENGStatus.Hold, line.OnholdDate ?? new DateTime()},
+                { ENGStatus.Closed, line.CloseDate ?? new DateTime()}
+            };
+
+            foreach (var item in dic.OrderByDescending(x => x.Value.Value))
             {
-                doc.Status = ((int)_status).ToString();
-                if (_status == ENGStatus.Process && !line.ProcessDate.HasValue)
-                    line.ProcessDate = DateTime.Now;
+                switch (item.Key)
+                {
+                    case ENGStatus.Process:
+                        if (line.ActStart.HasValue && line.EstComplete.HasValue)
+                            return ENGStatus.Process;
+                        break;
+                    case ENGStatus.Awaiting:
+                        if (line.EstStart.HasValue && line.EstComplete.HasValue && line.AwaitdateFrom.HasValue && line.AwaitdateTo.HasValue && !string.IsNullOrEmpty(line.AwaitReason))
+                            return ENGStatus.Awaiting;
+                        break;
+                    case ENGStatus.Hold:
+                        if (line.OnholdDate.HasValue && !string.IsNullOrEmpty(line.OnholdReason))
+                            return ENGStatus.Hold;
+                        break;
+                    case ENGStatus.Closed:
+                        if (line.CloseDate.HasValue && !String.IsNullOrEmpty(line.CloseReason))
+                            return ENGStatus.Closed;
+                        break;
+                }
             }
-            this.Document.Cache.Update(doc);
-            this.Line.Cache.Update(line);
-            this.Save.Press();
+            return _orgStatus;
         }
 
         #endregion

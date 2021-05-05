@@ -11,6 +11,8 @@ using PX.Objects.CS;
 using PX.Objects.AR;
 using AntenovaCustomizations.Graph;
 using System.Collections;
+using static PX.Objects.CR.OpportunityMaint;
+using PX.Objects.SO;
 
 namespace PX.Objects.CR
 {
@@ -22,8 +24,28 @@ namespace PX.Objects.CR
                 .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGList;
 
         public SelectFrom<ENGLine>
-               .InnerJoin<ENGineering>.On<ENGLine.engrNbr.IsEqual<ENGineering.engrNbr>>
+               .InnerJoin<ENGineering>.On<ENGLine.engrRef.IsEqual<ENGineering.engrRef>>
                .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGListLine;
+
+        public delegate void DoCreateSalesOrderDelegate(CreateSalesOrderFilter param);
+        [PXOverride]
+        public virtual void DoCreateSalesOrder(CreateSalesOrderFilter param, DoCreateSalesOrderDelegate baseMethod)
+        { 
+            try
+            {
+                baseMethod.Invoke(param);
+            }
+            catch(PXRedirectRequiredException ex)
+            {
+                var opportunityID = Base.Opportunity.Current.OpportunityID;
+                var soGraph = ex.Graph;
+                var soLine = soGraph.Caches[typeof(SOLine)].Cached.RowCast<SOLine>();
+                foreach (var item in soLine)
+                    item.GetExtension<SOLineExt>().UsrOpportunityID = opportunityID;
+                throw new PXRedirectRequiredException(soGraph, "");
+            }
+        }
+
 
         #region Override DAC
 
@@ -32,7 +54,7 @@ namespace PX.Objects.CR
         [PXUIField(DisplayName = "Engineering Nbr", Required = true)]
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
         [PXMergeAttributes(Method = MergeMethod.Replace)]
-        public void _(Events.CacheAttached<ENGineering.engrNbr> e) { }
+        public void _(Events.CacheAttached<ENGineering.engrRef> e) { }
         #endregion
 
         #region Action
@@ -47,14 +69,16 @@ namespace PX.Objects.CR
             if (row != null)
             {
                 graph.Document.Current = SelectFrom<ENGineering>
-                                         .Where<ENGineering.engrNbr.IsEqual<P.AsString>>
-                                         .View.Select(Base, row.EngrNbr);
+                                         .Where<ENGineering.engrRef.IsEqual<P.AsString>>
+                                         .View.Select(Base, row.EngrRef);
                 PXRedirectHelper.TryRedirect(graph, PXRedirectHelper.WindowMode.NewWindow);
             }
             return adapter.Get();
         }
 
         #endregion
+
+        #region Events
 
         /// <summary> RowPersisting ENGineering </summary>
         public void _(Events.RowPersisting<ENGineering> e)
@@ -75,7 +99,7 @@ namespace PX.Objects.CR
             if (string.IsNullOrEmpty(row.Description) || string.IsNullOrEmpty(row.Prjtype) || string.IsNullOrEmpty(row.Priority) || string.IsNullOrEmpty(row.SalesRegion))
                 return;
 
-            var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrNbr == row.EngrNbr);
+            var _RevenueData = new PXGraph().Select<ENGRevenueLine>().Where(x => x.EngrRef == row.EngrRef);
             if (_RevenueData.Count() == 0)
             {
                 var _graph = PXGraph.CreateInstance<ENGineeringMaint>();
@@ -83,7 +107,7 @@ namespace PX.Objects.CR
                 foreach (var _prod in _oppProduct)
                 {
                     var _data = _graph.RevenueLine.Insert(_graph.RevenueLine.Cache.CreateInstance() as ENGRevenueLine);
-                    _data.EngrNbr = row.EngrNbr;
+                    _data.EngrRef = row.EngrRef;
                     _data.InventoryID = _prod.InventoryID;
                     _data.Descr = _prod.Descr;
                     _data.Quantity = _prod.Quantity;
@@ -96,17 +120,15 @@ namespace PX.Objects.CR
                 // update reveCntr
                 PXUpdate<Set<ENGineering.reveCntr, Required<ENGineering.reveCntr>>,
                          ENGineering,
-                         Where<ENGineering.engrNbr, Equal<Required<ENGineering.engrNbr>>
-                         >>.Update(Base, count, row.EngrNbr);
+                         Where<ENGineering.engrRef, Equal<Required<ENGineering.engrRef>>
+                         >>.Update(Base, count, row.EngrRef);
             }
 
         }
 
         /// <summary> Set EngrNbr Disabled </summary>
-        public void _(Events.FieldSelecting<ENGineering.engrNbr> e)
-        {
-            PXUIFieldAttribute.SetEnabled<ENGineering.engrNbr>(e.Cache, null, false);
-        }
+        public void _(Events.FieldSelecting<ENGineering.engrRef> e)
+            => PXUIFieldAttribute.SetEnabled<ENGineering.engrRef>(e.Cache, null, false);
 
         /// <summary> Initial Project Type DDL </summary>
         public void _(Events.FieldSelecting<ENGineering.prjtype> e)
@@ -188,7 +210,9 @@ namespace PX.Objects.CR
         }
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
-        public void _(Events.FieldUpdated<ENGineering.engref> e)
-            => (e.Row as ENGineering).Engref = e.NewValue.ToString().ToUpper();
+        public void _(Events.FieldUpdated<ENGineering.engNbr> e)
+            => (e.Row as ENGineering).EngrRef = e.NewValue.ToString().ToUpper(); 
+
+        #endregion
     }
 }

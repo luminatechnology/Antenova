@@ -16,23 +16,23 @@ namespace AntenovaCustomizations.DAC
     [PXCacheName("ENGineering")]
     public class ENGineering : IBqlTable
     {
-        #region EngrNbr
+        #region EngrRef
         [PXDefault]
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
-        [PXUIField(DisplayName = "Engineering Nbr", Required = true)]
+        [PXUIField(DisplayName = "Engineering Ref", Required = true)]
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
-        [PXSelector(typeof(SearchFor<ENGineering.engrNbr>),
-                    typeof(ENGineering.engrNbr),
+        [PXSelector(typeof(SearchFor<ENGineering.engrRef>),
+                    typeof(ENGineering.engrRef),
                     typeof(ENGineering.opprid),
                     typeof(ENGineering.description),
                     typeof(ENGineering.status),
                     typeof(ENGineering.prjtype))]
-        public virtual string EngrNbr { get; set; }
-        public abstract class engrNbr : PX.Data.BQL.BqlString.Field<engrNbr> { }
+        public virtual string EngrRef { get; set; }
+        public abstract class engrRef : PX.Data.BQL.BqlString.Field<engrRef> { }
         #endregion
 
         #region Prjtype
-        [PXDefault("Active")]
+        [PXDefault]
         [PXStringList]
         [PXDBString(15, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Project Type", Required = true)]
@@ -40,12 +40,12 @@ namespace AntenovaCustomizations.DAC
         public abstract class prjtype : PX.Data.BQL.BqlString.Field<prjtype> { }
         #endregion
 
-        #region ENGRef
+        #region ENGNbr
         [PXDefault]
         [PXDBString(25,IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Egnineering Ref.",Required = true)]
-        public virtual string Engref { get; set; }
-        public abstract class engref : PX.Data.BQL.BqlString.Field<engref> { }
+        [PXUIField(DisplayName = "Egnineering Nbr.",Required = true)]
+        public virtual string EngNbr { get; set; }
+        public abstract class engNbr : PX.Data.BQL.BqlString.Field<engNbr> { }
         #endregion
 
         #region Status
@@ -108,7 +108,9 @@ namespace AntenovaCustomizations.DAC
         #region EndCust
         [PXDBString(20, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
-        [PXSelector(typeof(ShippingZone.zoneID), CacheGlobal = true, DescriptionField = typeof(ShippingZone.description))]
+        [PXSelector(typeof(CRMendcust.custId), 
+            typeof(CRMendcust.name),
+            DescriptionField = typeof(CRMendcust.name))]
         public virtual string EndCust { get; set; }
         public abstract class endCust : PX.Data.BQL.BqlString.Field<endCust> { }
         #endregion
@@ -249,7 +251,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
 
-        public class PK : PrimaryKeyOf<ENGineering>.By<engrNbr>
+        public class PK : PrimaryKeyOf<ENGineering>.By<engrRef>
         {
             public static ENGineering Find(PXGraph graph, string engrNbr) => FindBy(graph, engrNbr);
         }

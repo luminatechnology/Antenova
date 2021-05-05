@@ -135,31 +135,32 @@
                     <GINavigationScreen ScreenID="LM204000" LineNbr="1" WindowMode="I">
                         <GINavigationParameter LineNbr="1" FieldName="EngrNbr" ParameterName="t.EngrNbr" IsExpression="0" />
                     </GINavigationScreen>
-                    <GISort LineNbr="1" IsActive="1" DataFieldName="t.engrNbr" SortOrder="A" />
+                    <GISort LineNbr="1" IsActive="1" DataFieldName="t.engrRef" SortOrder="A" />
                     <GITable Alias="t" Name="AntenovaCustomizations.DAC.ENGineering">
                         <GIRelation LineNbr="1" ChildTable="l" IsActive="1" JoinType="L">
-                            <GIOn LineNbr="1" ParentField="t.EngrNbr" Condition="E " ChildField="l.EngrNbr" Operation="A" />
+                            <GIOn LineNbr="1" ParentField="t.EngrRef" Condition="E " ChildField="l.EngrRef" Operation="A" />
                         </GIRelation>
-                        <GIResult LineNbr="18" SortOrder="18" IsActive="1" Field="createdDateTime" SchemaField="t.CreatedDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="168284aa-aea7-4ee0-9e2a-0e5e11edc09b" />
-                        <GIResult LineNbr="17" SortOrder="17" IsActive="1" Field="createdByID" SchemaField="t.CreatedByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="ca4b45e5-c585-4ac7-8b77-d05533fa5ecf" />
-                        <GIResult LineNbr="12" SortOrder="12" IsActive="1" Field="msh" SchemaField="t.Msh" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="16ec6ba7-ec3c-4251-acb9-43855575c3be" />
-                        <GIResult LineNbr="10" SortOrder="10" IsActive="1" Field="status" SchemaField="t.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="dd42bcf1-70d7-435a-9533-8c817b08bb4a" />
-                        <GIResult LineNbr="9" SortOrder="9" IsActive="1" Field="productCategory" SchemaField="t.ProductCategory" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="cd09aad5-f916-49a4-a2db-04aa755e3552" />
-                        <GIResult LineNbr="8" SortOrder="8" IsActive="1" Field="status" SchemaField="t.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="95dd8621-c786-4563-900d-301245f48303" />
-                        <GIResult LineNbr="7" SortOrder="7" IsActive="1" Field="priority" SchemaField="t.Priority" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="bf46aa46-733e-4fb6-aa83-24da59de4b75" />
-                        <GIResult LineNbr="6" SortOrder="6" IsActive="1" Field="prjtype" SchemaField="t.Prjtype" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6c2abf55-0d39-4d7f-8911-1d89414f34c4" />
-                        <GIResult LineNbr="5" SortOrder="5" IsActive="1" Field="endCust" SchemaField="t.EndCust" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="5eb313d7-34a9-4410-b07f-f2b66800c775" />
-                        <GIResult LineNbr="4" SortOrder="4" IsActive="1" Field="salesPerson" SchemaField="t.SalesPerson" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a7b900e7-da95-48d5-92c3-f98efd69648f" />
-                        <GIResult LineNbr="3" SortOrder="3" IsActive="1" Field="description" SchemaField="t.Description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="b8db22ea-c7ad-4b32-ac7e-999b92d2eb33" />
+                        <GIResult LineNbr="19" SortOrder="3" IsActive="1" Field="engNbr" SchemaField="t.EngNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="d28563f3-f1b3-4db7-bf9b-97d340953455" />
+                        <GIResult LineNbr="18" SortOrder="19" IsActive="1" Field="createdDateTime" SchemaField="t.CreatedDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="168284aa-aea7-4ee0-9e2a-0e5e11edc09b" />
+                        <GIResult LineNbr="17" SortOrder="18" IsActive="1" Field="createdByID" SchemaField="t.CreatedByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="ca4b45e5-c585-4ac7-8b77-d05533fa5ecf" />
+                        <GIResult LineNbr="12" SortOrder="13" IsActive="1" Field="msh" SchemaField="t.Msh" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="16ec6ba7-ec3c-4251-acb9-43855575c3be" />
+                        <GIResult LineNbr="10" SortOrder="11" IsActive="1" Field="status" SchemaField="t.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="dd42bcf1-70d7-435a-9533-8c817b08bb4a" />
+                        <GIResult LineNbr="9" SortOrder="10" IsActive="1" Field="productCategory" SchemaField="t.ProductCategory" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="cd09aad5-f916-49a4-a2db-04aa755e3552" />
+                        <GIResult LineNbr="8" SortOrder="9" IsActive="1" Field="status" SchemaField="t.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="95dd8621-c786-4563-900d-301245f48303" />
+                        <GIResult LineNbr="7" SortOrder="8" IsActive="1" Field="priority" SchemaField="t.Priority" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="bf46aa46-733e-4fb6-aa83-24da59de4b75" />
+                        <GIResult LineNbr="6" SortOrder="7" IsActive="1" Field="prjtype" SchemaField="t.Prjtype" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6c2abf55-0d39-4d7f-8911-1d89414f34c4" />
+                        <GIResult LineNbr="5" SortOrder="6" IsActive="1" Field="endCust" SchemaField="t.EndCust" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="5eb313d7-34a9-4410-b07f-f2b66800c775" />
+                        <GIResult LineNbr="4" SortOrder="5" IsActive="1" Field="salesPerson" SchemaField="t.SalesPerson" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a7b900e7-da95-48d5-92c3-f98efd69648f" />
+                        <GIResult LineNbr="3" SortOrder="4" IsActive="1" Field="description" SchemaField="t.Description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="b8db22ea-c7ad-4b32-ac7e-999b92d2eb33" />
                         <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="opprid" SchemaField="t.Opprid" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6f35a9cd-8996-4806-9652-22625cb987b7" />
-                        <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="engrNbr" SchemaField="t.EngrNbr" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="17b66417-fb34-4f76-a8a0-5ff44db80a0c" />
+                        <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="engrRef" SchemaField="t.EngrRef" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="17b66417-fb34-4f76-a8a0-5ff44db80a0c" />
                     </GITable>
                     <GITable Alias="l" Name="AntenovaCustomizations.DAC.ENGLine">
-                        <GIResult LineNbr="16" SortOrder="16" IsActive="1" Field="actComplete" SchemaField="l.ActComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="de29caab-c7b6-4249-a4ca-cf22ce1e12a7" />
-                        <GIResult LineNbr="15" SortOrder="15" IsActive="1" Field="actStart" SchemaField="l.ActStart" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c64e69dc-8427-44a6-a82c-9fe68e0cfdab" />
-                        <GIResult LineNbr="14" SortOrder="14" IsActive="1" Field="estComplete" SchemaField="l.EstComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="97cecf6a-5317-4c4f-938d-e93d0177c669" />
-                        <GIResult LineNbr="13" SortOrder="13" IsActive="1" Field="estStar" SchemaField="l.EstStar" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="153e80e6-b67d-45de-a959-721a63408881" />
-                        <GIResult LineNbr="11" SortOrder="11" IsActive="1" Field="gerberNbr" SchemaField="l.GerberNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="c90902d4-ffc8-44f8-9c87-3c9f05344b6b" />
+                        <GIResult LineNbr="16" SortOrder="17" IsActive="1" Field="actComplete" SchemaField="l.ActComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="de29caab-c7b6-4249-a4ca-cf22ce1e12a7" />
+                        <GIResult LineNbr="15" SortOrder="16" IsActive="1" Field="actStart" SchemaField="l.ActStart" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c64e69dc-8427-44a6-a82c-9fe68e0cfdab" />
+                        <GIResult LineNbr="14" SortOrder="15" IsActive="1" Field="estComplete" SchemaField="l.EstComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="97cecf6a-5317-4c4f-938d-e93d0177c669" />
+                        <GIResult LineNbr="13" SortOrder="14" IsActive="1" Field="estStart" SchemaField="l.EstStart" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="153e80e6-b67d-45de-a959-721a63408881" />
+                        <GIResult LineNbr="11" SortOrder="12" IsActive="1" Field="gerberNbr" SchemaField="l.GerberNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="c90902d4-ffc8-44f8-9c87-3c9f05344b6b" />
                     </GITable>
                     <SiteMap linkname="toDesignById">
                         <row Title="ENGineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">

@@ -667,7 +667,7 @@
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Engref"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
-                                    <px:PXGridColumn DataField="EndCust"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="EndCust"  DisplayMode="Hint"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Prjtype" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Priority"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Status"></px:PXGridColumn>
