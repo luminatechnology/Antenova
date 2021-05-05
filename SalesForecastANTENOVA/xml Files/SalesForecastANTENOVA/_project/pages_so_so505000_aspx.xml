@@ -1,0 +1,13 @@
+﻿<Page path="~/pages/so/so505000.aspx" pageSource="vVjbbuJIEH2eSPMPlqPs0ySQmR1plYVoCYRJJEgQZi5vqGNXoCe229Nuc5mH/fatst0Gg22IIGslkmmq69St61TTOPvHGLAJGD3mTyJ8aZrtU9Pos1CBpC+63MW1f2urlbDWFdLrgGLcvfDiZdNoRUrczsBX37mEKGiaSkZgGt+Yyx2mYAi/IghV03xmbojrbeGkmq3Hz/XP9Xr9goXB4sIOzfcnBj73/hQkV2HTJMixljKNEVe07auv6MWJjTeNs+v3J+9PGuhMYudoGYDxjUsVMXfA1HQPD0hFA424agtfoSPGfadp2vh+SebGSwOX2XAnXAckfRlMO5ZpyMhn6JgFcoZqrhPzG8HiavCjwxSzRCRtiJU5oWl85w5Zc1mvn2Vbw2Qr2hvyJ3JuFMduILnH5PIbh3nTxGDFVpJjD8xDocGPi8enn2Cr8MJ6xL8huMBCuPdngtuQhnHrIfd7gjk3MGUzLiTqEUHkYoosNgMH84V5MmsUi9paMMpi87E8Nt3K0FACyLNY0zN+2IrGKng6dpZaUnR+n3PfgcWVcUn1kAso7emD9wRyFbE2CxQXPpnhYrTwdS02HXhmkavIBylcAgKnlQgZLdcV87ZwXRaEoCv3erW3QYIzrpbGHZ9MXfxHPS6FFE2NscDJFlIzTeMOSBDfrhs1rWBd6Qi8gNJxnU9gErUeW4pIDSMXNqNlKSYJPvJ8XT899gRumAJbSaLQSYv/Rm9+9E2jVojRkSLoiLmP8p7HVXuKjQFCrTQfooKUdTm4TtPUEsUYFkw8rBk8kS9VMO0oVMKjgqqCWpcqhmtPwX65EYtyLHv6Yk3FvIsNAWHbVDORhCrUQvFi+P8la1gyI+7BrcNVVUhjRBKu9G0ldBjare/swspE3jp2Vmns9ioP7MZEbmragRn217voqcqrIukWtgi/B89Kk+MB1mDf4j7EKCD7zEeac5dVBpVs2NOmpJ0JWZXrVHf1WV0TIqR3794lACNYqKJiUmsADxE19sfntgg4clQFyqbkulON2kaHbdRyhLQv830qZ74vlcz3RXIn1jLBly0vND38Wa8Hiw12K+S/mKWQ1bk/0eFqOT+xJRLTJ5VPs5lprEIQb7GASXuqt2yT7Q1T9vRrQMObzrP1wn36Oh1M7v1fEaeulzFsR9gR9XXi6qVvD0TIky+S/V2ctBJWjvOE6R3C88OT/LDq4Guv45uWbYvIV8Mxs21FQ8+HdLihPYjVgdDOEXIPZnj+CyuYoh5/nZsRrMdUY4+HyrzenpkaQzEvYeRj9an+Hj2+pENo5kqHjcqWnslU685OuhUFgYQwjG3Nn/Qka1VoWuLWZzjQ4kI3GfvjyqNzrhXuMmY1JlTYc/iYkIfNsVsFLpXgDnbLRDYjsWcWEqAu9wd4GxJOtYc5sdcBJh1zl8PtSC4fJZ+gVy1PVQc7L3l40ZHGXQlOJKqxMqbZkVjqLTsSG4vUcI6vbhKN5PBv9qW8WdSfErnkkDxErpvlrvAckyMxfaPn4GeXQ/yUtgd9g6GPLTdzMen+QiqtvuSmaKRE0Rcz2LOKNp3Q9LHtBoaPjNUm6ztH3IaPBqK7UI/7LzRXMB8XZ8jxmqdeAVXSSDo8xLQvaXigQvljov5uZY9ZaOBhkAWseLyAaZiesBkRd7WHb4k71q9jB0+ZPB7UaoJ4rc7cidyBgpyvovBtqzujlmMpzNHHRtpPT89P8TkoZhX0sNbLhjT/HvPkJKRQUMY9eg5EqvQy44jDIcqzNgLphSUesuxJZ85UvAL97Pz8lYSkR+jxOPshxClJajrx/nUZLMqCcn5+9hamDdiSGv5IKOYe1bJGrZjd01tldu3I3UC37ikNuqLR+B9fBRje1PFy8h2veWK+Nskl/N3nvr4kfqQLYO5ym/zsdsOk/mUzWdigPb1lzciCa+9/">
+    <PXGridLevel DataMember="SOInvoiceList" ParentId="phG_grid_Levels#0" TypeFullName="PX.Web.UI.PXGridLevel">
+        <Children Key="Columns">
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="CuryTaxTotal" />
+                    <Prop Key="Width" Value="100" />
+                </PXGridColumn>
+            </AddItem>
+            <PXGridColumn DataField="CuryID" OriginalIndex="12" />
+        </Children>
+    </PXGridLevel>
+</Page>

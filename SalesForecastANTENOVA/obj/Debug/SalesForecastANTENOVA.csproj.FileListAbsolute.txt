@@ -1,0 +1,16 @@
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csprojAssemblyReference.cache
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csproj.CoreCompileInputs.cache
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\bin\Debug\SalesForecastANTENOVA.dll
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\bin\Debug\SalesForecastANTENOVA.pdb
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\bin\Debug\PX.CS.Contracts.dll
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\bin\Debug\PX.CS.Contracts.pdb
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csproj.CopyComplete
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.dll
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\SalesForecastANTENOVA\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.pdb
+C:\Program Files\Acumatica ERP\Antenova\Bin\SalesForecastANTENOVA.dll
+C:\Program Files\Acumatica ERP\Antenova\Bin\SalesForecastANTENOVA.pdb
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\AntenovaCustomizations\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csprojAssemblyReference.cache
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\AntenovaCustomizations\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csproj.CoreCompileInputs.cache
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\AntenovaCustomizations\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.csproj.CopyComplete
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\AntenovaCustomizations\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.dll
+C:\Program Files\Acumatica ERP\Antenova\App_Data\Projects\AntenovaCustomizations\SalesForecastANTENOVA\obj\Debug\SalesForecastANTENOVA.pdb

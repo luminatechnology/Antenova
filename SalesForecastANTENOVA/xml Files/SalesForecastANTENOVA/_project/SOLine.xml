@@ -1,0 +1,5 @@
+﻿<Table TableName="SOLine">
+    <Column TableName="SOLine" ColumnName="UsrDesignSalesID" ColumnType="int" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="SOLine" ColumnName="UsrOpportunityID" ColumnType="string" AllowNull="True" MaxLength="10" DecimalPrecision="2" DecimalLength="10" IsNewColumn="True" IsUnicode="True" />
+    <Column TableName="SOLine" ColumnName="UsrNewPO" ColumnType="bool" AllowNull="True" MaxLength="25" DecimalPrecision="2" IsNewColumn="True" IsUnicode="True" />
+</Table>

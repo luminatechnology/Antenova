@@ -1,0 +1,33 @@
+﻿<Sql TableName="SalesForecast" TableSchemaXml="#CDATA">
+    <CDATA name="TableSchemaXml"><![CDATA[<table name="SalesForecast">
+  <col name="CompanyID" type="Int" default="Zero" />
+  <col name="SalesPersonID" type="Int" />
+  <col name="CustomerID" type="Int" />
+  <col name="EndCustomer" type="NVarChar(50)" />
+  <col name="InventoryID" type="Int" />
+  <col name="FinPeriodID" type="Char(6)" />
+  <col name="CountryID" type="NVarChar(2)" nullable="true" />
+  <col name="SalesRegion" type="NVarChar(50)" nullable="true" />
+  <col name="IsTotal" type="Bit" />
+  <col name="IsSplit" type="Bit" />
+  <col name="PercentSplit" type="Decimal(19,2)" nullable="true" />
+  <col name="ItemClassID" type="Int" nullable="true" />
+  <col name="Date" type="DateTime" nullable="true" />
+  <col name="Qty" type="Decimal(25,6)" nullable="true" />
+  <col name="UnitPrice" type="Decimal(19,6)" nullable="true" />
+  <col name="Amount" type="Decimal(19,4)" nullable="true" />
+  <col name="CreatedByID" type="UniqueIdentifier" nullable="true" />
+  <col name="CreatedDateTime" type="DateTime" nullable="true" />
+  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
+  <col name="DesignSalesID" type="Int" nullable="true" />
+  <col name="OpportunityID" type="NVarChar(10)" nullable="true" />
+  <index name="PK_SalesForecast_1" clustered="true" primary="true" unique="true">
+    <col name="CompanyID" />
+    <col name="SalesPersonID" />
+    <col name="CustomerID" />
+    <col name="EndCustomer" />
+    <col name="InventoryID" />
+    <col name="FinPeriodID" />
+  </index>
+</table>]]></CDATA>
+</Sql>
