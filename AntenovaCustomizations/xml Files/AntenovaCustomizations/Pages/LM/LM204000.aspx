@@ -63,20 +63,20 @@
                             <px:PXTextEdit runat="server" ID="edEngrNote" DataField="EngrNote" TextMode="MultiLine"></px:PXTextEdit>
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edcompleteSummary" DataField="completeSummary" TextMode="MultiLine"></px:PXTextEdit>
-                            <px:PXDateTimeEdit runat="server" ID="edAwaitdateFrom" DataField="AwaitdateFrom"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edAwaitdateFrom" DataField="AwaitdateFrom" Size="SM"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edAwaitdateTo" DataField="AwaitdateTo"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edAwaitReason" DataField="AwaitReason" TextMode="MultiLine"></px:PXTextEdit>
-                            <px:PXDateTimeEdit runat="server" ID="edOnholdDate" DataField="OnholdDate"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edOnholdDate" DataField="OnholdDate" Size="SM"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edOnholdReason" DataField="OnholdReason" TextMode="MultiLine"></px:PXTextEdit>
-                            <px:PXDateTimeEdit runat="server" ID="edCloseDate" DataField="CloseDate"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edCloseDate" DataField="CloseDate" Size="SM"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edCloseReason" DataField="CloseReason" TextMode="MultiLine"></px:PXTextEdit>
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
                             <px:PXDateTimeEdit runat="server" ID="edRequstRcvDate" DataField="Document.RequstRcvDate"></px:PXDateTimeEdit>
                             <px:PXSelector runat="server" ID="edGerberNbr" DataField="GerberNbr"></px:PXSelector>
-                            <px:PXDateTimeEdit runat="server" ID="edActStart" DataField="ActStart"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edActStart" DataField="ActStart" Size="SM"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edActComplete" DataField="ActComplete"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" />
                         </Template>
