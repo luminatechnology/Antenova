@@ -27,15 +27,18 @@ namespace PX.Objects.CR
                .InnerJoin<ENGineering>.On<ENGLine.engrRef.IsEqual<ENGineering.engrRef>>
                .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGListLine;
 
+        #region Override Base Method
+
         public delegate void DoCreateSalesOrderDelegate(CreateSalesOrderFilter param);
+        /// <summary> Create Sales Order From Opportunity 帶入opportunityID into SOLine </summary>
         [PXOverride]
         public virtual void DoCreateSalesOrder(CreateSalesOrderFilter param, DoCreateSalesOrderDelegate baseMethod)
-        { 
+        {
             try
             {
                 baseMethod.Invoke(param);
             }
-            catch(PXRedirectRequiredException ex)
+            catch (PXRedirectRequiredException ex)
             {
                 var opportunityID = Base.Opportunity.Current.OpportunityID;
                 var soGraph = ex.Graph;
@@ -46,12 +49,29 @@ namespace PX.Objects.CR
             }
         }
 
+        #endregion
+
+        #region Override Base DataView
+
+        public virtual IEnumerable salesOrders()
+        {
+            var result = SelectFrom<SOOrder>
+                .InnerJoin<CRRelation>.On<SOOrder.noteID.IsEqual<CRRelation.refNoteID>>
+                .LeftJoin<SOLine>.On<SOOrder.orderNbr.IsEqual<SOLine.orderNbr>
+                    .And<SOOrder.orderType.IsEqual<SOLine.orderType>>>
+                .Where<CRRelation.targetNoteID.IsEqual<CROpportunity.noteID.FromCurrent>>
+                .View.Select(Base);
+            return result;
+        }
+
+        #endregion
+
 
         #region Override DAC
 
         [PXDefault]
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
-        [PXUIField(DisplayName = "Engineering Nbr", Required = true)]
+        [PXUIField(DisplayName = "Engineering Ref", Required = true)]
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
         [PXMergeAttributes(Method = MergeMethod.Replace)]
         public void _(Events.CacheAttached<ENGineering.engrRef> e) { }
@@ -79,6 +99,20 @@ namespace PX.Objects.CR
         #endregion
 
         #region Events
+
+        /// <summary> RowPersisting CROpportunity </summary>
+        public void _(Events.RowPersisting<CSAnswers> e, PXRowPersisting baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            var stageID = Base.Opportunity.Current.StageID;
+            var row = e.Row as CSAnswers;
+            if (stageID == "MP" && row.AttributeID == "FULMPDATE" && string.IsNullOrEmpty(row.Value))
+            {
+                Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
+                    new PXSetPropertyException<CSAnswers.value>("Full MP Date Can not be Empty"));
+                throw new PXSetPropertyException<CSAnswers.value>("Full MP Date Can not be Empty");
+            }
+        }
 
         /// <summary> RowPersisting ENGineering </summary>
         public void _(Events.RowPersisting<ENGineering> e)
@@ -126,21 +160,21 @@ namespace PX.Objects.CR
 
         }
 
-        /// <summary> Set EngrNbr Disabled </summary>
+        /// <summary> Set engrRef Disabled </summary>
         public void _(Events.FieldSelecting<ENGineering.engrRef> e)
             => PXUIFieldAttribute.SetEnabled<ENGineering.engrRef>(e.Cache, null, false);
 
         /// <summary> Initial Project Type DDL </summary>
         public void _(Events.FieldSelecting<ENGineering.prjtype> e)
         {
-            var _prjType = SelectFrom<ENGProjectType>.View.Select(Base).RowCast<ENGProjectType>();
+            var prjType = SelectFrom<ENGProjectType>.View.Select(Base).RowCast<ENGProjectType>();
             if (e.Row != null)
             {
                 PXStringListAttribute.SetList<ENGineering.prjtype>(
                     e.Cache,
                     null,
-                    _prjType.Select(x => x.Prjtype).ToArray(),
-                    _prjType.Select(x => x.Description).ToArray());
+                    prjType.Select(x => x.Prjtype).ToArray(),
+                    prjType.Select(x => x.Description).ToArray());
             }
         }
 
@@ -211,7 +245,7 @@ namespace PX.Objects.CR
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
         public void _(Events.FieldUpdated<ENGineering.engNbr> e)
-            => (e.Row as ENGineering).EngrRef = e.NewValue.ToString().ToUpper(); 
+            => (e.Row as ENGineering).EngrRef = e.NewValue.ToString().ToUpper();
 
         #endregion
     }

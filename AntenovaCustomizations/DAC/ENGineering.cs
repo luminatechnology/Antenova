@@ -253,7 +253,7 @@ namespace AntenovaCustomizations.DAC
 
         public class PK : PrimaryKeyOf<ENGineering>.By<engrRef>
         {
-            public static ENGineering Find(PXGraph graph, string engrNbr) => FindBy(graph, engrNbr);
+            public static ENGineering Find(PXGraph graph, string engrRef) => FindBy(graph, engrRef);
         }
 
     }

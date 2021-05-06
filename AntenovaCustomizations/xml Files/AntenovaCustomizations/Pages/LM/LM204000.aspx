@@ -22,9 +22,9 @@
         </CallbackCommands>
         <Template>
             <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="M" ControlSize="S" />
-            <px:PXSelector runat="server" ID="edEngrNbr" DataField="EngrNbr" CommitChanges="true"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true"></px:PXSelector>
             <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype"></px:PXDropDown>
-            <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref" Size="XL"></px:PXTextEdit>
+            <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr" Size="XL"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
             <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true"></px:PXSelector>
             <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="M"></px:PXSelector>
@@ -57,7 +57,7 @@
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
                             <px:PXDateTimeEdit runat="server" ID="edDeviceRcvDate" DataField="Document.DeviceRcvDate" Size="SM"></px:PXDateTimeEdit>
                             <px:PXCheckBox runat="server" ID="edIsGerber" DataField="IsGerber"></px:PXCheckBox>
-                            <px:PXDateTimeEdit runat="server" ID="edEstStar" DataField="EstStar"></px:PXDateTimeEdit>
+                            <px:PXDateTimeEdit runat="server" ID="edEstStart" DataField="EstStart"></px:PXDateTimeEdit>
                             <px:PXDateTimeEdit runat="server" ID="edEstComplete" DataField="EstComplete"></px:PXDateTimeEdit>
                             <px:PXLayoutRule runat="server" ColumnSpan="3"></px:PXLayoutRule>
                             <px:PXTextEdit runat="server" ID="edEngrNote" DataField="EngrNote" TextMode="MultiLine"></px:PXTextEdit>

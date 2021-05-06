@@ -591,6 +591,10 @@
                                     <px:PXGridColumn DataField="RequestDate" />
                                     <px:PXGridColumn DataField="CuryID" />
                                     <px:PXGridColumn DataField="CuryOrderTotal" />
+                                    <px:PXGridColumn DataField="SOLine__LineNbr"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="SOLine__InventoryID"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="SOLine__OrderQty"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="SOLine__CuryUnitPrice"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="ShipDate" AllowShowHide="true" Visible="False" SyncVisible="false" />
                                 </Columns>
                             </px:PXGridLevel>
@@ -663,12 +667,12 @@
                             <px:PXGridLevel DataMember="ENGList">
                                 <Mode InitNewRow="True" />
                                 <Columns>
-                                    <px:PXGridColumn DataField="EngrNbr" LinkCommand="viewENGDoc" CommitChanges="true"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="EngrRef" LinkCommand="viewENGDoc" CommitChanges="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="OpprID"></px:PXGridColumn>
-                                    <px:PXGridColumn DataField="Engref"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="EngNbr"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Description"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="EndCust"  DisplayMode="Hint"></px:PXGridColumn>
-                                    <px:PXGridColumn DataField="Prjtype" CommitChanges="true"></px:PXGridColumn>
+                                    <px:PXGridColumn DataField="Prjtype" CommitChanges="true" Type="DropDownList" MatrixMode="true"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Priority"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="Status"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="SalesPerson" CommitChanges="true"></px:PXGridColumn>
@@ -680,9 +684,9 @@
                                     <px:PXGridColumn DataField="RequstRcvDate"></px:PXGridColumn>
                                 </Columns>
                                 <RowTemplate>
-                                    <px:PXTextEdit runat="server" ID="eEngrNbr" DataField="EngrNbr"></px:PXTextEdit>
+                                    <px:PXTextEdit runat="server" ID="edEngrRef" DataField="EngrRef"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eOpprID" DataField="opprID"></px:PXTextEdit>
-                                    <px:PXTextEdit runat="server" ID="edEngref" DataField="Engref"></px:PXTextEdit>
+                                    <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr"></px:PXTextEdit>
                                     <px:PXTextEdit runat="server" ID="eDescription" DataField="Description"></px:PXTextEdit>
                                     <px:PXSelector runat="server" ID="eEndCust" DataField="EndCust"></px:PXSelector>
                                     <px:PXDropDown runat="server" ID="ePrjtype" DataField="Prjtype"></px:PXDropDown>

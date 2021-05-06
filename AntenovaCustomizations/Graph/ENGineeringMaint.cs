@@ -110,14 +110,14 @@ namespace AntenovaCustomizations.Graph
         /// <summary> RowSelected Engineering  </summary>
         public void _(Events.RowSelected<ENGineering> e)
         {
-            var _prjType = SelectFrom<ENGProjectType>.View.Select(this).RowCast<ENGProjectType>();
+            var prjType = SelectFrom<ENGProjectType>.View.Select(this).RowCast<ENGProjectType>();
             if (e.Row != null)
             {
                 PXStringListAttribute.SetList<ENGineering.prjtype>(
                     e.Cache,
                     e.Row,
-                    _prjType.Select(x => x.Prjtype).ToArray(),
-                    _prjType.Select(x => x.Description).ToArray());
+                    prjType.Select(x => x.Prjtype).ToArray(),
+                    prjType.Select(x => x.Description).ToArray());
             }
         }
 
