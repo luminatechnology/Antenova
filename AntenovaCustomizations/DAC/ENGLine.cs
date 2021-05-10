@@ -1,7 +1,9 @@
 using System;
+using AntenovaCustomizations.Descriptor;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Objects.CS;
+using PX.Objects.PO;
 using PX.Objects.SO;
 
 namespace AntenovaCustomizations.DAC
@@ -61,7 +63,8 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region ActStart
-        [PXDBDate(DisplayMask = "g", InputMask = "g")]
+        //[PXDBDateAndTime(UseTimeZone = true)]
+        [PXDBDate(DisplayMask = "g", InputMask = "g", PreserveTime = true, UseTimeZone = true)]
         [PXUIField(DisplayName = "Actual Start Date")]
         public virtual DateTime? ActStart { get; set; }
         public abstract class actStart : PX.Data.BQL.BqlDateTime.Field<actStart> { }
@@ -179,6 +182,48 @@ namespace AntenovaCustomizations.DAC
         [PXUIField(DisplayName = "ENg. Age in Days", Enabled = false)]
         public virtual int? EngrAgeDays { get; set; }
         public abstract class engrAgeDays : PX.Data.BQL.BqlInt.Field<engrAgeDays> { }
+        #endregion
+
+        #region GeberFile
+        [PXDBString(10)]
+        [PXStringList(new[] { "Yes", "No" }, new[] { "Yes", "No" })]
+        [PXUIField(DisplayName = "Geber File", Required = true, Visible = false)]
+        public virtual string GeberFile { get; set; }
+        public abstract class geberFile : PX.Data.BQL.BqlString.Field<geberFile> { }
+        #endregion
+
+        #region File3D
+        [PXDBString(10)]
+        [PXStringList(new[] { "Yes", "No" }, new[] { "Yes", "No" })]
+        [PXUIField(DisplayName = "3D File", Required = true, Visible = false)]
+        public virtual string File3D { get; set; }
+        public abstract class file3D : PX.Data.BQL.BqlString.Field<file3D> { }
+        #endregion
+
+        #region StackUpFile
+        [PXDBString(10)]
+        [PXStringList(new[] { "Yes", "No" }, new[] { "Yes", "No" })]
+        [PXUIField(DisplayName = "Stack-Up File", Required = true, Visible = false)]
+        public virtual string StackUpFile { get; set; }
+        public abstract class stackUpFile : PX.Data.BQL.BqlString.Field<stackUpFile> { }
+        #endregion
+
+        #region DeviceTopology
+        [PXDBString(100)]
+        [PXStringList(MultiSelect = true)]
+        [GetDropDownAttribute("DeviceTop", false, true)]
+        [PXUIField(DisplayName = "Device Topology", Required = true, Visible = false)]
+        public virtual string DeviceTopology { get; set; }
+        public abstract class deviceTopology : PX.Data.BQL.BqlString.Field<deviceTopology> { }
+        #endregion
+
+        #region PCBATopology
+        [PXDBString(10)]
+        [PXStringList]
+        [GetDropDownAttribute("PCBATop")]
+        [PXUIField(DisplayName = "PCBA Topology", Required = true, Visible = false)]
+        public virtual string PCBATopology { get; set; }
+        public abstract class pCBATopology : PX.Data.BQL.BqlString.Field<pCBATopology> { }
         #endregion
 
         #region CreatedByID

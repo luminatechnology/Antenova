@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PX.Common;
+using PX.Data.BQL;
+using PX.Objects.CR.MassProcess;
 
 namespace PX.Objects.CR
 {

@@ -19,5 +19,10 @@ namespace PX.Objects.CR.Standalone
         [PXUIField(DisplayName = "Reason Note")]
         public virtual string UsrReasonNote { get; set; }
         public abstract class usrReasonNote : PX.Data.BQL.BqlString.Field<usrReasonNote> { }
+
+        [PXDBString(10, InputMask = "")]
+        [PXUIField(DisplayName = "Source")]
+        public virtual string UsrSource { get; set; }
+        public abstract class usrSource : PX.Data.BQL.BqlString.Field<usrSource> { }
     }
 }

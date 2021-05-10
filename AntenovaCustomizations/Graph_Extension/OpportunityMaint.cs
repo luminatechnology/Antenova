@@ -66,7 +66,6 @@ namespace PX.Objects.CR
 
         #endregion
 
-
         #region Override DAC
 
         [PXDefault]
@@ -99,6 +98,27 @@ namespace PX.Objects.CR
         #endregion
 
         #region Events
+
+        /// <summary> RowInserting CROpportunity </summary>
+        public void _(Events.RowInserting<CROpportunity> e, PXRowInserting baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache,e.Args);
+            var row = e.Row;
+            if (row != null && row.LeadID.HasValue)
+            {
+                var leads = SelectFrom<CRLead>
+                    .Where<CRLead.noteID.IsEqual<P.AsGuid>>
+                    .View.Select(Base, row.LeadID).RowCast<CRLead>().FirstOrDefault() ;
+                row.GetExtension<CROpportunityExt>().UsrEndCust =
+                    string.IsNullOrEmpty(row.GetExtension<CROpportunityExt>().UsrEndCust)
+                        ? leads.GetExtension<CRLeadExt>().UsrEndCust
+                        : row.GetExtension<CROpportunityExt>().UsrEndCust;
+                row.GetExtension<CROpportunityExt>().UsrSource =
+                    string.IsNullOrEmpty(row.GetExtension<CROpportunityExt>().UsrSource)
+                        ? leads.GetExtension<CRLeadExt>().UsrSource
+                        : row.GetExtension<CROpportunityExt>().UsrSource;
+            }
+        }
 
         /// <summary> RowPersisting CROpportunity </summary>
         public void _(Events.RowPersisting<CSAnswers> e, PXRowPersisting baseMethod)
@@ -199,9 +219,11 @@ namespace PX.Objects.CR
         public void _(Events.FieldDefaulting<ENGineering.endCust> e)
             => e.NewValue = Base.Opportunity.Cache.GetValueExt<CROpportunityExt.usrendCust>(Base.Opportunity.Current);
 
+        /// <summary> Events.FieldUpdated ENGineering.salesPerson </summary>
         public void _(Events.FieldDefaulting<ENGineering.salesPerson> e)
             => e.NewValue = (Base.Opportunity.Cache.GetValueExt<CROpportunityExt.usrSalesPerson>(Base.Opportunity.Current) as PXStringState).Value;
 
+        /// <summary> Events.FieldUpdated ENGineering.salesRegion </summary>
         public void _(Events.FieldDefaulting<ENGineering.salesRegion> e)
             => e.NewValue = (Base.Opportunity.Cache.GetValueExt<CROpportunityExt.usrsalesRegion>(Base.Opportunity.Current) as PXStringState).Value;
 

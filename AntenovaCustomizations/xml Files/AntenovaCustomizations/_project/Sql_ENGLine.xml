@@ -22,6 +22,11 @@
   <col name="IsNRE" type="Bit" nullable="true" default="Zero" />
   <col name="SONbr" type="NVarChar(15)" nullable="true" />
   <col name="ProcessDate" type="DateTime" nullable="true" />
+  <col name="GeberFile" type="NVarChar(10)" nullable="true" />
+  <col name="File3D" type="NVarChar(10)" nullable="true" />
+  <col name="StackUpFile" type="NVarChar(10)" nullable="true" />
+  <col name="DeviceTopology" type="NVarChar(100)" nullable="true" />
+  <col name="PCBATopology" type="NVarChar(10)" nullable="true" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />
   <col name="CreatedDateTime" type="DateTime" />

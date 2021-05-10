@@ -21,12 +21,20 @@ namespace AntenovaCustomizations.DAC
         [PXDBString(15, IsKey = true, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
         [PXUIField(DisplayName = "Engineering Ref", Required = true)]
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
-        [PXSelector(typeof(SearchFor<ENGineering.engrRef>),
-                    typeof(ENGineering.engrRef),
+        [PXSelector(typeof(SelectFrom<ENGineering>
+                           .LeftJoin<CROpportunity>.On<ENGineering.opprid.IsEqual<CROpportunity.opportunityID>>
+                           .SearchFor<ENGineering.engrRef>),
+                    typeof(ENGineering.engNbr),
                     typeof(ENGineering.opprid),
-                    typeof(ENGineering.description),
                     typeof(ENGineering.status),
-                    typeof(ENGineering.prjtype))]
+                    typeof(ENGineering.prjtype),
+                    typeof(ENGineering.oppBAccountID),
+                    typeof(ENGineering.endCust),
+                    typeof(CROpportunity.subject),
+                    typeof(ENGineering.priority),
+                    typeof(ENGineering.salesPerson),
+                    typeof(ENGineering.salesRegion),
+                    typeof(ENGineering.createdDateTime))]
         public virtual string EngrRef { get; set; }
         public abstract class engrRef : PX.Data.BQL.BqlString.Field<engrRef> { }
         #endregion

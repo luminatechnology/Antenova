@@ -16,10 +16,12 @@ namespace AntenovaCustomizations.Descriptor
         private bool _showDesc = false;
 
         public GetDropDownAttribute() : base() { }
-        public GetDropDownAttribute(string _id, bool _ShowDesc = false)
+
+        public GetDropDownAttribute(string _id, bool _ShowDesc = false, bool _mutiSelect=false)
         {
             this._attributeID = _id;
             this._showDesc = _ShowDesc;
+            this.MultiSelect = _mutiSelect;
         }
 
         public override void CacheAttached(PXCache sender)

@@ -23,7 +23,7 @@
         <Template>
             <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="M" ControlSize="S" />
             <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true"></px:PXSelector>
-            <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype"></px:PXDropDown>
+            <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype" Size="M" CommitChanges="True"></px:PXDropDown>
             <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr" Size="XL"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
             <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true"></px:PXSelector>
@@ -167,6 +167,21 @@
                             </px:PXGridLevel>
                         </Levels>
                     </px:PXGrid>
+                </Template>
+            </px:PXTabItem>
+            <px:PXTabItem Text="Geber Info" RepaintOnDemand="False">
+                <Template>
+                    <px:PXFormView ID="edENGCurrentLin3" runat="server" DataMember="CurrentLine" DataSourceID="ds" RenderStyle="Simple">
+                        <Template>
+                            <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
+                            <px:pxDropDown runat="server" ID="edGeberFile" DataField="GeberFile"></px:pxDropDown>
+                            <px:pxDropDown runat="server" ID="edFile3D" DataField="File3D"></px:pxDropDown>
+                            <px:pxDropDown runat="server" ID="edStackUpFile" DataField="StackUpFile"></px:pxDropDown>
+                            <px:pxDropDown runat="server" ID="edDeviceTopology" DataField="DeviceTopology" AllowMultiSelect="True"></px:pxDropDown>
+                            <px:pxDropDown runat="server" ID="edPCBATopology" DataField="PCBATopology"></px:pxDropDown>
+                        </Template>
+                        <ContentStyle BackColor="Transparent" />
+                    </px:PXFormView>
                 </Template>
             </px:PXTabItem>
         </Items>

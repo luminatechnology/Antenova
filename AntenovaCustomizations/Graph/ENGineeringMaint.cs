@@ -193,6 +193,20 @@ namespace AntenovaCustomizations.Graph
 
         }
 
+        /// <summary> FieldSelecting ENGineering prjtype </summary>
+        public void _(Events.FieldSelecting<ENGineering.prjtype> e)
+        {
+            var row = e.Row as ENGineering;
+            if (row != null && row.Prjtype == "Gerber")
+            {
+                PXUIFieldAttribute.SetVisible<ENGLine.geberFile>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.file3D>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.stackUpFile>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.deviceTopology>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.pCBATopology>(this.CurrentLine.Cache, null, true);
+            }
+        }
+
         #endregion
 
         #endregion
@@ -203,6 +217,7 @@ namespace AntenovaCustomizations.Graph
         public void ValidField(Events.RowPersisting<ENGineering> e)
         {
             var row = e.Row as ENGineering;
+            var line = this.CurrentLine.Cache.Current as ENGLine;
 
             #region Valid Opprid
             bool IsRqeuired = SelectFrom<ENGProjectType>
@@ -242,11 +257,37 @@ namespace AntenovaCustomizations.Graph
                 e.Cache.RaiseExceptionHandling<ENGineering.engNbr>(e.Row, row.EngNbr,
                   new PXSetPropertyException<ENGineering.engNbr>("[EngrNbr] + [Engineer Repeat] is not allowed duplicated"));
             #endregion
+
+            #region  Valid Gerber Info
+
+            if (line == null)
+                throw new Exception("Gerber Info Can not be Empty");
+            if (row.Prjtype == "gerber")
+            {
+                if (string.IsNullOrEmpty(line.GerberNbr))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, line.GerberNbr,
+                        new PXSetPropertyException<ENGLine.geberFile>("Gerber File can not be empty"));
+                if (string.IsNullOrEmpty(line.File3D))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.file3D>(e.Row, line.File3D,
+                        new PXSetPropertyException<ENGLine.file3D>("3D File can not be empty"));
+                if (string.IsNullOrEmpty(line.StackUpFile))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.stackUpFile>(e.Row, line.StackUpFile,
+                        new PXSetPropertyException<ENGLine.stackUpFile>("Stack-Up File can not be empty"));
+                if (string.IsNullOrEmpty(line.DeviceTopology))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.deviceTopology>(e.Row, line.DeviceTopology,
+                        new PXSetPropertyException<ENGLine.deviceTopology>("Device Topology can not be empty"));
+                if (string.IsNullOrEmpty(line.PCBATopology))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.pCBATopology>(e.Row, line.PCBATopology,
+                        new PXSetPropertyException<ENGLine.pCBATopology>("PCBA Topology can not be empty"));
+            }
+
+            #endregion
         }
 
         /// <summary> Valid ENGLine Row </summary>
         public void ValidField(Events.RowPersisting<ENGLine> e)
         {
+            var doc = this.Document.Cache.Current as ENGineering;
             var row = e.Row as ENGLine;
 
             #region Valid Gerber Nbr
@@ -277,10 +318,10 @@ namespace AntenovaCustomizations.Graph
                 if (!row.AwaitdateTo.HasValue)
                     e.Cache.RaiseExceptionHandling<ENGLine.awaitdateTo>(e.Row, row.AwaitdateTo,
                        new PXSetPropertyException<ENGLine.awaitdateTo>("Awaite Date To can not be empty"));
-                if(!row.EstStart.HasValue)
+                if (!row.EstStart.HasValue)
                     e.Cache.RaiseExceptionHandling<ENGLine.estStart>(e.Row, row.EstStart,
                        new PXSetPropertyException<ENGLine.estStart>("Est. Start Date can not be empty"));
-                if(!row.EstComplete.HasValue)
+                if (!row.EstComplete.HasValue)
                     e.Cache.RaiseExceptionHandling<ENGLine.estComplete>(e.Row, row.EstComplete,
                        new PXSetPropertyException<ENGLine.estComplete>("Est. Complete Date can not be empty"));
             }
@@ -317,13 +358,36 @@ namespace AntenovaCustomizations.Graph
 
             #region Valid Complete
 
-            if(row.ActComplete.HasValue && string.IsNullOrEmpty(row.CompleteSummary))
+            if (row.ActComplete.HasValue && string.IsNullOrEmpty(row.CompleteSummary))
                 e.Cache.RaiseExceptionHandling<ENGLine.completeSummary>(e.Row, row.CompleteSummary,
                        new PXSetPropertyException<ENGLine.completeSummary>("Report Summary can not be empty"));
 
-            if(!row.ActComplete.HasValue && !string.IsNullOrEmpty(row.CompleteSummary))
+            if (!row.ActComplete.HasValue && !string.IsNullOrEmpty(row.CompleteSummary))
                 e.Cache.RaiseExceptionHandling<ENGLine.actComplete>(e.Row, row.ActComplete,
                       new PXSetPropertyException<ENGLine.actComplete>("Actual Complete Date can not be empty"));
+
+            #endregion
+
+            #region Valid Gerber Info
+
+            if (doc.Prjtype == "Gerber")
+            {
+                if (string.IsNullOrEmpty(row.GerberNbr))
+                    e.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, row.GerberNbr,
+                        new PXSetPropertyException<ENGLine.geberFile>("Gerber File can not be empty"));
+                if (string.IsNullOrEmpty(row.File3D))
+                    e.Cache.RaiseExceptionHandling<ENGLine.file3D>(e.Row, row.File3D,
+                        new PXSetPropertyException<ENGLine.file3D>("3D File can not be empty"));
+                if (string.IsNullOrEmpty(row.StackUpFile))
+                    e.Cache.RaiseExceptionHandling<ENGLine.stackUpFile>(e.Row, row.StackUpFile,
+                        new PXSetPropertyException<ENGLine.stackUpFile>("Stack-Up File can not be empty"));
+                if (string.IsNullOrEmpty(row.DeviceTopology))
+                    e.Cache.RaiseExceptionHandling<ENGLine.deviceTopology>(e.Row, row.DeviceTopology,
+                        new PXSetPropertyException<ENGLine.deviceTopology>("Device Topology can not be empty"));
+                if (string.IsNullOrEmpty(row.PCBATopology))
+                    e.Cache.RaiseExceptionHandling<ENGLine.pCBATopology>(e.Row, row.PCBATopology,
+                        new PXSetPropertyException<ENGLine.pCBATopology>("PCBA Topology can not be empty"));
+            }
 
             #endregion
 
