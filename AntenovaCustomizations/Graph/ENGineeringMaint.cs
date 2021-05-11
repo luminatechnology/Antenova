@@ -68,22 +68,6 @@ namespace AntenovaCustomizations.Graph
         [PXDefault]
         [PXMergeAttributes(Method = MergeMethod.Append)]
         public void _(Events.CacheAttached<ENGineering.engNbr> e) { }
-
-        /// <summary> opprid </summary>
-        [PXSelector(typeof(SearchFor<CROpportunity.opportunityID>),
-                    typeof(CROpportunity.opportunityID),
-                    typeof(CROpportunity.classID),
-                    typeof(CROpportunity.status),
-                    typeof(CROpportunity.subject),
-                    typeof(CROpportunity.locationID))]
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        public void _(Events.CacheAttached<ENGineering.opprid> e) { }
-
-        // <summary> oppBAccountID </summary>
-        [PXDefault]
-        [PXMergeAttributes(Method = MergeMethod.Append)]
-        public void _(Events.CacheAttached<ENGineering.oppBAccountID> e) { }
-
         #endregion
 
         #region Events
@@ -260,10 +244,10 @@ namespace AntenovaCustomizations.Graph
 
             #region  Valid Gerber Info
 
-            if (line == null)
-                throw new Exception("Gerber Info Can not be Empty");
             if (row.Prjtype == "gerber")
             {
+                if (line == null)
+                    throw new PXException("Gerber Info Can not be Empty");
                 if (string.IsNullOrEmpty(line.GerberNbr))
                     this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, line.GerberNbr,
                         new PXSetPropertyException<ENGLine.geberFile>("Gerber File can not be empty"));

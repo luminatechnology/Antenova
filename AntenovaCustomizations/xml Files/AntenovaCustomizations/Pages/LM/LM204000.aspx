@@ -21,16 +21,18 @@
             <Save PostData="Self" />
         </CallbackCommands>
         <Template>
-            <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="M" ControlSize="S" />
-            <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true"></px:PXSelector>
+            <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="S" ControlSize="S" />
+            <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true">
+                <GridProperties FastFilterFields="Opprid,OppBAccountID,EndCust" />
+            </px:PXSelector>
             <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype" Size="M" CommitChanges="True"></px:PXDropDown>
             <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr" Size="XL"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
-            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true"></px:PXSelector>
-            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="M"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true" Size="XL"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="XL"></px:PXSelector>
             <px:PXLayoutRule runat="server" ColumnSpan="3" ControlSize="XM" />
             <px:PXTextEdit runat="server" ID="edDescription" DataField="Description" TextMode="MultiLine"></px:PXTextEdit>
-            <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="S" />
+            <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="S" />
             <px:PXDropDown runat="server" ID="edPriority" DataField="Priority"></px:PXDropDown>
             <px:PXDropDown runat="server" ID="edGateStatus" DataField="GateStatus"></px:PXDropDown>
             <px:PXTextEdit runat="server" ID="edMsh" DataField="Msh"></px:PXTextEdit>
@@ -174,11 +176,11 @@
                     <px:PXFormView ID="edENGCurrentLin3" runat="server" DataMember="CurrentLine" DataSourceID="ds" RenderStyle="Simple">
                         <Template>
                             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="M" />
-                            <px:pxDropDown runat="server" ID="edGeberFile" DataField="GeberFile"></px:pxDropDown>
-                            <px:pxDropDown runat="server" ID="edFile3D" DataField="File3D"></px:pxDropDown>
-                            <px:pxDropDown runat="server" ID="edStackUpFile" DataField="StackUpFile"></px:pxDropDown>
-                            <px:pxDropDown runat="server" ID="edDeviceTopology" DataField="DeviceTopology" AllowMultiSelect="True"></px:pxDropDown>
-                            <px:pxDropDown runat="server" ID="edPCBATopology" DataField="PCBATopology"></px:pxDropDown>
+                            <px:PXDropDown runat="server" ID="edGeberFile" DataField="GeberFile"></px:PXDropDown>
+                            <px:PXDropDown runat="server" ID="edFile3D" DataField="File3D"></px:PXDropDown>
+                            <px:PXDropDown runat="server" ID="edStackUpFile" DataField="StackUpFile"></px:PXDropDown>
+                            <px:PXDropDown runat="server" ID="edDeviceTopology" DataField="DeviceTopology" AllowMultiSelect="True"></px:PXDropDown>
+                            <px:PXDropDown runat="server" ID="edPCBATopology" DataField="PCBATopology"></px:PXDropDown>
                         </Template>
                         <ContentStyle BackColor="Transparent" />
                     </px:PXFormView>

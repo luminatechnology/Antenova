@@ -50,8 +50,8 @@ namespace AntenovaCustomizations.DAC
 
         #region ENGNbr
         [PXDefault]
-        [PXDBString(25,IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Egnineering Nbr.",Required = true)]
+        [PXDBString(25, IsUnicode = true, InputMask = "")]
+        [PXUIField(DisplayName = "Eng. Nbr.", Required = true)]
         public virtual string EngNbr { get; set; }
         public abstract class engNbr : PX.Data.BQL.BqlString.Field<engNbr> { }
         #endregion
@@ -59,14 +59,21 @@ namespace AntenovaCustomizations.DAC
         #region Status
         [PXDBString(10)]
         [PXDefault("1")]
-        [PXUIField(DisplayName = "Status",Enabled = false)]
-        [GetDropDownAttribute("ENGSTATUS",true)]
+        [PXUIField(DisplayName = "Status", Enabled = false)]
+        [GetDropDownAttribute("ENGSTATUS", true)]
         public virtual string Status { get; set; }
         public abstract class status : PX.Data.BQL.BqlString.Field<status> { }
         #endregion
 
         #region Opprid
         [PXDBString(20, IsUnicode = true, InputMask = "")]
+        [PXSelector(typeof(SearchFor<CROpportunity.opportunityID>),
+        typeof(CROpportunity.opportunityID),
+                    typeof(CROpportunity.classID),
+                    typeof(CROpportunity.status),
+                    typeof(CROpportunity.subject),
+                    typeof(CROpportunity.locationID),
+                    DescriptionField = typeof(CROpportunity.subject))]
         [PXUIField(DisplayName = "Opportunity Nbr")]
         public virtual string Opprid { get; set; }
         public abstract class opprid : PX.Data.BQL.BqlString.Field<opprid> { }
@@ -99,7 +106,7 @@ namespace AntenovaCustomizations.DAC
 
         #region OppBAccountID
         [PXDBInt()]
-        [PXUIField(DisplayName = "Business Account",Required = true)]
+        [PXUIField(DisplayName = "Business Account", Required = true)]
         [PXSelector(typeof(SearchFor<Customer.bAccountID>),
             typeof(Customer.acctCD),
             typeof(Customer.acctName),
@@ -116,7 +123,7 @@ namespace AntenovaCustomizations.DAC
         #region EndCust
         [PXDBString(20, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
-        [PXSelector(typeof(CRMendcust.custId), 
+        [PXSelector(typeof(CRMendcust.custId),
             typeof(CRMendcust.name),
             DescriptionField = typeof(CRMendcust.name))]
         public virtual string EndCust { get; set; }
@@ -127,7 +134,7 @@ namespace AntenovaCustomizations.DAC
         [PXDefault]
         [GetDropDownAttribute("REGION")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Sales Region",Required = true)]
+        [PXUIField(DisplayName = "Sales Region", Required = true)]
         public virtual string SalesRegion { get; set; }
         public abstract class salesRegion : PX.Data.BQL.BqlString.Field<salesRegion> { }
         #endregion
@@ -155,7 +162,7 @@ namespace AntenovaCustomizations.DAC
         [PXDefault]
         [GetDropDownAttribute("ENGREPEAT")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Engineer Repeat",Required = true)]
+        [PXUIField(DisplayName = "Engineer Repeat", Required = true)]
         public virtual string Repeat { get; set; }
         public abstract class repeat : PX.Data.BQL.BqlString.Field<repeat> { }
         #endregion
@@ -212,7 +219,7 @@ namespace AntenovaCustomizations.DAC
         [PXDBInt]
         [PXDefault(0)]
         public virtual int? ReveCntr { get; set; }
-        public abstract class reveCntr : PX.Data.BQL.BqlInt.Field<reveCntr> { } 
+        public abstract class reveCntr : PX.Data.BQL.BqlInt.Field<reveCntr> { }
         #endregion
 
         #region CreatedByID

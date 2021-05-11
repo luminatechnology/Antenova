@@ -125,6 +125,7 @@ namespace PX.Objects.CR
         {
             baseMethod?.Invoke(e.Cache, e.Args);
             var stageID = Base.Opportunity.Current.StageID;
+            var status = Base.Opportunity.Current.Status;
             var row = e.Row as CSAnswers;
             if (stageID == "MP" && row.AttributeID == "FULMPDATE" && string.IsNullOrEmpty(row.Value))
             {
