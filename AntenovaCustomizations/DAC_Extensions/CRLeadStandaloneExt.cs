@@ -24,5 +24,15 @@ namespace PX.Objects.CR.Standalone
         [PXUIField(DisplayName = "Source")]
         public virtual string UsrSource { get; set; }
         public abstract class usrSource : PX.Data.BQL.BqlString.Field<usrSource> { }
+
+        [PXDBString(10, IsUnicode = true, InputMask = "")]
+        [PXUIField(DisplayName = "Sales Region", Required = true)]
+        public virtual string UsrSalesRegion { get; set; }
+        public abstract class usrsalesRegion : PX.Data.BQL.BqlString.Field<usrsalesRegion> { }
+
+        [PXDBInt]
+        [PXUIField(DisplayName = "Sales Person")]
+        public virtual int? UsrSalesPerson { get; set; }
+        public abstract class usrsalesPerson : PX.Data.BQL.BqlInt.Field<usrsalesPerson> { }
     }
 }

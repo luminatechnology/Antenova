@@ -25,23 +25,23 @@
             <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true">
                 <GridProperties FastFilterFields="Opprid,OppBAccountID,EndCust" />
             </px:PXSelector>
-            <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype" Size="M" CommitChanges="True"></px:PXDropDown>
-            <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr" Size="XL"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
-            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true" Size="XL"></px:PXSelector>
-            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="XL"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true" Size="L"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="L"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edEndCust" DataField="EndCust"></px:PXSelector>
+            <px:PXTextEdit runat="server" ID="edMsh" DataField="Msh"></px:PXTextEdit>
             <px:PXLayoutRule runat="server" ColumnSpan="3" ControlSize="XM" />
             <px:PXTextEdit runat="server" ID="edDescription" DataField="Description" TextMode="MultiLine"></px:PXTextEdit>
             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="S" />
-            <px:PXDropDown runat="server" ID="edPriority" DataField="Priority"></px:PXDropDown>
-            <px:PXDropDown runat="server" ID="edGateStatus" DataField="GateStatus"></px:PXDropDown>
-            <px:PXTextEdit runat="server" ID="edMsh" DataField="Msh"></px:PXTextEdit>
-            <px:PXSelector runat="server" ID="edEndCust" DataField="EndCust"></px:PXSelector>
-            <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="M" ControlSize="S" />
-            <px:PXSelector runat="server" ID="edSalesPerson" DataField="SalesPerson"></px:PXSelector>
-            <px:PXDropDown runat="server" ID="edSalesRegion" DataField="SalesRegion"></px:PXDropDown>
+            <px:PXTextEdit runat="server" ID="edEngNbr" DataField="EngNbr" Size="L"></px:PXTextEdit>
             <px:PXDropDown runat="server" ID="edRepeat" DataField="Repeat"></px:PXDropDown>
+            <px:PXDropDown runat="server" ID="edPriority" DataField="Priority"></px:PXDropDown>
+            <px:PXDropDown runat="server" ID="edPrjtype" DataField="Prjtype" Size="M" CommitChanges="True"></px:PXDropDown>
+            <px:PXDropDown runat="server" ID="edGateStatus" DataField="GateStatus"></px:PXDropDown>
+            <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="S" />
             <px:PXSelector runat="server" ID="edEngineer" DataField="Engineer" Size="M"></px:PXSelector>
+            <px:PXDropDown runat="server" ID="edSalesRegion" DataField="SalesRegion"></px:PXDropDown>
+            <px:PXSelector runat="server" ID="edSalesPerson" DataField="SalesPerson"></px:PXSelector>
         </Template>
     </px:PXFormView>
 </asp:Content>

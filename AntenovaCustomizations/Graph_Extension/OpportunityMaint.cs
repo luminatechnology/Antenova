@@ -56,10 +56,8 @@ namespace PX.Objects.CR
         public virtual IEnumerable salesOrders()
         {
             var result = SelectFrom<SOOrder>
-                .InnerJoin<CRRelation>.On<SOOrder.noteID.IsEqual<CRRelation.refNoteID>>
-                .LeftJoin<SOLine>.On<SOOrder.orderNbr.IsEqual<SOLine.orderNbr>
-                    .And<SOOrder.orderType.IsEqual<SOLine.orderType>>>
-                .Where<CRRelation.targetNoteID.IsEqual<CROpportunity.noteID.FromCurrent>>
+                .InnerJoin<SOLine>.On<SOLine.orderType.IsEqual<SOOrder.orderType>.And<SOLine.orderNbr.IsEqual<SOOrder.orderNbr>>>
+                .Where<SOLineExt.usrOpportunityID.IsEqual<CROpportunity.opportunityID.FromCurrent>>
                 .View.Select(Base);
             return result;
         }
@@ -102,21 +100,33 @@ namespace PX.Objects.CR
         /// <summary> RowInserting CROpportunity </summary>
         public void _(Events.RowInserting<CROpportunity> e, PXRowInserting baseMethod)
         {
-            baseMethod?.Invoke(e.Cache,e.Args);
+            baseMethod?.Invoke(e.Cache, e.Args);
             var row = e.Row;
             if (row != null && row.LeadID.HasValue)
             {
                 var leads = SelectFrom<CRLead>
                     .Where<CRLead.noteID.IsEqual<P.AsGuid>>
-                    .View.Select(Base, row.LeadID).RowCast<CRLead>().FirstOrDefault() ;
+                    .View.Select(Base, row.LeadID).RowCast<CRLead>().FirstOrDefault();
+                // UsrEndCust
                 row.GetExtension<CROpportunityExt>().UsrEndCust =
                     string.IsNullOrEmpty(row.GetExtension<CROpportunityExt>().UsrEndCust)
                         ? leads.GetExtension<CRLeadExt>().UsrEndCust
                         : row.GetExtension<CROpportunityExt>().UsrEndCust;
+                // UsrSource
                 row.GetExtension<CROpportunityExt>().UsrSource =
                     string.IsNullOrEmpty(row.GetExtension<CROpportunityExt>().UsrSource)
                         ? leads.GetExtension<CRLeadExt>().UsrSource
                         : row.GetExtension<CROpportunityExt>().UsrSource;
+                // UsrSalesPerson
+                row.GetExtension<CROpportunityExt>().UsrSalesPerson =
+                    row.GetExtension<CROpportunityExt>().UsrSalesPerson == null
+                        ? leads.GetExtension<CRLeadExt>().UsrSalesPerson
+                        : row.GetExtension<CROpportunityExt>().UsrSalesPerson;
+                // UsrSalesRegion
+                row.GetExtension<CROpportunityExt>().UsrSalesRegion =
+                    row.GetExtension<CROpportunityExt>().UsrSalesRegion == null
+                        ? leads.GetExtension<CRLeadExt>().UsrSalesRegion
+                        : row.GetExtension<CROpportunityExt>().UsrSalesRegion;
             }
         }
 

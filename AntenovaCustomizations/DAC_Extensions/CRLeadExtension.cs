@@ -44,5 +44,25 @@ namespace PX.Objects.CR
         public abstract class usrSource : PX.Data.BQL.BqlString.Field<usrSource> { }
         #endregion
 
+        #region UsrSalesRegion
+        [GetDropDownAttribute("REGION")]
+        [PXDBString(10, IsUnicode = true, InputMask = "", BqlField = typeof(Standalone.CRLeadStandaloneExt.usrsalesRegion))]
+        [PXUIField(DisplayName = "Sales Region", Required = true)]
+        public virtual string UsrSalesRegion { get; set; }
+        public abstract class usrsalesRegion : PX.Data.BQL.BqlString.Field<usrsalesRegion> { }
+        #endregion
+
+        #region UsrSalesPerson
+        [PXDBInt(BqlField = typeof(Standalone.CRLeadStandaloneExt.usrsalesPerson))]
+        [PXUIField(DisplayName = "Sales Person")]
+        [PXSelector(typeof(Search<PX.Objects.AR.SalesPerson.salesPersonID>),
+            typeof(PX.Objects.AR.SalesPerson.salesPersonCD),
+            typeof(PX.Objects.AR.SalesPerson.isActive),
+            typeof(PX.Objects.AR.SalesPerson.commnPct),
+            SubstituteKey = typeof(PX.Objects.AR.SalesPerson.salesPersonCD))]
+        public virtual int? UsrSalesPerson { get; set; }
+        public abstract class usrsalesPerson : PX.Data.BQL.BqlInt.Field<usrsalesPerson> { }
+        #endregion
+
     }
 }

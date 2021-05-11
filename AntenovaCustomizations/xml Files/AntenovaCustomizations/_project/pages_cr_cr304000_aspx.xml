@@ -282,4 +282,80 @@
             </AddItem>
         </Children>
     </PXTab>
+    <PXGridColumn DataField="OrderType" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#0" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="OrderType" />
+    </PXGridColumn>
+    <PXGridColumn DataField="OrderNbr" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#1" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="OrderNbr" />
+    </PXGridColumn>
+    <PXGridColumn DataField="OrderDesc" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#2" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="OrderDesc" />
+    </PXGridColumn>
+    <PXGridColumn DataField="Status" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#3" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="Status" />
+    </PXGridColumn>
+    <PXGridColumn DataField="OrderDate" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#4" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="OrderDate" />
+    </PXGridColumn>
+    <PXGridColumn DataField="RequestDate" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#5" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="RequestDate" />
+    </PXGridColumn>
+    <PXGridColumn DataField="CuryID" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#6" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="CuryID" />
+    </PXGridColumn>
+    <PXGridColumn DataField="CuryOrderTotal" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#7" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="CuryOrderTotal" />
+    </PXGridColumn>
+    <PXGridColumn DataField="ShipDate" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#8" TypeFullName="PX.Web.UI.PXGridColumn">
+        <Prop Key="DataField" Value="ShipDate" />
+    </PXGridColumn>
+    <PXGridLevel DataMember="SalesOrders" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0" TypeFullName="PX.Web.UI.PXGridLevel">
+        <Children Key="Columns">
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="customerID" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__OrderQty" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__ShippedQty" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__CuryUnitPrice" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__CuryLineAmt" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="OrderDate" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__ShipDate" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__UsrDesignSalesID" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__SalesPersonID" />
+                </PXGridColumn>
+            </AddItem>
+        </Children>
+    </PXGridLevel>
 </Page>

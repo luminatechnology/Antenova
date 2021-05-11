@@ -48,7 +48,14 @@ namespace PX.Objects.SO
 
         #region UsrOpportunityID
         [PXDBString(10, IsUnicode = true, InputMask = ">CCCCCCCCCCCCCCC")]
-        [PXUIField(DisplayName = "Opportunity Nbr.",Enabled = false)]
+        [PXSelector(typeof(Search<CROpportunity.opportunityID>),
+            typeof(CROpportunity.opportunityID),
+            typeof(CROpportunity.classID),
+            typeof(CROpportunity.status),
+            typeof(CROpportunity.subject),
+            typeof(CROpportunity.locationID),
+            DescriptionField = typeof(CROpportunity.subject))]
+        [PXUIField(DisplayName = "Opportunity Nbr.",Enabled = true)]
         public virtual string UsrOpportunityID { get; set; }
         public abstract class usrOpportunityID : PX.Data.BQL.BqlString.Field<usrOpportunityID> { }
         #endregion

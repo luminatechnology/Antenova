@@ -113,7 +113,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region OnholdDate
-        [PXDBDate(DisplayMask = "g", InputMask = "g")]
+        [PXDBDateAndTime(DisplayMask = "G", InputMask = "G",PreserveTime = true, UseTimeZone = true)]
         [PXUIField(DisplayName = "ON Hold Date")]
         public virtual DateTime? OnholdDate { get; set; }
         public abstract class onholdDate : PX.Data.BQL.BqlDateTime.Field<onholdDate> { }
@@ -127,7 +127,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region CloseDate
-        [PXDBDate(DisplayMask = "g", InputMask = "g")]
+        [PXDBDateAndTime(DisplayMask = "g", InputMask = "g")]
         [PXUIField(DisplayName = "Close Date")]
         public virtual DateTime? CloseDate { get; set; }
         public abstract class closeDate : PX.Data.BQL.BqlDateTime.Field<closeDate> { }
