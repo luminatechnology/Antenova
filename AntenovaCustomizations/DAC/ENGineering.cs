@@ -162,7 +162,7 @@ namespace AntenovaCustomizations.DAC
         [PXDefault]
         [GetDropDownAttribute("ENGREPEAT")]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Engineer Repeat", Required = true)]
+        [PXUIField(DisplayName = "Eng. Repeat", Required = true)]
         public virtual string Repeat { get; set; }
         public abstract class repeat : PX.Data.BQL.BqlString.Field<repeat> { }
         #endregion

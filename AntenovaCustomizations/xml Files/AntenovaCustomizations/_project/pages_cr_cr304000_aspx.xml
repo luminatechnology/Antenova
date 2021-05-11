@@ -192,13 +192,14 @@
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="EngrRef" />
-                                                        <Prop Key="CommitChanges" Value="true" />
+                                                        <Prop Key="CommitChanges" Value="True" />
                                                         <Prop Key="LinkCommand" Value="viewENGDoc" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="OpprID" />
+                                                        <Prop Key="CommitChanges" Value="False" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
@@ -221,7 +222,7 @@
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="Prjtype" />
                                                         <Prop Key="Type" Value="DropDownList" />
-                                                        <Prop Key="CommitChanges" Value="true" />
+                                                        <Prop Key="CommitChanges" Value="True" />
                                                         <Prop Key="MatrixMode" Value="true" />
                                                     </PXGridColumn>
                                                 </AddItem>
@@ -244,21 +245,24 @@
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="SalesRegion" />
-                                                    </PXGridColumn>
-                                                </AddItem>
-                                                <AddItem>
-                                                    <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
-                                                        <Prop Key="DataField" Value="Msh" />
+                                                        <Prop Key="CommitChanges" Value="False" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="Repeat" />
+                                                        <Prop Key="Width" Value="120" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="Engineer" />
+                                                        <Prop Key="Width" Value="140" />
+                                                    </PXGridColumn>
+                                                </AddItem>
+                                                <AddItem>
+                                                    <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                                                        <Prop Key="DataField" Value="Msh" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
@@ -314,6 +318,11 @@
             <AddItem>
                 <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                     <Prop Key="DataField" Value="customerID" />
+                </PXGridColumn>
+            </AddItem>
+            <AddItem>
+                <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                    <Prop Key="DataField" Value="SOLine__InventoryID" />
                 </PXGridColumn>
             </AddItem>
             <AddItem>

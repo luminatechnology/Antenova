@@ -278,7 +278,7 @@ namespace PX.Objects.CR
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
         public void _(Events.FieldUpdated<ENGineering.engNbr> e)
-            => (e.Row as ENGineering).EngrRef = e.NewValue.ToString().ToUpper();
+            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper();
 
         #endregion
     }
