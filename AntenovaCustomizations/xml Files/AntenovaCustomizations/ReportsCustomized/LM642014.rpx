@@ -11,6 +11,7 @@
   </Filters>
   <PageSettings>
     <Margins>
+      <Left>0.8cm</Left>
       <Top>0cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -2790,7 +2791,7 @@
           <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7))</ValueExpr>
         </ReportVariable>
         <ReportVariable>
-          <Name>Date</Name>
+          <Name>DisplayDate</Name>
           <ValueExpr>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</ValueExpr>
         </ReportVariable>
       </Variables>
@@ -2800,7 +2801,7 @@
           <Location>4px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>180px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOLine.AlternateID]</Value>
         </PictureBox>
@@ -2815,39 +2816,39 @@
         </PictureBox>
         <PictureBox Name="pictureBox3">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 104px</Location>
+          <Location>4px, 112px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>180px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox4">
           <BarcodeType>Code128</BarcodeType>
-          <Location>4px, 160px</Location>
+          <Location>4px, 168px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>180px, 24px</Size>
+          <Size>172px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>[InventoryItem.QTYINBOX_Attributes]</Value>
+          <Value>=Replace(CStr(CInt([SOPackageDetailEx.Qty])), ',', '')</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
           <BarcodeType>Code128</BarcodeType>
-          <Location>192px, 8px</Location>
+          <Location>184px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>168px, 24px</Size>
+          <Size>176px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox6">
           <BarcodeType>Code128</BarcodeType>
-          <Location>192px, 56px</Location>
+          <Location>184px, 56px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>168px, 24px</Size>
+          <Size>176px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=Year($Date) + PadLeft(CStr(Month([$Date])), 2, '0') + PadLeft(CStr(Day([$Date])), 2, '0')</Value>
+          <Value>=CStr(Year($DisplayDate)) + PadLeft(CStr(Month($DisplayDate)), 2, '0') + PadLeft(CStr(Day($DisplayDate)), 2, '0')</Value>
         </PictureBox>
         <TextBox Name="textBox1">
           <Location>8px, 32px</Location>
@@ -2863,8 +2864,8 @@
           <Value>P/N: </Value>
         </TextBox>
         <TextBox Name="textBox10">
-          <Location>232px, 32px</Location>
-          <Size>80px, 12px</Size>
+          <Location>224px, 32px</Location>
+          <Size>136px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
@@ -2876,7 +2877,7 @@
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
         <TextBox Name="textBox11">
-          <Location>200px, 80px</Location>
+          <Location>192px, 80px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>
@@ -2890,7 +2891,7 @@
         </TextBox>
         <TextBox Name="textBox12">
           <Format>yyyyMMdd</Format>
-          <Location>232px, 80px</Location>
+          <Location>224px, 80px</Location>
           <Size>104px, 12px</Size>
           <Style>
             <Font>
@@ -2903,7 +2904,7 @@
           <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
         </TextBox>
         <TextBox Name="textBox13">
-          <Location>8px, 128px</Location>
+          <Location>8px, 136px</Location>
           <Size>24px, 16px</Size>
           <Style>
             <Font>
@@ -2916,7 +2917,7 @@
           <Value>LOT: </Value>
         </TextBox>
         <TextBox Name="textBox14">
-          <Location>240px, 136px</Location>
+          <Location>256px, 144px</Location>
           <Size>56px, 32px</Size>
           <Style>
             <Font>
@@ -2929,7 +2930,7 @@
           <Value>BOX</Value>
         </TextBox>
         <TextBox Name="textBox2">
-          <Location>8px, 184px</Location>
+          <Location>8px, 192px</Location>
           <Size>24px, 12px</Size>
           <Style>
             <Font>
@@ -2969,7 +2970,7 @@
         </TextBox>
         <TextBox Name="textBox5">
           <Format>=IIF([SOLine.UOM] = 'PCS', 'N0', 'N2')</Format>
-          <Location>32px, 184px</Location>
+          <Location>32px, 192px</Location>
           <Size>48px, 12px</Size>
           <Style>
             <Font>
@@ -2979,7 +2980,7 @@
             <TextAlign>Center</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
+          <Value>=Replace(CStr(CInt([SOPackageDetailEx.Qty])), ',', '')</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>48px, 80px</Location>
@@ -2995,7 +2996,7 @@
           <Value>Antenova</Value>
         </TextBox>
         <TextBox Name="textBox7">
-          <Location>80px, 184px</Location>
+          <Location>80px, 192px</Location>
           <Size>40px, 12px</Size>
           <Style>
             <Font>
@@ -3008,7 +3009,7 @@
           <Value>=[SOLine.UOM]</Value>
         </TextBox>
         <TextBox Name="textBox8">
-          <Location>32px, 128px</Location>
+          <Location>32px, 136px</Location>
           <Size>80px, 16px</Size>
           <Style>
             <Font>
@@ -3021,7 +3022,7 @@
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </TextBox>
         <TextBox Name="textBox9">
-          <Location>200px, 32px</Location>
+          <Location>192px, 32px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>

@@ -11,6 +11,7 @@
   </Filters>
   <PageSettings>
     <Margins>
+      <Left>0.8cm</Left>
       <Top>0cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -2789,6 +2790,10 @@
           <Name>ProductionDayOfWeek</Name>
           <ValueExpr>=DayOfWeek(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7))</ValueExpr>
         </ReportVariable>
+        <ReportVariable>
+          <Name>DisplayDate</Name>
+          <ValueExpr>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</ValueExpr>
+        </ReportVariable>
       </Variables>
       <Items>
         <PictureBox Name="pictureBox1">
@@ -2825,7 +2830,7 @@
           <QRCodeSettings />
           <Size>172px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=[SOPackageDetailEx.Qty]</Value>
+          <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
           <BarcodeType>Code128</BarcodeType>
@@ -2843,7 +2848,7 @@
           <QRCodeSettings />
           <Size>176px, 24px</Size>
           <Source>Barcode</Source>
-          <Value>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</Value>
+          <Value>=CStr(Year($DisplayDate)) + PadLeft(CStr(Month($DisplayDate)), 2, '0') + PadLeft(CStr(Day($DisplayDate)), 2, '0')</Value>
         </PictureBox>
         <TextBox Name="textBox1">
           <Location>8px, 32px</Location>
@@ -2860,7 +2865,7 @@
         </TextBox>
         <TextBox Name="textBox10">
           <Location>224px, 32px</Location>
-          <Size>80px, 12px</Size>
+          <Size>136px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
@@ -2975,7 +2980,7 @@
             <TextAlign>Center</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[SOPackageDetailEx.Qty]</Value>
+          <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>48px, 80px</Location>
