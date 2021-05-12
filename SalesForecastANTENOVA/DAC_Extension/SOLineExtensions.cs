@@ -18,6 +18,7 @@ using PX.Objects;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.CodeDom;
 
 namespace PX.Objects.SO
 {
@@ -54,6 +55,8 @@ namespace PX.Objects.SO
             typeof(CROpportunity.status),
             typeof(CROpportunity.subject),
             typeof(CROpportunity.locationID),
+            typeof(CROpportunity.bAccountID),
+            typeof(CROpportunityExt.usrendCust),
             DescriptionField = typeof(CROpportunity.subject))]
         [PXUIField(DisplayName = "Opportunity Nbr.",Enabled = true)]
         public virtual string UsrOpportunityID { get; set; }

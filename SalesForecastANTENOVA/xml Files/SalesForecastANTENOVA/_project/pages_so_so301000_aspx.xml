@@ -24,5 +24,15 @@
             </AddItem>
             <PXGridColumn DataField="TaxCategoryID" OriginalIndex="59" />
         </Children>
+        <Children Key="RowTemplate">
+            <AddItem>
+                <PXSelector TypeFullName="PX.Web.UI.PXSelector">
+                    <Prop Key="Virtual:ApplyStylesheetSkin" />
+                    <Prop Key="ID" Value="eddUsrOpportunityID" />
+                    <Prop Key="DataField" Value="UsrOpportunityID" />
+                    <Prop Key="GridProperties.FastFilterFields" Value="UsrendCust,BAccountID" />
+                </PXSelector>
+            </AddItem>
+        </Children>
     </PXGridLevel>
 </Page>
