@@ -40,8 +40,8 @@
             <px:PXDropDown runat="server" ID="edGateStatus" DataField="GateStatus"></px:PXDropDown>
             <px:PXLayoutRule runat="server" StartColumn="True" LabelsWidth="S" ControlSize="S" />
             <px:PXSelector runat="server" ID="edEngineer" DataField="Engineer" Size="M"></px:PXSelector>
-            <px:PXDropDown runat="server" ID="edSalesRegion" DataField="SalesRegion"></px:PXDropDown>
-            <px:PXSelector runat="server" ID="edSalesPerson" DataField="SalesPerson"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edSalesPerson" DataField="SalesPerson" CommitChanges="True"></px:PXSelector>
+            <px:PXSelector runat="server" ID="edSalesRegion" DataField="SalesRegion"></px:PXSelector>
         </Template>
     </px:PXFormView>
 </asp:Content>

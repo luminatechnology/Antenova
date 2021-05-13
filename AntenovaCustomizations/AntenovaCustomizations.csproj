@@ -81,6 +81,7 @@
     <Compile Include="Graph_Extension\SOOrderEntry.cs" />
     <Compile Include="Graph_Extension\SOShipmentEntry.cs" />
     <Compile Include="Graph_Extension\SOInvoiceEntry.cs" />
+    <Compile Include="Library\PublicFunc.cs" />
     <Compile Include="LUMItemLotSerFileMaint.cs" />
     <Compile Include="DAC\ENGSetup.cs" />
     <Compile Include="DAC\ENGineering.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="DAC\v_TECHCOM_INNER_LABEL.cs" />
     <Compile Include="DAC\CRMendcust.cs" />
     <Compile Include="DAC\CRMSource.cs" />
+    <Compile Include="DAC\v_SALESPERSON_REGION_MAPPING.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

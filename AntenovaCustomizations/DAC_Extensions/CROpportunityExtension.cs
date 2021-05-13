@@ -1,6 +1,8 @@
 ﻿using AntenovaCustomizations;
+using AntenovaCustomizations.DAC;
 using AntenovaCustomizations.Descriptor;
 using PX.Data;
+using PX.Data.BQL.Fluent;
 using PX.Objects.CR;
 using PX.Objects.CS;
 using System;
@@ -8,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PX.Objects.EP;
+using PX.TM;
 
 namespace PX.Objects.CR
 {
@@ -26,21 +30,19 @@ namespace PX.Objects.CR
         #region UsrSalesPerson
         [PXDBInt]
         [PXUIField(DisplayName = "Sales Person")]
-        [PXSelector(typeof(Search<PX.Objects.AR.SalesPerson.salesPersonID>),
-                    typeof(PX.Objects.AR.SalesPerson.salesPersonCD),
-                    typeof(PX.Objects.AR.SalesPerson.isActive),
-                    typeof(PX.Objects.AR.SalesPerson.commnPct),
-                    SubstituteKey = typeof(PX.Objects.AR.SalesPerson.salesPersonCD))]
+        [PXDefault(typeof(SearchFor<EPEmployee.salesPersonID>.Where<EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>))]
+        [PXSelector(typeof(SelectFrom<vSALESPERSONREGIONMAPPING>
+                .InnerJoin<EPCompanyTreeMember>.On<EPCompanyTreeMember.workGroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>>
+                .InnerJoin<AR.SalesPerson>.On<AR.SalesPerson.salesPersonID.IsEqual<vSALESPERSONREGIONMAPPING.salespersonID>>
+                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .AggregateTo<GroupBy<vSALESPERSONREGIONMAPPING.salespersonID, Max<vSALESPERSONREGIONMAPPING.salespersonID>>>
+                .SearchFor<vSALESPERSONREGIONMAPPING.salespersonID>),
+            typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
+            typeof(PX.Objects.AR.SalesPerson.isActive),
+            typeof(PX.Objects.AR.SalesPerson.descr),
+            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD))]
         public virtual int? UsrSalesPerson { get; set; }
         public abstract class usrSalesPerson : PX.Data.BQL.BqlInt.Field<usrSalesPerson> { }
-        #endregion
-
-        #region UsrSalesRegion
-        [GetDropDownAttribute("REGION")]
-        [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Sales Region")]
-        public virtual string UsrSalesRegion { get; set; }
-        public abstract class usrsalesRegion : PX.Data.BQL.BqlString.Field<usrsalesRegion> { }
         #endregion
 
         #region UsrSource

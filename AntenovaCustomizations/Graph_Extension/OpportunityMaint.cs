@@ -13,6 +13,11 @@ using AntenovaCustomizations.Graph;
 using System.Collections;
 using static PX.Objects.CR.OpportunityMaint;
 using PX.Objects.SO;
+using AntenovaCustomizations.Library;
+using PX.Objects.Common.Extensions;
+using PX.Objects.CR.MassProcess;
+using PX.Objects.CR.Standalone;
+using PX.TM;
 
 namespace PX.Objects.CR
 {
@@ -26,6 +31,8 @@ namespace PX.Objects.CR
         public SelectFrom<ENGLine>
                .InnerJoin<ENGineering>.On<ENGLine.engrRef.IsEqual<ENGineering.engrRef>>
                .Where<ENGineering.opprid.IsEqual<CROpportunity.opportunityID.FromCurrent>>.View ENGListLine;
+
+        public PublicFunc library = new PublicFunc();
 
         #region Override Base Method
 
@@ -72,6 +79,18 @@ namespace PX.Objects.CR
         [AutoNumber(typeof(ENGSetup.eNGSequenceID), typeof(AccessInfo.businessDate))]
         [PXMergeAttributes(Method = MergeMethod.Replace)]
         public void _(Events.CacheAttached<ENGineering.engrRef> e) { }
+
+        [PXDBInt(BqlField = typeof(CROpportunityRevision.workgroupID))]
+        [PXUIField(DisplayName = "Workgroup")]
+        [PXSelector(typeof(SelectFrom<EPCompanyTree>
+                .InnerJoin<vSALESPERSONREGIONMAPPING>.On<EPCompanyTree.workGroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>
+                    .And<vSALESPERSONREGIONMAPPING.userid.IsEqual<AccessInfo.userID.FromCurrent>>>
+                .SearchFor<EPCompanyTree.workGroupID>),
+            SubstituteKey = typeof(EPCompanyTree.description))]
+        [PXMassUpdatableField]
+        [PXMergeAttributes(Method = MergeMethod.Replace)]
+        public void _(Events.CacheAttached<CROpportunity.workgroupID> e) { }
+
         #endregion
 
         #region Action
@@ -96,6 +115,16 @@ namespace PX.Objects.CR
         #endregion
 
         #region Events
+
+        /// <summary> RowSelected CROpportunity </summary>
+        public void _(Events.RowSelected<CROpportunity> e, PXRowSelected baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            var wgID = (e.Row as CROpportunity).WorkgroupID;
+            var role = new PublicFunc().CheckAcessRoleByWP(PXAccess.GetUserID(), wgID);
+            if (!role && wgID.HasValue)
+                throw new PXException("You don't have right to read this data.");
+        }
 
         /// <summary> RowInserting CROpportunity </summary>
         public void _(Events.RowInserting<CROpportunity> e, PXRowInserting baseMethod)
@@ -122,11 +151,6 @@ namespace PX.Objects.CR
                     row.GetExtension<CROpportunityExt>().UsrSalesPerson == null
                         ? leads.GetExtension<CRLeadExt>().UsrSalesPerson
                         : row.GetExtension<CROpportunityExt>().UsrSalesPerson;
-                // UsrSalesRegion
-                row.GetExtension<CROpportunityExt>().UsrSalesRegion =
-                    row.GetExtension<CROpportunityExt>().UsrSalesRegion == null
-                        ? leads.GetExtension<CRLeadExt>().UsrSalesRegion
-                        : row.GetExtension<CROpportunityExt>().UsrSalesRegion;
             }
         }
 
@@ -236,7 +260,7 @@ namespace PX.Objects.CR
 
         /// <summary> Events.FieldUpdated ENGineering.salesRegion </summary>
         public void _(Events.FieldDefaulting<ENGineering.salesRegion> e)
-            => e.NewValue = (Base.Opportunity.Cache.GetValueExt<CROpportunityExt.usrsalesRegion>(Base.Opportunity.Current) as PXStringState).Value;
+            => e.NewValue = Base.Opportunity.Current.WorkgroupID?.ToString();
 
         /// <summary> Events.FieldUpdated ENGineering.prjtype </summary>
         public void _(Events.FieldUpdated<ENGineering.prjtype> e)
@@ -247,38 +271,39 @@ namespace PX.Objects.CR
             if (AutoOppID)
                 e.Cache.SetValueExt<ENGineering.opprid>(e.Row, (Base.Opportunity.Cache.Current as CROpportunity).OpportunityID);
         }
-
+        
         /// <summary> Events.FieldUpdated CROpportunityExt.usrSalesPerson </summary>
         public void _(Events.FieldUpdated<CROpportunityExt.usrSalesPerson> e)
         {
-            if (e.NewValue != null)
-            {
-                var _salesPerson = new PXGraph().Select<SalesPerson>()
-                                                .Where(x => x.SalesPersonID == (int)e.NewValue)
-                                                .FirstOrDefault()
-                                                ?.GetExtension<SalesPersonExt>()
-                                                ?.UsrSalesTerritory;
-                e.Cache.SetValueExt<CROpportunityExt.usrsalesRegion>(e.Row, _salesPerson);
-            }
+            var row = e.Row as CROpportunity;
+            if (e.NewValue == null)
+                return;
+            var record = PXSelectorAttribute.Select<CROpportunityExt.usrSalesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
+            e.Cache.SetValueExt<CROpportunity.workgroupID>(row, record.WorkGroupID ?? null);
         }
 
         /// <summary> Events.FieldUpdated ENGineering.salesPerson </summary>
         public void _(Events.FieldUpdated<ENGineering.salesPerson> e)
         {
-            if (e.NewValue != null)
-            {
-                var _salesPerson = new PXGraph().Select<SalesPerson>()
-                                                .Where(x => x.SalesPersonID == (int)e.NewValue)
-                                                .FirstOrDefault()
-                                                ?.GetExtension<SalesPersonExt>()
-                                                ?.UsrSalesTerritory;
-                e.Cache.SetValueExt<ENGineering.salesRegion>(e.Row, _salesPerson);
-            }
+            var row = e.Row as ENGineering;
+            if (e.NewValue == null)
+                return;
+            var record = PXSelectorAttribute.Select<ENGineering.salesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
+            e.Cache.SetValueExt<ENGineering.salesRegion>(row, record.WorkGroupID?.ToString() ?? null);
         }
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
         public void _(Events.FieldUpdated<ENGineering.engNbr> e)
             => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper();
+
+        /// <summary> FieldDefaulting CROpportunity.workgroupID </summary>
+        public void _(Events.FieldDefaulting<CROpportunity.workgroupID> e, PXFieldDefaulting baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            e.NewValue = SelectFrom<EPCompanyTreeMember>
+                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
+        }
 
         #endregion
     }

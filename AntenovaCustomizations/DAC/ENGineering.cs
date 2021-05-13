@@ -9,6 +9,7 @@ using PX.Objects.CS;
 using PX.Objects.EP;
 using PX.Objects.GDPR;
 using PX.Objects.IN;
+using PX.TM;
 
 namespace AntenovaCustomizations.DAC
 {
@@ -131,10 +132,13 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region SalesRegion
-        [PXDefault]
-        [GetDropDownAttribute("REGION")]
+        [PXSelector(typeof(SelectFrom<EPCompanyTree>
+                .InnerJoin<vSALESPERSONREGIONMAPPING>.On<EPCompanyTree.workGroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>
+                    .And<vSALESPERSONREGIONMAPPING.userid.IsEqual<AccessInfo.userID.FromCurrent>>>
+                .SearchFor<EPCompanyTree.workGroupID>),
+            SubstituteKey = typeof(EPCompanyTree.description))]
         [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Sales Region", Required = true)]
+        [PXUIField(DisplayName = "Work Group")]
         public virtual string SalesRegion { get; set; }
         public abstract class salesRegion : PX.Data.BQL.BqlString.Field<salesRegion> { }
         #endregion
@@ -142,11 +146,17 @@ namespace AntenovaCustomizations.DAC
         #region SalesPerson
         [PXDBInt]
         [PXUIField(DisplayName = "Sales Person")]
-        [PXSelector(typeof(Search<PX.Objects.AR.SalesPerson.salesPersonID>),
-                    typeof(PX.Objects.AR.SalesPerson.salesPersonCD),
-                    typeof(PX.Objects.AR.SalesPerson.isActive),
-                    typeof(PX.Objects.AR.SalesPerson.commnPct),
-                    SubstituteKey = typeof(PX.Objects.AR.SalesPerson.salesPersonCD))]
+        [PXDefault(typeof(SearchFor<EPEmployee.salesPersonID>.Where<EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>))]
+        [PXSelector(typeof(SelectFrom<vSALESPERSONREGIONMAPPING>
+                .InnerJoin<EPCompanyTreeMember>.On<EPCompanyTreeMember.workGroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>>
+                .InnerJoin<SalesPerson>.On<SalesPerson.salesPersonID.IsEqual<vSALESPERSONREGIONMAPPING.salespersonID>>
+                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .AggregateTo<GroupBy<vSALESPERSONREGIONMAPPING.salespersonID, Max<vSALESPERSONREGIONMAPPING.salespersonID>>>
+                .SearchFor<vSALESPERSONREGIONMAPPING.salespersonID>),
+            typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
+            typeof(PX.Objects.AR.SalesPerson.isActive),
+            typeof(PX.Objects.AR.SalesPerson.descr),
+            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD))]
         public virtual int? SalesPerson { get; set; }
         public abstract class salesPerson : PX.Data.BQL.BqlInt.Field<salesPerson> { }
         #endregion

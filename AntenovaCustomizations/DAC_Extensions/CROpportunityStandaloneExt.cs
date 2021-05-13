@@ -20,11 +20,6 @@ namespace AntenovaCustomizations.DAC_Extensions
         public virtual int? UsrSalesPerson { get; set; }
         public abstract class usrSalesPerson : PX.Data.BQL.BqlInt.Field<usrSalesPerson> { }
 
-        [PXDBString(10, IsUnicode = true, InputMask = "")]
-        [PXUIField(DisplayName = "Sales Region")]
-        public virtual string UsrSalesRegion { get; set; }
-        public abstract class usrsalesRegion : PX.Data.BQL.BqlString.Field<usrsalesRegion> { }
-
         [PXDBString(10, InputMask = "")]
         [PXUIField(DisplayName = "Source")]
         public virtual string UsrSource { get; set; }

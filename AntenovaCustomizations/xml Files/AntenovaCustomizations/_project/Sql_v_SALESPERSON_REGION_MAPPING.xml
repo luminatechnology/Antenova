@@ -1,0 +1,29 @@
+﻿<Sql TableName="v_SALESPERSON_REGION_MAPPING" CustomScript="#CDATA">
+    <CDATA name="CustomScript"><![CDATA[IF EXISTS
+(
+	SELECT *
+	FROM SYS.views
+	WHERE name = 'vSALESPERSONREGIONMAPPING' AND SCHEMA_ID = SCHEMA_ID('dbo')
+)
+DROP VIEW [dbo].[vSALESPERSONREGIONMAPPING]	
+GO
+CREATE VIEW vSALESPERSONREGIONMAPPING AS
+SELECT t.CompanyID,
+	t.WorkGroupID,
+	t.Description,
+	t.ParentWGID,
+	m.UserID,
+	m.Active,
+	e.BAccountID,
+	e.SalespersonID,
+	s.SalespersonCD
+FROM EPCompanyTree t
+INNER JOIN EPCompanyTreeMember m ON t.CompanyID = m.CompanyID
+	AND t.WorkGroupID = m.WorkGroupID
+	AND m.Active = 1
+INNER JOIN EPEmployee e ON m.CompanyID = e.CompanyID
+	AND m.UserID = e.UserID
+INNER JOIN SalesPerson s on e.CompanyID = s.CompanyID
+	AND e.SalespersonID = s.SalespersonID
+WHERE t.ParentWGID = (SELECT TOP 1 x.WorkGroupID FROM EPCompanyTree x WHERE t.CompanyID = x.CompanyID and x.Description like '%(CRM)%')]]></CDATA>
+</Sql>

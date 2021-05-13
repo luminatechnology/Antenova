@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PX.TM;
+using AntenovaCustomizations.Library;
 
 namespace AntenovaCustomizations.Graph
 {
@@ -95,6 +97,17 @@ namespace AntenovaCustomizations.Graph
         public void _(Events.RowSelected<ENGineering> e)
         {
             var prjType = SelectFrom<ENGProjectType>.View.Select(this).RowCast<ENGProjectType>();
+
+            // Valid Work Group Access right
+            var wgID = (e.Row as ENGineering).SalesRegion;
+            int? ToNullableInt(string val)
+                => int.TryParse(val, out var i) ? (int?)i : null;
+
+            var role = new PublicFunc().CheckAcessRoleByWP(PXAccess.GetUserID(), ToNullableInt(wgID));
+            if (!role && !string.IsNullOrEmpty(wgID))
+                throw new PXException("You don't have right to read this data.");
+
+            // Init prjtype ddl
             if (e.Row != null)
             {
                 PXStringListAttribute.SetList<ENGineering.prjtype>(
@@ -123,7 +136,7 @@ namespace AntenovaCustomizations.Graph
                 row.OppBAccountID = _oppor.BAccountID;
                 row.EndCust = _oppor.GetExtension<CROpportunityExt>().UsrEndCust;
                 row.SalesPerson = _oppor.GetExtension<CROpportunityExt>().UsrSalesPerson;
-                row.SalesRegion = _oppor.GetExtension<CROpportunityExt>().UsrSalesRegion;
+                row.SalesRegion = _oppor?.WorkgroupID.ToString();
 
                 // Auto Get Revenule Line Data
                 if (this.RevenueLine.Select().Count == 0)
@@ -164,6 +177,16 @@ namespace AntenovaCustomizations.Graph
             }
         }
 
+        /// <summary> FieldUpdated ENGineering.salesPerson </summary>
+        public void _(Events.FieldUpdated<ENGineering.salesPerson> e)
+        {
+            var row = e.Row as ENGineering;
+            if (e.NewValue == null)
+                return;
+            var record = PXSelectorAttribute.Select<ENGineering.salesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
+            e.Cache.SetValueExt<ENGineering.salesRegion>(row, record.WorkGroupID?.ToString() ?? null);
+        }
+
         #endregion
 
         #region Field Selecting
@@ -190,6 +213,10 @@ namespace AntenovaCustomizations.Graph
                 PXUIFieldAttribute.SetVisible<ENGLine.pCBATopology>(this.CurrentLine.Cache, null, true);
             }
         }
+
+        #endregion
+
+        #region Field Defaulting
 
         #endregion
 
