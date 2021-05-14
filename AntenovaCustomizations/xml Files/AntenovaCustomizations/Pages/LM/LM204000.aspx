@@ -22,9 +22,7 @@
         </CallbackCommands>
         <Template>
             <px:PXLayoutRule runat="server" StartColumn="true" LabelsWidth="S" ControlSize="S" />
-            <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true">
-                <GridProperties FastFilterFields="Opprid,OppBAccountID,EndCust" />
-            </px:PXSelector>
+            <px:PXSelector runat="server" ID="edEngrRef" DataField="EngrRef" CommitChanges="true" FilterByAllFields="True"></px:PXSelector>
             <px:PXDropDown runat="server" ID="edStatus" DataField="Status"></px:PXDropDown>
             <px:PXSelector runat="server" ID="edOpprid" DataField="Opprid" CommitChanges="true" AllowEdit="true" Size="L"></px:PXSelector>
             <px:PXSelector runat="server" ID="edOppBAccountID" DataField="OppBAccountID" Size="L"></px:PXSelector>

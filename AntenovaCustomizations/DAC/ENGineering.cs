@@ -107,7 +107,7 @@ namespace AntenovaCustomizations.DAC
 
         #region OppBAccountID
         [PXDBInt()]
-        [PXUIField(DisplayName = "Business Account", Required = true)]
+        [PXUIField(DisplayName = "Business Account")]
         [PXSelector(typeof(SearchFor<Customer.bAccountID>),
             typeof(Customer.acctCD),
             typeof(Customer.acctName),
