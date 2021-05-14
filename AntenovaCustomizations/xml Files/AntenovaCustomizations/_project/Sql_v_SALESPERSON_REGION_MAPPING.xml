@@ -23,7 +23,7 @@ INNER JOIN EPCompanyTreeMember m ON t.CompanyID = m.CompanyID
 	AND m.Active = 1
 INNER JOIN EPEmployee e ON m.CompanyID = e.CompanyID
 	AND m.UserID = e.UserID
-INNER JOIN SalesPerson s on e.CompanyID = s.CompanyID
+LEFT JOIN SalesPerson s on e.CompanyID = s.CompanyID
 	AND e.SalespersonID = s.SalespersonID
 WHERE t.ParentWGID = (SELECT TOP 1 x.WorkGroupID FROM EPCompanyTree x WHERE t.CompanyID = x.CompanyID and x.Description like '%(CRM)%')]]></CDATA>
 </Sql>
