@@ -41,9 +41,10 @@ namespace PX.Objects.CR
         [PXMassUpdatableField]
         [PXMassMergableField]
         [PXMergeAttributes(Method = MergeMethod.Replace)]
-        public void _(Events.CacheAttached<CRLead.workgroupID> e) { } 
+        public void _(Events.CacheAttached<CRLead.workgroupID> e) { }
         #endregion
 
+        /// <summary> Events.RowPersisting CRLead</summary>
         public void _(Events.RowPersisting<CRLead> e, PXRowPersisting baseMethod)
         {
             baseMethod?.Invoke(e.Cache, e.Args);
@@ -52,14 +53,18 @@ namespace PX.Objects.CR
                 throw new PXException("Reason Note can not be empty");
         }
 
+        /// <summary> Events.FieldDefaulting CRLead.workgroupID</summary>
         public void _(Events.FieldDefaulting<CRLead.workgroupID> e, PXFieldDefaulting baseMethod)
         {
            baseMethod?.Invoke(e.Cache,e.Args);
            e.NewValue = SelectFrom<EPCompanyTreeMember>
+               .InnerJoin<EPCompanyTree>.On<EPCompanyTreeMember.workGroupID.IsEqual<EPCompanyTree.workGroupID>
+                   .And<EPCompanyTree.parentWGID.IsEqual<P.AsInt>>>
                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
-               .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
+               .View.Select(Base,new PublicFunc().GetCRMWorkGroupID()).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
         }
 
+        /// <summary> Events.FieldUpdated CRLead.usrsalesPerson</summary>
         public void _(Events.FieldUpdated<CRLeadExt.usrsalesPerson> e)
         {
             var row = e.Row as CRLead;

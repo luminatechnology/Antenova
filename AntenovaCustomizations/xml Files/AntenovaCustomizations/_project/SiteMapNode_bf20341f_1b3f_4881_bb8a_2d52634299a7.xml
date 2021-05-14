@@ -25,15 +25,23 @@
         </layout>
         <data>
             <SiteMap>
-                <row Title="Engineering" Url="~/Pages/LM/LM204000.aspx" ScreenID="LM204000" NodeID="11dc09e1-af3f-4204-a67f-3e823c35c34c" ParentID="00000000-0000-0000-0000-000000000000">
-                    <MUIScreen IsPortal="0" WorkspaceID="5a8f2823-c656-493a-acea-354ef21675e2" Order="10" SubcategoryID="3979c713-17f5-49c3-839e-3602cb043bcf" />
+                <row Title="Engineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
+                    <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="18024" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
+                        <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
+                    </MUIScreen>
                 </row>
             </SiteMap>
             <MUIWorkspace>
-                <row IsPortal="0" WorkspaceID="5a8f2823-c656-493a-acea-354ef21675e2" Order="845" Title="Engineering" Icon="build" IsSystem="0" />
+                <row IsPortal="1" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="5" Title="Data Views" Icon="poll" IsSystem="1">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
+                <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
+                    <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
+                </row>
             </MUIWorkspace>
             <MUISubcategory>
-                <row IsPortal="0" SubcategoryID="3979c713-17f5-49c3-839e-3602cb043bcf" Order="32" Name="Activities" Icon="" IsSystem="0" />
+                <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
+                <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
             </MUISubcategory>
         </data>
     </data-set>

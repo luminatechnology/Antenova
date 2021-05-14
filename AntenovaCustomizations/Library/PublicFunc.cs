@@ -9,6 +9,7 @@ using PX.Data;
 using PX.Data.BQL;
 using PX.Data.BQL.Fluent;
 using PX.Objects.EP;
+using PX.SM;
 using PX.TM;
 
 namespace AntenovaCustomizations.Library
@@ -21,9 +22,12 @@ namespace AntenovaCustomizations.Library
             public WorkGroupCrm() : base("(CRM)") { }
         }
 
-        public class CRMCompanyTree : EPCompanyTree
+        /// <summary> Get CRM Work Group ID </summary>
+        public virtual int? GetCRMWorkGroupID()
         {
-
+            return SelectFrom<EPCompanyTree>
+                .Where<EPCompanyTree.description.Contains<PublicFunc.WorkGroupCrm>>
+                .View.Select(new PXGraph()).RowCast<EPCompanyTree>().FirstOrDefault()?.WorkGroupID;
         }
 
         /// <summary> Get WorkGroup and Employee Info By Sales Person </summary>
@@ -34,13 +38,17 @@ namespace AntenovaCustomizations.Library
         }
 
         /// <summary> Check AccessRole </summary>
-        public virtual bool CheckAcessRoleByWP(Guid? _userID ,int? _workgroup)
+        public virtual bool CheckAcessRoleByWP(Guid? _userID, int? _workgroup)
         {
+            var IsAdmin = SelectFrom<UsersInRoles>
+                .Where<UsersInRoles.username.IsEqual<AccessInfo.userName.FromCurrent>>
+                .View.Select(new PXGraph()).RowCast<UsersInRoles>()
+                .Where(x => x.Rolename.Contains("Administrator")).Any();
             var gpRoles = SelectFrom<EPCompanyTreeMember>
                 .Where<EPCompanyTreeMember.userID.IsEqual<P.AsGuid>>
                 .View.Select(new PXGraph(), _userID).RowCast<EPCompanyTreeMember>()
-                .Select(x => x.WorkGroupID).Distinct();
-            return gpRoles.Contains(_workgroup);
+                .Where(x => x.WorkGroupID == _workgroup).Any();
+            return IsAdmin || gpRoles;
         }
     }
 }

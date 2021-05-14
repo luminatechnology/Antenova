@@ -133,7 +133,7 @@
             <GIDesign>
                 <row DesignID="d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" Name="ENGineering" FilterColCount="3" PageSize="0" ExportTop="0" PrimaryScreenIDNew="LM204000" NewRecordCreationEnabled="1" MassDeleteEnabled="0" AutoConfirmDelete="0" MassRecordsUpdateEnabled="0" MassActionsOnRecordsEnabled="0" ExposeViaOData="0" ExposeViaMobile="0" ShowDeletedRecords="0">
                     <GINavigationScreen ScreenID="LM204000" LineNbr="1" WindowMode="I">
-                        <GINavigationParameter LineNbr="1" FieldName="EngrNbr" ParameterName="t.EngrNbr" IsExpression="0" />
+                        <GINavigationParameter LineNbr="1" FieldName="EngrRef" ParameterName="t.engrRef" IsExpression="0" />
                     </GINavigationScreen>
                     <GISort LineNbr="1" IsActive="1" DataFieldName="t.engrRef" SortOrder="A" />
                     <GITable Alias="t" Name="AntenovaCustomizations.DAC.ENGineering">
@@ -163,7 +163,7 @@
                         <GIResult LineNbr="11" SortOrder="12" IsActive="1" Field="gerberNbr" SchemaField="l.GerberNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="c90902d4-ffc8-44f8-9c87-3c9f05344b6b" />
                     </GITable>
                     <SiteMap linkname="toDesignById">
-                        <row Title="ENGineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
+                        <row Title="Engineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
                             <ListEntryPoint EntryScreenID="LM204000" IsActive="1" />
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="18024" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
@@ -172,7 +172,7 @@
                     </SiteMap>
                     <SiteMap linkname="to1Screen">
                         <row Title="Engineering" Url="~/Pages/LM/LM204000.aspx" NodeID="11dc09e1-af3f-4204-a67f-3e823c35c34c" ParentID="00000000-0000-0000-0000-000000000000">
-                            <MUIScreen IsPortal="0" WorkspaceID="bb6406ab-8be6-432f-8830-8565e3b56897" Order="50" SubcategoryID="3979c713-17f5-49c3-839e-3602cb043bcf" />
+                            <MUIScreen IsPortal="0" WorkspaceID="5a8f2823-c656-493a-acea-354ef21675e2" Order="10" SubcategoryID="3979c713-17f5-49c3-839e-3602cb043bcf" />
                         </row>
                     </SiteMap>
                 </row>
@@ -184,16 +184,13 @@
                 <row IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="32" Title="Data Views" Icon="poll" IsSystem="1">
                     <MUIFavoriteWorkspace IsPortal="0" Username="" IsFavorite="1" />
                 </row>
-                <row IsPortal="0" WorkspaceID="bb6406ab-8be6-432f-8830-8565e3b56897" Order="324" Title="Opportunities" Icon="local_offer" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" ScreenID="WSSO0000" IsSystem="0" />
+                <row IsPortal="0" WorkspaceID="5a8f2823-c656-493a-acea-354ef21675e2" Order="845" Title="Engineering" Icon="build" IsSystem="0" />
             </MUIWorkspace>
             <MUISubcategory>
                 <row IsPortal="1" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
                 <row IsPortal="0" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4" Order="896" Name="Inquiries" Icon="" IsSystem="1" />
                 <row IsPortal="0" SubcategoryID="3979c713-17f5-49c3-839e-3602cb043bcf" Order="32" Name="Activities" Icon="" IsSystem="0" />
             </MUISubcategory>
-            <MUIArea>
-                <row IsPortal="0" AreaID="62cfd5dc-8eb9-4e92-bbcd-e0a99eb5e5df" Order="20" Name="Operations" />
-            </MUIArea>
         </data>
     </data-set>
 </GenericInquiryScreen>

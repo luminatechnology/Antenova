@@ -301,6 +301,8 @@ namespace PX.Objects.CR
         {
             baseMethod?.Invoke(e.Cache, e.Args);
             e.NewValue = SelectFrom<EPCompanyTreeMember>
+                .InnerJoin<EPCompanyTree>.On<EPCompanyTreeMember.workGroupID.IsEqual<EPCompanyTree.workGroupID>
+                    .And<EPCompanyTree.parentWGID.IsEqual<P.AsInt>>>
                 .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
                 .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
         }
