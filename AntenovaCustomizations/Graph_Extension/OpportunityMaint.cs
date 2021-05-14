@@ -177,6 +177,16 @@ namespace PX.Objects.CR
             var _oppID = Base.Opportunity.Current.OpportunityID;
             if ((row.Opprid ?? string.Empty).ToLower().Contains("new"))
                 e.Row.Opprid = _oppID;
+
+            // Valid [EngrRef] + [Engineer Repeat]
+            var isExixts = new PXGraph().Select<ENGineering>()
+                .Where(x => x.EngNbr == row.EngNbr &&
+                            x.Repeat == row.Repeat &&
+                            x.EngrRef != row.EngrRef).Any();
+            if (isExixts && !string.IsNullOrEmpty(row.EngNbr))
+                e.Cache.RaiseExceptionHandling<ENGineering.engNbr>(e.Row, row.EngNbr,
+                    new PXSetPropertyException<ENGineering.engNbr>("[EngrNbr] + [Engineer Repeat] is not allowed duplicated"));
+
         }
 
         /// <summary> RowPersisted ENGineering </summary>
