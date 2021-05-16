@@ -1,8 +1,8 @@
 ﻿<Sql TableName="CRMendcust" TableSchemaXml="#CDATA">
     <CDATA name="TableSchemaXml"><![CDATA[<table name="CRMendcust">
   <col name="CompanyID" type="Int" default="Zero" />
-  <col name="CustID" type="NVarChar(10)" />
-  <col name="Name" type="NVarChar(50)" />
+  <col name="CustID" type="NVarChar(200)" />
+  <col name="Name" type="NVarChar(1000)" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />
   <col name="CreatedDateTime" type="DateTime" />

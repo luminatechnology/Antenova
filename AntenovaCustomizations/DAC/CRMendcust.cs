@@ -9,7 +9,7 @@ namespace AntenovaCustomizations
     {
         #region CustId
         [PXDefault]
-        [PXDBString(10, IsKey = true, IsUnicode = true, InputMask = "")]
+        [PXDBString(200, IsKey = true, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer ID",Required = true)]
         public virtual string CustId { get; set; }
         public abstract class custId : PX.Data.BQL.BqlString.Field<custId> { }
@@ -17,7 +17,7 @@ namespace AntenovaCustomizations
 
         #region Name
         [PXDefault]
-        [PXDBString(50, IsUnicode = true, InputMask = "")]
+        [PXDBString(1000, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description",Required = true)]
         public virtual string Name { get; set; }
         public abstract class name : PX.Data.BQL.BqlString.Field<name> { }

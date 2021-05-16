@@ -122,7 +122,7 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region EndCust
-        [PXDBString(20, IsUnicode = true, InputMask = "")]
+        [PXDBString(200, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
         [PXSelector(typeof(CRMendcust.custId),
             typeof(CRMendcust.name),

@@ -10,7 +10,7 @@ namespace AntenovaCustomizations.DAC_Extensions
 {
     public class CROpportunityStandaloneExt : PXCacheExtension<PX.Objects.CR.Standalone.CROpportunity>
     {
-        [PXDBString(20, IsUnicode = true, InputMask = "")]
+        [PXDBString(200, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
         public virtual string UsrEndCust { get; set; }
         public abstract class usrendCust : PX.Data.BQL.BqlString.Field<usrendCust> { }

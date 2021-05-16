@@ -10,7 +10,7 @@ namespace PX.Objects.CR.Standalone
 {
     public class CRLeadStandaloneExt : PXCacheExtension<PX.Objects.CR.Standalone.CRLead>
     {
-        [PXDBString(20, IsUnicode = true, InputMask = "")]
+        [PXDBString(200, IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "End Customer")]
         public virtual string UsrEndCust { get; set; }
         public abstract class usrEndCust : PX.Data.BQL.BqlString.Field<usrEndCust> { }

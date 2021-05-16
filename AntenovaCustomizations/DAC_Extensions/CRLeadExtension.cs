@@ -24,7 +24,7 @@ namespace PX.Objects.CR
 
         #region UsrEndCust
 
-        [PXDBString(20, IsUnicode = true, InputMask = "", BqlField = typeof(Standalone.CRLeadStandaloneExt.usrEndCust))]
+        [PXDBString(200, IsUnicode = true, InputMask = "", BqlField = typeof(Standalone.CRLeadStandaloneExt.usrEndCust))]
         [PXUIField(DisplayName = "End Customer")]
         [PXSelector(typeof(CRMendcust.custId),
                     typeof(CRMendcust.name),

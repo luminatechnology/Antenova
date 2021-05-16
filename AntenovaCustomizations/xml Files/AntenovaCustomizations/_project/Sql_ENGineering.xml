@@ -10,7 +10,7 @@
   <col name="Priority" type="NVarChar(10)" nullable="true" />
   <col name="GateStatus" type="NVarChar(10)" nullable="true" />
   <col name="OppBAccountID" type="Int" nullable="true" />
-  <col name="EndCust" type="NVarChar(20)" nullable="true" />
+  <col name="EndCust" type="NVarChar(200)" nullable="true" />
   <col name="SalesPerson" type="Int" nullable="true" />
   <col name="SalesRegion" type="NVarChar(10)" nullable="true" />
   <col name="MSH" type="NVarChar(30)" nullable="true" />
