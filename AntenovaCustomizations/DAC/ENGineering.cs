@@ -68,13 +68,18 @@ namespace AntenovaCustomizations.DAC
 
         #region Opprid
         [PXDBString(20, IsUnicode = true, InputMask = "")]
-        [PXSelector(typeof(SearchFor<CROpportunity.opportunityID>),
-        typeof(CROpportunity.opportunityID),
-                    typeof(CROpportunity.classID),
-                    typeof(CROpportunity.status),
-                    typeof(CROpportunity.subject),
-                    typeof(CROpportunity.locationID),
-                    DescriptionField = typeof(CROpportunity.subject))]
+        [PXSelector(typeof(SelectFrom<CROpportunity>
+            .InnerJoin<vSALESPERSONREGIONMAPPING>.On<CROpportunity.workgroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>.Or<CROpportunity.workgroupID.IsNull>>
+            .Where<vSALESPERSONREGIONMAPPING.userid.IsEqual<AccessInfo.userID.FromCurrent>>
+            .AggregateTo<GroupBy<CROpportunity.opportunityID, Max<CROpportunity.opportunityID>>>
+            .SearchFor<CROpportunity.opportunityID>),
+            typeof(CROpportunity.opportunityID),
+        typeof(CROpportunity.classID),
+        typeof(CROpportunity.status),
+        typeof(CROpportunity.subject),
+        typeof(CROpportunity.locationID),
+        typeof(CROpportunity.workgroupID),
+        DescriptionField = typeof(CROpportunity.subject))]
         [PXUIField(DisplayName = "Opportunity Nbr")]
         public virtual string Opprid { get; set; }
         public abstract class opprid : PX.Data.BQL.BqlString.Field<opprid> { }
@@ -129,7 +134,6 @@ namespace AntenovaCustomizations.DAC
             SubstituteKey = typeof(BAccount.acctCD),
             DescriptionField = typeof(BAccount.acctName),
             DirtyRead = true)]
-        //[CustomerAndProspect(DisplayName = "Business Account")]
         public virtual int? OppBAccountID { get; set; }
         public abstract class oppBAccountID : PX.Data.BQL.BqlInt.Field<oppBAccountID> { }
         #endregion
