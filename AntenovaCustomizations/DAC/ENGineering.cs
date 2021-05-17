@@ -108,15 +108,28 @@ namespace AntenovaCustomizations.DAC
         #region OppBAccountID
         [PXDBInt()]
         [PXUIField(DisplayName = "Business Account")]
-        [PXSelector(typeof(SearchFor<Customer.bAccountID>),
-            typeof(Customer.acctCD),
-            typeof(Customer.acctName),
-            typeof(Customer.type),
-            typeof(Customer.classID),
-            typeof(Customer.status),
-            SubstituteKey = typeof(Customer.acctCD),
-            DescriptionField = typeof(Customer.acctName))]
-        //[CustomerAndProspect(DisplayName = "Business Account", BqlField = typeof(ENGineering.oppBAccountID))]
+        [PXSelector(typeof(
+                SelectFrom<BAccount>
+                .LeftJoin<Contact>
+                .On<Contact.contactID.IsEqual<BAccount.defContactID>>
+                .LeftJoin<Address>
+                .On<Address.addressID.IsEqual<BAccount.defAddressID>>
+                .SearchFor<BAccount.bAccountID>),
+            fieldList: new[]
+            {
+                typeof(BAccount.bAccountID),
+                typeof(BAccount.acctCD),
+                typeof(BAccount.acctName),
+                typeof(BAccount.type),
+                typeof(Contact.phone1),
+                typeof(Address.city),
+                typeof(Address.state),
+                typeof(BAccount.status)
+            },
+            SubstituteKey = typeof(BAccount.acctCD),
+            DescriptionField = typeof(BAccount.acctName),
+            DirtyRead = true)]
+        //[CustomerAndProspect(DisplayName = "Business Account")]
         public virtual int? OppBAccountID { get; set; }
         public abstract class oppBAccountID : PX.Data.BQL.BqlInt.Field<oppBAccountID> { }
         #endregion

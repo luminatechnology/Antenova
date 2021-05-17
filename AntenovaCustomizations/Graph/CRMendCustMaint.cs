@@ -10,9 +10,11 @@ namespace AntenovaCustomizations.Graph
 {
     public class CRMendCustMaint : PXGraph<CRMendCustMaint>
     {
+        [PXImport]
         [PXViewName("CustList")]
         public SelectFrom<CRMendcust>.View CustList;
 
+        [PXImport]
         [PXViewName("SourceList")]
         public SelectFrom<CRMSource>.View SourceList;
 

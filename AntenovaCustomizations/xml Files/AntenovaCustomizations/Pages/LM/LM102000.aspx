@@ -35,6 +35,7 @@
                         <CallbackCommands>
                             <Save PostData="Page" />
                         </CallbackCommands>
+                        <Mode AllowUpload="True" />
                     </px:PXGrid>
                 </Template>
             </px:PXTabItem>
@@ -60,6 +61,7 @@
                         <CallbackCommands>
                             <Save PostData="Page" />
                         </CallbackCommands>
+                        <Mode AllowUpload="True" />
                     </px:PXGrid>
                 </Template>
             </px:PXTabItem>
