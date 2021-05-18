@@ -65,6 +65,7 @@ namespace PX.Objects.SO
             Labels.AddMenuAction(USITWInnerLabel);
             Labels.AddMenuAction(QisdaOuterLabel);
             Labels.AddMenuAction(QisdaInnerLabel);
+            Labels.AddMenuAction(HiflyingOuterLabel);
         }
 
         /// <summary> Override Persist Event </summary>
@@ -707,6 +708,23 @@ namespace PX.Objects.SO
                 else
                     throw new PXException("DateCode Can Not Be Null");
             }
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region Hi-flying Outer Label - LM642033
+        public PXAction<SOShipment> HiflyingOuterLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print Hi-flying Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable hiflyingOuterLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642033";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
