@@ -16,7 +16,8 @@ SELECT t.CompanyID,
 	m.Active,
 	e.BAccountID,
 	e.SalespersonID,
-	s.SalespersonCD
+	s.SalespersonCD,
+	s.Descr
 FROM EPCompanyTree t
 INNER JOIN EPCompanyTreeMember m ON t.CompanyID = m.CompanyID
 	AND t.WorkGroupID = m.WorkGroupID

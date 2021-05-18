@@ -62,5 +62,13 @@ namespace AntenovaCustomizations.DAC
         public virtual string SalespersonCD { get; set; }
         public abstract class salespersonCD : PX.Data.BQL.BqlString.Field<salespersonCD> { }
         #endregion
+
+        #region Descr
+        [PXDBString(100, IsUnicode = true, InputMask = "")]
+        [PXUIField(DisplayName = "Name")]
+        public virtual string Descr { get; set; }
+        public abstract class descr : PX.Data.BQL.BqlString.Field<descr> { }
+        #endregion
+
     }
 }

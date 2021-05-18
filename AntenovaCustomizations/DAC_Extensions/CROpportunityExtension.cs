@@ -39,8 +39,8 @@ namespace PX.Objects.CR
                 .SearchFor<vSALESPERSONREGIONMAPPING.salespersonID>),
             typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
             typeof(PX.Objects.AR.SalesPerson.isActive),
-            typeof(PX.Objects.AR.SalesPerson.descr),
-            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD))]
+            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
+            DescriptionField = typeof(vSALESPERSONREGIONMAPPING.descr))]
         public virtual int? UsrSalesPerson { get; set; }
         public abstract class usrSalesPerson : PX.Data.BQL.BqlInt.Field<usrSalesPerson> { }
         #endregion

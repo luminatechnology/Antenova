@@ -172,8 +172,8 @@ namespace AntenovaCustomizations.DAC
                 .SearchFor<vSALESPERSONREGIONMAPPING.salespersonID>),
             typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
             typeof(PX.Objects.AR.SalesPerson.isActive),
-            typeof(PX.Objects.AR.SalesPerson.descr),
-            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD))]
+            SubstituteKey = typeof(vSALESPERSONREGIONMAPPING.salespersonCD),
+            DescriptionField = typeof(vSALESPERSONREGIONMAPPING.descr))]
         public virtual int? SalesPerson { get; set; }
         public abstract class salesPerson : PX.Data.BQL.BqlInt.Field<salesPerson> { }
         #endregion
