@@ -154,7 +154,7 @@ namespace PX.Objects.CR
             }
         }
 
-        /// <summary> RowPersisting CROpportunity </summary>
+        /// <summary> RowPersisting CSAnswers </summary>
         public void _(Events.RowPersisting<CSAnswers> e, PXRowPersisting baseMethod)
         {
             baseMethod?.Invoke(e.Cache, e.Args);
@@ -162,19 +162,23 @@ namespace PX.Objects.CR
             var status = Base.Opportunity.Current.Status;
             var resolution = Base.Opportunity.Current.Resolution;
             var row = e.Row as CSAnswers;
+            if (status == "L" && resolution == "OT" && row.AttributeID == "OPPOLTNM" && string.IsNullOrEmpty(row.Value))
+            {
+                Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
+                    new PXSetPropertyException<CSAnswers.value>("Oppoltnm Can not be Empty"));
+                Base.Cancel.Press();
+                throw new PXException("Oppoltnm Can not be Empty");
+            }
+
             if (stageID == "MP" && row.AttributeID == "FULMPDATE" && string.IsNullOrEmpty(row.Value))
             {
                 Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
                     new PXSetPropertyException<CSAnswers.value>("Full MP Date Can not be Empty"));
+                Base.Cancel.Press();
                 throw new PXException("Full MP Date Can not be Empty");
             }
 
-            if (status == "L" && resolution == "OT" && row.AttributeID == "OPPOLTNM")
-            {
-                Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
-                    new PXSetPropertyException<CSAnswers.value>("Oppoltnm Can not be Empty"));
-                throw new PXException("Oppoltnm Can not be Empty");
-            }
+          
 
         }
 
