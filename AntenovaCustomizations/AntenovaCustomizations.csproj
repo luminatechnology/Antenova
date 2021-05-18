@@ -65,6 +65,8 @@
     <Compile Include="DAC\ENGProjectType.cs" />
     <Compile Include="DAC\ENGRevenueLine.cs" />
     <Compile Include="DAC\ENGSetup.cs" />
+    <Compile Include="DAC_Extensions\CRLeadExtension.cs" />
+    <Compile Include="DAC_Extensions\CRLeadStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />
     <Compile Include="DAC_Extensions\CROpportunityStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\INItemLotSerialExtensions.cs" />
@@ -97,7 +99,9 @@
     <Compile Include="DAC\v_QISDA_INNER_LABEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Graph\ImportCRLeadData.cs.exclude" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
