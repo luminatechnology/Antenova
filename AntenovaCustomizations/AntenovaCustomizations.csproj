@@ -60,11 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAC\ENGineering.cs" />
-    <Compile Include="DAC\ENGLine.cs" />
     <Compile Include="DAC\ENGProjectType.cs" />
-    <Compile Include="DAC\ENGRevenueLine.cs" />
-    <Compile Include="DAC\ENGSetup.cs" />
     <Compile Include="DAC_Extensions\CRLeadExtension.cs" />
     <Compile Include="DAC_Extensions\CRLeadStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />

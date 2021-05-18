@@ -1,5 +1,6 @@
 using System;
 using AntenovaCustomizations.Descriptor;
+using AntenovaCustomizations.Library;
 using PX.Data;
 using PX.Data.BQL.Fluent;
 using PX.Data.ReferentialIntegrity.Attributes;
@@ -202,6 +203,7 @@ namespace AntenovaCustomizations.DAC
             SelectFrom<EPEmployee>
             .InnerJoin<BAccount2>.On<EPEmployee.bAccountID.IsEqual<BAccount2.bAccountID>>
             .LeftJoin<Contact>.On<BAccount2.defContactID.IsEqual<Contact.contactID>>
+            .Where<EPEmployee.departmentID.IsEqual<PublicFunc.DepartmentName>>
             .SearchFor<EPEmployee.bAccountID>),
             typeof(EPEmployee.acctCD),
             typeof(EPEmployee.acctName),

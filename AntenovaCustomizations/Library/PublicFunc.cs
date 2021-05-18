@@ -22,6 +22,11 @@ namespace AntenovaCustomizations.Library
             public WorkGroupCrm() : base("(CRM)") { }
         }
 
+        public class DepartmentName : PX.Data.BQL.BqlString.Constant<DepartmentName>
+        {
+            public DepartmentName() : base("RD") { }
+        }
+
         /// <summary> Get CRM Work Group ID </summary>
         public virtual int? GetCRMWorkGroupID()
         {
