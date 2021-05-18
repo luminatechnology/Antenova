@@ -60,17 +60,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAC_Extensions\CRLeadExtension.cs" />
-    <Compile Include="DAC_Extensions\CRLeadStandaloneExt.cs" />
-    <Compile Include="DAC_Extensions\CROpportunityStandaloneExt.cs" />
+    <Compile Include="DAC\ENGineering.cs" />
+    <Compile Include="DAC\ENGLine.cs" />
+    <Compile Include="DAC\ENGProjectType.cs" />
+    <Compile Include="DAC\ENGRevenueLine.cs" />
+    <Compile Include="DAC\ENGSetup.cs" />
     <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />
+    <Compile Include="DAC_Extensions\CROpportunityStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\INItemLotSerialExtensions.cs" />
     <Compile Include="DAC_Extensions\INSiteStatusExtensions.cs" />
     <Compile Include="DAC_Extensions\SalesPersonExtension.cs" />
     <Compile Include="DAC_Extensions\SOPackageDetail_Extension.cs" />
     <Compile Include="DAC_Extensions\SOShipLineExtensions.cs" />
     <Compile Include="DAC_Extensions\SOShipmentExtensions.cs" />
-    <Compile Include="DAC\ENGProjectType.cs" />
     <Compile Include="Descriptor\GetDropDownAttribute.cs" />
     <Compile Include="Graph\CRMendCustMaint.cs" />
     <Compile Include="Graph\ENGineeringMaint.cs" />
@@ -91,6 +93,8 @@
     <Compile Include="DAC\CRMendcust.cs" />
     <Compile Include="DAC\CRMSource.cs" />
     <Compile Include="DAC\v_SALESPERSON_REGION_MAPPING.cs" />
+    <Compile Include="DAC\v_QISDA_OUTER_LABEL.cs" />
+    <Compile Include="DAC\v_QISDA_INNER_LABEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
