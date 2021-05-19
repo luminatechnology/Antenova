@@ -167,19 +167,15 @@ namespace PX.Objects.CR
                 Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
                     new PXSetPropertyException<CSAnswers.value>("Oppoltnm Can not be Empty"));
                 Base.Cancel.Press();
-                throw new PXException("Oppoltnm Can not be Empty");
+                throw new PXException(@"Please Maintain 「Lost Other Reasons」 in Attribute and Save data before Closed as Lost !");
             }
 
             if (stageID == "MP" && row.AttributeID == "FULMPDATE" && string.IsNullOrEmpty(row.Value))
             {
                 Base.Answers.Cache.RaiseExceptionHandling<CSAnswers.value>(e.Row, row.Value,
                     new PXSetPropertyException<CSAnswers.value>("Full MP Date Can not be Empty"));
-                Base.Cancel.Press();
                 throw new PXException("Full MP Date Can not be Empty");
             }
-
-          
-
         }
 
         /// <summary> RowPersisting ENGineering </summary>
