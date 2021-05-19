@@ -84,6 +84,7 @@
     </PXPanel>
     <PXTab ID="tab" ParentId="phG_tab" TypeFullName="PX.Web.UI.PXTab">
         <Children Key="Items">
+            <PXTabItem Text="Document Details" OriginalIndex="1" />
             <AddItem>
                 <PXTabItem TypeFullName="PX.Web.UI.PXTabItem">
                     <Prop Key="Text" Value="ENGineering" />
@@ -307,6 +308,11 @@
                     </Children>
                 </PXTabItem>
             </AddItem>
+            <PXTabItem Text="Attributes" OriginalIndex="6" />
+            <PXTabItem Text="Activities" OriginalIndex="0" />
+            <PXTabItem Text="Orders" OriginalIndex="10" />
+            <PXTabItem Text="Shipping Info" OriginalIndex="5" />
+            <PXTabItem Text="Discount Details" OriginalIndex="9" />
         </Children>
     </PXTab>
     <PXGridColumn DataField="OrderType" ParentId="phG_tab_Items#10_grdSalesOrders_Levels#0_Columns#0" TypeFullName="PX.Web.UI.PXGridColumn">
@@ -395,5 +401,14 @@
     </PXTabItem>
     <PXTabItem Text="Tax Details" ParentId="phG_tab_Items#8" TypeFullName="PX.Web.UI.PXTabItem">
         <Prop Key="Visible" Value="False" />
+    </PXTabItem>
+    <PXTabItem Text="Invoices" ParentId="phG_tab_Items#11" TypeFullName="PX.Web.UI.PXTabItem">
+        <Prop Key="Visible" Value="False" />
+    </PXTabItem>
+    <PXTabItem Text="Quotes" ParentId="phG_tab_Items#3" TypeFullName="PX.Web.UI.PXTabItem">
+        <Prop Key="Visible" Value="False" />
+    </PXTabItem>
+    <PXTabItem Text="Document Details" ParentId="phG_tab_Items#1" TypeFullName="PX.Web.UI.PXTabItem">
+        <Prop Key="Text" Value="Products" />
     </PXTabItem>
 </Page>

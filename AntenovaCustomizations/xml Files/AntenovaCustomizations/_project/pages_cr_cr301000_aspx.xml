@@ -56,4 +56,20 @@
             <PXSelector DataField="WorkgroupID" OriginalIndex="2" Remove="True" />
         </Children>
     </PXTabItem>
+    <PXTabItem Text="Campaigns" ParentId="phG_tab_Items#6" TypeFullName="PX.Web.UI.PXTabItem">
+        <Prop Key="Visible" Value="False" />
+    </PXTabItem>
+    <PXTabItem Text="Marketing Lists" ParentId="phG_tab_Items#7" TypeFullName="PX.Web.UI.PXTabItem">
+        <Prop Key="Visible" Value="False" />
+    </PXTabItem>
+    <PXTab ID="tab" ParentId="phG_tab" TypeFullName="PX.Web.UI.PXTab">
+        <Children Key="Items">
+            <PXTabItem Text="Activities" OriginalIndex="1" />
+            <PXTabItem Text="Attributes" OriginalIndex="4" />
+            <PXTabItem Text="Opportunities" OriginalIndex="8" />
+            <PXTabItem Text="Relations" OriginalIndex="5" />
+            <PXTabItem Text="Duplicates" OriginalIndex="3" />
+            <PXTabItem Text="Marketing Lists" OriginalIndex="7" />
+        </Children>
+    </PXTab>
 </Page>
