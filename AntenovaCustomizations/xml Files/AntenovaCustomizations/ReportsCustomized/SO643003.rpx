@@ -42,10 +42,12 @@ KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKK
   </Filters>
   <LayoutUnit>Inch</LayoutUnit>
   <MailSettings>
-    <ActivitySource>SOShipment.NoteID</ActivitySource>
-    <Body></Body>
+    <ActivitySource>ARInvoice.NoteID</ActivitySource>
+    <Bcc></Bcc>
     <Cc>=IsNull([Customer.EMAILCC_Attributes],'')</Cc>
+    <Format></Format>
     <ParentSource>Customer.NoteID</ParentSource>
+    <Subject></Subject>
     <TemplateID>Email Invoice &amp; Shipment Tracking</TemplateID>
     <To>=IsNull([BillingContact.EMail],'')</To>
   </MailSettings>
