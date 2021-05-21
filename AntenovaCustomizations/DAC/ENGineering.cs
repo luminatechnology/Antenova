@@ -164,7 +164,8 @@ namespace AntenovaCustomizations.DAC
         #region SalesPerson
         [PXDBInt]
         [PXUIField(DisplayName = "Sales Person")]
-        [PXDefault(typeof(SearchFor<EPEmployee.salesPersonID>.Where<EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>))]
+        [PXDefault(typeof(SearchFor<EPEmployee.salesPersonID>.Where<EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>),
+            PersistingCheck = PXPersistingCheck.Nothing)]
         [PXSelector(typeof(SelectFrom<vSALESPERSONREGIONMAPPING>
                 .InnerJoin<EPCompanyTreeMember>.On<EPCompanyTreeMember.workGroupID.IsEqual<vSALESPERSONREGIONMAPPING.workGroupID>>
                 .InnerJoin<SalesPerson>.On<SalesPerson.salesPersonID.IsEqual<vSALESPERSONREGIONMAPPING.salespersonID>>
@@ -264,7 +265,8 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region CreatedDateTime
-        [PXDBCreatedDateTime()]
+        [PXDBCreatedDateTime(DisplayMask = "g", InputMask = "g")]
+        [PXUIField(DisplayName = "CreatedDateTime", Enabled = false)]
         public virtual DateTime? CreatedDateTime { get; set; }
         public abstract class createdDateTime : PX.Data.BQL.BqlDateTime.Field<createdDateTime> { }
         #endregion
@@ -282,7 +284,8 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region LastModifiedDateTime
-        [PXDBLastModifiedDateTime()]
+        [PXDBCreatedDateTime(DisplayMask = "g", InputMask = "g")]
+        [PXUIField(DisplayName = "LastModifiedDateTime",Enabled = false)]
         public virtual DateTime? LastModifiedDateTime { get; set; }
         public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
         #endregion

@@ -55,5 +55,12 @@ namespace AntenovaCustomizations.Library
                 .Where(x => x.WorkGroupID == _workgroup).Any();
             return IsAdmin || gpRoles;
         }
+
+        /// <summary> Get Employee By Sales Person</summary>
+        public Guid? GetEmployeeBySalesPerson(int SalesPerson)
+        {
+            return new PXGraph().Select<EPEmployee>().Where(x => x.SalesPersonID == SalesPerson).FirstOrDefault()
+                ?.UserID;
+        }
     }
 }

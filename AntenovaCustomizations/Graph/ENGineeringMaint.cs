@@ -82,7 +82,8 @@ namespace AntenovaCustomizations.Graph
             var row = e.Row as ENGineering;
             ValidField(e);
             row.Status = ((int)AutoChangeStatus((ENGStatus)int.Parse(row.Status))).ToString();
-
+            if((ENGStatus)int.Parse(row.Status) == ENGStatus.Process && !this.Line.Current.ProcessDate.HasValue)
+                this.Line.Current.ProcessDate = DateTime.Now;
         }
 
         /// <summary> ENGLine RowPersisting </summary>
@@ -96,6 +97,7 @@ namespace AntenovaCustomizations.Graph
         /// <summary> RowSelected Engineering  </summary>
         public void _(Events.RowSelected<ENGineering> e)
         {
+            var row = e.Row as ENGineering;
             var prjType = SelectFrom<ENGProjectType>.View.Select(this).RowCast<ENGProjectType>();
 
             // Valid Work Group Access right
@@ -116,11 +118,21 @@ namespace AntenovaCustomizations.Graph
                     prjType.Select(x => x.Prjtype).ToArray(),
                     prjType.Select(x => x.Description).ToArray());
             }
+
+            // Gerber Info Visible
+            if (row != null && row.Prjtype == "Gerber")
+            {
+                PXUIFieldAttribute.SetVisible<ENGLine.geberFile>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.file3D>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.stackUpFile>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.deviceTopology>(this.CurrentLine.Cache, null, true);
+                PXUIFieldAttribute.SetVisible<ENGLine.pCBATopology>(this.CurrentLine.Cache, null, true);
+            }
         }
 
         #endregion
 
-        #region FieldUpdated
+        #region Field Updated
 
         /// <summary> FieldUpdated ENGineering.opprid </summary>
         public void _(Events.FieldUpdated<ENGineering.opprid> e)
@@ -275,8 +287,8 @@ namespace AntenovaCustomizations.Graph
             {
                 if (line == null)
                     throw new PXException("Gerber Info Can not be Empty");
-                if (string.IsNullOrEmpty(line.GerberNbr))
-                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, line.GerberNbr,
+                if (string.IsNullOrEmpty(line.GeberFile))
+                    this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, line.GeberFile,
                         new PXSetPropertyException<ENGLine.geberFile>("Gerber File can not be empty"));
                 if (string.IsNullOrEmpty(line.File3D))
                     this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.file3D>(e.Row, line.File3D,
@@ -293,6 +305,14 @@ namespace AntenovaCustomizations.Graph
             }
 
             #endregion
+
+            #region Valid SalesPerson
+            if(row.SalesPerson == null && row.Prjtype != "RD")
+                e.Cache.RaiseExceptionHandling<ENGineering.salesPerson>(e.Row, row.Repeat,
+                    new PXSetPropertyException<ENGineering.salesPerson>("Sales Person can not be empty"));
+            #endregion
+
+            this.CurrentLine.Cache.RaiseRowPersisting(this.CurrentLine.Cache.Current,PXDBOperation.Update);
         }
 
         /// <summary> Valid ENGLine Row </summary>
@@ -383,8 +403,8 @@ namespace AntenovaCustomizations.Graph
 
             if (doc.Prjtype == "Gerber")
             {
-                if (string.IsNullOrEmpty(row.GerberNbr))
-                    e.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, row.GerberNbr,
+                if (string.IsNullOrEmpty(row.GeberFile))
+                    e.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, row.GeberFile,
                         new PXSetPropertyException<ENGLine.geberFile>("Gerber File can not be empty"));
                 if (string.IsNullOrEmpty(row.File3D))
                     e.Cache.RaiseExceptionHandling<ENGLine.file3D>(e.Row, row.File3D,

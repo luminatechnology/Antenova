@@ -116,6 +116,8 @@ namespace PX.Objects.CR
 
         #region Events
 
+        #region RowSelected
+
         /// <summary> RowSelected CROpportunity </summary>
         public void _(Events.RowSelected<CROpportunity> e, PXRowSelected baseMethod)
         {
@@ -126,6 +128,9 @@ namespace PX.Objects.CR
                 throw new PXException("You don't have right to read this data.");
         }
 
+        #endregion
+
+        #region RowInserting
         /// <summary> RowInserting CROpportunity </summary>
         public void _(Events.RowInserting<CROpportunity> e, PXRowInserting baseMethod)
         {
@@ -153,6 +158,9 @@ namespace PX.Objects.CR
                         : row.GetExtension<CROpportunityExt>().UsrSalesPerson;
             }
         }
+        #endregion
+
+        #region RowPersisting
 
         /// <summary> RowPersisting CSAnswers </summary>
         public void _(Events.RowPersisting<CSAnswers> e, PXRowPersisting baseMethod)
@@ -196,7 +204,16 @@ namespace PX.Objects.CR
                 e.Cache.RaiseExceptionHandling<ENGineering.engNbr>(e.Row, row.EngNbr,
                     new PXSetPropertyException<ENGineering.engNbr>("[EngrNbr] + [Engineer Repeat] is not allowed duplicated"));
 
+            // Valid SalesPerson
+            if (row.SalesPerson == null && row.Prjtype != "RD")
+                e.Cache.RaiseExceptionHandling<ENGineering.salesPerson>(e.Row, row.Repeat,
+                    new PXSetPropertyException<ENGineering.salesPerson>("Sales Person can not be empty"));
+
         }
+
+        #endregion
+
+        #region RowPersisted
 
         /// <summary> RowPersisted ENGineering </summary>
         public void _(Events.RowPersisted<ENGineering> e)
@@ -234,6 +251,10 @@ namespace PX.Objects.CR
 
         }
 
+        #endregion
+
+        #region FieldSelecting
+
         /// <summary> Set engrRef Disabled </summary>
         public void _(Events.FieldSelecting<ENGineering.engrRef> e)
             => PXUIFieldAttribute.SetEnabled<ENGineering.engrRef>(e.Cache, null, false);
@@ -259,6 +280,10 @@ namespace PX.Objects.CR
                 PXUIFieldAttribute.SetEnabled<ENGineering.opprid>(e.Cache, null, false);
         }
 
+        #endregion
+
+        #region FieldDefaulting
+
         /// <summary> Set opprid value </summary>
         public void _(Events.FieldDefaulting<ENGineering.opprid> e)
         {
@@ -281,6 +306,21 @@ namespace PX.Objects.CR
         public void _(Events.FieldDefaulting<ENGineering.salesRegion> e)
             => e.NewValue = Base.Opportunity.Current.WorkgroupID?.ToString();
 
+        /// <summary> FieldDefaulting CROpportunity.workgroupID </summary>
+        public void _(Events.FieldDefaulting<CROpportunity.workgroupID> e, PXFieldDefaulting baseMethod)
+        {
+            baseMethod?.Invoke(e.Cache, e.Args);
+            e.NewValue = SelectFrom<EPCompanyTreeMember>
+                .InnerJoin<EPCompanyTree>.On<EPCompanyTreeMember.workGroupID.IsEqual<EPCompanyTree.workGroupID>
+                    .And<EPCompanyTree.parentWGID.IsEqual<P.AsInt>>>
+                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
+        }
+
+        #endregion
+
+        #region FieldUpdated
+
         /// <summary> Events.FieldUpdated ENGineering.prjtype </summary>
         public void _(Events.FieldUpdated<ENGineering.prjtype> e)
         {
@@ -290,7 +330,7 @@ namespace PX.Objects.CR
             if (AutoOppID)
                 e.Cache.SetValueExt<ENGineering.opprid>(e.Row, (Base.Opportunity.Cache.Current as CROpportunity).OpportunityID);
         }
-        
+
         /// <summary> Events.FieldUpdated CROpportunityExt.usrSalesPerson </summary>
         public void _(Events.FieldUpdated<CROpportunityExt.usrSalesPerson> e)
         {
@@ -299,6 +339,7 @@ namespace PX.Objects.CR
                 return;
             var record = PXSelectorAttribute.Select<CROpportunityExt.usrSalesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
             e.Cache.SetValueExt<CROpportunity.workgroupID>(row, record.WorkGroupID ?? null);
+            e.Cache.SetValueExt<CROpportunity.ownerID>(row, library.GetEmployeeBySalesPerson((int)e.NewValue));
         }
 
         /// <summary> Events.FieldUpdated ENGineering.salesPerson </summary>
@@ -313,18 +354,9 @@ namespace PX.Objects.CR
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
         public void _(Events.FieldUpdated<ENGineering.engNbr> e)
-            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper();
-
-        /// <summary> FieldDefaulting CROpportunity.workgroupID </summary>
-        public void _(Events.FieldDefaulting<CROpportunity.workgroupID> e, PXFieldDefaulting baseMethod)
-        {
-            baseMethod?.Invoke(e.Cache, e.Args);
-            e.NewValue = SelectFrom<EPCompanyTreeMember>
-                .InnerJoin<EPCompanyTree>.On<EPCompanyTreeMember.workGroupID.IsEqual<EPCompanyTree.workGroupID>
-                    .And<EPCompanyTree.parentWGID.IsEqual<P.AsInt>>>
-                .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
-                .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
-        }
+            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper(); 
+        
+        #endregion
 
         #endregion
     }

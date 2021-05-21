@@ -72,6 +72,7 @@ namespace PX.Objects.CR
                 return;
             var record = PXSelectorAttribute.Select<CRLeadExt.usrsalesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
             e.Cache.SetValueExt<CRLead.workgroupID>(row, record.WorkGroupID ?? null);
+            e.Cache.SetValueExt<CRLead.ownerID>(row,new PublicFunc().GetEmployeeBySalesPerson((int)e.NewValue));
         }
     }
 }

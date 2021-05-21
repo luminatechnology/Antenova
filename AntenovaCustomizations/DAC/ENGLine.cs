@@ -184,10 +184,10 @@ namespace AntenovaCustomizations.DAC
         public abstract class engrAgeDays : PX.Data.BQL.BqlInt.Field<engrAgeDays> { }
         #endregion
 
-        #region GeberFile
+        #region File3D
         [PXDBString(10)]
         [PXStringList(new[] { "Yes", "No" }, new[] { "Yes", "No" })]
-        [PXUIField(DisplayName = "Geber File", Required = true, Visible = false)]
+        [PXUIField(DisplayName = "Gerber File", Required = true, Visible = false)]
         public virtual string GeberFile { get; set; }
         public abstract class geberFile : PX.Data.BQL.BqlString.Field<geberFile> { }
         #endregion
