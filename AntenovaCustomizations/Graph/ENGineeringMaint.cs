@@ -82,7 +82,7 @@ namespace AntenovaCustomizations.Graph
             var row = e.Row as ENGineering;
             ValidField(e);
             row.Status = ((int)AutoChangeStatus((ENGStatus)int.Parse(row.Status))).ToString();
-            if((ENGStatus)int.Parse(row.Status) == ENGStatus.Process && !this.Line.Current.ProcessDate.HasValue)
+            if ((ENGStatus)int.Parse(row.Status) == ENGStatus.Process && !this.Line.Current.ProcessDate.HasValue)
                 this.Line.Current.ProcessDate = DateTime.Now;
         }
 
@@ -120,7 +120,7 @@ namespace AntenovaCustomizations.Graph
             }
 
             // Gerber Info Visible
-            if (row != null && row.Prjtype == "Gerber")
+            if (row != null && row.Prjtype?.ToLower() == "gerber")
             {
                 PXUIFieldAttribute.SetVisible<ENGLine.geberFile>(this.CurrentLine.Cache, null, true);
                 PXUIFieldAttribute.SetVisible<ENGLine.file3D>(this.CurrentLine.Cache, null, true);
@@ -216,7 +216,7 @@ namespace AntenovaCustomizations.Graph
         public void _(Events.FieldSelecting<ENGineering.prjtype> e)
         {
             var row = e.Row as ENGineering;
-            if (row != null && row.Prjtype == "Gerber")
+            if (row != null && row.Prjtype?.ToLower() == "gerber")
             {
                 PXUIFieldAttribute.SetVisible<ENGLine.geberFile>(this.CurrentLine.Cache, null, true);
                 PXUIFieldAttribute.SetVisible<ENGLine.file3D>(this.CurrentLine.Cache, null, true);
@@ -283,7 +283,7 @@ namespace AntenovaCustomizations.Graph
 
             #region  Valid Gerber Info
 
-            if (row.Prjtype == "gerber")
+            if (row.Prjtype?.ToLower() == "gerber")
             {
                 if (line == null)
                     throw new PXException("Gerber Info Can not be Empty");
@@ -302,24 +302,24 @@ namespace AntenovaCustomizations.Graph
                 if (string.IsNullOrEmpty(line.PCBATopology))
                     this.CurrentLine.Cache.RaiseExceptionHandling<ENGLine.pCBATopology>(e.Row, line.PCBATopology,
                         new PXSetPropertyException<ENGLine.pCBATopology>("PCBA Topology can not be empty"));
+
+                this.CurrentLine.Cache.RaiseRowPersisting(this.CurrentLine.Cache.Current, PXDBOperation.Update);
             }
 
             #endregion
 
             #region Valid SalesPerson
-            if(row.SalesPerson == null && row.Prjtype != "RD")
+            if (row.SalesPerson == null && row.Prjtype != "RD")
                 e.Cache.RaiseExceptionHandling<ENGineering.salesPerson>(e.Row, row.Repeat,
                     new PXSetPropertyException<ENGineering.salesPerson>("Sales Person can not be empty"));
             #endregion
-
-            this.CurrentLine.Cache.RaiseRowPersisting(this.CurrentLine.Cache.Current,PXDBOperation.Update);
         }
 
         /// <summary> Valid ENGLine Row </summary>
         public void ValidField(Events.RowPersisting<ENGLine> e)
         {
             var doc = this.Document.Cache.Current as ENGineering;
-            var row = e.Row as ENGLine;
+            var row = e.Row as ENGLine ?? new ENGLine();
 
             #region Valid Gerber Nbr
             if (row.IsGerber.Value && string.IsNullOrEmpty(row.GerberNbr))
@@ -401,7 +401,7 @@ namespace AntenovaCustomizations.Graph
 
             #region Valid Gerber Info
 
-            if (doc.Prjtype == "Gerber")
+            if (doc.Prjtype?.ToLower() == "gerber")
             {
                 if (string.IsNullOrEmpty(row.GeberFile))
                     e.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, row.GeberFile,

@@ -88,7 +88,7 @@ namespace AntenovaCustomizations.DAC
 
         #region Description
         [PXDefault]
-        [PXDBString(1000, IsUnicode = true, InputMask = "")]
+        [PXDBString( IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description", Required = true)]
         public virtual string Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }

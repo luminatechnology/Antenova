@@ -8,8 +8,8 @@
   <col name="EstComplete" type="DateTime" nullable="true" />
   <col name="ActStart" type="DateTime" nullable="true" />
   <col name="ActComplete" type="DateTime" nullable="true" />
-  <col name="EngrNote" type="NVarChar(1000)" nullable="true" />
-  <col name="CompleteSummary" type="NVarChar(1000)" nullable="true" />
+  <col name="EngrNote" type="NVarChar(MAX)" nullable="true" />
+  <col name="CompleteSummary" type="NVarChar(MAX)" nullable="true" />
   <col name="AwaitdateFrom" type="DateTime" nullable="true" />
   <col name="AwaitDateTo" type="DateTime" nullable="true" />
   <col name="AwaitReason" type="NVarChar(1000)" nullable="true" />

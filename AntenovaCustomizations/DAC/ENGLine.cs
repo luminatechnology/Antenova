@@ -78,14 +78,14 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region EngrNote
-        [PXDBString(1000, IsUnicode = true, InputMask = "")]
+        [PXDBString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Engineer Note")]
         public virtual string EngrNote { get; set; }
         public abstract class engrNote : PX.Data.BQL.BqlString.Field<engrNote> { }
         #endregion
 
         #region CompleteSummary
-        [PXDBString(1000, IsUnicode = true, InputMask = "")]
+        [PXDBString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Report Summary")]
         public virtual string CompleteSummary { get; set; }
         public abstract class completeSummary : PX.Data.BQL.BqlString.Field<completeSummary> { }
