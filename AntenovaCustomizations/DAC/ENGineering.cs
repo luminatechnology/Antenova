@@ -88,7 +88,7 @@ namespace AntenovaCustomizations.DAC
 
         #region Description
         [PXDefault]
-        [PXDBString( IsUnicode = true, InputMask = "")]
+        [PXDBString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Description", Required = true)]
         public virtual string Description { get; set; }
         public abstract class description : PX.Data.BQL.BqlString.Field<description> { }
@@ -252,6 +252,12 @@ namespace AntenovaCustomizations.DAC
         public abstract class reveCntr : PX.Data.BQL.BqlInt.Field<reveCntr> { }
         #endregion
 
+        #region NoteID
+        [PXNote]
+        public virtual Guid? NoteID { get; set; }
+        public abstract class noteID : PX.Data.BQL.BqlGuid.Field<noteID> { }
+        #endregion
+
         #region CreatedByID
         [PXDBCreatedByID()]
         public virtual Guid? CreatedByID { get; set; }
@@ -285,7 +291,7 @@ namespace AntenovaCustomizations.DAC
 
         #region LastModifiedDateTime
         [PXDBCreatedDateTime(DisplayMask = "g", InputMask = "g")]
-        [PXUIField(DisplayName = "LastModifiedDateTime",Enabled = false)]
+        [PXUIField(DisplayName = "LastModifiedDateTime", Enabled = false)]
         public virtual DateTime? LastModifiedDateTime { get; set; }
         public abstract class lastModifiedDateTime : PX.Data.BQL.BqlDateTime.Field<lastModifiedDateTime> { }
         #endregion
