@@ -314,7 +314,18 @@ namespace PX.Objects.CR
                 .InnerJoin<EPCompanyTree>.On<EPCompanyTreeMember.workGroupID.IsEqual<EPCompanyTree.workGroupID>
                     .And<EPCompanyTree.parentWGID.IsEqual<P.AsInt>>>
                 .Where<EPCompanyTreeMember.userID.IsEqual<AccessInfo.userID.FromCurrent>>
-                .View.Select(Base).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
+                .View.Select(Base, library.GetCRMWorkGroupID()).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
+        }
+
+        /// <summary> FieldDefaulting CROpportunity.ownerID </summary>
+        public void _(Events.FieldDefaulting<CROpportunity.ownerID> e, PXFieldDefaulting baseMethod)
+        {
+            var row = e.Row as CROpportunity;
+            var salesPerson = SelectFrom<EP.EPEmployee>.Where<EP.EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .View.Select(Base).RowCast<EP.EPEmployee>().FirstOrDefault()?.SalesPersonID;
+            baseMethod?.Invoke(e.Cache, e.Args);
+            if (salesPerson.HasValue)
+                e.NewValue = library.GetEmployeeBySalesPerson(salesPerson.Value);
         }
 
         #endregion
@@ -354,8 +365,8 @@ namespace PX.Objects.CR
 
         /// <summary> FieldUpdated ENGineering.engref </summary>
         public void _(Events.FieldUpdated<ENGineering.engNbr> e)
-            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper(); 
-        
+            => (e.Row as ENGineering).EngNbr = e.NewValue.ToString().ToUpper();
+
         #endregion
 
         #endregion

@@ -27,7 +27,7 @@ namespace AntenovaCustomizations.Library
             public DepartmentName() : base("RD") { }
         }
 
-        /// <summary> Get CRM Work Group ID </summary>
+        /// <summary> Get Parent CRM Work Group ID </summary>
         public virtual int? GetCRMWorkGroupID()
         {
             return SelectFrom<EPCompanyTree>
