@@ -20,7 +20,6 @@
   <col name="ReveCntr" type="Int" default="Zero" />
   <col name="DeviceRcvDate" type="DateTime" nullable="true" />
   <col name="RequstRcvDate" type="DateTime" nullable="true" />
-  <col name="NoteID" type="UniqueIdentifier" nullable="true" />
   <col name="CreatedByID" type="UniqueIdentifier" />
   <col name="CreatedByScreenID" type="Char(8)" />
   <col name="CreatedDateTime" type="DateTime" />
