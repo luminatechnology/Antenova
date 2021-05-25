@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PX.TM;
 using AntenovaCustomizations.Library;
+using PX.Common;
 
 namespace AntenovaCustomizations.Graph
 {
@@ -80,6 +81,10 @@ namespace AntenovaCustomizations.Graph
         public void _(Events.RowPersisting<ENGineering> e)
         {
             var row = e.Row as ENGineering;
+            // Delete do noting
+            if (this.Document.Cache.Deleted.Count() != 0 || this.Line.Cache.Deleted.Count() != 0)
+                return;
+
             ValidField(e);
             row.Status = ((int)AutoChangeStatus((ENGStatus)int.Parse(row.Status))).ToString();
             if ((ENGStatus)int.Parse(row.Status) == ENGStatus.Process && !this.Line.Current.ProcessDate.HasValue)
@@ -283,7 +288,7 @@ namespace AntenovaCustomizations.Graph
 
             #region  Valid Gerber Info
 
-            if (row.Prjtype?.ToLower() == "gerber")
+            if (row != null && row?.Prjtype?.ToLower() == "gerber" && this.Document.Cache.Deleted.Count() == 0)
             {
                 if (line == null)
                     throw new PXException("Gerber Info Can not be Empty");
@@ -401,7 +406,7 @@ namespace AntenovaCustomizations.Graph
 
             #region Valid Gerber Info
 
-            if (doc.Prjtype?.ToLower() == "gerber")
+            if (doc != null && doc?.Prjtype?.ToLower() == "gerber")
             {
                 if (string.IsNullOrEmpty(row.GeberFile))
                     e.Cache.RaiseExceptionHandling<ENGLine.geberFile>(e.Row, row.GeberFile,
