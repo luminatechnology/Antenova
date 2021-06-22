@@ -282,6 +282,7 @@
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="Engineer" />
                                                         <Prop Key="Width" Value="140" />
+                                                        <Prop Key="DisplayMode" Value="Hint" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                                 <AddItem>
@@ -297,6 +298,18 @@
                                                 <AddItem>
                                                     <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
                                                         <Prop Key="DataField" Value="RequstRcvDate" />
+                                                    </PXGridColumn>
+                                                </AddItem>
+                                                <AddItem>
+                                                    <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                                                        <Prop Key="DataField" Value="CreatedDateTime" />
+                                                        <Prop Key="Width" Value="90" />
+                                                    </PXGridColumn>
+                                                </AddItem>
+                                                <AddItem>
+                                                    <PXGridColumn TypeFullName="PX.Web.UI.PXGridColumn">
+                                                        <Prop Key="DataField" Value="LastModifiedDateTime" />
+                                                        <Prop Key="Width" Value="90" />
                                                     </PXGridColumn>
                                                 </AddItem>
                                             </Children>

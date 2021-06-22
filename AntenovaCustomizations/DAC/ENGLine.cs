@@ -78,14 +78,14 @@ namespace AntenovaCustomizations.DAC
         #endregion
 
         #region EngrNote
-        [PXDBString(1000, IsUnicode = true, InputMask = "")]
+        [PXDBString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Engineer Note")]
         public virtual string EngrNote { get; set; }
         public abstract class engrNote : PX.Data.BQL.BqlString.Field<engrNote> { }
         #endregion
 
         #region CompleteSummary
-        [PXDBString(1000, IsUnicode = true, InputMask = "")]
+        [PXDBString(IsUnicode = true, InputMask = "")]
         [PXUIField(DisplayName = "Report Summary")]
         public virtual string CompleteSummary { get; set; }
         public abstract class completeSummary : PX.Data.BQL.BqlString.Field<completeSummary> { }
@@ -184,10 +184,10 @@ namespace AntenovaCustomizations.DAC
         public abstract class engrAgeDays : PX.Data.BQL.BqlInt.Field<engrAgeDays> { }
         #endregion
 
-        #region GeberFile
+        #region File3D
         [PXDBString(10)]
         [PXStringList(new[] { "Yes", "No" }, new[] { "Yes", "No" })]
-        [PXUIField(DisplayName = "Geber File", Required = true, Visible = false)]
+        [PXUIField(DisplayName = "Gerber File", Required = true, Visible = false)]
         public virtual string GeberFile { get; set; }
         public abstract class geberFile : PX.Data.BQL.BqlString.Field<geberFile> { }
         #endregion

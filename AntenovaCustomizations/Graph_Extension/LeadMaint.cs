@@ -64,6 +64,17 @@ namespace PX.Objects.CR
                .View.Select(Base,new PublicFunc().GetCRMWorkGroupID()).RowCast<EPCompanyTreeMember>().FirstOrDefault()?.WorkGroupID;
         }
 
+        /// <summary> FieldDefaulting CROpportunity.ownerID </summary>
+        public void _(Events.FieldDefaulting<CRLead.ownerID> e, PXFieldDefaulting baseMethod)
+        {
+            var row = e.Row as CRLead;
+            var salesPerson = SelectFrom<EPEmployee>.Where<EPEmployee.userID.IsEqual<AccessInfo.userID.FromCurrent>>
+                .View.Select(Base).RowCast<EPEmployee>().FirstOrDefault()?.SalesPersonID;
+            baseMethod?.Invoke(e.Cache, e.Args);
+            if (salesPerson.HasValue)
+                e.NewValue = new PublicFunc().GetEmployeeBySalesPerson(salesPerson.Value);
+        }
+
         /// <summary> Events.FieldUpdated CRLead.usrsalesPerson</summary>
         public void _(Events.FieldUpdated<CRLeadExt.usrsalesPerson> e)
         {
@@ -72,6 +83,7 @@ namespace PX.Objects.CR
                 return;
             var record = PXSelectorAttribute.Select<CRLeadExt.usrsalesPerson>(e.Cache, row) as vSALESPERSONREGIONMAPPING;
             e.Cache.SetValueExt<CRLead.workgroupID>(row, record.WorkGroupID ?? null);
+            e.Cache.SetValueExt<CRLead.ownerID>(row,new PublicFunc().GetEmployeeBySalesPerson((int)e.NewValue));
         }
     }
 }

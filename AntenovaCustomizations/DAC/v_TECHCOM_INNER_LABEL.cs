@@ -8,7 +8,7 @@ namespace AntenovaCustomizations
   public class v_TECHCOM_INNER_LABEL : IBqlTable
   {
     #region NowNbr
-    [PXDBInt()]
+    [PXDBIdentity(IsKey = true)]
     [PXUIField(DisplayName = "Now Nbr")]
     public virtual int? NowNbr { get; set; }
     public abstract class nowNbr : PX.Data.BQL.BqlInt.Field<nowNbr> { }

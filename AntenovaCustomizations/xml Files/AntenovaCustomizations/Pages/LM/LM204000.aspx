@@ -169,7 +169,7 @@
                     </px:PXGrid>
                 </Template>
             </px:PXTabItem>
-            <px:PXTabItem Text="Geber Info" RepaintOnDemand="False">
+            <px:PXTabItem Text="GERBER INFO" RepaintOnDemand="False">
                 <Template>
                     <px:PXFormView ID="edENGCurrentLin3" runat="server" DataMember="CurrentLine" DataSourceID="ds" RenderStyle="Simple">
                         <Template>

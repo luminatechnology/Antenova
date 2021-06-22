@@ -6,7 +6,7 @@
   <col name="PRJType" type="NVarChar(15)" />
   <col name="Status" type="NVarChar(10)" />
   <col name="OpprID" type="NVarChar(20)" nullable="true" />
-  <col name="Description" type="NVarChar(1000)" nullable="true" />
+  <col name="Description" type="NVarChar(MAX)" nullable="true" />
   <col name="Priority" type="NVarChar(10)" nullable="true" />
   <col name="GateStatus" type="NVarChar(10)" nullable="true" />
   <col name="OppBAccountID" type="Int" nullable="true" />

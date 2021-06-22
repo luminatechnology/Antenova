@@ -11,7 +11,8 @@
   </Filters>
   <PageSettings>
     <Margins>
-      <Left>0.8cm</Left>
+      <Left>0.7cm</Left>
+      <Right>0.7cm</Right>
       <Top>0cm</Top>
     </Margins>
     <PaperKind>Custom</PaperKind>
@@ -2794,6 +2795,10 @@
           <Name>DisplayDate</Name>
           <ValueExpr>=DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1)</ValueExpr>
         </ReportVariable>
+        <ReportVariable>
+          <Name>QRCode</Name>
+          <ValueExpr>='Comp_Part_No=' + [SOLine.AlternateID]#010;+ '|Vendor=' + 'Antenova'#010;+ '|Lot_No=' + [SOPackageDetailEx.UsrDateCode]#010;+ '|Qty=' + CInt([SOPackageDetailEx.Qty])#010;+ '|DateCode=' + Year(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1))#010;+ PadLeft(CStr(Month(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1))), 2, '0')#010;+ PadLeft(CStr(Day(DateAdd(CDate(Substring(Year(Today()), 0, 2) + Substring([SOPackageDetailEx.UsrDateCode], 0, 2) + '/01/01'), 'd', (CInt(Substring([SOPackageDetailEx.UsrDateCode], 2, 2))) * 7 - $ProductionDayOfWeek + 1))), 2, '0')#010;+ '|Mpn=' + [SOPackageDetailEx.InventoryID]</ValueExpr>
+        </ReportVariable>
       </Variables>
       <Items>
         <PictureBox Name="pictureBox1">
@@ -2801,7 +2806,7 @@
           <Location>4px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>172px, 24px</Size>
+          <Size>164px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOLine.AlternateID]</Value>
         </PictureBox>
@@ -2810,7 +2815,7 @@
           <Location>4px, 56px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>172px, 24px</Size>
+          <Size>164px, 24px</Size>
           <Source>Barcode</Source>
           <Value>Antenova</Value>
         </PictureBox>
@@ -2819,7 +2824,7 @@
           <Location>4px, 112px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>172px, 24px</Size>
+          <Size>164px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </PictureBox>
@@ -2828,27 +2833,38 @@
           <Location>4px, 168px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>172px, 24px</Size>
+          <Size>164px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
           <BarcodeType>Code128</BarcodeType>
-          <Location>184px, 8px</Location>
+          <Location>176px, 8px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>176px, 24px</Size>
+          <Size>88px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox6">
           <BarcodeType>Code128</BarcodeType>
-          <Location>184px, 56px</Location>
+          <Location>176px, 56px</Location>
           <MimeType>image/bmp</MimeType>
           <QRCodeSettings />
-          <Size>176px, 24px</Size>
+          <Size>88px, 24px</Size>
           <Source>Barcode</Source>
           <Value>=CStr(Year($DisplayDate)) + PadLeft(CStr(Month($DisplayDate)), 2, '0') + PadLeft(CStr(Day($DisplayDate)), 2, '0')</Value>
+        </PictureBox>
+        <PictureBox Name="pictureBox7">
+          <BarcodeType>QRCode</BarcodeType>
+          <Location>272px, 8px</Location>
+          <MimeType>image/bmp</MimeType>
+          <QRCodeSettings>
+            <CodeSize>60</CodeSize>
+          </QRCodeSettings>
+          <Size>72px, 72px</Size>
+          <Source>Barcode</Source>
+          <Value>=$QRCode</Value>
         </PictureBox>
         <TextBox Name="textBox1">
           <Location>8px, 32px</Location>
@@ -2864,8 +2880,8 @@
           <Value>P/N: </Value>
         </TextBox>
         <TextBox Name="textBox10">
-          <Location>224px, 32px</Location>
-          <Size>136px, 12px</Size>
+          <Location>208px, 32px</Location>
+          <Size>56px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
@@ -2877,13 +2893,16 @@
           <Value>=[SOPackageDetailEx.InventoryID]</Value>
         </TextBox>
         <TextBox Name="textBox11">
-          <Location>192px, 80px</Location>
+          <Location>176px, 80px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
               <Style>Bold</Style>
             </Font>
+            <Padding>
+              <Left>3px</Left>
+            </Padding>
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
@@ -2891,8 +2910,8 @@
         </TextBox>
         <TextBox Name="textBox12">
           <Format>yyyyMMdd</Format>
-          <Location>224px, 80px</Location>
-          <Size>104px, 12px</Size>
+          <Location>208px, 80px</Location>
+          <Size>56px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
@@ -2917,7 +2936,7 @@
           <Value>LOT: </Value>
         </TextBox>
         <TextBox Name="textBox14">
-          <Location>256px, 144px</Location>
+          <Location>184px, 144px</Location>
           <Size>56px, 32px</Size>
           <Style>
             <Font>
@@ -2928,6 +2947,32 @@
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
           <Value>BOX</Value>
+        </TextBox>
+        <TextBox Name="textBox15">
+          <Location>280px, 128px</Location>
+          <Size>40px, 56px</Size>
+          <Style>
+            <Font>
+              <Size>20px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>HF#010;GP</Value>
+        </TextBox>
+        <TextBox Name="textBox16">
+          <Location>344px, 8px</Location>
+          <Size>16px, 32px</Size>
+          <Style>
+            <Font>
+              <Size>20px</Size>
+              <Style>Bold</Style>
+            </Font>
+            <TextAlign>Left</TextAlign>
+            <VerticalAlign>Middle</VerticalAlign>
+          </Style>
+          <Value>1</Value>
         </TextBox>
         <TextBox Name="textBox2">
           <Location>8px, 192px</Location>
@@ -2977,7 +3022,7 @@
               <Size>8px</Size>
               <Style>Bold</Style>
             </Font>
-            <TextAlign>Center</TextAlign>
+            <TextAlign>Right</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
           <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
@@ -3022,13 +3067,16 @@
           <Value>=[SOPackageDetailEx.UsrDateCode]</Value>
         </TextBox>
         <TextBox Name="textBox9">
-          <Location>192px, 32px</Location>
+          <Location>176px, 32px</Location>
           <Size>32px, 12px</Size>
           <Style>
             <Font>
               <Size>8px</Size>
               <Style>Bold</Style>
             </Font>
+            <Padding>
+              <Left>3px</Left>
+            </Padding>
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>

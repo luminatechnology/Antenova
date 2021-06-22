@@ -27,7 +27,7 @@ namespace AntenovaCustomizations.Library
             public DepartmentName() : base("RD") { }
         }
 
-        /// <summary> Get CRM Work Group ID </summary>
+        /// <summary> Get Parent CRM Work Group ID </summary>
         public virtual int? GetCRMWorkGroupID()
         {
             return SelectFrom<EPCompanyTree>
@@ -54,6 +54,13 @@ namespace AntenovaCustomizations.Library
                 .View.Select(new PXGraph(), _userID).RowCast<EPCompanyTreeMember>()
                 .Where(x => x.WorkGroupID == _workgroup).Any();
             return IsAdmin || gpRoles;
+        }
+
+        /// <summary> Get Employee By Sales Person</summary>
+        public Guid? GetEmployeeBySalesPerson(int SalesPerson)
+        {
+            return new PXGraph().Select<EPEmployee>().Where(x => x.SalesPersonID == SalesPerson).FirstOrDefault()
+                ?.UserID;
         }
     }
 }
