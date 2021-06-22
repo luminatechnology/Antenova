@@ -260,7 +260,7 @@ namespace PX.Objects.SO
         #region USI Outer Label - LM642014
         public PXAction<SOShipment> USIOuterLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print USI Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Report / Print USI Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable uSIOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642014";
@@ -403,7 +403,7 @@ namespace PX.Objects.SO
         #region USI Inner Label - LM642021
         public PXAction<SOShipment> USIInnerLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print USI Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        [PXUIField(DisplayName = "Report / Print USI Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
         protected virtual IEnumerable uSIInnerLabel(PXAdapter adapter)
         {
             var _reportID = "LM642021";
