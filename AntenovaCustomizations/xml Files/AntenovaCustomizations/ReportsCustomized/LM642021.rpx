@@ -3022,7 +3022,7 @@
               <Size>8px</Size>
               <Style>Bold</Style>
             </Font>
-            <TextAlign>Right</TextAlign>
+            <TextAlign>Center</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
           <Value>=[InventoryItem.QTYINBOX_Attributes]</Value>
