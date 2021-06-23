@@ -140,6 +140,14 @@
                         <GIRelation LineNbr="1" ChildTable="l" IsActive="1" JoinType="L">
                             <GIOn LineNbr="1" ParentField="t.EngrRef" Condition="E " ChildField="l.EngrRef" Operation="A" />
                         </GIRelation>
+                        <GIResult LineNbr="32" SortOrder="32" IsActive="1" Field="lastModifiedByID" SchemaField="l.LastModifiedByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="3c364b5f-bcdd-4a97-881f-7203094645bb" />
+                        <GIResult LineNbr="28" SortOrder="28" IsActive="1" Field="oppBAccountID_description" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="ae904af0-ddc6-46af-92ad-7231a3842bf0" />
+                        <GIResult LineNbr="27" SortOrder="27" IsActive="1" Field="oppBAccountID" SchemaField="t.OppBAccountID" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="cac652f0-c9a2-43f4-90bf-959493a3625d" />
+                        <GIResult LineNbr="26" SortOrder="26" IsActive="1" Field="salesPerson_description" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="e0b51616-7e40-41bb-8bf0-5243c25a92d8" />
+                        <GIResult LineNbr="23" SortOrder="23" IsActive="1" Field="endCust_description" Caption="End Customer" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="75d07a0e-ece0-476d-94ea-4548065451ec" />
+                        <GIResult LineNbr="22" SortOrder="22" IsActive="1" Field="salesRegion" SchemaField="t.SalesRegion" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="f26067b8-71c9-4770-86e0-1bbcd6cab871" />
+                        <GIResult LineNbr="21" SortOrder="21" IsActive="1" Field="engineer_description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="81c13b8a-21dc-457f-9936-28e7a167f53e" />
+                        <GIResult LineNbr="20" SortOrder="20" IsActive="1" Field="lastModifiedDateTime" SchemaField="t.LastModifiedDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c2362dc7-468c-4754-9abc-848ef78c99ee" />
                         <GIResult LineNbr="19" SortOrder="3" IsActive="1" Field="engNbr" SchemaField="t.EngNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="d28563f3-f1b3-4db7-bf9b-97d340953455" />
                         <GIResult LineNbr="18" SortOrder="19" IsActive="1" Field="createdDateTime" SchemaField="t.CreatedDateTime" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="168284aa-aea7-4ee0-9e2a-0e5e11edc09b" />
                         <GIResult LineNbr="17" SortOrder="18" IsActive="1" Field="createdByID" SchemaField="t.CreatedByID" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="ca4b45e5-c585-4ac7-8b77-d05533fa5ecf" />
@@ -148,23 +156,86 @@
                         <GIResult LineNbr="9" SortOrder="10" IsActive="1" Field="productCategory" SchemaField="t.ProductCategory" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="cd09aad5-f916-49a4-a2db-04aa755e3552" />
                         <GIResult LineNbr="8" SortOrder="9" IsActive="1" Field="status" SchemaField="t.Status" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="95dd8621-c786-4563-900d-301245f48303" />
                         <GIResult LineNbr="7" SortOrder="8" IsActive="1" Field="priority" SchemaField="t.Priority" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="bf46aa46-733e-4fb6-aa83-24da59de4b75" />
-                        <GIResult LineNbr="6" SortOrder="7" IsActive="1" Field="prjtype" SchemaField="t.Prjtype" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6c2abf55-0d39-4d7f-8911-1d89414f34c4" />
+                        <GIResult LineNbr="6" SortOrder="7" IsActive="1" Field="=[t.Prjtype]" Caption="Project Type" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6c2abf55-0d39-4d7f-8911-1d89414f34c4" />
                         <GIResult LineNbr="5" SortOrder="6" IsActive="1" Field="endCust" SchemaField="t.EndCust" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="5eb313d7-34a9-4410-b07f-f2b66800c775" />
                         <GIResult LineNbr="4" SortOrder="5" IsActive="1" Field="salesPerson" SchemaField="t.SalesPerson" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="a7b900e7-da95-48d5-92c3-f98efd69648f" />
                         <GIResult LineNbr="3" SortOrder="4" IsActive="1" Field="description" SchemaField="t.Description" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="b8db22ea-c7ad-4b32-ac7e-999b92d2eb33" />
                         <GIResult LineNbr="2" SortOrder="2" IsActive="1" Field="opprid" SchemaField="t.Opprid" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6f35a9cd-8996-4806-9652-22625cb987b7" />
-                        <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="engrRef" SchemaField="t.EngrRef" IsVisible="1" DefaultNav="0" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="17b66417-fb34-4f76-a8a0-5ff44db80a0c" />
+                        <GIResult LineNbr="1" SortOrder="1" IsActive="1" Field="engrRef" SchemaField="t.EngrRef" IsVisible="1" DefaultNav="1" NavigationNbr="1" QuickFilter="0" FastFilter="1" RowID="17b66417-fb34-4f76-a8a0-5ff44db80a0c" />
                     </GITable>
                     <GITable Alias="l" Name="AntenovaCustomizations.DAC.ENGLine">
+                        <GIResult LineNbr="31" SortOrder="31" IsActive="1" Field="sONbr" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="27d476c9-c347-4ca8-83eb-a966904d813c" />
+                        <GIResult LineNbr="30" SortOrder="30" IsActive="1" Field="completeSummary" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="6bc80a54-9954-41f9-aa95-eeb846996d2b" />
+                        <GIResult LineNbr="29" SortOrder="29" IsActive="1" Field="actComplete" IsVisible="0" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="497e2975-e10c-4459-9482-ed20a9c3bcb1" />
+                        <GIResult LineNbr="25" SortOrder="25" IsActive="1" Field="sONbr" SchemaField="l.SONbr" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="8060422a-9fda-4067-8057-63fc92670119" />
+                        <GIResult LineNbr="24" SortOrder="24" IsActive="1" Field="isNre" SchemaField="l.IsNre" IsVisible="1" DefaultNav="0" QuickFilter="0" FastFilter="1" RowID="fefb7898-25ae-45d2-8d08-a6c59279f090" />
                         <GIResult LineNbr="16" SortOrder="17" IsActive="1" Field="actComplete" SchemaField="l.ActComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="de29caab-c7b6-4249-a4ca-cf22ce1e12a7" />
                         <GIResult LineNbr="15" SortOrder="16" IsActive="1" Field="actStart" SchemaField="l.ActStart" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="c64e69dc-8427-44a6-a82c-9fe68e0cfdab" />
                         <GIResult LineNbr="14" SortOrder="15" IsActive="1" Field="estComplete" SchemaField="l.EstComplete" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="97cecf6a-5317-4c4f-938d-e93d0177c669" />
                         <GIResult LineNbr="13" SortOrder="14" IsActive="1" Field="estStart" SchemaField="l.EstStart" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="0" RowID="153e80e6-b67d-45de-a959-721a63408881" />
                         <GIResult LineNbr="11" SortOrder="12" IsActive="1" Field="gerberNbr" SchemaField="l.GerberNbr" IsVisible="1" DefaultNav="1" QuickFilter="0" FastFilter="1" RowID="c90902d4-ffc8-44f8-9c87-3c9f05344b6b" />
                     </GITable>
+                    <GIWhere LineNbr="1" IsActive="1" DataFieldName="t.salesRegion" Condition="IN" IsExpression="0" Value1="@MYgroups" Operation="A" />
                     <SiteMap linkname="toDesignById">
                         <row Title="Engineering" Url="~/GenericInquiry/GenericInquiry.aspx?id=d1b18f93-fb13-4aa1-bcd3-7c4847f0389f" ScreenID="GI800111" NodeID="bf20341f-1b3f-4881-bb8a-2d52634299a7" ParentID="00000000-0000-0000-0000-000000000000">
                             <ListEntryPoint EntryScreenID="LM204000" IsActive="1" />
+                            <FilterHeader FilterID="54372" UserName="daphne.lin" ViewName="Results" FilterName="NRE" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="l_isNre" Condition="0" ValueSt="True" ValueSt2="False" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54368" UserName="Geoff.schulteis" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Schulteis, Geoff" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54367" UserName="yukai.yeung" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Yeung, Yukai" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54366" UserName="kobe.chiang" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Chiang, Kobe" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54365" UserName="mark.lin" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Lin, Mark" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54364" UserName="raymond.lee" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Lee, Raymond" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54363" UserName="paul.lin" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Lin, Paul W" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54362" UserName="pj.ma" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Ma, PJ" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54361" UserName="steve.bradburn" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Bradburn, Steve" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54360" UserName="tim.lin" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Lin, Tim" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54359" UserName="charles.lee" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_engineer_description" Condition="0" ValueSt="Lee, Charles" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54358" UserName="renee.lin" ViewName="Results" FilterName="NRE" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="l_isNre" Condition="0" ValueSt="True" ValueSt2="False" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54357" UserName="daphne.lin" ViewName="Results" FilterName="Closed" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="5" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54356" UserName="daphne.lin" ViewName="Results" FilterName="Completed" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="6" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54354" UserName="daphne.lin" ViewName="Results" FilterName="On hold" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="4" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54353" UserName="daphne.lin" ViewName="Results" FilterName="Processing" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="2" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54352" UserName="daphne.lin" ViewName="Results" FilterName="Awaiting" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="3" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54351" UserName="daphne.lin" ViewName="Results" FilterName="New" IsDefault="0" IsShared="1" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_status" Condition="0" ValueSt="1" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
+                            <FilterHeader FilterID="54350" UserName="Abby.Yang" ViewName="Results" FilterName="My Engineerings" IsDefault="0" IsShared="0" IsShortcut="0" IsSystem="0" IsHidden="0">
+                                <FilterRow FilterRowNbr="1" OpenBrackets="0" DataField="t_salesRegion" Condition="0" ValueSt="China" ValueSt2="" CloseBrackets="0" Operator="0" IsUsed="1" FilterType="0" />
+                            </FilterHeader>
                             <MUIScreen IsPortal="0" WorkspaceID="bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb" Order="18024" SubcategoryID="98e86774-69e3-41ea-b94f-eb2c7a8426d4">
                                 <MUIPinnedScreen IsPortal="0" Username="" IsPinned="1" />
                             </MUIScreen>
