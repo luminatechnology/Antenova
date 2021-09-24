@@ -56,7 +56,8 @@ namespace PX.Objects.SO
             Labels.MenuAutoOpen = true;
             Labels.AddMenuAction(BoschOuterLabel);
             Labels.AddMenuAction(BoschInnerLabel);
-            Labels.AddMenuAction(WNCLabel);
+            Labels.AddMenuAction(WNCOuterLabel);
+            Labels.AddMenuAction(WNCInnerLabel);
             Labels.AddMenuAction(TechcomOuterLabel);
             Labels.AddMenuAction(TechcomInnerLabel);
             Labels.AddMenuAction(SystechOuterLabel);
@@ -366,11 +367,11 @@ namespace PX.Objects.SO
         }
         #endregion
 
-        #region WNC Label - LM642019
-        public PXAction<SOShipment> WNCLabel;
+        #region WNC Outer Label - LM642019
+        public PXAction<SOShipment> WNCOuterLabel;
         [PXButton]
-        [PXUIField(DisplayName = "Print WNC Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
-        protected virtual IEnumerable wNCLabel(PXAdapter adapter)
+        [PXUIField(DisplayName = "Print WNC Outer Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable wNCOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642019";
             var parameters = new Dictionary<string, string>()
@@ -719,6 +720,23 @@ namespace PX.Objects.SO
         protected virtual IEnumerable hiflyingOuterLabel(PXAdapter adapter)
         {
             var _reportID = "LM642033";
+            var parameters = new Dictionary<string, string>()
+            {
+                ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
+            };
+            if (parameters["ShipmentNbr"] != null)
+                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            return adapter.Get<SOShipment>().ToList();
+        }
+        #endregion
+
+        #region WNC Inner Label - LM642034
+        public PXAction<SOShipment> WNCInnerLabel;
+        [PXButton]
+        [PXUIField(DisplayName = "Print WNC Inner Label", Enabled = true, MapEnableRights = PXCacheRights.Select)]
+        protected virtual IEnumerable wNCInnerLabel(PXAdapter adapter)
+        {
+            var _reportID = "LM642034";
             var parameters = new Dictionary<string, string>()
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr

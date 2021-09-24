@@ -19,7 +19,15 @@ namespace AntenovaCustomizations
     [PXUIField(DisplayName = "Shipment Nbr")]
     public virtual string ShipmentNbr { get; set; }
     public abstract class shipmentNbr : PX.Data.BQL.BqlString.Field<shipmentNbr> { }
+        #endregion
+
+    #region ShipDate
+    [PXDBDate()]
+    [PXUIField(DisplayName = "Delivery Date")]
+    public virtual DateTime? ShipDate { get; set; }
+    public abstract class shipDate : PX.Data.BQL.BqlDateTime.Field<shipDate> { }
     #endregion
+
 
     #region AlternateID
     [PXDBString(50, IsUnicode = true, InputMask = "", IsKey = true)]

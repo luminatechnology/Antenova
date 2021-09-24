@@ -9,7 +9,8 @@ GO
 CREATE VIEW v_QISDA_OUTER_LABEL AS
 SELECT SOShipment.CompanyID, 
 	   CONVERT(INT, NumberPool.NowNbr + 1 + CEILING((SUM(SOPackageDetail.Qty) / CSAnswers_INBOX.Value))) as 'NowNbr', 
-	   SOShipment.ShipmentNbr, 
+	   SOShipment.ShipmentNbr,  
+	   SOShipment.ShipDate, 
 	   SOLine.AlternateID, 
 	   SOPackageDetail.UsrDateCode, 
 	   CSAnswers_CARTON.Value AS 'Attributes_CARTON_Value', 
@@ -31,6 +32,6 @@ CROSS JOIN(
 		FROM master.dbo.spt_values
 		WHERE name IS NULL
 ) NumberPool
-GROUP BY SOShipment.CompanyID, NumberPool.NowNbr, SOShipment.ShipmentNbr, SOLine.AlternateID, SOPackageDetail.UsrDateCode, CSAnswers_CARTON.Value, CSAnswers_INBOX.Value, InventoryItem.Descr, InventoryItem.InventoryCD, InventoryItem.InventoryID
+GROUP BY SOShipment.CompanyID, NumberPool.NowNbr, SOShipment.ShipmentNbr, SOShipment.ShipDateㄝSOLine.AlternateID, SOPackageDetail.UsrDateCode, CSAnswers_CARTON.Value, CSAnswers_INBOX.Value, InventoryItem.Descr, InventoryItem.InventoryCD, InventoryItem.InventoryID
 HAVING NumberPool.NowNbr < (SUM(SOPackageDetail.Qty) / CSAnswers_CARTON.Value)]]></CDATA>
 </Sql>
