@@ -57,11 +57,21 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
         <ReportField Name="InventoryCD"></ReportField>
         <ReportField Name="InventoryItemDescr"></ReportField>
         <ReportField Name="NowNbr">
-          <DataType>Decimal</DataType>
+          <DataType>Int32</DataType>
         </ReportField>
+        <ReportField Name="ShipDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate_Day"></ReportField>
+        <ReportField Name="ShipDate_Hour"></ReportField>
+        <ReportField Name="ShipDate_Month"></ReportField>
+        <ReportField Name="ShipDate_Quarter"></ReportField>
         <ReportField Name="ShipmentNbr"></ReportField>
         <ReportField Name="SumQty">
           <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Usr1stInnerQty">
+          <DataType>Int32</DataType>
         </ReportField>
         <ReportField Name="UsrDateCode"></ReportField>
       </Fields>
@@ -99,8 +109,20 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
           <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.SumQty] - CDec([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]) * $CurrentRow &gt; 0,#010;CDec([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]),#010;CInt([v_QISDA_OUTER_LABEL.SumQty] - CDec([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]) * ($CurrentRow - 1))#010;)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
+          <Name>CurrentLine</Name>
+          <ValueExpr>= 1 + $CurrentLine</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>CurrentDateCode</Name>
+          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_OUTER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - (CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value])) &gt;= 0,#010;		Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 0, 7),#010;		IIF(CInt(Abs([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]))) % CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]) = 0,#010;			Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 8, 7),#010;			[v_QISDA_OUTER_LABEL.UsrDateCode]#010;		)#010;	)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>CurrentLotNbr</Name>
+          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	Left($CurrentDateCode, 4),#010;	Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 0, 4) + Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 7, 5)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
           <Name>LotNo</Name>
-          <ValueExpr>='L000000000000' + Left([v_QISDA_OUTER_LABEL.UsrDateCode], 4) + PadLeft(CInt([v_QISDA_OUTER_LABEL.NowNbr]), 4, '0')</ValueExpr>
+          <ValueExpr>='L000000000000' + Left($CurrentDateCode, 4) + PadLeft(CInt([v_QISDA_OUTER_LABEL.NowNbr]), 4, '0')</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>B</Name>
@@ -283,6 +305,11 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
           <Value>=$LotNo</Value>
+        </TextBox>
+        <TextBox Name="textBox5">
+          <Location>200px, 152px</Location>
+          <Size>152px, 0.16667in</Size>
+          <Value>=$CurrentDateCode</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>24px, 100px</Location>

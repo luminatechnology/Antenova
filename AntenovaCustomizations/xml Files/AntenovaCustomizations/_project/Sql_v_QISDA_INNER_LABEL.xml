@@ -12,7 +12,8 @@ SELECT SOShipment.CompanyID,
 	   SOShipment.ShipmentNbr,  
 	   SOShipment.ShipDate,
 	   SOLine.AlternateID, 
-	   SOPackageDetail.UsrDateCode, 
+	   SOPackageDetail.UsrDateCode,
+	   SOPackageDetail.Usr1stInnerQty,
 	   CSAnswers.Value AS 'Attributes_INBOX_Value', 
 	   InventoryItem.Descr AS 'InventoryItemDescr', 
 	   InventoryItem.InventoryCD, 
@@ -30,6 +31,6 @@ CROSS JOIN(
 		FROM master.dbo.spt_values
 		WHERE name IS NULL
 ) NumberPool
-GROUP BY SOShipment.CompanyID, NumberPool.NowNbr, SOShipment.ShipmentNbr, SOShipment.ShipDate, SOLine.AlternateID, SOPackageDetail.UsrDateCode, CSAnswers.Value, InventoryItem.Descr, InventoryItem.InventoryCD, InventoryItem.InventoryID
+GROUP BY SOShipment.CompanyID, NumberPool.NowNbr, SOShipment.ShipmentNbr, SOShipment.ShipDate, SOLine.AlternateID, SOPackageDetail.UsrDateCode, SOPackageDetail.Usr1stInnerQty, CSAnswers.Value, InventoryItem.Descr, InventoryItem.InventoryCD, InventoryItem.InventoryID
 HAVING NumberPool.NowNbr < (SUM(SOPackageDetail.Qty) / CSAnswers.Value)]]></CDATA>
 </Sql>

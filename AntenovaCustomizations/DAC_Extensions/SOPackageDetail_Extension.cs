@@ -71,5 +71,11 @@ namespace PX.Objects.SO
         //[PXUIField(DisplayName = "GG123")]
         //public virtual  string UsrMyCode { get; set; }
         //public abstract class usrMyCode : BqlString.Field<usrMyCode> { }
+
+        [PXDBInt]
+        [PXUIField(DisplayName = "First Inner Qty")]
+        [PXDefault(0)]
+        public virtual int? Usr1stInnerQty { get; set; }
+        public abstract class usr1stInnerQty : BqlInt.Field<usr1stInnerQty> { }
     }
 }

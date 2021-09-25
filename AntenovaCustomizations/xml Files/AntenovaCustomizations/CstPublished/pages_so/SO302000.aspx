@@ -348,6 +348,7 @@
                                     <px:PXSelector runat="server" ID="sUsrShipmentSplitLineNbr" DataField="UsrShipmentSplitLineNbr" AllowEdit="true"></px:PXSelector>
                                     <px:PXSelector runat="server" ID="sInventoryID" DataField="InventoryID" AllowEdit="True"></px:PXSelector>
                                     <px:PXDropDown runat="server" ID="sUsrDateCode" DataField="UsrDateCode" CommitChanges="True" ></px:PXDropDown>
+                                    <px:PXTextEdit ID="sUsr1stInnerQty" runat="server" DataField="Usr1stInnerQty" />
                                 </RowTemplate>
                                 <Columns>
                                     <px:PXGridColumn AllowNull="False" DataField="Confirmed" Label="Confired" TextAlign="Center" Type="CheckBox" />
@@ -372,6 +373,7 @@
                                     <px:PXGridColumn DataField="UsrShipmentSplitLineNbr" CommitChanges="True" />
                                     <px:PXGridColumn DataField="InventoryID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="UsrDateCode" />
+                                    <px:PXGridColumn DataField="Usr1stInnerQty" />
                                 </Columns>
                             </px:PXGridLevel>
                         </Levels>

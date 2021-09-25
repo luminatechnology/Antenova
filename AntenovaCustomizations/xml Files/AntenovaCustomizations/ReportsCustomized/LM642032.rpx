@@ -58,9 +58,19 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
         <ReportField Name="NowNbr">
           <DataType>Int32</DataType>
         </ReportField>
+        <ReportField Name="ShipDate">
+          <DataType>DateTime</DataType>
+        </ReportField>
+        <ReportField Name="ShipDate_Day"></ReportField>
+        <ReportField Name="ShipDate_Hour"></ReportField>
+        <ReportField Name="ShipDate_Month"></ReportField>
+        <ReportField Name="ShipDate_Quarter"></ReportField>
         <ReportField Name="ShipmentNbr"></ReportField>
         <ReportField Name="SumQty">
           <DataType>Decimal</DataType>
+        </ReportField>
+        <ReportField Name="Usr1stInnerQty">
+          <DataType>Int32</DataType>
         </ReportField>
         <ReportField Name="UsrDateCode"></ReportField>
       </Fields>
@@ -94,8 +104,12 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
           <ValueExpr>=IIF([v_QISDA_INNER_LABEL.SumQty] - CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * [v_QISDA_INNER_LABEL.NowNbr] &gt; 0,#010;CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]),#010;CInt([v_QISDA_INNER_LABEL.SumQty] - CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * ([v_QISDA_INNER_LABEL.NowNbr] - 1))#010;)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
+          <Name>CurrentDateCode</Name>
+          <ValueExpr>=IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_INNER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 0, 7),#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 8, 7)#010;	)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
           <Name>LotNo</Name>
-          <ValueExpr>='L000000000000' + Left([v_QISDA_INNER_LABEL.UsrDateCode], 4) + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 4, '0')</ValueExpr>
+          <ValueExpr>='L000000000000' + Left($CurrentDateCode, 4) + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 4, '0')</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>B</Name>

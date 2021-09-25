@@ -54,6 +54,9 @@
         <ReportField Name="SumQty">
           <DataType>Decimal</DataType>
         </ReportField>
+        <ReportField Name="Usr1stInnerQty">
+          <DataType>Int32</DataType>
+        </ReportField>
         <ReportField Name="UsrDateCode"></ReportField>
       </Fields>
       <FullName>AntenovaCustomizations.v_QISDA_INNER_LABEL</FullName>
@@ -78,8 +81,12 @@
           <ValueExpr>= 1 + $CurrentPage</ValueExpr>
         </ReportVariable>
         <ReportVariable>
+          <Name>CurrentDateCode</Name>
+          <ValueExpr>=IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_INNER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 0, 7),#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 8, 7)#010;	)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
           <Name>QRCodeValue</Name>
-          <ValueExpr>='RLC1082835' + Substring(Year([v_QISDA_INNER_LABEL.ShipDate]), 2, 2) + PadLeft(CStr(Month([v_QISDA_INNER_LABEL.ShipDate])), 2, '0') + PadLeft(CStr(Day([v_QISDA_INNER_LABEL.ShipDate])), 2, '0') + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 5, '0') + ',' + [v_QISDA_INNER_LABEL.AlternateID] + '-1082835,' + Left([v_QISDA_INNER_LABEL.UsrDateCode], 4) + '-ANTENOVA,'+ Left([v_QISDA_INNER_LABEL.UsrDateCode], 4) + ',' + CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value])</ValueExpr>
+          <ValueExpr>='RLC1082835' + Substring(Year([v_QISDA_INNER_LABEL.ShipDate]), 2, 2) + PadLeft(CStr(Month([v_QISDA_INNER_LABEL.ShipDate])), 2, '0') + PadLeft(CStr(Day([v_QISDA_INNER_LABEL.ShipDate])), 2, '0') + PadLeft(CInt([v_QISDA_INNER_LABEL.NowNbr]), 5, '0') + ',' + [v_QISDA_INNER_LABEL.AlternateID] + '-1082835,' + Left($CurrentDateCode, 4) + '-ANTENOVA,'+ Left($CurrentDateCode, 4) + ',' + CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value])</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -108,7 +115,7 @@
           <QRCodeSettings />
           <Size>172px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=[v_QISDA_INNER_LABEL.UsrDateCode] + '-ANTENOVA'</Value>
+          <Value>=$CurrentDateCode + '-ANTENOVA'</Value>
         </PictureBox>
         <PictureBox Name="pictureBox4">
           <BarcodeType>Code128</BarcodeType>
@@ -140,7 +147,7 @@
           <QRCodeSettings />
           <Size>148px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=Left([v_QISDA_INNER_LABEL.UsrDateCode], 4)</Value>
+          <Value>=Left($CurrentDateCode, 4)</Value>
         </PictureBox>
         <PictureBox Name="pictureBox7">
           <BarcodeType>Code128</BarcodeType>
@@ -306,7 +313,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[v_QISDA_INNER_LABEL.UsrDateCode] + '-ANTENOVA'</Value>
+          <Value>=$CurrentDateCode + '-ANTENOVA'</Value>
         </TextBox>
         <TextBox Name="textBox9">
           <Location>40px, 140px</Location>
@@ -322,7 +329,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=Left([v_QISDA_INNER_LABEL.UsrDateCode], 4)</Value>
+          <Value>=Left($CurrentDateCode, 4)</Value>
         </TextBox>
       </Items>
     </Detail>

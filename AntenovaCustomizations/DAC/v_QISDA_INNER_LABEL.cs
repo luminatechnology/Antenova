@@ -19,7 +19,7 @@ namespace AntenovaCustomizations
     [PXUIField(DisplayName = "Shipment Nbr")]
     public virtual string ShipmentNbr { get; set; }
     public abstract class shipmentNbr : PX.Data.BQL.BqlString.Field<shipmentNbr> { }
-        #endregion
+    #endregion
 
     #region ShipDate
     [PXDBDate()]
@@ -27,7 +27,6 @@ namespace AntenovaCustomizations
     public virtual DateTime? ShipDate { get; set; }
     public abstract class shipDate : PX.Data.BQL.BqlDateTime.Field<shipDate> { }
     #endregion
-
 
     #region AlternateID
     [PXDBString(50, IsUnicode = true, InputMask = "", IsKey = true)]
@@ -41,6 +40,13 @@ namespace AntenovaCustomizations
     [PXUIField(DisplayName = "Usr Date Code")]
     public virtual string UsrDateCode { get; set; }
     public abstract class usrDateCode : PX.Data.BQL.BqlString.Field<usrDateCode> { }
+    #endregion
+
+    #region Usr1stInnerQty
+    [PXDBInt]
+    [PXUIField(DisplayName = "First Inner Qty")]
+    public virtual int? Usr1stInnerQty { get; set; }
+    public abstract class usr1stInnerQty : PX.Data.BQL.BqlInt.Field<usr1stInnerQty> { }
     #endregion
 
     #region Attributes_INBOX_Value
