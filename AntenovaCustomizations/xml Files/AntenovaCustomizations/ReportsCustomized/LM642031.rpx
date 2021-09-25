@@ -306,11 +306,6 @@ g0lyRSU3VXLFRaqyalKonBQaqTaXPNSU56qc5pyjLKE5U5yqRa550/ZTcoxqKdL2dSiqc4VY1qc4Rp1Z
           </Style>
           <Value>=$LotNo</Value>
         </TextBox>
-        <TextBox Name="textBox5">
-          <Location>200px, 152px</Location>
-          <Size>152px, 0.16667in</Size>
-          <Value>=$CurrentDateCode</Value>
-        </TextBox>
         <TextBox Name="textBox6">
           <Location>24px, 100px</Location>
           <Size>160px, 12px</Size>
