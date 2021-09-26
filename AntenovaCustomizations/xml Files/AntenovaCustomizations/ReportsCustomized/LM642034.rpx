@@ -82,7 +82,11 @@
         </ReportVariable>
         <ReportVariable>
           <Name>CurrentDateCode</Name>
-          <ValueExpr>=IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_INNER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 0, 7),#010;		Substring([v_QISDA_INNER_LABEL.UsrDateCode], 8, 7)#010;	)#010;)</ValueExpr>
+          <ValueExpr>=IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_INNER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;		IIF(Len([v_QISDA_INNER_LABEL.UsrDateCode]) = 7 or Len([v_QISDA_INNER_LABEL.UsrDateCode]) = 15,#010;			Left([v_QISDA_INNER_LABEL.UsrDateCode], 7),#010;			Left([v_QISDA_INNER_LABEL.UsrDateCode], 4)#010;		),#010;		IIF(Len([v_QISDA_INNER_LABEL.UsrDateCode]) = 7 or Len([v_QISDA_INNER_LABEL.UsrDateCode]) = 15,#010;			Right([v_QISDA_INNER_LABEL.UsrDateCode], 7),#010;			Right([v_QISDA_INNER_LABEL.UsrDateCode], 4)#010;		)#010;	)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>CurrentDateCodeWithoutLetters</Name>
+          <ValueExpr>=IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] = 0,#010;	Replace(Replace(Replace([v_QISDA_INNER_LABEL.UsrDateCode], ' TW', ''), ' KR', ''), ' CN', ''),#010;	IIF([v_QISDA_INNER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;		Left(Replace(Replace(Replace([v_QISDA_INNER_LABEL.UsrDateCode], ' TW', ''), ' KR', ''), ' CN', ''), 4),#010;		Right(Replace(Replace(Replace([v_QISDA_INNER_LABEL.UsrDateCode], ' TW', ''), ' KR', ''), ' CN', ''), 4)#010;	)#010;)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>

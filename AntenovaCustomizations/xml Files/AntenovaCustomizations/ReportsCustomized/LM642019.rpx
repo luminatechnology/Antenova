@@ -82,12 +82,20 @@
           <ValueExpr>= 1 + $CurrentLine</ValueExpr>
         </ReportVariable>
         <ReportVariable>
+          <Name>OrigDateCodeWithoutLetters</Name>
+          <ValueExpr>=Replace(Replace(Replace([v_QISDA_OUTER_LABEL.UsrDateCode], ' TW', ''), ' KR', ''), ' CN', '')</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
           <Name>CurrentDateCode</Name>
-          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_OUTER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - (CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value])) &gt;= 0,#010;		Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 0, 7),#010;		IIF(CInt(Abs([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]))) % CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]) = 0,#010;			Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 8, 7),#010;			[v_QISDA_OUTER_LABEL.UsrDateCode]#010;		)#010;	)#010;)</ValueExpr>
+          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	[v_QISDA_OUTER_LABEL.UsrDateCode],#010;	IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - (CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value])) &gt;= 0,#010;		IIF(Len([v_QISDA_OUTER_LABEL.UsrDateCode]) = 7 or Len([v_QISDA_OUTER_LABEL.UsrDateCode]) = 15,#010;			Left([v_QISDA_OUTER_LABEL.UsrDateCode], 7),#010;			Left([v_QISDA_OUTER_LABEL.UsrDateCode], 4)#010;		),#010;		IIF(CInt(Abs([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - CInt($CurrentLine) * CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]))) % CInt([v_QISDA_OUTER_LABEL.Attributes_CARTON_Value]) = 0,#010;			IIF(Len([v_QISDA_OUTER_LABEL.UsrDateCode]) = 7 or Len([v_QISDA_OUTER_LABEL.UsrDateCode]) = 15,#010;				Right([v_QISDA_OUTER_LABEL.UsrDateCode], 7),#010;				Right([v_QISDA_OUTER_LABEL.UsrDateCode], 4)#010;			),#010;			[v_QISDA_OUTER_LABEL.UsrDateCode]#010;		)#010;	)#010;)</ValueExpr>
+        </ReportVariable>
+        <ReportVariable>
+          <Name>CurrentDateCodeWithoutLetters</Name>
+          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	$OrigDateCodeWithoutLetters,#010;	IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] - (CInt([v_QISDA_OUTER_LABEL.Attributes_INBOX_Value]) * CInt([v_QISDA_OUTER_LABEL.NowNbr])) &gt;= 0,#010;		Left($OrigDateCodeWithoutLetters, 4),#010;		Right($OrigDateCodeWithoutLetters, 4)#010;	)#010;)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>CurrentLotNbr</Name>
-          <ValueExpr>=IIF([v_QISDA_OUTER_LABEL.Usr1stInnerQty] = 0,#010;	Left($CurrentDateCode, 4),#010;	Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 0, 4) + Substring([v_QISDA_OUTER_LABEL.UsrDateCode], 7, 5)#010;)</ValueExpr>
+          <ValueExpr>=Replace(Replace(Replace($CurrentDateCode, ' TW', ''), ' KR', ''), ' CN', '')</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>
