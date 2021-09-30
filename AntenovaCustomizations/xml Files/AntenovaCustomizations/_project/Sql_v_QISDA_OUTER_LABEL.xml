@@ -8,6 +8,7 @@ DROP VIEW [dbo].[v_QISDA_OUTER_LABEL]
 GO
 CREATE VIEW v_QISDA_OUTER_LABEL AS
 SELECT SOShipment.CompanyID, 
+	   NumberPool.NowNbr + 1 as 'GroupNowNbr',
 	   CONVERT(INT, NumberPool.NowNbr + 1 + CEILING((SUM(SOPackageDetail.Qty) / CSAnswers_INBOX.Value))) as 'NowNbr', 
 	   SOShipment.ShipmentNbr,  
 	   SOShipment.ShipDate, 
@@ -18,6 +19,7 @@ SELECT SOShipment.CompanyID,
 	   CSAnswers_INBOX.Value AS 'Attributes_INBOX_Value', 
 	   InventoryItem.Descr AS 'InventoryItemDescr', 
 	   InventoryItem.InventoryCD, 
+	   InventoryItem.InventoryID,
 	   SUM(SOPackageDetail.Qty) AS 'sumQty'
 FROM SOShipment
 LEFT JOIN SOPackageDetail ON SOPackageDetail.ShipmentNbr = SOShipment.ShipmentNbr and SOPackageDetail.CompanyID = SOShipment.CompanyID

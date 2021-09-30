@@ -349,6 +349,9 @@
                                     <px:PXSelector runat="server" ID="sInventoryID" DataField="InventoryID" AllowEdit="True"></px:PXSelector>
                                     <px:PXDropDown runat="server" ID="sUsrDateCode" DataField="UsrDateCode" CommitChanges="True" ></px:PXDropDown>
                                     <px:PXTextEdit ID="sUsr1stInnerQty" runat="server" DataField="Usr1stInnerQty" />
+                                    <px:PXDropDown ID="sUsrDateCode4LastBox" runat="server" DataField="UsrDateCode4LastBox" CommitChanges="True" ></px:PXDropDown>
+                                    <px:PXDropDown ID="sUsrDateCode4ThisBox" runat="server" DataField="UsrDateCode4ThisBox" CommitChanges="True" ></px:PXDropDown>
+                                    <px:PXTextEdit ID="sUsrOuterBoxOrder" runat="server" DataField="UsrOuterBoxOrder" />
                                 </RowTemplate>
                                 <Columns>
                                     <px:PXGridColumn AllowNull="False" DataField="Confirmed" Label="Confired" TextAlign="Center" Type="CheckBox" />
@@ -374,6 +377,9 @@
                                     <px:PXGridColumn DataField="InventoryID"></px:PXGridColumn>
                                     <px:PXGridColumn DataField="UsrDateCode" />
                                     <px:PXGridColumn DataField="Usr1stInnerQty" />
+                                    <px:PXGridColumn DataField="UsrDateCode4LastBox" />
+                                    <px:PXGridColumn DataField="UsrDateCode4ThisBox" />
+                                    <px:PXGridColumn DataField="UsrOuterBoxOrder" />
                                 </Columns>
                             </px:PXGridLevel>
                         </Levels>
