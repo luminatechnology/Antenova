@@ -77,5 +77,22 @@ namespace PX.Objects.SO
         [PXDefault(0)]
         public virtual int? Usr1stInnerQty { get; set; }
         public abstract class usr1stInnerQty : BqlInt.Field<usr1stInnerQty> { }
+
+        [PXDBString(50)]
+        [PXUIField(DisplayName = "(WNC or QISDA) DateCode For Last Box")]
+        [PXStringList(MultiSelect = true)]
+        public virtual string UsrDateCode4LastBox { get; set; }
+        public abstract class usrDateCode4LastBox : BqlString.Field<usrDateCode4LastBox> { }
+
+        [PXDBString(50)]
+        [PXUIField(DisplayName = "(WNC or QISDA) DateCode For This Box")]
+        [PXStringList(MultiSelect = true)]
+        public virtual string UsrDateCode4ThisBox { get; set; }
+        public abstract class usrDateCode4ThisBox : BqlString.Field<usrDateCode4ThisBox> { }
+
+        [PXDBInt]
+        [PXUIField(DisplayName = "(WNC or QISDA) Outer Box Order")]
+        public virtual int? UsrOuterBoxOrder { get; set; }
+        public abstract class usrOuterBoxOrder : BqlInt.Field<usrOuterBoxOrder> { }
     }
 }

@@ -378,8 +378,20 @@ namespace PX.Objects.SO
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
             };
+            // Checking each OuterBoxOrder
             if (parameters["ShipmentNbr"] != null)
-                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrOuterBoxOrder == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("Outer Box Order Can Not Be Null");
+            }
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
@@ -666,19 +678,19 @@ namespace PX.Objects.SO
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
             };
-            // Checking each DateCode
+            // Checking each OuterBoxOrder
             if (parameters["ShipmentNbr"] != null)
             {
                 bool emptyDateCode = true;
                 foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
                 {
-                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrOuterBoxOrder == null)
                         emptyDateCode = false;
                 }
                 if (emptyDateCode)
                     throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
                 else
-                    throw new PXException("DateCode Can Not Be Null");
+                    throw new PXException("Outer Box Order Can Not Be Null");
             }
             return adapter.Get<SOShipment>().ToList();
         }
@@ -741,8 +753,20 @@ namespace PX.Objects.SO
             {
                 ["ShipmentNbr"] = (Base.Caches<SOShipment>().Current as SOShipment)?.ShipmentNbr
             };
+            // Checking each DateCode
             if (parameters["ShipmentNbr"] != null)
-                throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+            {
+                bool emptyDateCode = true;
+                foreach (SOPackageDetailEx curSOPackageDetailRow in Base.Packages.Cache.Cached)
+                {
+                    if (curSOPackageDetailRow.GetExtension<SOPackageDetailExt>()?.UsrDateCode == null)
+                        emptyDateCode = false;
+                }
+                if (emptyDateCode)
+                    throw new PXReportRequiredException(parameters, _reportID, string.Format("Report {0}", _reportID));
+                else
+                    throw new PXException("DateCode Can Not Be Null");
+            }
             return adapter.Get<SOShipment>().ToList();
         }
         #endregion
@@ -856,6 +880,16 @@ namespace PX.Objects.SO
                                     .And<SOShipLineSplit.lineNbr.IsEqual<P.AsInt>>>
                                 .View.Select(Base, e.Row.ShipmentNbr, e.Row.GetExtension<SOPackageDetailExt>().UsrShipmentSplitLineNbr).RowCast<SOShipLineSplit>(); ;
                 PXStringListAttribute.SetList<SOPackageDetailExt.usrDateCode>(
+                    e.Cache,
+                    e.Row,
+                    splitData.Select(x => x?.LotSerialNbr).ToArray(),
+                    splitData.Select(x => x?.LotSerialNbr).ToArray());
+                PXStringListAttribute.SetList<SOPackageDetailExt.usrDateCode4LastBox>(
+                    e.Cache,
+                    e.Row,
+                    splitData.Select(x => x?.LotSerialNbr).ToArray(),
+                    splitData.Select(x => x?.LotSerialNbr).ToArray());
+                PXStringListAttribute.SetList<SOPackageDetailExt.usrDateCode4ThisBox>(
                     e.Cache,
                     e.Row,
                     splitData.Select(x => x?.LotSerialNbr).ToArray(),

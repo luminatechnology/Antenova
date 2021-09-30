@@ -14,6 +14,13 @@ namespace AntenovaCustomizations
     public abstract class nowNbr : PX.Data.BQL.BqlInt.Field<nowNbr> { }
     #endregion
 
+    #region GroupNowNbr
+    [PXDBInt]
+    [PXUIField(DisplayName = "Group Now Nbr")]
+    public virtual int? GroupNowNbr { get; set; }
+    public abstract class groupNowNbr : PX.Data.BQL.BqlInt.Field<groupNowNbr> { }
+    #endregion
+
     #region ShipmentNbr
     [PXDBString(15, IsUnicode = true, InputMask = "")]
     [PXUIField(DisplayName = "Shipment Nbr")]
@@ -75,6 +82,13 @@ namespace AntenovaCustomizations
     [PXUIField(DisplayName = "Inventory CD")]
     public virtual string InventoryCD { get; set; }
     public abstract class inventoryCD : PX.Data.BQL.BqlString.Field<inventoryCD> { }
+    #endregion
+
+    #region InventoryID
+    [PXDBInt]
+    [PXUIField(DisplayName = "Inventory ID")]
+    public virtual int? InventoryID { get; set; }
+    public abstract class inventoryID : PX.Data.BQL.BqlInt.Field<inventoryID> { }
     #endregion
 
     #region SumQty

@@ -49,6 +49,13 @@ namespace AntenovaCustomizations
     public abstract class usr1stInnerQty : PX.Data.BQL.BqlInt.Field<usr1stInnerQty> { }
     #endregion
 
+    #region UsrDateCode4LastBox
+    [PXDBString(50)]
+    [PXUIField(DisplayName = "(WNC or QISDA) DateCode For Last Box")]
+    public virtual string UsrDateCode4LastBox { get; set; }
+    public abstract class usrDateCode4LastBox : PX.Data.BQL.BqlString.Field<usrDateCode4LastBox> { }
+    #endregion
+
     #region Attributes_INBOX_Value
     [PXDBString(255, IsUnicode = true, InputMask = "")]
     [PXUIField(DisplayName = "Attributes_ INBOX_ Value")]
