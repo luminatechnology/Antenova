@@ -2740,7 +2740,6 @@
       <Visible>False</Visible>
     </PageHeader>
     <Detail Name="detailSection1">
-      <GridSize>4px, 4px</GridSize>
       <Height>0.16667in</Height>
       <Variables>
         <ReportVariable>
@@ -2912,8 +2911,8 @@
               <Value>=[Branch.BranchOrOrganizationLogoNameReport]</Value>
             </PictureBox>
             <TextBox Name="textBox1">
-              <Location>616px, 88px</Location>
-              <Size>80px, 16px</Size>
+              <Location>592px, 88px</Location>
+              <Size>104px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2940,8 +2939,8 @@
             </TextBox>
             <TextBox Name="textBox23">
               <CanGrow>True</CanGrow>
-              <Location>616px, 56px</Location>
-              <Size>80px, 16px</Size>
+              <Location>592px, 56px</Location>
+              <Size>104px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2949,7 +2948,7 @@
               <Value>=IIF([SOOrderShipment.InvoiceNbr] &lt;&gt; Null, [SOOrderShipment.InvoiceNbr], [SOShipment.ShipmentNbr])</Value>
             </TextBox>
             <TextBox Name="textBox29">
-              <Location>520px, 88px</Location>
+              <Location>496px, 88px</Location>
               <Size>94px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
@@ -2959,8 +2958,8 @@
             </TextBox>
             <TextBox Name="textBox3">
               <Format>='dd-MMM-yyyy'</Format>
-              <Location>616px, 40px</Location>
-              <Size>80px, 16px</Size>
+              <Location>592px, 40px</Location>
+              <Size>104px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
@@ -2968,7 +2967,7 @@
               <Value>=[SOShipment.ShipDate]</Value>
             </TextBox>
             <TextBox Name="textBox30">
-              <Location>520px, 40px</Location>
+              <Location>496px, 40px</Location>
               <Size>94px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
@@ -2977,7 +2976,7 @@
               <Value>DATE:</Value>
             </TextBox>
             <TextBox Name="textBox31">
-              <Location>520px, 56px</Location>
+              <Location>496px, 56px</Location>
               <Size>94px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
@@ -2986,7 +2985,7 @@
               <Value>INVOICE NO.:</Value>
             </TextBox>
             <TextBox Name="textBox43">
-              <Location>520px, 72px</Location>
+              <Location>496px, 72px</Location>
               <Size>94px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
@@ -2996,8 +2995,8 @@
             </TextBox>
             <TextBox Name="textBox45">
               <CanGrow>True</CanGrow>
-              <Location>616px, 72px</Location>
-              <Size>80px, 16px</Size>
+              <Location>592px, 72px</Location>
+              <Size>104px, 16px</Size>
               <Style>
                 <TextAlign>Right</TextAlign>
               </Style>
