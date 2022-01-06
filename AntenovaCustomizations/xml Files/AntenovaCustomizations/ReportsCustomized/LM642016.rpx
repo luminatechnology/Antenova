@@ -2719,7 +2719,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
             </TextBox>
             <TextBox Name="textBox13">
               <Location>144px, 297px</Location>
-              <Size>32px, 24px</Size>
+              <Size>56px, 24px</Size>
               <Style>
                 <Font>
                   <Size>20px</Size>
@@ -2747,7 +2747,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
               <Value>Carton no.:</Value>
             </TextBox>
             <TextBox Name="textBox15">
-              <Location>200px, 297px</Location>
+              <Location>224px, 297px</Location>
               <Size>56px, 24px</Size>
               <Style>
                 <Font>
@@ -2763,7 +2763,7 @@ yudjrZcVlmC8tof84sXUZCY40NWIr8NVhRqLQ//QIG9i3oWMjMbZlbJHJ5oktIzbKisugLQrK+o5f4fU
               <Value>=Last(CDec([SOPackageDetailEx.CustomRefNbr1]))</Value>
             </TextBox>
             <TextBox Name="textBox16">
-              <Location>176px, 297px</Location>
+              <Location>200px, 297px</Location>
               <Size>24px, 24px</Size>
               <Style>
                 <Font>
