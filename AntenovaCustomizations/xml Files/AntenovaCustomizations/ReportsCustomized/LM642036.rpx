@@ -5,7 +5,7 @@
   </CommonSettings>
   <Filters>
     <FilterExp>
-      <DataField>v_QISDA_INNER_LABEL.ShipmentNbr</DataField>
+      <DataField>v_ATRACK_INNER_LABEL.ShipmentNbr</DataField>
       <Value>@ShipmentNbr</Value>
     </FilterExp>
   </Filters>
@@ -30,14 +30,15 @@
   <SchemaUrl>http://localhost/AntenovaDB/</SchemaUrl>
   <Sorting>
     <SortExp>
-      <DataField>v_QISDA_INNER_LABEL.NowNbr</DataField>
+      <DataField>v_ATRACK_INNER_LABEL.AlternateID</DataField>
     </SortExp>
   </Sorting>
   <Tables>
-    <ReportTable Name="v_QISDA_INNER_LABEL">
+    <ReportTable Name="v_ATRACK_INNER_LABEL">
       <Fields>
         <ReportField Name="AlternateID"></ReportField>
         <ReportField Name="Attributes_INBOX_Value"></ReportField>
+        <ReportField Name="CustomerOrderNbr"></ReportField>
         <ReportField Name="InventoryCD"></ReportField>
         <ReportField Name="InventoryItemDescr"></ReportField>
         <ReportField Name="NowNbr">
@@ -54,13 +55,9 @@
         <ReportField Name="SumQty">
           <DataType>Decimal</DataType>
         </ReportField>
-        <ReportField Name="Usr1stInnerQty">
-          <DataType>Int32</DataType>
-        </ReportField>
         <ReportField Name="UsrDateCode"></ReportField>
-        <ReportField Name="UsrDateCode4LastBox"></ReportField>
       </Fields>
-      <FullName>AntenovaCustomizations.v_QISDA_INNER_LABEL</FullName>
+      <FullName>AntenovaCustomizations.v_ATRACK_INNER_LABEL</FullName>
     </ReportTable>
   </Tables>
   <Width>9.6cm</Width>
@@ -83,19 +80,19 @@
         </ReportVariable>
         <ReportVariable>
           <Name>CurrentQty</Name>
-          <ValueExpr>=IIF(CDec([v_QISDA_INNER_LABEL.SumQty]) - (CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * CDec([v_QISDA_INNER_LABEL.NowNbr])) &gt;= 0,#010;CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]),#010;CInt(CDec(CDec([v_QISDA_INNER_LABEL.SumQty]) - (CDec([v_QISDA_INNER_LABEL.Attributes_INBOX_Value]) * (CDec([v_QISDA_INNER_LABEL.NowNbr] - 1)))))#010;)</ValueExpr>
+          <ValueExpr>=IIF(CDec([v_ATRACK_INNER_LABEL.SumQty]) - (CDec([v_ATRACK_INNER_LABEL.Attributes_INBOX_Value]) * CDec([v_ATRACK_INNER_LABEL.NowNbr])) &gt;= 0,#010;CDec([v_ATRACK_INNER_LABEL.Attributes_INBOX_Value]),#010;CInt(CDec(CDec([v_ATRACK_INNER_LABEL.SumQty]) - (CDec([v_ATRACK_INNER_LABEL.Attributes_INBOX_Value]) * (CDec([v_ATRACK_INNER_LABEL.NowNbr] - 1)))))#010;)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>CurWeeksBasedonMon</Name>
-          <ValueExpr>=DayOfYear(DateAdd([v_QISDA_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_QISDA_INNER_LABEL.ShipDate]) - 1))) / 7 #010;+ IIF(DayOfYear(DateAdd([v_QISDA_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_QISDA_INNER_LABEL.ShipDate]) - 1))) % 7 &gt;= DayOfYear(DateAdd([v_QISDA_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_QISDA_INNER_LABEL.ShipDate]) - 1))) % 7,#010;1,#010;0#010;)</ValueExpr>
+          <ValueExpr>=PadLeft(CStr(DayOfYear(DateAdd([v_ATRACK_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_ATRACK_INNER_LABEL.ShipDate]) - 1))) / 7 #010;+ IIF(DayOfYear(DateAdd([v_ATRACK_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_ATRACK_INNER_LABEL.ShipDate]) - 1))) % 7 &gt;= DayOfYear(DateAdd([v_ATRACK_INNER_LABEL.ShipDate], 'd', -(DayOfWeek([v_ATRACK_INNER_LABEL.ShipDate]) - 1))) % 7,#010;1,#010;0#010;)), 2, '0')</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>DisplayShipDate</Name>
-          <ValueExpr>=Right(Left(Year([v_QISDA_INNER_LABEL.ShipDate]), 4), 2) + $CurWeeksBasedonMon</ValueExpr>
+          <ValueExpr>=CStr(Right(Left(Year([v_ATRACK_INNER_LABEL.ShipDate]), 4), 2) + $CurWeeksBasedonMon)</ValueExpr>
         </ReportVariable>
         <ReportVariable>
           <Name>QRCodeValue</Name>
-          <ValueExpr>=[v_QISDA_INNER_LABEL.AlternateID] + '_' + $CurrentQty + '_' + Left([v_QISDA_INNER_LABEL.UsrDateCode], 4) + '_' + $DisplayShipDate + '_' + Replace([v_QISDA_INNER_LABEL.ShipmentNbr], 'SP', '')</ValueExpr>
+          <ValueExpr>=[v_ATRACK_INNER_LABEL.AlternateID] + '_' + $CurrentQty + '_' + CStr(Left([v_ATRACK_INNER_LABEL.UsrDateCode], 4)) + '_' + Right(Year([v_ATRACK_INNER_LABEL.ShipDate]), 2) + CStr($CurWeeksBasedonMon) + '_' + [v_ATRACK_INNER_LABEL.CustomerOrderNbr]</ValueExpr>
         </ReportVariable>
       </Variables>
       <Items>
@@ -123,7 +120,7 @@
           <QRCodeSettings />
           <Size>196px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=[@ShipmentNbr]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.CustomerOrderNbr]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox3">
           <BarcodeSettings>
@@ -136,7 +133,7 @@
           <QRCodeSettings />
           <Size>196px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=[v_QISDA_INNER_LABEL.InventoryCD]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.InventoryCD]</Value>
         </PictureBox>
         <PictureBox Name="pictureBox4">
           <BarcodeSettings>
@@ -152,7 +149,7 @@
           <Style>
             <VerticalAlign>Top</VerticalAlign>
           </Style>
-          <Value>=Left([v_QISDA_INNER_LABEL.UsrDateCode], 4)</Value>
+          <Value>=Left([v_ATRACK_INNER_LABEL.UsrDateCode], 4)</Value>
         </PictureBox>
         <PictureBox Name="pictureBox5">
           <BarcodeType>QRCode</BarcodeType>
@@ -189,7 +186,7 @@
           <QRCodeSettings />
           <Size>172px, 20px</Size>
           <Source>Barcode</Source>
-          <Value>=[v_QISDA_INNER_LABEL.AlternateID]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.AlternateID]</Value>
         </PictureBox>
         <TextBox Name="textBox1">
           <Location>0px, 14px</Location>
@@ -218,7 +215,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[@ShipmentNbr]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.CustomerOrderNbr]</Value>
         </TextBox>
         <TextBox Name="textBox11">
           <Location>0px, 44px</Location>
@@ -292,7 +289,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[v_QISDA_INNER_LABEL.AlternateID]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.AlternateID]</Value>
         </TextBox>
         <TextBox Name="textBox5">
           <Location>24px, 172px</Location>
@@ -305,7 +302,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Bottom</VerticalAlign>
           </Style>
-          <Value>=Left([v_QISDA_INNER_LABEL.UsrDateCode], 4)</Value>
+          <Value>=Left([v_ATRACK_INNER_LABEL.UsrDateCode], 4)</Value>
         </TextBox>
         <TextBox Name="textBox6">
           <Location>0px, 108px</Location>
@@ -350,7 +347,7 @@
             <TextAlign>Left</TextAlign>
             <VerticalAlign>Middle</VerticalAlign>
           </Style>
-          <Value>=[v_QISDA_INNER_LABEL.InventoryCD]</Value>
+          <Value>=[v_ATRACK_INNER_LABEL.InventoryCD]</Value>
         </TextBox>
         <TextBox Name="textBox9">
           <Format>='N0'</Format>

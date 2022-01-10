@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAC\ENGProjectType.cs" />
+    <Compile Include="DAC\v_ATRACK_INNER_LABEL.cs" />
+    <Compile Include="DAC\v_ATRACK_OUTER_LABEL.cs" />
     <Compile Include="DAC_Extensions\CRLeadExtension.cs" />
     <Compile Include="DAC_Extensions\CRLeadStandaloneExt.cs" />
     <Compile Include="DAC_Extensions\CROpportunityExtension.cs" />
