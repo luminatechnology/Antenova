@@ -1,4 +1,4 @@
-﻿<Sql TableName="SP_GenerateLumINItemCostHist" CustomScript="#CDATA">
+<Sql TableName="SP_GenerateLumINItemCostHist" CustomScript="#CDATA">
     <CDATA name="CustomScript"><![CDATA[IF EXISTS
 (
 	SELECT *
@@ -27,6 +27,9 @@ BEGIN
 		left join INItemClass on INItemClass.ItemClassID = InventoryItem.ItemClassID and INItemClass.CompanyID = INItemCostHist.CompanyID
 		where INItemCostHist.CompanyID = @companyID
 	)
+
+	--Check @period in MaterFinPeriod
+	SET @period = (select FORMAT(StartDate, 'yyyyMM') from FinPeriod where CompanyID = @companyID and MasterFinPeriodID = @period and OrganizationID = (select OrganizationID from Organization where CompanyID = @companyID))
 	
 	--Declare outside loop variables
 	DECLARE @i int, @TOTALCOUNT int, @LASTACTIVITYPERIOD int, @CONDITIONPERIOD int, @LASTACTIVITYFINPERIODID int
@@ -48,10 +51,17 @@ BEGIN
 			WHERE CompanyID = @companyID and InventoryID = @INVENTORYID and SiteID = @SITEID and FinPeriodID < FORMAT(DATEADD(MONTH, -0, CONVERT(datetime, CONCAT(@period, '01'))),'yyyyMM')
 			ORDER BY FinPeriodID DESC
 		)
+		--Check @LASTACTIVITYFINPERIODID in MaterFinPeriod
+		SET @LASTACTIVITYFINPERIODID = (select FORMAT(StartDate, 'yyyyMM') from FinPeriod where CompanyID = @companyID and MasterFinPeriodID = @LASTACTIVITYFINPERIODID and OrganizationID = (select OrganizationID from Organization where CompanyID = @companyID))
+		
+		
 		SET @LASTACTIVITYPERIOD = (SELECT MAX(FinPeriodID) as FinPeriodID FROM INItemCostHist
 			WHERE CompanyID = @companyID and InventoryID = @INVENTORYID and SiteID = @SITEID
 			GROUP BY InventoryID, SiteID
 		)
+		--Check @LASTACTIVITYPERIOD in MaterFinPeriod
+		SET @LASTACTIVITYPERIOD = (select FORMAT(StartDate, 'yyyyMM') from FinPeriod where CompanyID = @companyID and MasterFinPeriodID = @LASTACTIVITYPERIOD and OrganizationID = (select OrganizationID from Organization where CompanyID = @companyID))
+
 		--Compare @LASTACTIVITYPERIOD with @period
 		SET @CONDITIONPERIOD = IIF(datediff(MONTH, FORMAT(DATEADD(MONTH, -0, CONVERT(datetime, CONCAT(@LASTACTIVITYPERIOD, '01'))),'yyyyMMdd'), FORMAT(DATEADD(MONTH, -0, CONVERT(datetime, CONCAT(@period, '01'))),'yyyyMMdd')) > 0, 
 			@LASTACTIVITYPERIOD, 
